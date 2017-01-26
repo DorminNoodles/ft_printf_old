@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/08 13:54:21 by lchety            #+#    #+#             */
-/*   Updated: 2017/01/26 15:31:02 by lchety           ###   ########.fr       */
+/*   Updated: 2017/01/26 16:51:30 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -611,13 +611,33 @@ int main(void)
 	/*Ok donc la differene entre precision et largeur c est le ".", avec le point dans les str on crop, sans c est une taille minimum remplit de 0 ou d espace...
 	*/
 
-	wchar_t texte[50] = {0};
-	// texte[0] = 'È';
-	// texte[1] = 230;
-	// fgetws(texte, 50, stdin);
-	wprintf(L"%ls", texte);
-	// printf("%S\n", (wchar_t*)"Èrhfy");
-	printf("Eegffh\n");
+	char happy[] = { 0xe2, 0x98, 0xba};
+	write(1, happy, 3);
+	char happy2[] = {227, 130, 166};
+	write(1, happy2, 3);
+	char happy3[] = {227, 131, 176};
+	write(1, happy3, 3);
+	//char happy4[] = {240, 144, 166, 128};
+	//write(1, happy4, 4);
+	char happy5[] = {225, 175, 164};
+	write(1, happy5, 3);
+	write(1, " ", 1);
+	char happy6[] = {226, 157, 132};
+	write(1, happy6, 3);
+	char happy7[] = {224, 182, 163};
+	write(1, " ", 1);
+	write(1, happy7, 3);
+	write(1, " ", 1);
+	write(1, " ", 1);
+	printf("%c%c\n", 0xC0 | (536 >> 6), 0x80 | (536 & 0x3f));
+	printf("%c\n", 0x80 | (536 & 0x3f));
+	printf("%c%c\n", 0xC0 | (536 >> 6), 0x80 | (536 & 0x3f));
+	printf("%c%c\n", 0x80 | (536 & 0x3f), 0xC0 | (536 >> 6));
+	printf("%c%c\n", 0xC0, 0x80);
+	printf("\n");
 
+	1100 0000
+	1000 0000
+ p6
 	return (0);
 }
