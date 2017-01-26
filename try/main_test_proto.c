@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/08 13:54:21 by lchety            #+#    #+#             */
-/*   Updated: 2017/01/25 19:22:48 by lchety           ###   ########.fr       */
+/*   Updated: 2017/01/26 15:31:02 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -612,9 +612,12 @@ int main(void)
 	*/
 
 	wchar_t texte[50] = {0};
-	//fgetws(texte, 50, stdin);
+	// texte[0] = 'È';
+	// texte[1] = 230;
+	// fgetws(texte, 50, stdin);
 	wprintf(L"%ls", texte);
-
+	// printf("%S\n", (wchar_t*)"Èrhfy");
+	printf("Eegffh\n");
 
 	return (0);
 }
