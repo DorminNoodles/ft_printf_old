@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/08 13:54:21 by lchety            #+#    #+#             */
-/*   Updated: 2017/01/25 15:53:12 by lchety           ###   ########.fr       */
+/*   Updated: 2017/01/25 19:22:48 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,9 @@
 #include <stdlib.h>
 #include <limits.h>
 #include <stdint.h>
+#include <wchar.h>
 
-void	test_01(void)
+void	test_d_01(void)
 {
 	printf("Test => 01\n");
 	printf("orig : %d\n", 25);
@@ -44,7 +45,7 @@ void	test_01(void)
 // 	printf("\n");
 // }
 
-void	test_04(void)
+void	test_d_04(void)
 {
 	printf("Test => 04\n");
 	printf("orig : %.8d\n", 25);
@@ -60,7 +61,7 @@ void	test_04(void)
 // 	printf("\n");
 // }
 
-void	test_06(void)
+void	test_d_06(void)
 {
 	printf("Test => 06\n");
 	printf("orig : %.08d\n", 25);
@@ -306,7 +307,7 @@ void	test_x_20(void)
 	printf("\n");
 }
 
-//=====> conv_s
+//======================================================> conv_s
 
 void	test_s_01(void)
 {
@@ -327,8 +328,8 @@ void	test_s_02(void)
 void	test_s_03(void)
 {
 	printf("Test_s => 03\n");
-	printf("orig : %s\n" "a1" "a2" "a3", "poney");
-	ft_printf("cust : %s\n" "b1" "b2" "b3", "poney");
+	printf("orig : %s " "a1 " "a2 " "a3 " "\n", "poney");
+	ft_printf("cust : %s " "b1 " "b2 " "b3 " "\n", "poney");
 	printf("\n");
 }
 
@@ -340,28 +341,45 @@ void	test_s_04(void)
 	printf("\n");
 }
 
-
-
-void print_binary(int number)
+void	test_s_05(void)
 {
-    if (number) {
-        print_binary(number >> 1);
-        putc((number & 1) ? '1' : '0', stdout);
-    }
+	printf("Test_s => 05\n");
+	printf("orig : %4s\n", "poney truite");
+	ft_printf("cust : %4s\n", "poney truite");
+	printf("\n");
 }
+
+void	test_s_06(void)
+{
+	printf("Test_s => 06\n");
+	printf("orig : %22s\n", "poney truite");
+	ft_printf("cust : %22s\n", "poney truite");
+	printf("\n");
+}
+
+//=====================================================> conv_S
+
+void	test_bs_01(void)
+{
+	// printf("Test_bs => 01\n");
+	// printf("orig : %S\n", "BigS\n");
+
+
+}
+
 
 int main(void)
 {
 	//Test_list________________________
 
 	//conv_d
-
-	test_01();
+	printf("=======> Conv_d <=======\n");
+	test_d_01();
 	//test_02();
 	//test_03();
-	test_04();
+	test_d_04();
 	//test_05();
-	test_06();
+	test_d_06();
 	// test_07();
 	// test_08();
 	// test_09();
@@ -372,10 +390,10 @@ int main(void)
 	// test_14();
 	// test_15();
 
-
 	// //end conv d
 	//
 	// //conv x
+	printf("=======> Conv_x <=======\n");
 	test_x_01();
 	test_x_02();
 	test_x_04();
@@ -397,10 +415,13 @@ int main(void)
 	test_x_20();
 
 	//Start Conv_s
+	printf("=======> Conv_s <=======\n");
 	test_s_01();
 	test_s_02();
 	test_s_03();
 	test_s_04();
+	test_s_05();
+	test_s_06();
 
 
 	//test de merde
@@ -580,8 +601,19 @@ int main(void)
 	//
 	// printf("printf intmax_t %ju\n", 18446744073709551615, 12, 9);
 
-	printf("bob  %010d   \n", 42);
+	// printf("bob %.2s\n", "krevette"); // precision
+	// printf("bob %2s\n", "krevette"); // precision
+	//
+	// printf("bob %5s\n", "krevette");
+	// printf("bob %.*s\n", 2, "krevette");
+	// printf("bob %*s\n", 40, "krevette");
 
+	/*Ok donc la differene entre precision et largeur c est le ".", avec le point dans les str on crop, sans c est une taille minimum remplit de 0 ou d espace...
+	*/
+
+	wchar_t texte[50] = {0};
+	//fgetws(texte, 50, stdin);
+	wprintf(L"%ls", texte);
 
 
 	return (0);
