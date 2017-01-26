@@ -11,13 +11,13 @@ SRC =	try/main_test_proto.c							\
 
 
 CC = clang
+FLAGS = -Wall -Wextra -Werror
 
 $(NAME) : all
 
-
 all :
 	make -C libft/
-	$(CC) $(SRC) -I libft/includes -I includes/ libft/libft.a -o build/a.out
+	$(CC) $(SRC) $(FLAGS) -I libft/includes -I includes/ libft/libft.a -o build/a.out
 
 clean :
 
