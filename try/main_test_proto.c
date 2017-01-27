@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/08 13:54:21 by lchety            #+#    #+#             */
-/*   Updated: 2017/01/26 22:06:34 by dormin           ###   ########.fr       */
+/*   Updated: 2017/01/27 14:05:23 by dormin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -636,9 +636,10 @@ int main(void)
 	printf("%c%c\n", 0xC0, 0x80);
 
 	printf("fuck %c%c\n", 0xC8, 0x18);
-	printf("i want you %c%c%c\n", 0xE2, 0xBB, 0x86);
+	printf("i want you %C%C%C\n", 0xE2, 0xBB, 0x86);
 	//printf("tac %c%c%c", 0xE2, 0x98); error
 	printf("\n");
+
 
 	//
 	// 0xC0 == 1100 0000;
