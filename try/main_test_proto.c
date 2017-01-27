@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/08 13:54:21 by lchety            #+#    #+#             */
-/*   Updated: 2017/01/27 14:05:23 by dormin           ###   ########.fr       */
+/*   Updated: 2017/01/27 22:00:28 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include <fcntl.h>
 #include <stdlib.h>
 #include <limits.h>
+#include <locale.h>
 #include <stdint.h>
 #include <wchar.h>
 
@@ -638,8 +639,16 @@ int main(void)
 	printf("fuck %c%c\n", 0xC8, 0x18);
 	printf("i want you %C%C%C\n", 0xE2, 0xBB, 0x86);
 	//printf("tac %c%c%c", 0xE2, 0x98); error
-	printf("\n");
+	wchar_t test[3];
 
+	test[0] = 0xE2;
+	test[1] = 0x82;
+	test[2] = 0xAC;
+
+
+	//printf("Grim Fandango %S\n", 0xE2);
+	printf("%lc\n", (wint_t)536);
+	printf("\n");
 
 	//
 	// 0xC0 == 1100 0000;
@@ -677,6 +686,65 @@ int main(void)
 	// a = b << 4 == 0001 0000;
 
 	// if the lower bit is 0 its pair else if it is 1 its impair
+	printf("%c\n", 'e');
+	printf("%C\n", 'e');
+
+
+	//wchar_t z = 0xF0908D88;
+	//printf("test = %C\n", z);
+	setlocale(LC_ALL, "");
+	printf("bite %C\n", L'é');
+	printf("bite %C%C%C\n", 0xE2, 0xBB, 0x86);
+	printf("bite %c%c\n", 0b11000010, 0b10101001);
+	printf("hook %C%C\n", 0xC2, 0xA9);
+
+	wchar_t a;
+	wchar_t b;
+	wchar_t c;
+	wchar_t d;
+
+	char y;
+	int h;
+
+	a = 0;
+	b = 0;
+	c = 0;
+	d = 0;
+
+	a = 49833;
+	h = 49833;
+	printf("castor %x\n", a);
+	y = a;
+	printf("castor_2 %x\n", y);
+	printf("castor 4 %x\n", h);
+	// b = a >> 8;
+	// a = 49833;
+	// c = a << 24;
+	// d = c >> 24;
+
+
+	wchar_t	mal;
+
+	mal = L'©';
+
+	// ft_putnbr(mal);
+	// printf("ICI%C\n", mal);
+
+	write(1, &mal, 1);
+	write(1, &mal, 1);
+	write(1, &mal, 1);
+
+
+	//printf("Cup %b\n", mordor);
+	//mordor = 49833;
+	// printf("%s\n", ft_itoa_printf(mordor, 2));
+	//mordor = mordor >> 8;
+	//printf("Cup %x\n", mordor);
+
+	//printf("%C" L'猫');
+
+	// mordor = mordor >> 8;
+	// printf("Cup %x\n", mordor);
 
 	return (0);
 }
