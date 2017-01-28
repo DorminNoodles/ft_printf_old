@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/07 13:58:10 by lchety            #+#    #+#             */
-/*   Updated: 2017/01/25 18:25:09 by lchety           ###   ########.fr       */
+/*   Updated: 2017/01/28 17:34:07 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef struct s_print
 	bool conv_d;
 	bool conv_i;
 	bool conv_c;
+	bool conv_lc;
 	bool conv_s;
 	bool conv_x;
 

@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/08 13:54:21 by lchety            #+#    #+#             */
-/*   Updated: 2017/01/27 22:00:28 by lchety           ###   ########.fr       */
+/*   Updated: 2017/01/28 17:43:37 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -368,6 +368,17 @@ void	test_bs_01(void)
 
 }
 
+//=====================================================> conv_C
+
+void	test_lc_01(void)
+{
+	printf("Test_lc => 01\n");
+	printf("orig : %c\n", 'G');
+	ft_printf("cust : %c\n", 'G');
+	printf("\n");
+}
+
+
 
 int main(void)
 {
@@ -424,6 +435,9 @@ int main(void)
 	test_s_05();
 	test_s_06();
 
+	//Start conv_lc
+	printf("=======> Conv_ls <=======\n");
+	test_lc_01();
 
 	//test de merde
 
@@ -612,43 +626,43 @@ int main(void)
 	/*Ok donc la differene entre precision et largeur c est le ".", avec le point dans les str on crop, sans c est une taille minimum remplit de 0 ou d espace...
 	*/
 
-	char happy[] = { 0xe2, 0x98, 0xba};
-	write(1, happy, 3);
-	char happy2[] = {227, 130, 166};
-	write(1, happy2, 3);
-	char happy3[] = {227, 131, 176};
-	write(1, happy3, 3);
+	// char happy[] = { 0xe2, 0x98, 0xba};
+	// write(1, happy, 3);
+	// char happy2[] = {227, 130, 166};
+	// write(1, happy2, 3);
+	// char happy3[] = {227, 131, 176};
+	// write(1, happy3, 3);
 	//char happy4[] = {240, 144, 166, 128};
 	//write(1, happy4, 4);
-	char happy5[] = {225, 175, 164};
-	write(1, happy5, 3);
-	write(1, " ", 1);
-	char happy6[] = {226, 157, 132};
-	write(1, happy6, 3);
-	char happy7[] = {224, 182, 163};
-	write(1, " ", 1);
-	write(1, happy7, 3);
-	write(1, " ", 1);
-	write(1, " ", 1);
-	printf("%c%c\n", 0xC0 | (536 >> 6), 0x80 | (536 & 0x3f));
-	printf("%c\n", 0x80 | (536 & 0x3f));
-	printf("%c%c\n", 0xC0 | (536 >> 6), 0x80 | (536 & 0x3f));
-	printf("%c%c\n", 0x80 | (536 & 0x3f), 0xC0 | (536 >> 6));
-	printf("%c%c\n", 0xC0, 0x80);
+	// char happy5[] = {225, 175, 164};
+	// write(1, happy5, 3);
+	// write(1, " ", 1);
+	// char happy6[] = {226, 157, 132};
+	// write(1, happy6, 3);
+	// char happy7[] = {224, 182, 163};
+	// write(1, " ", 1);
+	// write(1, happy7, 3);
+	// write(1, " ", 1);
+	// write(1, " ", 1);
+	// printf("%c%c\n", 0xC0 | (536 >> 6), 0x80 | (536 & 0x3f));
+	// printf("%c\n", 0x80 | (536 & 0x3f));
+	// printf("%c%c\n", 0xC0 | (536 >> 6), 0x80 | (536 & 0x3f));
+	// printf("%c%c\n", 0x80 | (536 & 0x3f), 0xC0 | (536 >> 6));
+	// printf("%c%c\n", 0xC0, 0x80);
 
-	printf("fuck %c%c\n", 0xC8, 0x18);
-	printf("i want you %C%C%C\n", 0xE2, 0xBB, 0x86);
+	// printf("fuck %c%c\n", 0xC8, 0x18);
+	// printf("i want you %C%C%C\n", 0xE2, 0xBB, 0x86);
 	//printf("tac %c%c%c", 0xE2, 0x98); error
-	wchar_t test[3];
-
-	test[0] = 0xE2;
-	test[1] = 0x82;
-	test[2] = 0xAC;
+	// wchar_t test[3];
+	//
+	// test[0] = 0xE2;
+	// test[1] = 0x82;
+	// test[2] = 0xAC;
 
 
 	//printf("Grim Fandango %S\n", 0xE2);
-	printf("%lc\n", (wint_t)536);
-	printf("\n");
+	// printf("%lc\n", (wint_t)536);
+	// printf("\n");
 
 	//
 	// 0xC0 == 1100 0000;
@@ -686,54 +700,65 @@ int main(void)
 	// a = b << 4 == 0001 0000;
 
 	// if the lower bit is 0 its pair else if it is 1 its impair
-	printf("%c\n", 'e');
-	printf("%C\n", 'e');
+	//
+	// printf("%c\n", 'e');
+	// printf("%C\n", 'e');
 
 
 	//wchar_t z = 0xF0908D88;
 	//printf("test = %C\n", z);
-	setlocale(LC_ALL, "");
-	printf("bite %C\n", L'é');
-	printf("bite %C%C%C\n", 0xE2, 0xBB, 0x86);
-	printf("bite %c%c\n", 0b11000010, 0b10101001);
-	printf("hook %C%C\n", 0xC2, 0xA9);
-
-	wchar_t a;
-	wchar_t b;
-	wchar_t c;
-	wchar_t d;
-
-	char y;
-	int h;
-
-	a = 0;
-	b = 0;
-	c = 0;
-	d = 0;
-
-	a = 49833;
-	h = 49833;
-	printf("castor %x\n", a);
-	y = a;
-	printf("castor_2 %x\n", y);
-	printf("castor 4 %x\n", h);
+	// setlocale(LC_ALL, "");
+	// printf("bite %C\n", L'é');
+	// printf("bite %C%C%C\n", 0xE2, 0xBB, 0x86);
+	// printf("bite %c%c\n", 0b11000010, 0b10101001);
+	// printf("hook %C%C\n", 0xC2, 0xA9);
+	//
+	// wchar_t a;
+	// wchar_t b;
+	// wchar_t c;
+	// wchar_t d;
+	//
+	// a = 0;
+	// b = 0;
+	// c = 0;
+	// d = 0;
+	//
+	// a = 49833;
+	// b = 580;
+	// printf("castor %x\n", a);
+	// printf("castor2 %i\n", x);
+	//printf("%lu\n", sizeof(wchar_t));
+	// ft_putchar(((b >> 6) & 0x1F) | 0xC0);
+	// ft_putchar((b & 0x3F) | 0x80);
+	//
+	// int ko = 10052;
+	// ft_putchar(' ');
+	// ft_putchar(((ko >> 12) & 0xF) | 0xE0);
+	// ft_putchar(((ko >> 6) & 0x3F) | 0x80);
+	// ft_putchar((ko & 0x3F) | 0x80);
+	// ft_putchar(' ');
 	// b = a >> 8;
 	// a = 49833;
 	// c = a << 24;
 	// d = c >> 24;
 
 
-	wchar_t	mal;
+	// wchar_t	lune;
 
-	mal = L'©';
+	// lune = L'©';
 
 	// ft_putnbr(mal);
 	// printf("ICI%C\n", mal);
 
-	write(1, &mal, 1);
-	write(1, &mal, 1);
-	write(1, &mal, 1);
+	// write(1, &lune, 1);
+	// write(1, &lune, 1);
+	// write(1, &lune, 1);
 
+
+	// lune = 0xC2;
+	// write(1, &lune, 1);
+	// lune = 0xA9;
+	// write(1, &lune, 1);
 
 	//printf("Cup %b\n", mordor);
 	//mordor = 49833;
