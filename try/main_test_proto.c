@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/08 13:54:21 by lchety            #+#    #+#             */
-/*   Updated: 2017/01/28 19:15:00 by lchety           ###   ########.fr       */
+/*   Updated: 2017/01/28 22:57:10 by dormin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -378,6 +378,14 @@ void	test_lc_01(void)
 	printf("\n");
 }
 
+void	test_lc_02(void)
+{
+	printf("Test_lc => 02\n");
+	printf("orig : %c\n", 'A');
+	ft_printf("cust : %c\n", 'A');
+	printf("\n");
+}
+
 
 
 int main(void)
@@ -436,8 +444,11 @@ int main(void)
 	test_s_06();
 
 	//Start conv_lc
-	printf("=======> Conv_ls <=======\n");
+	printf("=======> Conv_lc <=======\n");
 	test_lc_01();
+	test_lc_02();
+
+
 
 	//test de merde
 
