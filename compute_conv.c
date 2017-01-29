@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/10 20:05:18 by lchety            #+#    #+#             */
-/*   Updated: 2017/01/29 15:30:04 by lchety           ###   ########.fr       */
+/*   Updated: 2017/01/29 15:39:13 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void	compute_conv_d(t_print *conv_info, int base, va_list ap)
 
 void	compute_conv_lc (va_list ap)
 {
-	printf("CONV_LC\n");
+	//printf("CONV_LC\n");
 
 	wchar_t raw;
 

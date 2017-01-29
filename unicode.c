@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/29 14:10:13 by lchety            #+#    #+#             */
-/*   Updated: 2017/01/29 15:32:57 by lchety           ###   ########.fr       */
+/*   Updated: 2017/01/29 15:38:40 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,13 @@ wchar_t utf8_enc(wchar_t c)
 	if (c <  0x7f)
 	{
 		write(1, &c, 1);
+		return (0);
 	}
 
 	if (c < 0x1fff)
 	{
-		printf("2 bytes\n");
+		//printf("2 bytes\n");
+		return (0);
 	}
 
 
