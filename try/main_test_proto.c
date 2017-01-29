@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/08 13:54:21 by lchety            #+#    #+#             */
-/*   Updated: 2017/01/28 22:57:10 by dormin           ###   ########.fr       */
+/*   Updated: 2017/01/29 15:32:58 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	test_d_01(void)
 // 	printf("Test => 02\n");
 // 	printf("orig : %d\n", -2147483648);
 // 	ft_printf("cust : %d\n", -2147483648);
-// 	printf("\n");
+// 	printf("\n");s
 // }
 //
 // void	test_03(void)

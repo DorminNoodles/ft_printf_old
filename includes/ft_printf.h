@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/07 13:58:10 by lchety            #+#    #+#             */
-/*   Updated: 2017/01/28 19:14:52 by lchety           ###   ########.fr       */
+/*   Updated: 2017/01/29 15:29:21 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 
 #include <stdarg.h>
 #include <stdio.h>
+#include <wchar.h>
 #include "libft.h"
 
 /*
@@ -73,18 +74,20 @@ int		parsing_distributor(const char* format);
 char	*parsing_converter(const char *format, t_print *conv_info);
 int		parsing_dispatch(const char *format, t_print *conv_info);
 void	compute_conv(t_print *conv_info, va_list ap);
-char	*ft_itoa_base(unsigned long long n, int base);
-void	compute_width(t_print *conv_info);
-void	compute_htag(t_print *conv_info);
-void	reset_print(t_print *conv_info);
-void	parsing_htag(const char	*format, t_print *conv_info, char *end);
-void	parsing_justify(const char *format, t_print *conv_info, char *end);
-void	parsing_pitch(const char *format, t_print *conv_info, char *end);
-void	parsing_cast(const char *format, t_print *conv_info, char *end);
-void	parsing_hh(const char *format, t_print *conv_info, char *end);
+void		compute_conv_lc (va_list ap);
+char		*ft_itoa_base(unsigned long long n, int base);
+void		compute_width(t_print *conv_info);
+void		compute_htag(t_print *conv_info);
+void		reset_print(t_print *conv_info);
+void		parsing_htag(const char	*format, t_print *conv_info, char *end);
+void		parsing_justify(const char *format, t_print *conv_info, char *end);
+void		parsing_pitch(const char *format, t_print *conv_info, char *end);
+void		parsing_cast(const char *format, t_print *conv_info, char *end);
+void		parsing_hh(const char *format, t_print *conv_info, char *end);
 intmax_t	exec_cast_signed(t_print *conv_info, va_list ap);
 intmax_t	exec_cast_unsigned(t_print *conv_info, va_list ap);
-char	*ft_itoa_printf(intmax_t n, int base);
+char		*ft_itoa_printf(intmax_t n, int base);
+wchar_t		utf8_enc(wchar_t c);
 
 //char *find_end(const char *format);
 #endif

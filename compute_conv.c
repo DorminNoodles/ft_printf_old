@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/10 20:05:18 by lchety            #+#    #+#             */
-/*   Updated: 2017/01/28 17:35:45 by lchety           ###   ########.fr       */
+/*   Updated: 2017/01/29 15:30:04 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,15 @@ void	compute_conv_d(t_print *conv_info, int base, va_list ap)
 }
 */
 
-void	compute_conv_lc ()
+void	compute_conv_lc (va_list ap)
 {
 	printf("CONV_LC\n");
+
+	wchar_t raw;
+
+	raw = va_arg(ap, wchar_t);
+	utf8_enc(raw);
+
 
 }
 
@@ -115,7 +121,7 @@ void	conv_switch(t_print *conv_info, va_list ap)
 	if (conv_info->conv_x)
 		compute_conv_x(conv_info, 16, ap);
 	if (conv_info->conv_lc)
-		compute_conv_lc();
+		compute_conv_lc(ap);
 }
 
 void	compute_htag(t_print *conv_info)

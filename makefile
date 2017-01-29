@@ -7,7 +7,8 @@ SRC =	try/main_test_proto.c							\
 		casting.c										\
 		ft_itoa_printf.c								\
 		parsing_converter.c								\
-		reset_print.c
+		reset_print.c									\
+		unicode.c
 
 
 CC = clang
