@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/08 13:54:21 by lchety            #+#    #+#             */
-/*   Updated: 2017/01/29 21:12:22 by lchety           ###   ########.fr       */
+/*   Updated: 2017/01/29 22:46:54 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -362,10 +362,11 @@ void	test_s_06(void)
 
 void	test_ls_01(void)
 {
-	// printf("Test_bs => 01\n");
-	// printf("orig : %S\n", "BigS\n");
-
-
+	setlocale(LC_ALL, "");
+	printf("Test_ls => 01\n");
+	printf("orig : %S\n", L"chewing gum🤗 🤗 🤗 🤗\0");
+	ft_printf("cust : %S\n", L"chewing gum🤗 🤗 🤗 🤗\0");
+	printf("\n");
 }
 
 //=====================================================> conv_C
@@ -421,6 +422,7 @@ void	test_lc_06(void)
 	ft_printf("cust : %C\n", L'🤗');
 	printf("\n");
 }
+
 
 
 
@@ -488,6 +490,16 @@ int main(void)
 	test_lc_04();
 	test_lc_05();
 	test_lc_06();
+	//test_lc_07();
+
+	//Start conv_ls
+	printf("=======> Conv_ls <=======\n");
+	test_ls_01();
+	// test_ls_02();
+	// test_ls_03();
+	// test_ls_04();
+	// test_ls_05();
+	// test_ls_06();
 	//test_lc_07();
 
 
