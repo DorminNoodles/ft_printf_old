@@ -6,12 +6,11 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/10 20:05:18 by lchety            #+#    #+#             */
-/*   Updated: 2017/01/29 15:39:13 by lchety           ###   ########.fr       */
+/*   Updated: 2017/01/29 17:40:21 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
-#include "libft.h"
 #include "ft_printf.h"
 
 
@@ -80,7 +79,8 @@ void	compute_conv_lc (va_list ap)
 	wchar_t raw;
 
 	raw = va_arg(ap, wchar_t);
-	utf8_enc(raw);
+	//utf8_enc(raw);
+	ft_putwchar(raw);
 
 
 }

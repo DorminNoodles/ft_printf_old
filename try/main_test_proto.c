@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/08 13:54:21 by lchety            #+#    #+#             */
-/*   Updated: 2017/01/29 15:38:54 by lchety           ###   ########.fr       */
+/*   Updated: 2017/01/29 17:21:12 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -360,7 +360,7 @@ void	test_s_06(void)
 
 //=====================================================> conv_S
 
-void	test_bs_01(void)
+void	test_ls_01(void)
 {
 	// printf("Test_bs => 01\n");
 	// printf("orig : %S\n", "BigS\n");
@@ -373,18 +373,55 @@ void	test_bs_01(void)
 void	test_lc_01(void)
 {
 	printf("Test_lc => 01\n");
-	printf("orig : %c\n", 'G');
-	ft_printf("cust : %c\n", 'G');
+	printf("orig : %C\n", 'G');
+	ft_printf("cust : %C\n", 'G');
 	printf("\n");
 }
 
 void	test_lc_02(void)
 {
 	printf("Test_lc => 02\n");
-	printf("orig : %c\n", 'A');
-	ft_printf("cust : %c\n", 'A');
+	printf("orig : %C\n", 'A');
+	ft_printf("cust : %C\n", 'A');
 	printf("\n");
 }
+
+void	test_lc_03(void)
+{
+	setlocale(LC_ALL, "");
+	printf("Test_lc => 03\n");
+	printf("orig : %C\n", L'©');
+	ft_printf("cust : %C\n", L'©');
+	printf("\n");
+}
+
+void	test_lc_04(void)
+{
+	setlocale(LC_ALL, "");
+	printf("Test_lc => 04\n");
+	printf("orig : %C\n", L'ߺ');
+	ft_printf("cust : %C\n", L'ߺ');
+	printf("\n");
+}
+
+void	test_lc_05(void)
+{
+	setlocale(LC_ALL, "");
+	printf("Test_lc => 05\n");
+	printf("orig : %C\n", L'ࠀ');
+	ft_printf("cust : %C\n", L'ࠀ');
+	printf("\n");
+}
+
+void	test_lc_06(void)
+{
+	setlocale(LC_ALL, "");
+	printf("Test_lc => 06\n");
+	printf("orig : %C\n", L'🤗');
+	ft_printf("cust : %C\n", L'🤗');
+	printf("\n");
+}
+
 
 
 
@@ -447,7 +484,11 @@ int main(void)
 	printf("=======> Conv_lc <=======\n");
 	test_lc_01();
 	test_lc_02();
-
+	test_lc_03();
+	test_lc_04();
+	test_lc_05();
+	test_lc_06();
+	//test_lc_07();
 
 
 	//test de merde

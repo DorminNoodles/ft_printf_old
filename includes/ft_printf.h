@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/07 13:58:10 by lchety            #+#    #+#             */
-/*   Updated: 2017/01/29 15:29:21 by lchety           ###   ########.fr       */
+/*   Updated: 2017/01/29 17:30:14 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,10 @@
 # define FT_PRINTF_H
 # define TRUE 1
 # define FALSE 0
-# define	STRING_CONV "dDsScx"
+# define	STRING_CONV "dDsScCx"
 
 #include <stdarg.h>
 #include <stdio.h>
-#include <wchar.h>
 #include "libft.h"
 
 /*

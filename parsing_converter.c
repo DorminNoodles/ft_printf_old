@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/10 13:37:44 by lchety            #+#    #+#             */
-/*   Updated: 2017/01/29 13:53:36 by lchety           ###   ########.fr       */
+/*   Updated: 2017/01/29 15:51:11 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ static void conv_switch(char c, t_print *conv_info)
 	if (c == 'i')
 		conv_info->conv_i = TRUE;
 	if (c == 'c')
+		conv_info->conv_c = TRUE;
+	if (c == 'C')
 		conv_info->conv_lc = TRUE;
 	if (c == 's')
 		conv_info->conv_s = TRUE;
