@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/08 13:54:21 by lchety            #+#    #+#             */
-/*   Updated: 2017/01/29 22:46:54 by lchety           ###   ########.fr       */
+/*   Updated: 2017/01/30 11:42:05 by dormin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -369,6 +369,15 @@ void	test_ls_01(void)
 	printf("\n");
 }
 
+void	test_ls_02(void)
+{
+	setlocale(LC_ALL, "");
+	printf("Test_ls => 02\n");
+	printf("orig : %45S\n", L"chewing gum🤗 🤗 🤗 🤗\0");
+	ft_printf("cust : %45S\n", L"chewing gum🤗 🤗 🤗 🤗\0");
+	printf("\n");
+}
+
 //=====================================================> conv_C
 
 void	test_lc_01(void)
@@ -423,7 +432,17 @@ void	test_lc_06(void)
 	printf("\n");
 }
 
+//=====================================================> conv_C
 
+void	test_p_01(void)
+{
+	int b = 234235;
+
+	printf("Test_p => 01\n");
+	printf("orig : %p\n", &b);
+	ft_printf("cust : %p\n", &b);
+	printf("\n");
+}
 
 
 
@@ -495,12 +514,20 @@ int main(void)
 	//Start conv_ls
 	printf("=======> Conv_ls <=======\n");
 	test_ls_01();
-	// test_ls_02();
+	test_ls_02();
 	// test_ls_03();
 	// test_ls_04();
 	// test_ls_05();
 	// test_ls_06();
-	//test_lc_07();
+
+	//Start conv_p
+	printf("=======> Conv_p <=======\n");
+	test_p_01();
+	// test_p_02();
+	// test_p_03();
+	// test_p_04();
+	// test_p_05();
+	// test_p_06();
 
 
 	//test de merde

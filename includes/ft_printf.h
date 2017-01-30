@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/07 13:58:10 by lchety            #+#    #+#             */
-/*   Updated: 2017/01/29 21:34:43 by lchety           ###   ########.fr       */
+/*   Updated: 2017/01/30 11:26:23 by dormin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define FT_PRINTF_H
 # define TRUE 1
 # define FALSE 0
-# define	STRING_CONV "dDsScCx"
+# define STRING_CONV "sSpdDioOuUxXcC"
 
 #include <stdarg.h>
 #include <stdio.h>
@@ -44,6 +44,7 @@ typedef struct s_print
 	bool conv_s;
 	bool conv_ls;
 	bool conv_x;
+	bool conv_p;
 
 	bool cast_h;
 	bool cast_hh;

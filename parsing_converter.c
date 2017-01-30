@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/10 13:37:44 by lchety            #+#    #+#             */
-/*   Updated: 2017/01/29 22:27:34 by lchety           ###   ########.fr       */
+/*   Updated: 2017/01/30 11:32:17 by dormin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ static void conv_switch(char c, t_print *conv_info)
 		conv_info->conv_ls = TRUE;
 	if (c == 'x')
 		conv_info->conv_x = TRUE;
+	if (c == 'p')
+		conv_info->conv_p = TRUE;
 }
 
 char	*parsing_converter(const char *format, t_print *conv_info)
