@@ -6,30 +6,13 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/08 14:01:18 by lchety            #+#    #+#             */
-/*   Updated: 2017/01/28 17:46:30 by lchety           ###   ########.fr       */
+/*   Updated: 2017/01/29 21:18:04 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "ft_printf.h"
 #include "libft.h"
-
-
-// void	reset_print(t_print *conv_info)
-// {
-// 	conv_info->conv = FALSE;
-// 	conv_info->conv_d = FALSE;
-// 	conv_info->conv_s = FALSE;
-// 	conv_info->conv_x = FALSE;
-// 	conv_info->flag_0 = FALSE;
-// 	conv_info->htag = FALSE;
-// 	conv_info->justify = FALSE;
-// 	conv_info->width = 0;
-// 	conv_info->base_size = 0;
-// 	conv_info->cast_h = FALSE;
-// 	conv_info->cast_hh = FALSE;
-// 	conv_info->cast_ll = FALSE;
-// }
 
 int		parsing_format(const char *format, t_print *conv_info)
 {
