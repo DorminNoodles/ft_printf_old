@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/31 23:47:35 by lchety            #+#    #+#             */
-/*   Updated: 2017/01/31 23:48:14 by lchety           ###   ########.fr       */
+/*   Created: 2017/02/01 12:17:51 by lchety            #+#    #+#             */
+/*   Updated: 2017/02/01 12:19:04 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,7 @@ void	compute_conv_ls (t_print *conv_info, va_list ap)
 	ap = 0;
 }
 
-void compute_conv_p(va_list ap)
+void compute_conv_p(t_print *conv_info, va_list ap)
 {
 	unsigned long a;
 	void *tmp;
@@ -135,17 +135,22 @@ void compute_conv_p(va_list ap)
 	a = 0;
 	tmp = va_arg(ap, void *);
 
-	a = (unsigned long)(tmp - a);
+	a = (unsigned long)tmp;
+	conv_info->out = ft_itoa_printf(a, 16);
+	if(!conv_info->out)
+		return;
+	// tmp =
+	ft_putstr("0x");
+	ft_putstr(conv_info->out);
 
-	printf("%lx\n", a);
 	//ft_putstr("conv_p\n");
+	free(conv_info->out);
 
 
 }
 
 void	conv_switch(t_print *conv_info, va_list ap)
 {
-	ft_putstr("test");
 	if (conv_info->conv_d)
 		compute_conv_d(conv_info, ap);
 	if (conv_info->conv_s)
@@ -157,7 +162,7 @@ void	conv_switch(t_print *conv_info, va_list ap)
 	if (conv_info->conv_ls)
 		compute_conv_ls(conv_info, ap);
 	if (conv_info->conv_p)
-		compute_conv_p(ap);
+		compute_conv_p(conv_info, ap);
 }
 
 void	compute_htag(t_print *conv_info)
