@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/31 23:47:35 by lchety            #+#    #+#             */
-/*   Updated: 2017/01/31 23:48:14 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/01 01:17:03 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,21 +114,44 @@ void	compute_conv_s (t_print *conv_info, va_list ap)
 void	compute_conv_ls (t_print *conv_info, va_list ap)
 {
 	wchar_t	*tmp;
+	// wchar_t *test;
 	int i;
 
 	i = 0;
 	//printf("conv_ls\n");
 
 	tmp = va_arg(ap, wchar_t*);
+	// int bfoo = (int)ft_wstrlen(tmp);
+
+	// printf("strlen = %d\n", (int)bfoo);
+	if (conv_info->width > (int)ft_wstrlen(tmp))
+	{
+		conv_info->out = (char *)malloc(sizeof(wchar_t) * conv_info->width);
+		printf("=>  %d   \n", conv_info->width - (int)ft_wstrlen(tmp));
+		ft_memcpy(conv_info->out + (sizeof(wchar_t) * (conv_info->width - (int)ft_wstrlen(tmp))), tmp, sizeof(wchar_t) * (ft_wstrlen(tmp) + 1));
+	}
+	else
+	{
+		conv_info->out = (char *)malloc(sizeof(wchar_t) * (int)ft_wstrlen(tmp));
+		ft_memcpy(conv_info->out, tmp, sizeof(wchar_t) * (int)ft_wstrlen(tmp) + 1);
+	}
+
+
+
+	// printf("\n\n");
+	// ft_putwchar(*(wchar_t *)conv_info->out);
+	// printf("\n\n");
 
 	while (tmp[i] != '\0')
-		ft_putwchar(tmp[i++]);
+		ft_putwchar(*(((wchar_t *)conv_info->out) + i++));
+		// ft_putwchar(tmp[i++]);
 	conv_info = NULL;
 	ap = 0;
 }
 
 void compute_conv_p(va_list ap)
 {
+	// address limit is 8 bytes for 64 bits so 0xFFFF FFFF FFFF FFFF 16 is max
 	unsigned long a;
 	void *tmp;
 
@@ -145,7 +168,6 @@ void compute_conv_p(va_list ap)
 
 void	conv_switch(t_print *conv_info, va_list ap)
 {
-	ft_putstr("test");
 	if (conv_info->conv_d)
 		compute_conv_d(conv_info, ap);
 	if (conv_info->conv_s)
