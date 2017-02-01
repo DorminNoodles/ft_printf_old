@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/31 23:47:35 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/01 15:50:38 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/01 21:42:27 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,27 +50,6 @@ void	compute_conv_x(t_print *conv_info, int base, va_list ap)
 	free(conv_info->out);
 }
 
-/*
-void	compute_conv_d(t_print *conv_info, int base, va_list ap)
-{
-	char *str;
-	int nb;
-	int ret;
-
-	ret = 0;
-	nb = 0;
-
-	ret = va_arg(ap, int);
-	conv_info->out = ft_itoa_base(ret, base);
-	conv_info->base_size = ft_strlen(conv_info->out);
-	compute_width(conv_info, ap);
-	compute_htag(conv_info);
-	ft_putstr(conv_info->out);
-	free(conv_info->out);
-	//nb = get_ap(1);
-}
-*/
-
 void	compute_conv_lc (va_list ap)
 {
 	//printf("CONV_LC\n");
@@ -80,8 +59,6 @@ void	compute_conv_lc (va_list ap)
 	raw = va_arg(ap, wchar_t);
 	//utf8_enc(raw);
 	ft_putwchar(raw);
-
-
 }
 
 void	compute_conv_s (t_print *conv_info, va_list ap)
@@ -121,23 +98,18 @@ void	compute_conv_ls (t_print *conv_info, va_list ap)
 	//printf("conv_ls\n");
 
 	tmp = va_arg(ap, wchar_t*);
-	// int bfoo = (int)ft_wstrlen(tmp);
 
-	// printf("strlen = %d\n", (int)bfoo);
-	if (conv_info->width > (int)ft_wstrlen(tmp))
+	printf("ft_strlen = %d\n", (int)ft_strlen((char*)tmp));
+	printf("ft_wstrlen = %d\n", (int)ft_wstrlen(tmp));
+
+	if (conv_info->width > (int)ft_strlen((char*)tmp))
 	{
 		//printf("Here\n");
-
 		conv_info->out = (char *)ft_memalloc(sizeof(wchar_t) * conv_info->width);
-		//printf("%d ", conv_info->width);
-		// printf("width %d\n", conv_info->width);
 		while (i < conv_info->width)
 		{
 			*(((wchar_t *)conv_info->out) + i++) = ' ';
 		}
-		// printf("i = %d\n", i);
-		//ft_memset(conv_info->out, L' ', 10);
-		// printf("pouet %lu\n", (conv_info->width - ft_wstrlen(tmp)));
 		ft_memcpy(((wchar_t *)conv_info->out) + (conv_info->width - ft_wstrlen(tmp)), tmp, ft_wstrlen(tmp) * sizeof(wchar_t));
 
 		/*
@@ -169,8 +141,7 @@ void	compute_conv_ls (t_print *conv_info, va_list ap)
 		i++;
 		// ft_putwchar(tmp[i++]);
 	}
-	conv_info = NULL;
-	ap = 0;
+	free(conv_info->out);
 }
 
 void compute_conv_p(va_list ap)

@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/31 23:47:23 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/01 15:52:15 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/01 21:18:24 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -382,10 +382,29 @@ void	test_ls_03(void)
 {
 	setlocale(LC_ALL, "");
 	printf("Test_ls => 03\n");
-	printf("orig : %4S\n", L"🤗");
-	ft_printf("cust : %4S\n", L"🤗");
+	printf("orig : %5S\n", L"🤗");
+	ft_printf("cust : %5S\n", L"🤗");
 	printf("\n");
 }
+
+void	test_ls_04(void)
+{
+	setlocale(LC_ALL, "");
+	printf("Test_ls => 04\n");
+	printf("orig : %5S\n", L"©");
+	ft_printf("cust : %5S\n", L"©");
+	printf("\n");
+}
+
+void	test_ls_05(void)
+{
+	setlocale(LC_ALL, "");
+	printf("Test_ls => 05\n");
+	printf("orig : %5S\n", L"ᚙ");
+	ft_printf("cust : %5S\n", L"ᚙ");
+	printf("\n");
+}
+
 
 //=====================================================> conv_C
 
@@ -525,9 +544,8 @@ int main(void)
 	test_ls_01();
 	test_ls_02();
 	test_ls_03();
-	// test_ls_03();
-	// test_ls_04();
-	// test_ls_05();
+	test_ls_04();
+	test_ls_05();
 	// test_ls_06();
 
 	//Start conv_p
