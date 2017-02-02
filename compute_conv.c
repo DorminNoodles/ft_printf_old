@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/02 11:44:34 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/02 11:47:41 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/02 15:17:29 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,20 +99,19 @@ void	compute_conv_ls (t_print *conv_info, va_list ap)
 
 	tmp = va_arg(ap, wchar_t*);
 
+	//printf("count_unicode = %d\n", (int)count_unicode(tmp));
+	//printf("ft_strlen = %d\n", (int)ft_strlen((char*)tmp));
+	//printf("ft_wstrlen = %d\n", (int)ft_wstrlen(tmp));
 
-	printf("ft_strlen = %d\n", (int)ft_strlen((char*)tmp));
-	printf("ft_wstrlen = %d\n", (int)ft_wstrlen(tmp));
-
-	if (conv_info->width > (int)ft_strlen((char*)tmp))
+	if (conv_info->width > (int)count_unicode(tmp))
 	{
 		//printf("Here\n");
 		conv_info->out = (char *)ft_memalloc(sizeof(wchar_t) * conv_info->width);
 		while (i < conv_info->width)
 		{
-			printf("k");
 			*(((wchar_t *)conv_info->out) + i++) = L' ';
 		}
-		ft_memcpy(((wchar_t *)conv_info->out) + (conv_info->width - ft_wstrlen(tmp)), tmp, ft_wstrlen(tmp) * sizeof(wchar_t));
+		ft_memcpy(((wchar_t *)conv_info->out) + (conv_info->width - count_unicode(tmp)), tmp, (int)count_unicode(tmp) * sizeof(wchar_t));
 
 		/*
 		conv_info->out = (char *)malloc(sizeof(wchar_t) * conv_info->width);
@@ -122,8 +121,9 @@ void	compute_conv_ls (t_print *conv_info, va_list ap)
 	}
 	else
 	{
-		conv_info->out = (char *)malloc(sizeof(wchar_t) * (int)ft_wstrlen(tmp));
-		ft_memcpy(conv_info->out, tmp, sizeof(wchar_t) * (int)ft_wstrlen(tmp) + 1);
+		//printf("width little\n");
+		conv_info->out = (char *)malloc(sizeof(wchar_t) * (int)count_unicode(tmp));
+		ft_memcpy(conv_info->out, tmp, sizeof(wchar_t) * (int)count_unicode(tmp) + 1);
 	}
 
 	// ft_putwchar(*(wchar_t *)conv_info->out);
@@ -131,12 +131,14 @@ void	compute_conv_ls (t_print *conv_info, va_list ap)
 	i = 0;
 	while (*(((wchar_t *)conv_info->out) + i) != '\0')
 	{
-		printf("+");
+		//printf("+");
 		ft_putwchar(*(((wchar_t *)conv_info->out) + i));
+		//ft_putstr("\n");
 		i++;
 		// ft_putwchar(tmp[i++]);
 	}
 	free(conv_info->out);
+	conv_info->out = NULL;
 }
 
 void compute_conv_p(va_list ap)

@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/02 11:44:14 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/02 11:46:58 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/02 15:10:09 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -405,6 +405,14 @@ void	test_ls_05(void)
 	printf("\n");
 }
 
+void	test_ls_06(void)
+{
+	setlocale(LC_ALL, "");
+	printf("Test_ls => 06\n");
+	printf("orig : %S\n", L"123456🤗");
+	ft_printf("cust : %S\n", L"123456🤗");
+	printf("\n");
+}
 
 //=====================================================> conv_C
 
@@ -546,7 +554,7 @@ int main(void)
 	test_ls_03();
 	test_ls_04();
 	test_ls_05();
-	// test_ls_06();
+	test_ls_06();
 
 	//Start conv_p
 	printf("=======> Conv_p <=======\n");
