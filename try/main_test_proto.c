@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/31 23:47:23 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/01 15:52:15 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/01 19:24:55 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -382,8 +382,8 @@ void	test_ls_03(void)
 {
 	setlocale(LC_ALL, "");
 	printf("Test_ls => 03\n");
-	printf("orig : %4S\n", L"🤗");
-	ft_printf("cust : %4S\n", L"🤗");
+	printf("orig : %4S\n", L"©\0");
+	ft_printf("cust : %16S\n", L"KK\0");
 	printf("\n");
 }
 

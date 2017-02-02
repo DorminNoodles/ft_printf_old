@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/31 23:47:35 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/01 15:50:38 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/01 19:47:15 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,16 +124,18 @@ void	compute_conv_ls (t_print *conv_info, va_list ap)
 	// int bfoo = (int)ft_wstrlen(tmp);
 
 	// printf("strlen = %d\n", (int)bfoo);
+
 	if (conv_info->width > (int)ft_wstrlen(tmp))
 	{
-		//printf("Here\n");
+		// printf("Here\n");
 
 		conv_info->out = (char *)ft_memalloc(sizeof(wchar_t) * conv_info->width);
 		//printf("%d ", conv_info->width);
 		// printf("width %d\n", conv_info->width);
 		while (i < conv_info->width)
 		{
-			*(((wchar_t *)conv_info->out) + i++) = ' ';
+			printf("k");
+			*(((wchar_t *)conv_info->out) + i++) = L' ';
 		}
 		// printf("i = %d\n", i);
 		//ft_memset(conv_info->out, L' ', 10);
@@ -152,25 +154,17 @@ void	compute_conv_ls (t_print *conv_info, va_list ap)
 		ft_memcpy(conv_info->out, tmp, sizeof(wchar_t) * (int)ft_wstrlen(tmp) + 1);
 	}
 
-
-//orig :                chewing gum🤗 🤗 🤗 🤗
-	// printf("\n\n"); cust :                            chewing gum🤗 🤗 🤗 🤗
 	// ft_putwchar(*(wchar_t *)conv_info->out);
 	// printf("\n\n");
 	i = 0;
 	while (*(((wchar_t *)conv_info->out) + i) != '\0')
 	{
-
-		//printf("R");
-		//ft_putstr("pouet\n");
-		//ft_putwchar(L' ');
+		printf("+");
 		ft_putwchar(*(((wchar_t *)conv_info->out) + i));
-
 		i++;
 		// ft_putwchar(tmp[i++]);
 	}
-	conv_info = NULL;
-	ap = 0;
+	free(conv_info->out);
 }
 
 void compute_conv_p(va_list ap)
