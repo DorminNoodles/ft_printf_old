@@ -6,12 +6,11 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/02 15:19:38 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/02 15:33:06 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/02 23:23:48 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
 
 void	compute_conv_d(t_print *conv_info, va_list ap)
 {
@@ -31,9 +30,28 @@ void	compute_conv_d(t_print *conv_info, va_list ap)
 	free(conv_info->out);
 }
 
+void	compute_conv_ld(t_print *conv_info, va_list ap)
+{
+	int nb;
+	intmax_t ret;
+
+	ret = 0;
+	nb = 0;
+	ret = exec_cast_signed(conv_info, ap);
+	printf("ret == %ld\n", ret);
+	conv_info->out = ft_itoa_signed(ret);
+	// conv_info->out = ft_itoa_printf(ret, base);
+	conv_info->base_size = ft_strlen(conv_info->out);
+	compute_width(conv_info);
+	if (conv_info->htag && conv_info->conv_x)
+		compute_htag(conv_info);
+	ft_putstr(conv_info->out);
+	free(conv_info->out);
+}
+
 void	compute_conv_x(t_print *conv_info, int base, va_list ap)
 {
-		int nb;
+	int nb;
 	intmax_t ret;
 	//printf("HEXAAAAAAA !!!!\n");
 	ret = 0;
@@ -150,14 +168,14 @@ void compute_conv_p(t_print *conv_info, va_list ap)
 
 	//ft_putstr("conv_p\n");
 	free(conv_info->out);
-
-
 }
 
 void	conv_switch(t_print *conv_info, va_list ap)
 {
 	if (conv_info->conv_d)
 		compute_conv_d(conv_info, ap);
+	if (conv_info->conv_ld)
+		compute_conv_ld(conv_info, ap);
 	if (conv_info->conv_s)
 		compute_conv_s(conv_info, ap);
 	if (conv_info->conv_x)

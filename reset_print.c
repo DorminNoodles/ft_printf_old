@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/24 14:27:07 by lchety            #+#    #+#             */
-/*   Updated: 2017/01/30 12:09:17 by dormin           ###   ########.fr       */
+/*   Updated: 2017/02/02 22:39:04 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	reset_print(t_print *conv_info)
 {
 	conv_info->conv = FALSE;
 	conv_info->conv_d = FALSE;
+	conv_info->conv_ld = FALSE;
 	conv_info->conv_c = FALSE;
 	conv_info->conv_lc = FALSE;
 	conv_info->conv_ls = FALSE;

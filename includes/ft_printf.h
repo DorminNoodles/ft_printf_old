@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/07 13:58:10 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/02 15:02:41 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/02 23:07:02 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct s_print
 
 	bool conv;
 	bool conv_d;
+	bool conv_ld;
 	bool conv_i;
 	bool conv_c;
 	bool conv_lc;
@@ -90,6 +91,7 @@ intmax_t	exec_cast_unsigned(t_print *conv_info, va_list ap);
 char		*ft_itoa_printf(intmax_t n, int base);
 //wchar_t		utf8_enc(wchar_t c);
 size_t		count_unicode(wchar_t *str);
+char			*ft_itoa_signed(long long n);
 
 //char *find_end(const char *format);
 #endif

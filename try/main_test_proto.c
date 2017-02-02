@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/02 15:19:21 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/02 22:15:33 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/02 23:34:29 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,13 +96,21 @@ void	test_d_12(void)
 	printf("\n");
 }
 
-// void	test_13(void)
-// {
-// 	printf("Test => 13\n");
-// 	printf("orig : %hd\n", -32768);
-// 	ft_printf("cust : %hd\n", -32768);
-// 	printf("\n");
-// }
+void	test_d_13(void)
+{
+	printf("Test => 13\n");
+	printf("orig : %d\n", INT_MIN);
+	ft_printf("cust : %d\n", INT_MIN);
+	printf("\n");
+}
+
+void	test_d_14(void)
+{
+	printf("Test => 14\n");
+	printf("orig : %d\n", (int)-2147483648);
+	ft_printf("cust : %d\n", (int)-2147483648);
+	printf("\n");
+}
 
 // void	test_14(void)
 // {
@@ -134,24 +142,32 @@ void	test_ld_01(void)
 void	test_ld_02(void)
 {
 	printf("Test_D => 02\n");
-	printf("orig : %D\n", INT_MAX);
-	ft_printf("cust : %D\n", INT_MAX);
+	printf("orig : %D\n", UINT_MAX);
+	ft_printf("cust : %D\n", UINT_MAX);
 	printf("\n");
 }
 
 void	test_ld_03(void)
 {
 	printf("Test_D => 03\n");
-	printf("orig : %D\n", INT_MAX+1000);
-	ft_printf("cust : %D\n", INT_MAX+5);
+	printf("orig : %D\n", INT_MIN);
+	ft_printf("cust : %D\n", INT_MIN);
 	printf("\n");
 }
 
 void	test_ld_04(void)
 {
 	printf("Test_D => 04\n");
-	printf("orig : %D\n", INT_MIN);
-	ft_printf("cust : %D\n", INT_MAX+5);
+	printf("orig : %lD\n", LONG_MIN);
+	ft_printf("cust : %lD\n", LONG_MIN);
+	printf("\n");
+}
+
+void	test_ld_05(void)
+{
+	printf("Test_D => 05\n");
+	printf("orig : %hD\n", (short int)SHRT_MIN);
+	ft_printf("cust : %hD\n", (short int)SHRT_MIN);
 	printf("\n");
 }
 
@@ -529,8 +545,8 @@ int main(void)
 	test_d_08();
 	test_d_09();
 	test_d_12();
-	// test_13();
-	// test_14();
+	test_d_13();
+	test_d_14();
 	// test_15();
 
 	printf("=======> Conv_D <=======\n");
@@ -538,6 +554,7 @@ int main(void)
 	test_ld_02();
 	test_ld_03();
 	test_ld_04();
+	test_ld_05();
 
 
 	// //conv x

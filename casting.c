@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 11:52:46 by lchety            #+#    #+#             */
-/*   Updated: 2017/01/28 17:57:49 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/02 23:16:23 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,12 @@
 
 intmax_t	cast_default(t_print *conv_info, va_list ap)
 {
+	printf("cast default\n");
 	if (conv_info->conv_d)
 		return ((intmax_t)va_arg(ap, int));
 	if (conv_info->conv_x)
+		return ((intmax_t)va_arg(ap, unsigned int));
+	if (conv_info->conv_ld)
 		return ((intmax_t)va_arg(ap, unsigned int));
 
 	return (va_arg(ap, int));
@@ -36,9 +39,11 @@ intmax_t	exec_cast_signed(t_print *conv_info, va_list ap)
 	if (conv_info->cast_h)
 		return((intmax_t)(short)va_arg(ap, intmax_t));
 	if (conv_info->cast_ll)
-		return((intmax_t)(long long)va_arg(ap, intmax_t));
-	// if (conv_info->cast_l)
-	// 	ret = (intmax_t)(long int)ret;
+		printf("cast_ll\n");
+		//return((intmax_t)(long long)va_arg(ap, intmax_t));
+	if (conv_info->cast_l)
+		printf("cast_l\n");
+		//return((intmax_t)(long)va_arg(ap, intmax_t));
 	// if (conv_info->cast_ll)
 	// 	ret = (intmax_t)(long long int)ret;
 	// if (conv_info->cast_z)
