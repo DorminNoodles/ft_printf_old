@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/07 13:58:10 by lchety            #+#    #+#             */
-/*   Updated: 2017/01/31 23:48:13 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/02 15:02:41 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,15 +66,15 @@ typedef struct s_print
 
 
 
-int		ft_printf(const char *format, ...);
-int		parsing_format(const char *format, t_print *conv_info);
-char	*flags_parsing(const char *format);
-void	*parsing_func_collection();
-void	*flags_apply_hashtag();
-int		parsing_distributor(const char* format);
-char	*parsing_converter(const char *format, t_print *conv_info);
-int		parsing_dispatch(const char *format, t_print *conv_info);
-void	compute_conv(t_print *conv_info, va_list ap);
+int			ft_printf(const char *format, ...);
+int			parsing_format(const char *format, t_print *conv_info);
+char		*flags_parsing(const char *format);
+void		*parsing_func_collection();
+void		*flags_apply_hashtag();
+int			parsing_distributor(const char* format);
+char		*parsing_converter(const char *format, t_print *conv_info);
+int			parsing_dispatch(const char *format, t_print *conv_info);
+void		compute_conv(t_print *conv_info, va_list ap);
 void		compute_conv_lc (va_list ap);
 char		*ft_itoa_base(unsigned long long n, int base);
 void		compute_width(t_print *conv_info);
@@ -88,7 +88,8 @@ void		parsing_hh(const char *format, t_print *conv_info, char *end);
 intmax_t	exec_cast_signed(t_print *conv_info, va_list ap);
 intmax_t	exec_cast_unsigned(t_print *conv_info, va_list ap);
 char		*ft_itoa_printf(intmax_t n, int base);
-wchar_t		utf8_enc(wchar_t c);
+//wchar_t		utf8_enc(wchar_t c);
+size_t		count_unicode(wchar_t *str);
 
 //char *find_end(const char *format);
 #endif

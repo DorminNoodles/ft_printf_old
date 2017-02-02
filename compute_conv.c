@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/01 12:17:51 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/01 13:22:14 by lchety           ###   ########.fr       */
+/*   Created: 2017/02/02 15:19:38 by lchety            #+#    #+#             */
+/*   Updated: 2017/02/02 15:19:46 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,27 +50,6 @@ void	compute_conv_x(t_print *conv_info, int base, va_list ap)
 	free(conv_info->out);
 }
 
-/*
-void	compute_conv_d(t_print *conv_info, int base, va_list ap)
-{
-	char *str;
-	int nb;
-	int ret;
-
-	ret = 0;
-	nb = 0;
-
-	ret = va_arg(ap, int);
-	conv_info->out = ft_itoa_base(ret, base);
-	conv_info->base_size = ft_strlen(conv_info->out);
-	compute_width(conv_info, ap);
-	compute_htag(conv_info);
-	ft_putstr(conv_info->out);
-	free(conv_info->out);
-	//nb = get_ap(1);
-}
-*/
-
 void	compute_conv_lc (va_list ap)
 {
 	//printf("CONV_LC\n");
@@ -80,8 +59,6 @@ void	compute_conv_lc (va_list ap)
 	raw = va_arg(ap, wchar_t);
 	//utf8_enc(raw);
 	ft_putwchar(raw);
-
-
 }
 
 void	compute_conv_s (t_print *conv_info, va_list ap)
@@ -114,6 +91,7 @@ void	compute_conv_s (t_print *conv_info, va_list ap)
 void	compute_conv_ls (t_print *conv_info, va_list ap)
 {
 	wchar_t	*tmp;
+	// wchar_t *test;
 	int i;
 
 	i = 0;
@@ -121,14 +99,51 @@ void	compute_conv_ls (t_print *conv_info, va_list ap)
 
 	tmp = va_arg(ap, wchar_t*);
 
-	while (tmp[i] != '\0')
-		ft_putwchar(tmp[i++]);
-	conv_info = NULL;
-	ap = 0;
+	//printf("count_unicode = %d\n", (int)count_unicode(tmp));
+	//printf("ft_strlen = %d\n", (int)ft_strlen((char*)tmp));
+	//printf("ft_wstrlen = %d\n", (int)ft_wstrlen(tmp));
+
+	if (conv_info->width > (int)count_unicode(tmp))
+	{
+		//printf("Here\n");
+		conv_info->out = (char *)ft_memalloc(sizeof(wchar_t) * conv_info->width);
+		while (i < conv_info->width)
+		{
+			*(((wchar_t *)conv_info->out) + i++) = L' ';
+		}
+		ft_memcpy(((wchar_t *)conv_info->out) + (conv_info->width - count_unicode(tmp)), tmp, (int)count_unicode(tmp) * sizeof(wchar_t));
+
+		/*
+		conv_info->out = (char *)malloc(sizeof(wchar_t) * conv_info->width);
+		printf("=>  %d   \n", conv_info->width - (int)ft_wstrlen(tmp));
+		ft_memcpy(conv_info->out + (sizeof(wchar_t) * (conv_info->width - (int)ft_wstrlen(tmp))), tmp, sizeof(wchar_t) * (ft_wstrlen(tmp) + 1));
+		*/
+	}
+	else
+	{
+		//printf("width little\n");
+		conv_info->out = (char *)malloc(sizeof(wchar_t) * (int)count_unicode(tmp));
+		ft_memcpy(conv_info->out, tmp, sizeof(wchar_t) * (int)count_unicode(tmp) + 1);
+	}
+
+	// ft_putwchar(*(wchar_t *)conv_info->out);
+	// printf("\n\n");
+	i = 0;
+	while (*(((wchar_t *)conv_info->out) + i) != '\0')
+	{
+		//printf("+");
+		ft_putwchar(*(((wchar_t *)conv_info->out) + i));
+		//ft_putstr("\n");
+		i++;
+		// ft_putwchar(tmp[i++]);
+	}
+	free(conv_info->out);
+	conv_info->out = NULL;
 }
 
 void compute_conv_p(t_print *conv_info, va_list ap)
 {
+	// address limit is 8 bytes for 64 bits so 0xFFFF FFFF FFFF FFFF 16 is max
 	unsigned long a;
 	void *tmp;
 

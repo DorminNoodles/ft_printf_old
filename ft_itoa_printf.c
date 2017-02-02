@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/22 12:01:22 by lchety            #+#    #+#             */
-/*   Updated: 2017/01/28 17:33:38 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/01 18:50:02 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ void	ft_strrev(char *str)
 		i++;
 		j--;
 	}
-
 }
 
 char	*ft_itoa_printf(intmax_t n, int base)

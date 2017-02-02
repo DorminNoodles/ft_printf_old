@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/31 23:47:23 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/01 12:02:34 by lchety           ###   ########.fr       */
+/*   Created: 2017/02/02 15:19:21 by lchety            #+#    #+#             */
+/*   Updated: 2017/02/02 15:19:33 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -378,6 +378,42 @@ void	test_ls_02(void)
 	printf("\n");
 }
 
+void	test_ls_03(void)
+{
+	setlocale(LC_ALL, "");
+	printf("Test_ls => 03\n");
+	printf("orig : %5S\n", L"🤗");
+	ft_printf("cust : %5S\n", L"🤗");
+	printf("\n");
+}
+
+void	test_ls_04(void)
+{
+	setlocale(LC_ALL, "");
+	printf("Test_ls => 04\n");
+	printf("orig : %5S\n", L"©");
+	ft_printf("cust : %5S\n", L"©");
+	printf("\n");
+}
+
+void	test_ls_05(void)
+{
+	setlocale(LC_ALL, "");
+	printf("Test_ls => 05\n");
+	printf("orig : %5S\n", L"ᚙ");
+	ft_printf("cust : %5S\n", L"ᚙ");
+	printf("\n");
+}
+
+void	test_ls_06(void)
+{
+	setlocale(LC_ALL, "");
+	printf("Test_ls => 06\n");
+	printf("orig : %S\n", L"123456🤗");
+	ft_printf("cust : %S\n", L"123456🤗");
+	printf("\n");
+}
+
 //=====================================================> conv_C
 
 void	test_lc_01(void)
@@ -432,7 +468,7 @@ void	test_lc_06(void)
 	printf("\n");
 }
 
-//=====================================================> conv_C
+//=====================================================> conv_p
 
 void	test_p_01(void)
 {
@@ -515,10 +551,10 @@ int main(void)
 	printf("=======> Conv_ls <=======\n");
 	test_ls_01();
 	test_ls_02();
-	// test_ls_03();
-	// test_ls_04();
-	// test_ls_05();
-	// test_ls_06();
+	test_ls_03();
+	test_ls_04();
+	test_ls_05();
+	test_ls_06();
 
 	//Start conv_p
 	printf("=======> Conv_p <=======\n");
