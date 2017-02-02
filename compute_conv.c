@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/02 15:19:38 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/02 15:19:46 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/02 15:33:06 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,10 +99,6 @@ void	compute_conv_ls (t_print *conv_info, va_list ap)
 
 	tmp = va_arg(ap, wchar_t*);
 
-	//printf("count_unicode = %d\n", (int)count_unicode(tmp));
-	//printf("ft_strlen = %d\n", (int)ft_strlen((char*)tmp));
-	//printf("ft_wstrlen = %d\n", (int)ft_wstrlen(tmp));
-
 	if (conv_info->width > (int)count_unicode(tmp))
 	{
 		//printf("Here\n");
@@ -112,12 +108,6 @@ void	compute_conv_ls (t_print *conv_info, va_list ap)
 			*(((wchar_t *)conv_info->out) + i++) = L' ';
 		}
 		ft_memcpy(((wchar_t *)conv_info->out) + (conv_info->width - count_unicode(tmp)), tmp, (int)count_unicode(tmp) * sizeof(wchar_t));
-
-		/*
-		conv_info->out = (char *)malloc(sizeof(wchar_t) * conv_info->width);
-		printf("=>  %d   \n", conv_info->width - (int)ft_wstrlen(tmp));
-		ft_memcpy(conv_info->out + (sizeof(wchar_t) * (conv_info->width - (int)ft_wstrlen(tmp))), tmp, sizeof(wchar_t) * (ft_wstrlen(tmp) + 1));
-		*/
 	}
 	else
 	{
@@ -182,6 +172,7 @@ void	conv_switch(t_print *conv_info, va_list ap)
 
 void	compute_htag(t_print *conv_info)
 {
+	printf("htag = %d\n", (int)count_unicode((wchar_t *)conv_info->out));
 	ft_memcpy(conv_info->out, "0x", 2);
 }
 

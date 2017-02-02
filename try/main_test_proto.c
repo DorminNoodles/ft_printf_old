@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/02 15:19:21 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/02 15:19:33 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/02 15:26:31 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -480,6 +480,25 @@ void	test_p_01(void)
 	printf("\n");
 }
 
+void	test_p_02(void)
+{
+	int b = 234235;
+
+	printf("Test_p => 02\n");
+	printf("orig : %5p\n", &b);
+	ft_printf("cust : %5p\n", &b);
+	printf("\n");
+}
+
+void	test_p_03(void)
+{
+	int b = 234235;
+
+	printf("Test_p => 03\n");
+	printf("orig : %25p\n", &b);
+	ft_printf("cust : %25p\n", &b);
+	printf("\n");
+}
 
 
 int main(void)
@@ -559,8 +578,8 @@ int main(void)
 	//Start conv_p
 	printf("=======> Conv_p <=======\n");
 	test_p_01();
-	// test_p_02();
-	// test_p_03();
+	test_p_02();
+	test_p_03();
 	// test_p_04();
 	// test_p_05();
 	// test_p_06();
