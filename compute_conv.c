@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/02 11:44:34 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/02 11:44:36 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/02 11:47:41 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,21 +99,13 @@ void	compute_conv_ls (t_print *conv_info, va_list ap)
 
 	tmp = va_arg(ap, wchar_t*);
 
-<<<<<<< HEAD
-	// printf("strlen = %d\n", (int)bfoo);
 
-	if (conv_info->width > (int)ft_wstrlen(tmp))
-	{
-		// printf("Here\n");
-
-=======
 	printf("ft_strlen = %d\n", (int)ft_strlen((char*)tmp));
 	printf("ft_wstrlen = %d\n", (int)ft_wstrlen(tmp));
 
 	if (conv_info->width > (int)ft_strlen((char*)tmp))
 	{
 		//printf("Here\n");
->>>>>>> 886a3525bf9ae6642a10c351db4bd7cad4c0dfc4
 		conv_info->out = (char *)ft_memalloc(sizeof(wchar_t) * conv_info->width);
 		while (i < conv_info->width)
 		{
