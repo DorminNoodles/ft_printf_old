@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/02 15:19:21 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/02 21:25:01 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/02 22:15:33 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,99 +26,75 @@
 
 void	test_d_01(void)
 {
-	printf("Test => 01\n");
-	printf("orig : %d\n", 25);
-	ft_printf("cust : %d\n", 25);
+	printf("Test_d => 01\n");
+	printf("orig : %d\n", 42);
+	ft_printf("cust : %d\n", 42);
 	printf("\n");
 }
 
-void	test_02(void)
+void	test_d_02(void)
 {
-	printf("Test => 02\n");
+	printf("Test_d => 02\n");
 	printf("orig : %d\n", INT_MIN);
 	ft_printf("cust : %d\n", INT_MIN);
 	printf("\n");
 }
 
-// void	test_03(void)
-// {
-// 	printf("Test => 03\n");
-// 	printf("orig : %d\n", 2147483648);
-// 	ft_printf("cust : %d\n", 2147483648);
-// 	printf("\n");
-// }
+void	test_d_03(void)
+{
+	printf("Test_d => 03\n");
+	printf("orig : %d\n", INT_MAX);
+	ft_printf("cust : %d\n", INT_MAX);
+	printf("\n");
+}
 
 void	test_d_04(void)
 {
-	printf("Test => 04\n");
+	printf("Test_d => 04\n");
 	printf("orig : %.8d\n", 25);
 	ft_printf("cust : %.8d\n", 25);
 	printf("\n");
 }
 
-// void	test_05(void)
-// {
-// 	printf("Test => 05\n");
-// 	printf("orig : %. 8d\n", 25);
-// 	ft_printf("cust : %. 8d\n", 25);
-// 	printf("\n");
-// }
+void	test_d_05(void)
+{
+	printf("Test_d => 05\n");
+	printf("orig : %ld\n", LONG_MIN);
+	ft_printf("cust : %ld\n", LONG_MIN);
+	printf("\n");
+}
 
 void	test_d_06(void)
 {
-	printf("Test => 06\n");
+	printf("Test_d => 06\n");
 	printf("orig : %.08d\n", 25);
 	ft_printf("cust : %.08d\n", 25);
 	printf("\n");
 }
 
-// void	test_07(void)
-// {
-// 	printf("Test => 07\n");
-// 	printf("orig : %..08d\n", 25);
-// 	ft_printf("cust : %..08d\n", 25);
-// 	printf("\n");
-// }
+void	test_d_08(void)
+{
+	printf("Test_d => 08\n");
+	printf("orig : %hhd\n", (char)25);
+	ft_printf("cust : %hhd\n", (char)25);
+	printf("\n");
+}
 
-// void	test_08(void)
-// {
-// 	printf("Test => 08\n");
-// 	printf("orig : %hhd\n", 25);
-// 	ft_printf("cust : %hhd\n", 25);
-// 	printf("\n");
-// }
+void	test_d_09(void)
+{
+	printf("Test_d => 09\n");
+	printf("orig : %hhd\n", (char)-25);
+	ft_printf("cust : %hhd\n", (char)-25);
+	printf("\n");
+}
 
-// void	test_09(void)
-// {
-// 	printf("Test => 09\n");
-// 	printf("orig : %hhd\n", -25);
-// 	ft_printf("cust : %hhd\n", -25);
-// 	printf("\n");
-// }
-
-// void	test_10(void)
-// {
-// 	printf("Test => 10\n");
-// 	printf("orig : %hhd\n", 222);
-// 	ft_printf("cust : %hhd\n", 222);
-// 	printf("\n");
-// }
-
-// void	test_11(void)
-// {
-// 	printf("Test => 11\n");
-// 	printf("orig : %hhhd\n", 380);
-// 	ft_printf("cust : %hhhd\n", 380);
-// 	printf("\n");
-// }
-
-// void	test_12(void)
-// {
-// 	printf("Test => 12\n");
-// 	printf("orig : %hd\n", 32767);
-// 	ft_printf("cust : %hd\n", 32767);
-// 	printf("\n");
-// }
+void	test_d_12(void)
+{
+	printf("Test_d => 12\n");
+	printf("orig : %hd\n", (short int)SHRT_MAX);
+	ft_printf("cust : %hd\n", (short int)SHRT_MAX);
+	printf("\n");
+}
 
 // void	test_13(void)
 // {
@@ -143,6 +119,7 @@ void	test_d_06(void)
 // 	ft_printf("cust : %-.012hd\n", -32768);
 // 	printf("\n");
 // }
+
 
 //======================================================> conv_D
 
@@ -545,16 +522,13 @@ int main(void)
 	printf("=======> Conv_d <=======\n");
 	test_d_01();
 	test_d_02();
-	//test_03();
+	test_d_03();
 	test_d_04();
-	//test_05();
+	test_d_05();
 	test_d_06();
-	// test_07();
-	// test_08();
-	// test_09();
-	// test_10();
-	// test_11();
-	// test_12();
+	test_d_08();
+	test_d_09();
+	test_d_12();
 	// test_13();
 	// test_14();
 	// test_15();
