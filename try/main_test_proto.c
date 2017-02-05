@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/02 15:19:21 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/02 23:34:29 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/05 03:59:16 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,16 +150,16 @@ void	test_ld_02(void)
 void	test_ld_03(void)
 {
 	printf("Test_D => 03\n");
-	printf("orig : %D\n", INT_MIN);
-	ft_printf("cust : %D\n", INT_MIN);
+	printf("orig : %D\n", (int)-2147483648);
+	ft_printf("cust : %D\n", (int)-2147483648);
 	printf("\n");
 }
 
 void	test_ld_04(void)
 {
 	printf("Test_D => 04\n");
-	printf("orig : %lD\n", LONG_MIN);
-	ft_printf("cust : %lD\n", LONG_MIN);
+	printf("orig : %D\n", LONG_MIN);
+	ft_printf("cust : %D\n", LONG_MIN);
 	printf("\n");
 }
 
