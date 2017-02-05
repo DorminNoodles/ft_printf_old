@@ -19,7 +19,7 @@ $(NAME) : all
 
 all :
 	make -C libft/
-	$(CC) $(SRC) $(FLAGS) -I libft/includes -I includes/ libft/libft.a -o build/a.out
+	$(CC) $(SRC) -I libft/includes -I includes/ libft/libft.a -o build/a.out
 
 clean :
 
