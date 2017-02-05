@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/02 15:19:21 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/05 03:59:16 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/05 15:12:30 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,7 +134,7 @@ void	test_d_14(void)
 void	test_ld_01(void)
 {
 	printf("Test_D => 01\n");
-	printf("orig : %D\n", 42);
+	printf("dvndforig : %D\n", 42);
 	ft_printf("cust : %D\n", 42);
 	printf("\n");
 }
