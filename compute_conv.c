@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/02 15:19:38 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/02 23:23:48 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/06 02:04:12 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	compute_conv_ld(t_print *conv_info, va_list ap)
 
 	ret = 0;
 	nb = 0;
-	ret = exec_cast_signed(conv_info, ap);
+	ret = exec_cast_unsigned(conv_info, ap);
 	printf("ret == %ld\n", ret);
 	conv_info->out = ft_itoa_signed(ret);
 	// conv_info->out = ft_itoa_printf(ret, base);

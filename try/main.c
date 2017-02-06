@@ -6,16 +6,16 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/05 03:39:31 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/05 03:55:17 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/05 23:36:29 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <limits.h>
 #include <stdio.h>
 
 int main(void)
 {
-    printf("%d", (int)-2147483648);
-    -2147483648
-    -2147483648
+    int a = INT_MIN;
+    printf("%d", a);
     return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/05 22:07:37 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/05 22:07:43 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/06 02:03:24 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,25 +26,47 @@
 
 void	test_d_01(void)
 {
+	int ret1 = 0;
+	int ret2 = 0;
+	long long a = 9223372036854775807;
+	long b = 9223372036854775807;
+
+	printf("orig : %lld\n", a);
+	printf("orig : %ld\n", b);
 	printf("Test_d => 01\n");
-	printf("orig : %d\n", 42);
+	ret1 = printf("orig : %d\n", 42);
 	ft_printf("cust : %d\n", 42);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
 	printf("\n");
 }
 
 void	test_d_02(void)
 {
+	int ret1 = 0;
+	int ret2 = 0;
+
 	printf("Test_d => 02\n");
-	printf("orig : %d\n", INT_MIN);
+	ret1 = printf("orig : %d\n", INT_MIN);
 	ft_printf("cust : %d\n", INT_MIN);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
 	printf("\n");
 }
 
 void	test_d_03(void)
 {
+	int ret1 = 0;
+	int ret2 = 0;
+
 	printf("Test_d => 03\n");
-	printf("orig : %d\n", INT_MAX);
+	ret1 = printf("orig : %d\n", INT_MAX);
 	ft_printf("cust : %d\n", INT_MAX);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
 	printf("\n");
 }
 
@@ -107,8 +129,8 @@ void	test_d_13(void)
 void	test_d_14(void)
 {
 	printf("Test => 14\n");
-	printf("orig : %d\n", (int)-2147483648);
-	ft_printf("cust : %d\n", (int)-2147483648);
+	printf("orig : %d\n", 50);
+	ft_printf("cust : %d\n", 50);
 	printf("\n");
 }
 
@@ -133,44 +155,97 @@ void	test_d_14(void)
 
 void	test_ld_01(void)
 {
+	int ret1 = 0;
+	int ret2 = 0;
+
 	printf("Test_D => 01\n");
-	printf("dvndforig : %D\n", 42);
+	ret1 = printf("orig : %D\n", 42);
 	ft_printf("cust : %D\n", 42);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
 	printf("\n");
 }
 
 void	test_ld_02(void)
 {
+	int ret1 = 0;
+	//int ret2 = 0;
+
 	printf("Test_D => 02\n");
-	printf("orig : %D\n", UINT_MAX);
+	ret1 = printf("orig : %D\n", UINT_MAX);
 	ft_printf("cust : %D\n", UINT_MAX);
 	printf("\n");
 }
 
 void	test_ld_03(void)
 {
+	int ret1 = 0;
+	//int ret2 = 0;
+
 	printf("Test_D => 03\n");
-	printf("orig : %D\n", (int)-2147483648);
-	ft_printf("cust : %D\n", (int)-2147483648);
+	ret1 = printf("orig : %D\n", INT_MIN);
+	ft_printf("cust : %D\n", INT_MIN);
 	printf("\n");
 }
 
 void	test_ld_04(void)
 {
 	printf("Test_D => 04\n");
-	printf("orig : %D\n", LONG_MIN);
-	ft_printf("cust : %D\n", LONG_MIN);
+	printf("orig : %D\n", INT_MAX);
+	ft_printf("cust : %D\n",INT_MAX);
 	printf("\n");
 }
 
 void	test_ld_05(void)
 {
+	short a = SHRT_MAX;
+
 	printf("Test_D => 05\n");
-	printf("orig : %hD\n", (short int)SHRT_MIN);
-	ft_printf("cust : %hD\n", (short int)SHRT_MIN);
+	printf("orig : %hD\n", a);
+	ft_printf("cust : %hD\n", a);
 	printf("\n");
 }
 
+void	test_ld_06(void)
+{
+	short a = SHRT_MIN;
+
+	printf("Test_D => 06\n");
+	printf("orig : %hD\n", a);
+	ft_printf("cust : %hD\n", a);
+	printf("\n");
+}
+
+void	test_ld_07(void)
+{
+	unsigned short a = USHRT_MAX;
+
+	printf("Test_D => 07\n");
+	printf("orig : %hD\n", a);
+	ft_printf("cust : %hD\n", a);
+	printf("\n");
+}
+/*
+void	test_ld_08(void)
+{
+	char a = MAX;
+
+	printf("Test_D => 07\n");
+	printf("orig : %hhD\n", a);
+	ft_printf("cust : %hD\n", a);
+	printf("\n");
+}
+
+void	test_ld_06(void)
+{
+	short a = SHRT_MIN;
+	printf("Test_D => 06\n");
+	printf("orig : %hD\n", a);
+	ft_printf("cust : %hD\n", a);
+	printf("\n");
+}
+*/
 //======================================================> conv_x
 
 void	test_x_01(void)
@@ -555,6 +630,8 @@ int main(void)
 	test_ld_03();
 	test_ld_04();
 	test_ld_05();
+	test_ld_06();
+	test_ld_07();
 
 
 	// //conv x

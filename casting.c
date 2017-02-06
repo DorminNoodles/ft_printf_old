@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 11:52:46 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/02 23:16:23 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/06 00:18:14 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 intmax_t	cast_default(t_print *conv_info, va_list ap)
 {
-	printf("cast default\n");
+	// printf("cast default\n");
 	if (conv_info->conv_d)
 		return ((intmax_t)va_arg(ap, int));
 	if (conv_info->conv_x)
