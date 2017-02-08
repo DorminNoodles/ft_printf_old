@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/08 13:33:41 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/08 19:03:25 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/08 22:52:35 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,67 +101,121 @@ void	test_d_05(void)
 
 void	test_d_06(void)
 {
+	int ret1 = 0;
+	int ret2 = 0;
+
 	printf("Test_d => 06\n");
-	printf("orig : %.08d\n", 25);
-	ft_printf("cust : %.08d\n", 25);
+	ret1 = printf("orig : %.08d\n", 25);
+	ret2 = ft_printf("cust : %.08d\n", 25);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
 	printf("\n");
 }
 
 void	test_d_08(void)
 {
+	char a = CHAR_MAX;
+	int ret1 = 0;
+	int ret2 = 0;
+
 	printf("Test_d => 08\n");
-	printf("orig : %hhd\n", (char)25);
-	ft_printf("cust : %hhd\n", (char)25);
+	ret1 = printf("orig : %hhd\n", a);
+	ret2 = ft_printf("cust : %hhd\n", a);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
 	printf("\n");
 }
 
 void	test_d_09(void)
 {
+	char a = CHAR_MIN;
+	int ret1 = 0;
+	int ret2 = 0;
+
 	printf("Test_d => 09\n");
-	printf("orig : %hhd\n", (char)-25);
-	ft_printf("cust : %hhd\n", (char)-25);
+	ret1 = printf("orig : %hhd\n", a);
+	ret2 = ft_printf("cust : %hhd\n", a);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
 	printf("\n");
 }
 
 void	test_d_12(void)
 {
+	short a = SHRT_MAX;
+	int ret1 = 0;
+	int ret2 = 0;
+
 	printf("Test_d => 12\n");
-	printf("orig : %hd\n", (short int)SHRT_MAX);
-	ft_printf("cust : %hd\n", (short int)SHRT_MAX);
+	ret1 = printf("orig : %hd\n", a);
+	ret2 = ft_printf("cust : %hd\n", a);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
 	printf("\n");
 }
 
 void	test_d_13(void)
 {
-	printf("Test => 13\n");
-	printf("orig : %d\n", INT_MIN);
-	ft_printf("cust : %d\n", INT_MIN);
+	short a = SHRT_MIN;
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("Test_d => 13\n");
+	printf("orig : %hd\n", a);
+	ft_printf("cust : %hd\n", a);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
 	printf("\n");
 }
 
 void	test_d_14(void)
 {
-	printf("Test => 14\n");
-	printf("orig : %d\n", 50);
-	ft_printf("cust : %d\n", 50);
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("Test_d => 14\n");
+	printf("orig : %.12d\n", 50);
+	ft_printf("cust : %.12d\n", 50);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
 	printf("\n");
 }
 
-// void	test_14(void)
-// {
-// 	printf("Test => 14\n");
-// 	printf("orig : %hhhhd\n", -32768);
-// 	ft_printf("cust : %hhhhd\n", -32768);
-// 	printf("\n");
-// }
+void	test_d_15(void)
+{
+	short a = 126;
+	int ret1 = 0;
+	int ret2 = 0;
 
-// void	test_15(void)
-// {
-// 	printf("Test => 15\n");
-// 	printf("orig : %-.012hd\n", -32768);
-// 	ft_printf("cust : %-.012hd\n", -32768);
-// 	printf("\n");
-// }
+	printf("Test_d => 15\n");
+	printf("orig : %-.012hd\n", a);
+	ft_printf("cust : %-.012hd\n", a);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void	test_d_16(void)
+{
+	int a = 123456789;
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("Test_d => 16\n");
+	printf("orig : %.4d\n", a);
+	ft_printf("cust : %.4d\n", a);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
 
 
 //======================================================> conv_D
@@ -862,6 +916,8 @@ void	test_lx_01(void)
 	printf("\n");
 }
 
+
+
 void 	test_d(void)
 {
 	test_d_01();
@@ -875,6 +931,8 @@ void 	test_d(void)
 	test_d_12();
 	test_d_13();
 	test_d_14();
+	test_d_15();
+	test_d_16();
 }
 
 void 	test_ld(void)
@@ -1331,6 +1389,25 @@ int main(void)
 
 	// mordor = mordor >> 8;
 	// printf("Cup %x\n", mordor);
+
+	// printf("bob %.2s\n", "krevette"); // precision
+	// printf("bob %2s\n", "krevette"); // precision
+	//
+	// printf("bob %5s\n", "krevette");
+	// printf("bob %.*s\n", 2, "krevette");
+	// printf("bob %*s\n", 40, "krevette");
+	printf("bob %.2s\n", "krevette");
+	printf("bob %.2d\n", 12345678);
+	printf("bob %.2x\n", 0x12345678);
+	printf("bob %.2o\n", 01234567);
+	printf("bob %.20s\n", "krevette");
+	printf("bob %.20d\n", 12345678);
+	printf("bob %.20x\n", 0x12345678);
+	printf("bob %.20o\n", 01234567);
+	printf("bob %20s\n", "krevette");
+	printf("bob %20d\n", 12345678);
+	printf("bob %20x\n", 0x12345678);
+	printf("bob %20o\n", 01234567);
 
 	return (0);
 }
