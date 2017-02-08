@@ -6,12 +6,11 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/02 15:19:38 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/02 15:33:06 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/08 09:13:36 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
 
 void	compute_conv_d(t_print *conv_info, va_list ap)
 {
@@ -21,32 +20,65 @@ void	compute_conv_d(t_print *conv_info, va_list ap)
 	ret = 0;
 	nb = 0;
 	ret = exec_cast_signed(conv_info, ap);
-	conv_info->out = ft_itoa(ret);
+	// printf("ret == %jd", ret);
+	conv_info->out = ft_itoa_signed(ret);
 	// conv_info->out = ft_itoa_printf(ret, base);
 	conv_info->base_size = ft_strlen(conv_info->out);
 	compute_width(conv_info);
 	if (conv_info->htag && conv_info->conv_x)
 		compute_htag(conv_info);
-	ft_putstr(conv_info->out);
+	conv_info->ret_nb += ft_strlen(conv_info->out);
+	ft_putstr_buff(conv_info->out);
 	free(conv_info->out);
 }
 
-void	compute_conv_x(t_print *conv_info, int base, va_list ap)
+void	compute_conv_ld(t_print *conv_info, va_list ap)
 {
-		int nb;
+	int nb;
 	intmax_t ret;
-	//printf("HEXAAAAAAA !!!!\n");
+
+
 	ret = 0;
 	nb = 0;
-	// printf("base %d\n", base);
-	ret = exec_cast_unsigned(conv_info, ap);
-	// printf("boat %d\n", ret);
-	conv_info->out = ft_itoa_printf(ret, base);
+	ret = cast_ld(conv_info, ap);
+	// printf("ret == %jd\n", ret);
+	conv_info->out = ft_itoa_signed(ret);
+	// printf("test == %s\n", conv_info->out);
+	// conv_info->out = ft_itoa_printf(ret, base);
 	conv_info->base_size = ft_strlen(conv_info->out);
 	compute_width(conv_info);
 	if (conv_info->htag && conv_info->conv_x)
 		compute_htag(conv_info);
+	conv_info->ret_nb += ft_strlen(conv_info->out);
 	ft_putstr(conv_info->out);
+	free(conv_info->out);
+}
+
+void	compute_conv_x(t_print *conv_info, va_list ap)
+{
+	int nb;
+	intmax_t ret;
+	int		i;
+
+	ret = 0;
+	nb = 0;
+	i = 0;
+	ret = exec_cast_unsigned(conv_info, ap);
+	conv_info->out = ft_itoa_printf(ret, 16);
+	if (conv_info->conv_lx)
+	{
+		printf("conv_lx\n");
+		while (conv_info->out[i])
+			conv_info->out[i] = ft_toupper(conv_info->out[i]);
+			i++;
+	}
+	conv_info->base_size = ft_strlen(conv_info->out);
+	compute_width(conv_info);
+	if (conv_info->htag && conv_info->conv_x)
+		compute_htag(conv_info);
+	printf("pustr-BUFF\n");
+	conv_info->ret_nb += ft_strlen(conv_info->out);
+	ft_putstr_buff(conv_info->out);
 	free(conv_info->out);
 }
 
@@ -83,7 +115,7 @@ void	compute_conv_s (t_print *conv_info, va_list ap)
 	// printf("Bol = %d\n", conv_info->width);
 
 	//printf("test %d\n", conv_info->base_size);
-
+	conv_info->ret_nb += ft_strlen(conv_info->out);
 	ft_putstr(conv_info->out);
 	free(conv_info->out);
 }
@@ -95,7 +127,6 @@ void	compute_conv_ls (t_print *conv_info, va_list ap)
 	int i;
 
 	i = 0;
-	//printf("conv_ls\n");
 
 	tmp = va_arg(ap, wchar_t*);
 
@@ -142,26 +173,39 @@ void compute_conv_p(t_print *conv_info, va_list ap)
 
 	a = (unsigned long)tmp;
 	conv_info->out = ft_itoa_printf(a, 16);
-	if(!conv_info->out)
+	if (!conv_info->out)
 		return;
 	// tmp =
+	conv_info->ret_nb += ft_strlen(conv_info->out) + 2;
 	ft_putstr("0x");
 	ft_putstr(conv_info->out);
-
-	//ft_putstr("conv_p\n");
 	free(conv_info->out);
+}
+
+void 	compute_conv_o(t_print *conv_info, va_list ap)
+{
+	uintmax_t n;
+
+	n = va_arg(ap, uintmax_t);
+	conv_info->out = ft_itoa_printf(n, 8);
+	if (!conv_info->out)
+		return;
 
 
 }
 
 void	conv_switch(t_print *conv_info, va_list ap)
 {
-	if (conv_info->conv_d)
+	if (conv_info->conv_d || conv_info->conv_i)
 		compute_conv_d(conv_info, ap);
+	if (conv_info->conv_o)
+		compute_conv_o(conv_info, ap);
+	if (conv_info->conv_ld)
+		compute_conv_ld(conv_info, ap);
 	if (conv_info->conv_s)
 		compute_conv_s(conv_info, ap);
 	if (conv_info->conv_x)
-		compute_conv_x(conv_info, 16, ap);
+		compute_conv_x(conv_info, ap);
 	if (conv_info->conv_lc)
 		compute_conv_lc(ap);
 	if (conv_info->conv_ls)

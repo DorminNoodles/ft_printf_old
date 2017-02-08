@@ -6,13 +6,12 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/08 14:01:18 by lchety            #+#    #+#             */
-/*   Updated: 2017/01/29 21:18:04 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/08 09:01:49 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "ft_printf.h"
-#include "libft.h"
 
 int		parsing_format(const char *format, t_print *conv_info)
 {
@@ -28,6 +27,7 @@ int		parsing_format(const char *format, t_print *conv_info)
 			if (*(format + i) == '%' && !conv_info->conv)
 			{
 				ft_putchar('%');
+				conv_info->ret_nb++;
 				i++;
 			}
 			if (conv_info->conv)
@@ -36,6 +36,7 @@ int		parsing_format(const char *format, t_print *conv_info)
 		else
 		{
 			ft_putchar(*(format + i));
+			conv_info->ret_nb++;
 			i++;
 		}
 	}

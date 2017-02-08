@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 11:52:46 by lchety            #+#    #+#             */
-/*   Updated: 2017/01/28 17:57:49 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/07 15:11:04 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,12 @@
 
 intmax_t	cast_default(t_print *conv_info, va_list ap)
 {
+	// printf("cast default\n");
 	if (conv_info->conv_d)
 		return ((intmax_t)va_arg(ap, int));
 	if (conv_info->conv_x)
+		return ((intmax_t)va_arg(ap, unsigned int));
+	if (conv_info->conv_ld)
 		return ((intmax_t)va_arg(ap, unsigned int));
 
 	return (va_arg(ap, int));
@@ -30,15 +33,14 @@ intmax_t	exec_cast_signed(t_print *conv_info, va_list ap)
 
 	ret = 0;
 	str = NULL;
-
 	if (conv_info->cast_hh)
 		return((intmax_t)(char)va_arg(ap, intmax_t));
 	if (conv_info->cast_h)
 		return((intmax_t)(short)va_arg(ap, intmax_t));
 	if (conv_info->cast_ll)
 		return((intmax_t)(long long)va_arg(ap, intmax_t));
-	// if (conv_info->cast_l)
-	// 	ret = (intmax_t)(long int)ret;
+	if (conv_info->cast_l)
+		return((intmax_t)(long long)va_arg(ap, uintmax_t));
 	// if (conv_info->cast_ll)
 	// 	ret = (intmax_t)(long long int)ret;
 	// if (conv_info->cast_z)
@@ -55,11 +57,11 @@ intmax_t	exec_cast_unsigned(t_print *conv_info, va_list ap)
 
 	ret = 0;
 	str = NULL;
-	// printf("cast = %d\n", conv_info->cast_ll);
 	if (conv_info->cast_hh)
 		return((intmax_t)(unsigned char)va_arg(ap, intmax_t));
+		// printf("KERO -1\n");
 	if (conv_info->cast_h)
-		return((intmax_t)(unsigned short)va_arg(ap, intmax_t));
+		return((intmax_t)(unsigned short)va_arg(ap, uintmax_t));
 	if (conv_info->cast_ll)
 		return((intmax_t)(unsigned long long)va_arg(ap, intmax_t));
 	if (conv_info->cast_j)
@@ -73,6 +75,36 @@ intmax_t	exec_cast_unsigned(t_print *conv_info, va_list ap)
 	// if (conv_info->cast_j)
 	// 	ret = (intmax_t)ret;
 	return (cast_default(conv_info, ap));
+}
+
+intmax_t	cast_ld(t_print *conv_info, va_list ap)
+{
+	char *str;
+	intmax_t ret;
+
+	ret = 0;
+	str = NULL;
+	// printf("cast = %d\n", conv_info->cast_h);
+	if (conv_info->cast_hh)
+		return((intmax_t)(unsigned int)va_arg(ap, intmax_t));
+	if (conv_info->cast_h)
+		return((intmax_t)(unsigned int)va_arg(ap, uintmax_t));
+	if (conv_info->cast_ll)
+		return((intmax_t)(unsigned long long)va_arg(ap, uintmax_t));
+	if (conv_info->cast_l)
+		return((intmax_t)(unsigned long long)va_arg(ap, uintmax_t));
+	if (conv_info->cast_j)
+		return((intmax_t)(uintmax_t)va_arg(ap, intmax_t));
+	// if (conv_info->cast_l)
+	// 	ret = (intmax_t)(long int)ret;
+	// if (conv_info->cast_ll)
+	// 	ret = (intmax_t)(long long int)ret;
+	// if (conv_info->cast_z)
+	// 	ret = (intmax_t)(size_t)ret;
+	// if (conv_info->cast_j)
+	// 	ret = (intmax_t)ret;
+	// printf("KERO\n");
+	return ((intmax_t)va_arg(ap, unsigned int));
 }
 
 

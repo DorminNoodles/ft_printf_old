@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/07 13:58:10 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/02 15:02:41 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/08 08:47:02 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 
 #include <stdarg.h>
 #include <stdio.h>
+#include <unistd.h>
 #include "libft.h"
 
 /*
@@ -38,12 +39,15 @@ typedef struct s_print
 
 	bool conv;
 	bool conv_d;
+	bool conv_ld;
 	bool conv_i;
+	bool conv_o;
 	bool conv_c;
 	bool conv_lc;
 	bool conv_s;
 	bool conv_ls;
 	bool conv_x;
+	bool conv_lx;
 	bool conv_p;
 
 	bool cast_h;
@@ -61,6 +65,7 @@ typedef struct s_print
 	int pitch_dollar;
 	int pitch_star;
 
+	size_t ret_nb;
 
 }			t_print;
 
@@ -90,6 +95,9 @@ intmax_t	exec_cast_unsigned(t_print *conv_info, va_list ap);
 char		*ft_itoa_printf(intmax_t n, int base);
 //wchar_t		utf8_enc(wchar_t c);
 size_t		count_unicode(wchar_t *str);
+char			*ft_itoa_signed(long long n);
+intmax_t	cast_ld(t_print *conv_info, va_list ap);
+void	ft_putstr_buff(char const *s);
 
 //char *find_end(const char *format);
 #endif
