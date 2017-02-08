@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/05 22:07:37 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/08 08:59:59 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/08 11:48:06 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -836,6 +836,22 @@ void 	mutant_04(void)
 {
 	printf("Mutant_test => 04\n");
 	//ft_printf("%069999999d\n", 42);
+	printf("\n");
+}
+
+//=====================================================> conv_X
+
+void	test_lx_01(void)
+{
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("Test_d => 02\n");
+	ret1 = printf("orig : %x\n", INT_MAX);
+	ret2 = ft_printf("cust : %x\n", INT_MAX);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
 	printf("\n");
 }
 
