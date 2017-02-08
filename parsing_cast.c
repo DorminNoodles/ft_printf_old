@@ -6,11 +6,10 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/16 18:35:56 by lchety            #+#    #+#             */
-/*   Updated: 2017/01/25 14:40:25 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/07 15:50:03 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "ft_printf.h"
 
 void	parsing_h_hh(const char *format, t_print *conv_info, char *end)

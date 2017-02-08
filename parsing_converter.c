@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/10 13:37:44 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/02 22:36:53 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/07 23:46:11 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ static void conv_switch(char c, t_print *conv_info)
 		conv_info->conv_ld = TRUE;
 	if (c == 'i')
 		conv_info->conv_i = TRUE;
+	if (c == 'o')
+		conv_info->conv_o = TRUE;
 	if (c == 'c')
 		conv_info->conv_c = TRUE;
 	if (c == 'C')
@@ -32,6 +34,8 @@ static void conv_switch(char c, t_print *conv_info)
 		conv_info->conv_ls = TRUE;
 	if (c == 'x')
 		conv_info->conv_x = TRUE;
+	if (c == 'X')
+		conv_info->conv_lx = TRUE;
 	if (c == 'p')
 		conv_info->conv_p = TRUE;
 }

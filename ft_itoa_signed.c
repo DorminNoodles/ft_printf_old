@@ -6,13 +6,13 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/08 19:58:41 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/02 23:05:47 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/07 15:51:02 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-static int		ft_digit_quantity(unsigned int n)
+static int		ft_digit_quantity(unsigned long long n)
 {
 	int ret;
 
@@ -25,7 +25,7 @@ static int		ft_digit_quantity(unsigned int n)
 	return (ret);
 }
 
-static char		*create_str(char *str, int neg, unsigned int nb)
+static char		*create_str(char *str, int neg, unsigned long long nb)
 {
 	int digits;
 
@@ -35,7 +35,7 @@ static char		*create_str(char *str, int neg, unsigned int nb)
 	return (str);
 }
 
-static char		*recursive_itoa(char *str, unsigned int nb)
+static char		*recursive_itoa(char *str, unsigned long long nb)
 {
 	if (nb >= 10)
 	{
@@ -55,14 +55,15 @@ char			*ft_itoa_signed(long long n)
 	char			*str;
 	unsigned long long	nb;
 	int				negatif;
-
+	// printf("itoa == %lld\n", n);
 	str = NULL;
 	nb = n;
+	// printf("itoa == %lld\n", nb);
 	negatif = 0;
 	if (n < 0)
 	{
 		negatif = 1;
-		nb = (unsigned int)n * -1;
+		nb = (unsigned long long)n * -1;
 	}
 	str = create_str(str, negatif, nb);
 	if (str == NULL)

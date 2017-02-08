@@ -6,12 +6,11 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/06 15:48:05 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/05 15:12:28 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/08 08:50:47 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
-#include "libft.h"
 #include "ft_printf.h"
 
 int ft_printf(const char *format, ...)
@@ -23,6 +22,7 @@ int ft_printf(const char *format, ...)
 
 	ret = 0;
 	i = 0;
+	conv_info.ret_nb = 0;
 	va_start(ap, format);
 	while ((ret = parsing_format(format, &conv_info)))
 	{
@@ -37,5 +37,5 @@ int ft_printf(const char *format, ...)
 		//#pragma message(": warning<put what you like here>: blah blah blah")
 	}
 	//compute_conv(parsing_struct);
-	return (0);
+	return ((int)conv_info.ret_nb);
 }
