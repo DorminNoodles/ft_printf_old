@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/08 13:33:41 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/08 13:33:44 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/08 19:03:25 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,9 +86,16 @@ void	test_d_04(void)
 
 void	test_d_05(void)
 {
+	long a = LONG_MIN;
+	int ret1 = 0;
+	int ret2 = 0;
+
 	printf("Test_d => 05\n");
-	printf("orig : %ld\n", LONG_MIN);
-	ft_printf("cust : %ld\n", LONG_MIN);
+	ret1 = printf("orig : %ld\n", a);
+	ret2 = ft_printf("cust : %ld\n", a);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
 	printf("\n");
 }
 
@@ -855,9 +862,6 @@ void	test_lx_01(void)
 	printf("\n");
 }
 
-
-
-
 void 	test_d(void)
 {
 	test_d_01();
@@ -935,7 +939,6 @@ void 	mutant_test(void)
 	mutant_03();
 	mutant_04();
 
-
 }
 
 int main(void)
@@ -953,7 +956,7 @@ int main(void)
 	// test_ld();
 
 	printf("=======> Conv_x <=======\n");
-	test_x();
+	//test_x();
 
 	//Start Conv_s
 	printf("=======> Conv_s <=======\n");
@@ -992,14 +995,9 @@ int main(void)
 	// test_p_05();
 	// test_p_06();
 
-	//Start conv_p
+	//Start Mutants
 	printf("=======> Mutant_Test <=======\n");
-	mutant_test();
-	// test_p_02();
-	// test_p_03();
-	// test_p_04();
-	// test_p_05();
-	// test_p_06();
+	//mutant_test();
 
 
 	//test de merde
