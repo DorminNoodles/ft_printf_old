@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 11:52:46 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/07 15:11:04 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/08 18:49:41 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,9 @@ intmax_t	cast_default(t_print *conv_info, va_list ap)
 	// printf("cast default\n");
 	if (conv_info->conv_d)
 		return ((intmax_t)va_arg(ap, int));
-	if (conv_info->conv_x)
+	if (conv_info->conv_x || conv_info->conv_lx)
 		return ((intmax_t)va_arg(ap, unsigned int));
+		//printf("HERE\n");
 	if (conv_info->conv_ld)
 		return ((intmax_t)va_arg(ap, unsigned int));
 
@@ -64,6 +65,8 @@ intmax_t	exec_cast_unsigned(t_print *conv_info, va_list ap)
 		return((intmax_t)(unsigned short)va_arg(ap, uintmax_t));
 	if (conv_info->cast_ll)
 		return((intmax_t)(unsigned long long)va_arg(ap, intmax_t));
+	if (conv_info->cast_l)
+			return((intmax_t)(unsigned long long)va_arg(ap, intmax_t));
 	if (conv_info->cast_j)
 		return((intmax_t)(uintmax_t)va_arg(ap, intmax_t));
 	// if (conv_info->cast_l)

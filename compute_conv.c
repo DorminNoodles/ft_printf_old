@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/02 15:19:38 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/08 12:11:16 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/08 18:21:15 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,9 @@ void	compute_conv_x(t_print *conv_info, va_list ap)
 	nb = 0;
 	i = 0;
 	ret = exec_cast_unsigned(conv_info, ap);
+	// printf("testwww %jX\n", ret);
 	conv_info->out = ft_itoa_printf(ret, 16);
+	//printf("TEST => %s\n", conv_info->out);
 	if (conv_info->conv_lx)
 	{
 		// printf("conv_lx\n");
