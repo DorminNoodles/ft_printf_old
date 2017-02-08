@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/05 22:07:37 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/08 08:59:59 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/08 12:09:38 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -806,6 +806,24 @@ void	test_p_03(void)
 	printf("\n");
 }
 
+//=====================================================> conv_x
+
+void	test_lx_01(void)
+{
+	int a = INT_MAX;
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("Test_X => 01\n");
+	ret1 = printf("orig : %X\n", a);
+	ret2 = ft_printf("cust : %X\n", a);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+
 //=====================================================> mutant_test
 
 void 	mutant_01(void)
@@ -912,6 +930,12 @@ void 	test_i(void)
 
 }
 
+void 	test_lx(void)
+{
+	test_lx_01();
+
+}
+
 void 	mutant_test(void)
 {
 	mutant_01();
@@ -938,6 +962,9 @@ int main(void)
 
 	printf("=======> Conv_x <=======\n");
 	test_x();
+
+	printf("=======> Conv_X <=======\n");
+	test_lx();
 
 	//Start Conv_s
 	printf("=======> Conv_s <=======\n");
