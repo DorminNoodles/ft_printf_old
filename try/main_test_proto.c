@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/05 15:19:27 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/05 15:19:29 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/05 15:38:39 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,8 +107,8 @@ void	test_d_13(void)
 void	test_d_14(void)
 {
 	printf("Test => 14\n");
-	printf("orig : %d\n", (int)-2147483648);
-	ft_printf("cust : %d\n", (int)-2147483648);
+	printf("orig : %d\n", -2147483648);
+	ft_printf("cust : %d\n", -2147483648);
 	printf("\n");
 }
 
@@ -150,16 +150,16 @@ void	test_ld_02(void)
 void	test_ld_03(void)
 {
 	printf("Test_D => 03\n");
-	printf("orig : %D\n", (int)-2147483648);
-	ft_printf("cust : %D\n", (int)-2147483648);
+	printf("orig : %D\n", 32767);
+	ft_printf("cust : %D\n", 32767);
 	printf("\n");
 }
 
 void	test_ld_04(void)
 {
 	printf("Test_D => 04\n");
-	printf("orig : %D\n", LONG_MIN);
-	ft_printf("cust : %D\n", LONG_MIN);
+	printf("orig : %D\n", -2147483647);
+	ft_printf("cust : %D\n", -2147483647);
 	printf("\n");
 }
 
