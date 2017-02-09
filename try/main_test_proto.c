@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/08 13:33:41 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/08 22:52:35 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/09 12:13:55 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -211,6 +211,51 @@ void	test_d_16(void)
 	printf("Test_d => 16\n");
 	printf("orig : %.4d\n", a);
 	ft_printf("cust : %.4d\n", a);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void	test_d_17(void)
+{
+	int a = 123456789;
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("Test_d => 17\n");
+	printf("orig : %.d\n", a);
+	ft_printf("cust : %.d\n", a);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void	test_d_18(void)
+{
+	int a = 42;
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("Test_d => 18\n");
+	printf("orig : %-.12d\n", a);
+	ft_printf("cust : %-.12d\n", a);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void	test_d_19(void)
+{
+	int a = 42;
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("Test_d => 19\n");
+	printf("orig : %-50.12d\n", a);
+	ft_printf("cust : %-50.12d\n", a);
 	printf("\n");
 	printf("ret_orig : %d\n", ret1);
 	printf("ret_cust : %d\n", ret2);
@@ -513,33 +558,57 @@ void	test_ld_06(void)
 
 void	test_x_01(void)
 {
+	int ret1 = 0;
+	int ret2 = 0;
+
 	printf("Test_x => 01\n");
-	printf("orig : %x\n", 68);
-	ft_printf("cust : %x\n", 68);
+	ret1 = printf("orig : %x\n", 42);
+	ret2 = ft_printf("cust : %x\n", 42);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
 	printf("\n");
 }
 
 void	test_x_02(void)
 {
+	int ret1 = 0;
+	int ret2 = 0;
+
 	printf("Test_x => 02\n");
-	printf("orig : %x\n", 6889);
-	ft_printf("cust : %x\n", 6889);
+	ret1 =printf("orig : %x\n", 6889);
+	ret2 = ft_printf("cust : %x\n", 6889);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
 	printf("\n");
 }
 
 void	test_x_03(void)
 {
+	int ret1 = 0;
+	int ret2 = 0;
+
 	printf("Test_x => 03\n");
-	printf("orig : %x\n",	2147483647);
-	ft_printf("cust : %x\n",	2147483647);
+	ret1 = printf("orig : %x\n",	2147483647);
+	ret2 = ft_printf("cust : %x\n",	2147483647);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
 	printf("\n");
 }
 
 void	test_x_04(void)
 {
+	int ret1 = 0;
+	int ret2 = 0;
+
 	printf("Test_x => 04\n");
-	printf("orig : %x\n",	2147483647);
-	ft_printf("cust : %x\n",	2147483647);
+	ret1 = printf("orig : %x\n",	2147483647);
+	ret2 = ft_printf("cust : %x\n",	2147483647);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
 	printf("\n");
 }
 
@@ -725,6 +794,14 @@ void	test_s_06(void)
 	printf("\n");
 }
 
+void	test_s_07(void)
+{
+	printf("Test_s => 07\n");
+	printf("orig : %.s\n", "poney truite");
+	ft_printf("cust : %.s\n", "poney truite");
+	printf("\n");
+}
+
 //=====================================================> conv_S
 
 void	test_ls_01(void)
@@ -900,6 +977,8 @@ void 	mutant_04(void)
 	printf("\n");
 }
 
+
+
 //=====================================================> conv_X
 
 void	test_lx_01(void)
@@ -916,7 +995,16 @@ void	test_lx_01(void)
 	printf("\n");
 }
 
-
+void	test_s(void)
+{
+	test_s_01();
+	test_s_02();
+	test_s_03();
+	test_s_04();
+	test_s_05();
+	test_s_06();
+	test_s_07();
+}
 
 void 	test_d(void)
 {
@@ -933,6 +1021,9 @@ void 	test_d(void)
 	test_d_14();
 	test_d_15();
 	test_d_16();
+	test_d_17();
+	test_d_18();
+	test_d_19();
 }
 
 void 	test_ld(void)
@@ -1018,12 +1109,7 @@ int main(void)
 
 	//Start Conv_s
 	printf("=======> Conv_s <=======\n");
-	// test_s_01();
-	// test_s_02();
-	// test_s_03();
-	// test_s_04();
-	// test_s_05();
-	// test_s_06();
+	test_s();
 
 	//Start conv_lc
 	printf("=======> Conv_lc <=======\n");
@@ -1408,6 +1494,11 @@ int main(void)
 	printf("bob %20d\n", 12345678);
 	printf("bob %20x\n", 0x12345678);
 	printf("bob %20o\n", 01234567);
+
+	printf("bob %.o\n", 01234567);
+	printf("bob %.s\n", "krevette");
+
+	//conclusion : le pitch est a 0 si on a pas defini de nombre
 
 	return (0);
 }

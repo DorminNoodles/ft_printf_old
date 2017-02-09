@@ -10,7 +10,8 @@ SRC =	ft_printf.c										\
 		reset_print.c									\
 		unicode.c										\
 		ft_itoa_signed.c								\
-		ft_putstr_buff.c
+		ft_putstr_buff.c								\
+		pitch.c
 
 LIBFT_OBJ =	ft_atoi.o		\
 			ft_bzero.o		\

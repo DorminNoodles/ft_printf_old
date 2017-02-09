@@ -6,35 +6,39 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/24 14:27:07 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/07 23:45:19 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/09 11:35:08 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	reset_print(t_print *conv_info)
+void	reset_print(t_print *dna)
 {
-	conv_info->conv = FALSE;
-	conv_info->conv_d = FALSE;
-	conv_info->conv_ld = FALSE;
-	conv_info->conv_i = FALSE;
-	conv_info->conv_o = FALSE;
-	conv_info->conv_c = FALSE;
-	conv_info->conv_lc = FALSE;
-	conv_info->conv_ls = FALSE;
-	conv_info->conv_s = FALSE;
-	conv_info->conv_p = FALSE;
-	conv_info->conv_x = FALSE;
-	conv_info->conv_lx = FALSE;
-	conv_info->flag_0 = FALSE;
-	conv_info->htag = FALSE;
-	conv_info->justify = FALSE;
-	conv_info->width = 0;
-	conv_info->base_size = 0;
-	conv_info->cast_h = FALSE;
-	conv_info->cast_hh = FALSE;
-	conv_info->cast_l = FALSE;
-	conv_info->cast_ll = FALSE;
-	conv_info->cast_z = FALSE;
-	conv_info->cast_j = FALSE;
+	dna->conv = FALSE;
+	dna->conv_d = FALSE;
+	dna->conv_ld = FALSE;
+	dna->conv_i = FALSE;
+	dna->conv_o = FALSE;
+	dna->conv_c = FALSE;
+	dna->conv_lc = FALSE;
+	dna->conv_ls = FALSE;
+	dna->conv_s = FALSE;
+	dna->conv_p = FALSE;
+	dna->conv_x = FALSE;
+	dna->conv_lx = FALSE;
+	dna->flag_0 = FALSE;
+	dna->htag = FALSE;
+	dna->justify = FALSE;
+	dna->width = 0;
+	dna->base_size = 0;
+	dna->cast_h = FALSE;
+	dna->cast_hh = FALSE;
+	dna->cast_l = FALSE;
+	dna->cast_ll = FALSE;
+	dna->cast_z = FALSE;
+	dna->cast_j = FALSE;
+	dna->pitch = FALSE;
+	dna->pitch_nb = 0;
+	dna->pitch_dollar = 0;
+	dna->pitch_star = 0;
 }

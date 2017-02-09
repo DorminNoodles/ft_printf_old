@@ -6,102 +6,102 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 11:52:46 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/07 15:11:04 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/09 09:49:15 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdio.h>
 
-intmax_t	cast_default(t_print *conv_info, va_list ap)
+intmax_t	cast_default(t_print *dna, va_list ap)
 {
 	// printf("cast default\n");
-	if (conv_info->conv_d)
+	if (dna->conv_d)
 		return ((intmax_t)va_arg(ap, int));
-	if (conv_info->conv_x)
+	if (dna->conv_x)
 		return ((intmax_t)va_arg(ap, unsigned int));
-	if (conv_info->conv_ld)
+	if (dna->conv_ld)
 		return ((intmax_t)va_arg(ap, unsigned int));
 
 	return (va_arg(ap, int));
 }
 
-intmax_t	exec_cast_signed(t_print *conv_info, va_list ap)
+intmax_t	exec_cast_signed(t_print *dna, va_list ap)
 {
 	char *str;
 	intmax_t ret;
 
 	ret = 0;
 	str = NULL;
-	if (conv_info->cast_hh)
+	if (dna->cast_hh)
 		return((intmax_t)(char)va_arg(ap, intmax_t));
-	if (conv_info->cast_h)
+	if (dna->cast_h)
 		return((intmax_t)(short)va_arg(ap, intmax_t));
-	if (conv_info->cast_ll)
+	if (dna->cast_ll)
 		return((intmax_t)(long long)va_arg(ap, intmax_t));
-	if (conv_info->cast_l)
+	if (dna->cast_l)
 		return((intmax_t)(long long)va_arg(ap, uintmax_t));
-	// if (conv_info->cast_ll)
+	// if (dna->cast_ll)
 	// 	ret = (intmax_t)(long long int)ret;
-	// if (conv_info->cast_z)
+	// if (dna->cast_z)
 	// 	ret = (intmax_t)(size_t)ret;
-	// if (conv_info->cast_j)
+	// if (dna->cast_j)
 	// 	ret = (intmax_t)ret;
-	return (cast_default(conv_info, ap));
+	return (cast_default(dna, ap));
 }
 
-intmax_t	exec_cast_unsigned(t_print *conv_info, va_list ap)
+intmax_t	exec_cast_unsigned(t_print *dna, va_list ap)
 {
 	char *str;
 	intmax_t ret;
 
 	ret = 0;
 	str = NULL;
-	if (conv_info->cast_hh)
+	if (dna->cast_hh)
 		return((intmax_t)(unsigned char)va_arg(ap, intmax_t));
 		// printf("KERO -1\n");
-	if (conv_info->cast_h)
+	if (dna->cast_h)
 		return((intmax_t)(unsigned short)va_arg(ap, uintmax_t));
-	if (conv_info->cast_ll)
+	if (dna->cast_ll)
 		return((intmax_t)(unsigned long long)va_arg(ap, intmax_t));
-	if (conv_info->cast_j)
+	if (dna->cast_j)
 		return((intmax_t)(uintmax_t)va_arg(ap, intmax_t));
-	// if (conv_info->cast_l)
+	// if (dna->cast_l)
 	// 	ret = (intmax_t)(long int)ret;
-	// if (conv_info->cast_ll)
+	// if (dna->cast_ll)
 	// 	ret = (intmax_t)(long long int)ret;
-	// if (conv_info->cast_z)
+	// if (dna->cast_z)
 	// 	ret = (intmax_t)(size_t)ret;
-	// if (conv_info->cast_j)
+	// if (dna->cast_j)
 	// 	ret = (intmax_t)ret;
-	return (cast_default(conv_info, ap));
+	return (cast_default(dna, ap));
 }
 
-intmax_t	cast_ld(t_print *conv_info, va_list ap)
+intmax_t	cast_ld(t_print *dna, va_list ap)
 {
 	char *str;
 	intmax_t ret;
 
 	ret = 0;
 	str = NULL;
-	// printf("cast = %d\n", conv_info->cast_h);
-	if (conv_info->cast_hh)
+	// printf("cast = %d\n", dna->cast_h);
+	if (dna->cast_hh)
 		return((intmax_t)(unsigned int)va_arg(ap, intmax_t));
-	if (conv_info->cast_h)
+	if (dna->cast_h)
 		return((intmax_t)(unsigned int)va_arg(ap, uintmax_t));
-	if (conv_info->cast_ll)
+	if (dna->cast_ll)
 		return((intmax_t)(unsigned long long)va_arg(ap, uintmax_t));
-	if (conv_info->cast_l)
+	if (dna->cast_l)
 		return((intmax_t)(unsigned long long)va_arg(ap, uintmax_t));
-	if (conv_info->cast_j)
+	if (dna->cast_j)
 		return((intmax_t)(uintmax_t)va_arg(ap, intmax_t));
-	// if (conv_info->cast_l)
+	// if (dna->cast_l)
 	// 	ret = (intmax_t)(long int)ret;
-	// if (conv_info->cast_ll)
+	// if (dna->cast_ll)
 	// 	ret = (intmax_t)(long long int)ret;
-	// if (conv_info->cast_z)
+	// if (dna->cast_z)
 	// 	ret = (intmax_t)(size_t)ret;
-	// if (conv_info->cast_j)
+	// if (dna->cast_j)
 	// 	ret = (intmax_t)ret;
 	// printf("KERO\n");
 	return ((intmax_t)va_arg(ap, unsigned int));

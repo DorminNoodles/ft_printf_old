@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/07 13:58:10 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/08 08:47:02 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/09 11:36:02 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ typedef struct s_print
 	bool justify;
 	int base_size;
 	int width;
+
+	bool pitch;
 	int pitch_nb;
 	int pitch_dollar;
 	int pitch_star;
@@ -72,32 +74,33 @@ typedef struct s_print
 
 
 int			ft_printf(const char *format, ...);
-int			parsing_format(const char *format, t_print *conv_info);
+int			parsing_format(const char *format, t_print *dna);
 char		*flags_parsing(const char *format);
 void		*parsing_func_collection();
 void		*flags_apply_hashtag();
 int			parsing_distributor(const char* format);
-char		*parsing_converter(const char *format, t_print *conv_info);
-int			parsing_dispatch(const char *format, t_print *conv_info);
-void		compute_conv(t_print *conv_info, va_list ap);
+char		*parsing_converter(const char *format, t_print *dna);
+int			parsing_dispatch(const char *format, t_print *dna);
+void		compute_conv(t_print *dna, va_list ap);
 void		compute_conv_lc (va_list ap);
 char		*ft_itoa_base(unsigned long long n, int base);
-void		compute_width(t_print *conv_info);
-void		compute_htag(t_print *conv_info);
-void		reset_print(t_print *conv_info);
-void		parsing_htag(const char	*format, t_print *conv_info, char *end);
-void		parsing_justify(const char *format, t_print *conv_info, char *end);
-void		parsing_pitch(const char *format, t_print *conv_info, char *end);
-void		parsing_cast(const char *format, t_print *conv_info, char *end);
-void		parsing_hh(const char *format, t_print *conv_info, char *end);
-intmax_t	exec_cast_signed(t_print *conv_info, va_list ap);
-intmax_t	exec_cast_unsigned(t_print *conv_info, va_list ap);
+void		compute_width(t_print *dna);
+void		compute_htag(t_print *dna);
+void		reset_print(t_print *dna);
+void		parsing_htag(const char	*format, t_print *dna, char *end);
+void		parsing_justify(const char *format, t_print *dna, char *end);
+void		parsing_pitch(const char *format, t_print *dna, char *end);
+void		parsing_cast(const char *format, t_print *dna, char *end);
+void		parsing_hh(const char *format, t_print *dna, char *end);
+intmax_t	exec_cast_signed(t_print *dna, va_list ap);
+intmax_t	exec_cast_unsigned(t_print *dna, va_list ap);
 char		*ft_itoa_printf(intmax_t n, int base);
 //wchar_t		utf8_enc(wchar_t c);
 size_t		count_unicode(wchar_t *str);
-char			*ft_itoa_signed(long long n);
-intmax_t	cast_ld(t_print *conv_info, va_list ap);
-void	ft_putstr_buff(char const *s);
+char		*ft_itoa_signed(long long n);
+intmax_t	cast_ld(t_print *dna, va_list ap);
+void		ft_putstr_buff(char const *s);
+void		compute_pitch(t_print *dna);
 
 //char *find_end(const char *format);
 #endif
