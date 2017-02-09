@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/08 13:33:41 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/09 12:13:55 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/09 22:34:59 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -554,6 +554,100 @@ void	test_ld_06(void)
 	printf("\n");
 }
 */
+
+//======================================================> conv_o
+
+void 	test_o_01(void)
+{
+	int ret1 = 0;
+	int ret2 = 0;
+	int a = INT_MAX;
+
+	printf("Test_o => 01\n");
+	ret1 = printf("orig : %o\n", a);
+	ret2 = ft_printf("cust : %o\n", a);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void 	test_o_02(void)
+{
+	int ret1 = 0;
+	int ret2 = 0;
+	int a = INT_MIN;
+
+	printf("Test_o => 02\n");
+	ret1 = printf("orig : %o\n", a);
+	ret2 = ft_printf("cust : %o\n", a);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void 	test_o_03(void)
+{
+	int ret1 = 0;
+	int ret2 = 0;
+	short a = SHRT_MAX;
+
+	printf("Test_o => 03\n");
+	ret1 = printf("orig : %ho\n", a);
+	ret2 = ft_printf("cust : %ho\n", a);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void 	test_o_04(void)
+{
+	int ret1 = 0;
+	int ret2 = 0;
+	char a = CHAR_MAX;
+
+	printf("Test_o => 04\n");
+	ret1 = printf("orig : %10hho\n", a);
+	ret2 = ft_printf("cust : %10hho\n", a);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void 	test_o_05(void)
+{
+	int ret1 = 0;
+	int ret2 = 0;
+	int a = INT_MAX;
+
+	printf("Test_o => 05\n");
+	ret1 = printf("orig : %.4o\n", a);
+	ret2 = ft_printf("cust : %.4o\n", a);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void 	test_o_06(void)
+{
+	int ret1 = 0;
+	int ret2 = 0;
+	int a = 42;
+
+	printf("Test_o => 06\n");
+	ret1 = printf("orig : %.12o\n", a);
+	ret2 = ft_printf("cust : %.12o\n", a);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+
 //======================================================> conv_x
 
 void	test_x_01(void)
@@ -802,6 +896,14 @@ void	test_s_07(void)
 	printf("\n");
 }
 
+void	test_s_08(void)
+{
+	printf("Test_s => 08\n");
+	printf("orig : %.4s\n", "poney truite");
+	ft_printf("cust : %.4s\n", "poney truite");
+	printf("\n");
+}
+
 //=====================================================> conv_S
 
 void	test_ls_01(void)
@@ -1004,6 +1106,7 @@ void	test_s(void)
 	test_s_05();
 	test_s_06();
 	test_s_07();
+	test_s_08();
 }
 
 void 	test_d(void)
@@ -1081,6 +1184,16 @@ void 	test_i(void)
 
 }
 
+void 	test_o(void)
+{
+	test_o_01();
+	test_o_02();
+	test_o_03();
+	test_o_04();
+	test_o_05();
+	test_o_06();
+}
+
 void 	mutant_test(void)
 {
 	mutant_01();
@@ -1095,21 +1208,25 @@ int main(void)
 	//Test_list________________________
 
 	//conv_d
+	printf("=======> Conv_s <=======\n");
+	test_s();
+
 	printf("=======> Conv_d <=======\n");
 	test_d();
+
+	printf("=======> Conv_D <=======\n");
+	// test_ld();
 
 	printf("=======> Conv_i <=======\n");
 	// test_i();
 
-	printf("=======> Conv_D <=======\n");
-	// test_ld();
+	printf("=======> Conv_o <=======\n");
+	test_o();
 
 	printf("=======> Conv_x <=======\n");
 	//test_x();
 
 	//Start Conv_s
-	printf("=======> Conv_s <=======\n");
-	test_s();
 
 	//Start conv_lc
 	printf("=======> Conv_lc <=======\n");
@@ -1482,6 +1599,7 @@ int main(void)
 	// printf("bob %5s\n", "krevette");
 	// printf("bob %.*s\n", 2, "krevette");
 	// printf("bob %*s\n", 40, "krevette");
+	printf("bob %2s\n", "krevette");
 	printf("bob %.2s\n", "krevette");
 	printf("bob %.2d\n", 12345678);
 	printf("bob %.2x\n", 0x12345678);

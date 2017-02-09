@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/02 15:19:38 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/09 12:13:55 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/09 22:37:02 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	compute_conv_d(t_print *dna, va_list ap)
 	if (!dna->pitch)
 		compute_width(dna);
 	else
-		compute_pitch(dna);
+		compute_pitch(dna, FALSE);
 	dna->ret_nb += ft_strlen(dna->out);
 	ft_putstr_buff(dna->out);
 	free(dna->out);
@@ -112,7 +112,10 @@ void	compute_conv_s (t_print *dna, va_list ap)
 		return;
 	dna->base_size = ft_strlen(tmp);
 	ft_strcpy(dna->out, tmp);
-	compute_width(dna);
+	if (!dna->pitch)
+		compute_width(dna);
+	else
+		compute_pitch(dna, TRUE);
 	// printf("Bol = %d\n", dna->width);
 
 	//printf("test %d\n", dna->base_size);
@@ -187,11 +190,18 @@ void 	compute_conv_o(t_print *dna, va_list ap)
 {
 	uintmax_t n;
 
+	// printf("conv_o\n");
+
 	n = va_arg(ap, uintmax_t);
 	dna->out = ft_itoa_printf(n, 8);
 	if (!dna->out)
 		return;
+	if (!dna->pitch)
+		compute_width(dna);
+	else
+		compute_pitch(dna, FALSE);
 
+	ft_putstr(dna->out);
 
 }
 
