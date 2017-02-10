@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/09 09:38:43 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/10 15:06:39 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/10 16:35:59 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ void	compute_pitch_star(t_print *dna, va_list ap, bool cut)
 
 void	compute_pitch(t_print *dna, va_list ap, bool cut)
 {
+	printf("compute_pitch\n");
 	if (dna->pitch_nb)
 		compute_pitch_nb(dna, cut);
 	else if (dna->pitch_dollar)
