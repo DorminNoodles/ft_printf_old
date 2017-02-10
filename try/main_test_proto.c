@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/08 13:33:41 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/09 22:34:59 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/10 11:25:58 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -647,6 +647,36 @@ void 	test_o_06(void)
 	printf("\n");
 }
 
+void 	test_o_07(void)
+{
+	int ret1 = 0;
+	int ret2 = 0;
+	long long a = LONG_MAX;
+
+	printf("Test_o => 07\n");
+	ret1 = printf("orig : %.12llo\n", a);
+	ret2 = ft_printf("cust : %.12llo\n", a);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void 	test_o_08(void)
+{
+	int ret1 = 0;
+	int ret2 = 0;
+	long long a = LONG_MIN;
+
+	printf("Test_o => 08\n");
+	ret1 = printf("orig : %llo\n", a);
+	ret2 = ft_printf("cust : %llo\n", a);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
 
 //======================================================> conv_x
 
@@ -1192,6 +1222,8 @@ void 	test_o(void)
 	test_o_04();
 	test_o_05();
 	test_o_06();
+	test_o_07();
+	test_o_08();
 }
 
 void 	mutant_test(void)

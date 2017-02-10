@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/07 13:58:10 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/09 22:16:05 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/10 11:40:32 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ void		parsing_cast(const char *format, t_print *dna, char *end);
 void		parsing_hh(const char *format, t_print *dna, char *end);
 intmax_t	exec_cast_signed(t_print *dna, va_list ap);
 intmax_t	exec_cast_unsigned(t_print *dna, va_list ap);
-char		*ft_itoa_printf(intmax_t n, int base);
+char		*ft_itoa_printf(uintmax_t n, int base);
 //wchar_t		utf8_enc(wchar_t c);
 size_t		count_unicode(wchar_t *str);
 char		*ft_itoa_signed(long long n);
