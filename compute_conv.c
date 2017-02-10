@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/10 10:46:15 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/10 11:41:32 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/10 15:07:11 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	compute_conv_s (t_print *dna, va_list ap)
 	if (!dna->pitch)
 	compute_width(dna);
 	else
-	compute_pitch(dna, TRUE);
+	compute_pitch(dna, ap, TRUE);
 	// printf("Bol = %d\n", dna->width);
 
 	//printf("test %d\n", dna->base_size);
@@ -51,34 +51,23 @@ void	compute_conv_ls (t_print *dna, va_list ap)
 	i = 0;
 
 	tmp = va_arg(ap, wchar_t*);
-
 	if (dna->width > (int)count_unicode(tmp))
 	{
-		//printf("Here\n");
 		dna->out = (char *)ft_memalloc(sizeof(wchar_t) * dna->width);
 		while (i < dna->width)
-		{
 			*(((wchar_t *)dna->out) + i++) = L' ';
-		}
 		ft_memcpy(((wchar_t *)dna->out) + (dna->width - count_unicode(tmp)), tmp, (int)count_unicode(tmp) * sizeof(wchar_t));
 	}
 	else
 	{
-		//printf("width little\n");
 		dna->out = (char *)malloc(sizeof(wchar_t) * (int)count_unicode(tmp));
 		ft_memcpy(dna->out, tmp, sizeof(wchar_t) * (int)count_unicode(tmp) + 1);
 	}
-
-	// ft_putwchar(*(wchar_t *)dna->out);
-	// printf("\n\n");
 	i = 0;
 	while (*(((wchar_t *)dna->out) + i) != '\0')
 	{
-		//printf("+");
 		ft_putwchar(*(((wchar_t *)dna->out) + i));
-		//ft_putstr("\n");
 		i++;
-		// ft_putwchar(tmp[i++]);
 	}
 	free(dna->out);
 	dna->out = NULL;
@@ -99,7 +88,7 @@ void	compute_conv_d(t_print *dna, va_list ap)
 	if (!dna->pitch)
 		compute_width(dna);
 	else
-		compute_pitch(dna, FALSE);
+		compute_pitch(dna, ap, FALSE);
 	dna->ret_nb += ft_strlen(dna->out);
 	ft_putstr_buff(dna->out);
 	free(dna->out);
@@ -109,7 +98,6 @@ void	compute_conv_ld(t_print *dna, va_list ap)
 {
 	int nb;
 	intmax_t ret;
-
 
 	ret = 0;
 	nb = 0;
@@ -176,8 +164,8 @@ void 	compute_conv_o(t_print *dna, va_list ap)
 	if (!dna->pitch)
 		compute_width(dna);
 	else
-		compute_pitch(dna, FALSE);
-
+		compute_pitch(dna, ap, FALSE);
+	dna->ret_nb += ft_strlen(dna->out);
 	ft_putstr(dna->out);
 }
 
@@ -289,6 +277,8 @@ void	flag_switch(t_print *dna, const char *format, va_list ap)
 
 void	compute_conv(t_print *dna, va_list ap)
 {
+	if (dna->pitch_star)
+		dna->pitch_nb = va_arg(ap, int);
 	conv_switch(dna, ap);
 	//ft_putstr("Conv_START\n");
 	//flag_switch(dna, format, ap);

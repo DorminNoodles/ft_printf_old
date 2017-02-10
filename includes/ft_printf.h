@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/07 13:58:10 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/10 11:40:32 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/10 15:03:11 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,8 +100,9 @@ size_t		count_unicode(wchar_t *str);
 char		*ft_itoa_signed(long long n);
 intmax_t	cast_ld(t_print *dna, va_list ap);
 void		ft_putstr_buff(char const *s);
-void 		compute_pitch(t_print *dna, bool cut);
+void		compute_pitch(t_print *dna, va_list ap, bool cut);
 void 		compute_pitch_nb(t_print *dna, bool cut);
+void		compute_pitch_star(t_print *dna, va_list ap, bool cut);
 
 //char *find_end(const char *format);
 #endif

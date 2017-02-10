@@ -85,9 +85,9 @@ all : $(NAME)
 
 $(NAME) :
 	make -C libft/
-	$(CC) -c $(FLAGS) $(SRC) -I includes -I libft/includes
+	$(CC) -c $(SRC) -I includes -I libft/includes
 	ar rc $(NAME) $(OBJ) $(LIBFT_OBJ_PATH) libft/libft.a
-	$(CC) $(FLAGS) $(DEBUG_SRC) $(SRC) -I libft/includes -I includes/ libft/libft.a -o build/a.out
+	$(CC) $(DEBUG_SRC) $(SRC) -I libft/includes -I includes/ libft/libft.a -o build/a.out
 
 clean :
 	rm -f $(OBJ)
