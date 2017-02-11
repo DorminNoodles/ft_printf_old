@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/02 15:19:38 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/08 09:13:36 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/11 14:01:55 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	compute_conv_x(t_print *conv_info, va_list ap)
 	conv_info->out = ft_itoa_printf(ret, 16);
 	if (conv_info->conv_lx)
 	{
-		printf("conv_lx\n");
+		// printf("conv_lx\n");
 		while (conv_info->out[i])
 			conv_info->out[i] = ft_toupper(conv_info->out[i]);
 			i++;
@@ -76,7 +76,7 @@ void	compute_conv_x(t_print *conv_info, va_list ap)
 	compute_width(conv_info);
 	if (conv_info->htag && conv_info->conv_x)
 		compute_htag(conv_info);
-	printf("pustr-BUFF\n");
+	// printf("pustr-BUFF\n");
 	conv_info->ret_nb += ft_strlen(conv_info->out);
 	ft_putstr_buff(conv_info->out);
 	free(conv_info->out);

@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 11:52:46 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/07 15:11:04 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/11 13:57:36 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,10 @@ intmax_t	exec_cast_signed(t_print *conv_info, va_list ap)
 		return((intmax_t)(long long)va_arg(ap, intmax_t));
 	if (conv_info->cast_l)
 		return((intmax_t)(long long)va_arg(ap, uintmax_t));
+	if (conv_info->cast_z)
+		return((intmax_t)(long long)va_arg(ap, uintmax_t));
 	// if (conv_info->cast_ll)
 	// 	ret = (intmax_t)(long long int)ret;
-	// if (conv_info->cast_z)
-	// 	ret = (intmax_t)(size_t)ret;
 	// if (conv_info->cast_j)
 	// 	ret = (intmax_t)ret;
 	return (cast_default(conv_info, ap));

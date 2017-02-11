@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/08 13:33:41 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/08 13:33:44 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/11 14:00:06 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,33 +86,87 @@ void	test_d_04(void)
 
 void	test_d_05(void)
 {
+	int ret1 = 0;
+	int ret2 = 0;
+
 	printf("Test_d => 05\n");
 	printf("orig : %ld\n", LONG_MIN);
 	ft_printf("cust : %ld\n", LONG_MIN);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
 	printf("\n");
 }
 
 void	test_d_06(void)
 {
+	int ret1 = 0;
+	int ret2 = 0;
+
 	printf("Test_d => 06\n");
 	printf("orig : %.08d\n", 25);
 	ft_printf("cust : %.08d\n", 25);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
 	printf("\n");
 }
 
 void	test_d_08(void)
 {
+	int ret1 = 0;
+	int ret2 = 0;
+
 	printf("Test_d => 08\n");
 	printf("orig : %hhd\n", (char)25);
 	ft_printf("cust : %hhd\n", (char)25);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
 	printf("\n");
 }
 
 void	test_d_09(void)
 {
+	int ret1 = 0;
+	int ret2 = 0;
+
 	printf("Test_d => 09\n");
 	printf("orig : %hhd\n", (char)-25);
 	ft_printf("cust : %hhd\n", (char)-25);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void	test_d_10(void)
+{
+	size_t a = INT_MAX;
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("Test_d => 10\n");
+	ret1 = printf("orig : %zd\n", a);
+	ret2 = ft_printf("cust : %zd\n", a);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void	test_d_11(void)
+{
+	size_t a = LONG_MAX;
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("Test_d => 11\n");
+	ret1 = printf("orig : %zd\n", a);
+	ret2 = ft_printf("cust : %zd\n", a);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
 	printf("\n");
 }
 
@@ -868,6 +922,8 @@ void 	test_d(void)
 	test_d_06();
 	test_d_08();
 	test_d_09();
+	test_d_10();
+	test_d_11();
 	test_d_12();
 	test_d_13();
 	test_d_14();
