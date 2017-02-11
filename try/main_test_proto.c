@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/11 14:04:37 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/11 14:50:44 by lchety           ###   ########.fr       */
+/*   Created: 2017/02/11 16:53:56 by lchety            #+#    #+#             */
+/*   Updated: 2017/02/11 17:04:27 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 #include <locale.h>
 #include <stdint.h>
 #include <wchar.h>
-
 
 //======================================================> conv_s
 
@@ -92,6 +91,7 @@ void	test_s_05(void)
 	printf("\n");
 	printf("ret_orig : %d\n", ret1);
 	printf("ret_cust : %d\n", ret2);
+	printf("\n");
 }
 
 void	test_s_06(void)
@@ -136,22 +136,23 @@ void	test_s_08(void)
 	printf("\n");
 }
 
-void	test_d_10(void)
+void	test_s_09(void)
 {
-	size_t a = INT_MAX;
 	int ret1 = 0;
 	int ret2 = 0;
 
-	printf("Test_d => 10\n");
-	ret1 = printf("orig : %zd\n", a);
-	ret2 = ft_printf("cust : %zd\n", a);
+	printf("Test_s => 09\n");
+	printf("orig : %.*s\n", 5, "poney truite");
+	ft_printf("cust : %.*s\n", 5, "poney truite");
 	printf("\n");
 	printf("ret_orig : %d\n", ret1);
 	printf("ret_cust : %d\n", ret2);
 	printf("\n");
 }
 
-void	test_d_11(void)
+
+
+void	test_s_11(void)
 {
 	size_t a = LONG_MAX;
 	int ret1 = 0;
@@ -163,14 +164,6 @@ void	test_d_11(void)
 	printf("\n");
 	printf("ret_orig : %d\n", ret1);
 	printf("ret_cust : %d\n", ret2);
-	printf("\n");
-}
-
-void	test_s_09(void)
-{
-	printf("Test_s => 09\n");
-	printf("orig : %.*s\n", 5, "poney truite");
-	ft_printf("cust : %.*s\n", 5, "poney truite");
 	printf("\n");
 }
 
@@ -361,6 +354,21 @@ void	test_d_09(void)
 	printf("\n");
 }
 
+void	test_d_10(void)
+{
+	size_t a = INT_MAX;
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("Test_s => 10\n");
+	ret1 = printf("orig : %zd\n", a);
+	ret2 = ft_printf("cust : %zd\n", a);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
 void	test_d_12(void)
 {
 	short a = SHRT_MAX;
@@ -375,6 +383,7 @@ void	test_d_12(void)
 	printf("ret_cust : %d\n", ret2);
 	printf("\n");
 }
+
 
 void	test_d_13(void)
 {
@@ -1500,7 +1509,7 @@ void 	test_d(void)
 	test_d_08();
 	test_d_09();
 	test_d_10();
-	test_d_11();
+	//test_d_11();
 	test_d_12();
 	test_d_13();
 	test_d_14();
