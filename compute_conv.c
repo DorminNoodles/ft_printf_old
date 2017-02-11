@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 17:09:10 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/11 17:21:52 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/11 20:46:53 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,29 +75,32 @@ void	compute_conv_ls (t_print *dna, va_list ap)
 
 void	compute_conv_d(t_print *dna, va_list ap)
 {
-	int nb;
-	intmax_t ret;
+	intmax_t nb;
 
-	ret = 0;
-	nb = 0;
-	ret = exec_cast_signed(dna, ap);
+	nb = exec_cast_signed(dna, ap);
 	// printf("ret == %jd", ret);
 	// printf("%ld\n", ret);
-	if (ret < 0)
+	if (nb < 0)
 	{
-		ret = ret * (-1);
+		nb = nb * (-1);
 		dna->pre_neg = TRUE;
 	}
-	//printf("%ld\n", ret);
-	dna->out = ft_itoa_printf(ret, 10);
+	//printf("%ld\n", nb);
+	dna->out = ft_itoa_printf(nb, 10);
 	// printf("%s\n", dna->out);
 	dna->base_size = ft_strlen(dna->out);
-	if (!dna->pitch)
-		compute_width(dna);
-	else
+	if (dna->pitch)
+	{
 		compute_pitch(dna, ap, FALSE);
+		ft_putstr(prefix(dna));
+
+	}
+	else
+	{
+		compute_width(dna);
+
+	}
 	dna->ret_nb += ft_strlen(dna->out);
-	ft_putstr(prefix(dna));
 	ft_putstr_buff(dna->out);
 	free(dna->out);
 }
