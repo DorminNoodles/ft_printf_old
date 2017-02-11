@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/08 14:01:18 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/09 11:26:15 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/10 11:20:07 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,15 +78,14 @@ void	parsing_width(const char *format, t_print *dna, char *end)
 		{
 			nb = nb * 10;
 			nb += *format - '0';
+			save = nb;
 		}
 		else
-		{
-			save = nb;
 			nb = 0;
-		}
 		format++;
 	}
 	dna->width = save;
+	// printf("TEST02 == %d\n", dna->width);
 }
 
 int		parsing_dispatch(const char *format, t_print *dna)

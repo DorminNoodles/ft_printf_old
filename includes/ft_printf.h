@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/07 13:58:10 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/09 22:16:05 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/10 22:58:22 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct s_print
 	char *end;
 	char *conv_type;
 	char *out;
+	char *prefix;
 
 	bool conv;
 	bool conv_d;
@@ -59,6 +60,7 @@ typedef struct s_print
 	bool flag_0;
 	bool htag;
 	bool justify;
+	bool pre_neg;
 	int base_size;
 	int width;
 
@@ -94,14 +96,16 @@ void		parsing_cast(const char *format, t_print *dna, char *end);
 void		parsing_hh(const char *format, t_print *dna, char *end);
 intmax_t	exec_cast_signed(t_print *dna, va_list ap);
 intmax_t	exec_cast_unsigned(t_print *dna, va_list ap);
-char		*ft_itoa_printf(intmax_t n, int base);
+char		*ft_itoa_printf(uintmax_t n, int base);
 //wchar_t		utf8_enc(wchar_t c);
 size_t		count_unicode(wchar_t *str);
 char		*ft_itoa_signed(long long n);
 intmax_t	cast_ld(t_print *dna, va_list ap);
 void		ft_putstr_buff(char const *s);
-void 		compute_pitch(t_print *dna, bool cut);
+void		compute_pitch(t_print *dna, va_list ap, bool cut);
 void 		compute_pitch_nb(t_print *dna, bool cut);
+void		compute_pitch_star(t_print *dna, va_list ap, bool cut);
+char		*prefix(t_print *dna);
 
 //char *find_end(const char *format);
 #endif

@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/22 12:01:22 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/01 18:50:02 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/10 11:42:41 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	ft_strrev(char *str)
 	}
 }
 
-char	*ft_itoa_printf(intmax_t n, int base)
+char	*ft_itoa_printf(uintmax_t n, int base)
 {
 	char *str;
 	int i;
@@ -45,7 +45,6 @@ char	*ft_itoa_printf(intmax_t n, int base)
 	str = (char*)ft_memalloc(sizeof(char) * 300);
 	if (n == 0)
 		return (str[0] = '0', str);
-
 	while (n > 0)
 	{
 		if (n % base > 9)
