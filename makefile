@@ -10,7 +10,9 @@ SRC =	ft_printf.c										\
 		reset_print.c									\
 		unicode.c										\
 		ft_itoa_signed.c								\
-		ft_putstr_buff.c
+		ft_putstr_buff.c								\
+		pitch.c											\
+		prefix.c
 
 LIBFT_OBJ =	ft_atoi.o		\
 			ft_bzero.o		\
@@ -84,7 +86,7 @@ all : $(NAME)
 
 $(NAME) :
 	make -C libft/
-	$(CC) -c $(FLAGS) $(SRC) -I includes -I libft/includes
+	$(CC) -c $(SRC) -I includes -I libft/includes
 	ar rc $(NAME) $(OBJ) $(LIBFT_OBJ_PATH) libft/libft.a
 	$(CC) $(FLAGS) $(DEBUG_SRC) $(SRC) -I libft/includes -I includes/ libft/libft.a -o build/a.out
 

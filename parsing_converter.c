@@ -6,41 +6,41 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/10 13:37:44 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/07 23:46:11 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/10 14:01:20 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "ft_printf.h"
 
-static void conv_switch(char c, t_print *conv_info)
+static void conv_switch(char c, t_print *dna)
 {
-	conv_info->conv = TRUE;
+	dna->conv = TRUE;
 	if (c == 'd')
-		conv_info->conv_d = TRUE;
+		dna->conv_d = TRUE;
 	if (c == 'D')
-		conv_info->conv_ld = TRUE;
+		dna->conv_ld = TRUE;
 	if (c == 'i')
-		conv_info->conv_i = TRUE;
-	if (c == 'o')
-		conv_info->conv_o = TRUE;
+		dna->conv_i = TRUE;
+	if (c == 'o' || c == 'O')
+		dna->conv_o = TRUE;
 	if (c == 'c')
-		conv_info->conv_c = TRUE;
+		dna->conv_c = TRUE;
 	if (c == 'C')
-		conv_info->conv_lc = TRUE;
+		dna->conv_lc = TRUE;
 	if (c == 's')
-		conv_info->conv_s = TRUE;
+		dna->conv_s = TRUE;
 	if (c == 'S')
-		conv_info->conv_ls = TRUE;
+		dna->conv_ls = TRUE;
 	if (c == 'x')
-		conv_info->conv_x = TRUE;
+		dna->conv_x = TRUE;
 	if (c == 'X')
-		conv_info->conv_lx = TRUE;
+		dna->conv_lx = TRUE;
 	if (c == 'p')
-		conv_info->conv_p = TRUE;
+		dna->conv_p = TRUE;
 }
 
-char	*parsing_converter(const char *format, t_print *conv_info)
+char	*parsing_converter(const char *format, t_print *dna)
 {
 	char *ret;
 
@@ -51,7 +51,7 @@ char	*parsing_converter(const char *format, t_print *conv_info)
 		{
 			if ((ret = ft_strchr(STRING_CONV, *format)))
 			{
-				conv_switch(*ret, conv_info);
+				conv_switch(*ret, dna);
 				return ((char *)format + 1);
 			}
 			format++;

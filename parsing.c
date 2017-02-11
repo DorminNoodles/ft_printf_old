@@ -6,14 +6,14 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/08 14:01:18 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/08 09:01:49 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/10 11:20:07 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "ft_printf.h"
 
-int		parsing_format(const char *format, t_print *conv_info)
+int		parsing_format(const char *format, t_print *dna)
 {
 	int i;
 
@@ -22,21 +22,21 @@ int		parsing_format(const char *format, t_print *conv_info)
 	{
 		if (*(format + i) == '%')
 		{
-			reset_print(conv_info);
-			i += parsing_dispatch(format + i, conv_info);
-			if (*(format + i) == '%' && !conv_info->conv)
+			reset_print(dna);
+			i += parsing_dispatch(format + i, dna);
+			if (*(format + i) == '%' && !dna->conv)
 			{
 				ft_putchar('%');
-				conv_info->ret_nb++;
+				dna->ret_nb++;
 				i++;
 			}
-			if (conv_info->conv)
+			if (dna->conv)
 				return (i);
 		}
 		else
 		{
 			ft_putchar(*(format + i));
-			conv_info->ret_nb++;
+			dna->ret_nb++;
 			i++;
 		}
 	}
@@ -52,20 +52,20 @@ char	*parsing_end(const char *format)
 	return((char *)format);
 }
 
-void	parsing_0(const char *format, t_print *conv_info, char *end)
+void	parsing_0(const char *format, t_print *dna, char *end)
 {
 	while (format < end)
 	{
 		if (*format == '0')
 		{
 			if(format - 1 && !ft_isdigit(*(format - 1)))
-				conv_info->flag_0 = TRUE;
+				dna->flag_0 = TRUE;
 		}
 		format++;
 	}
 }
 
-void	parsing_width(const char *format, t_print *conv_info, char *end)
+void	parsing_width(const char *format, t_print *dna, char *end)
 {
 	int nb;
 	int save;
@@ -78,33 +78,32 @@ void	parsing_width(const char *format, t_print *conv_info, char *end)
 		{
 			nb = nb * 10;
 			nb += *format - '0';
+			save = nb;
 		}
 		else
-		{
-			save = nb;
 			nb = 0;
-		}
 		format++;
 	}
-	conv_info->width = save;
+	dna->width = save;
+	// printf("TEST02 == %d\n", dna->width);
 }
 
-int		parsing_dispatch(const char *format, t_print *conv_info)
+int		parsing_dispatch(const char *format, t_print *dna)
 {
 	char *end;
 
 	end = NULL;
-	if(!(end = parsing_converter(format + 1, conv_info)))
+	if(!(end = parsing_converter(format + 1, dna)))
 	{
 		return (1);
 	}
 	//printf("test\n");
-	parsing_0(format, conv_info, end);
-	parsing_width(format, conv_info, end);
-	parsing_htag(format, conv_info, end);
-	parsing_justify(format, conv_info, end);
-	parsing_pitch(format, conv_info, end);
-	parsing_cast(format, conv_info, end);
+	parsing_0(format, dna, end);
+	parsing_width(format, dna, end);
+	parsing_htag(format, dna, end);
+	parsing_justify(format, dna, end);
+	parsing_pitch(format, dna, end);
+	parsing_cast(format, dna, end);
 
 	// else
 		// printf("parsing conv : %c\n", end);
@@ -118,77 +117,79 @@ int		parsing_dispatch(const char *format, t_print *conv_info)
 	return (end - format);
 }
 
-void	parsing_htag(const char	*format, t_print *conv_info, char *end)
+void	parsing_htag(const char	*format, t_print *dna, char *end)
 {
 	while (format < end)
 	{
 		if (*format == '#')
-			conv_info->htag = TRUE;
+			dna->htag = TRUE;
 		format++;
 	}
 }
 
-void	parsing_justify(const char *format, t_print *conv_info, char *end)
+void	parsing_justify(const char *format, t_print *dna, char *end)
 {
 	while (format < end)
 	{
 		if (*format == '-')
 		{
-			conv_info->justify = TRUE;
-			conv_info->flag_0 = FALSE;
+			dna->justify = TRUE;
+			dna->flag_0 = FALSE;
 		}
 		format++;
 	}
 }
 
-void	pitch_nb(const char *format, t_print *conv_info, char *end)
+void	pitch_nb(const char *format, t_print *dna, char *end)
 {
 	int i;
 	//pitch_nb .3
-	conv_info->pitch_nb = 0;
+	dna->pitch_nb = 0;
 	while(format < end)
 	{
 		i = 1;
 		if(*format == '.')
 		{
-			conv_info->pitch_nb = 0;
+			dna->pitch = TRUE;
+			dna->width = 0;
+			dna->pitch_nb = 0;
 			while (*(format + i) >= '0' && *(format + i) <= '9')
 			{
-				conv_info->pitch_nb = conv_info->pitch_nb * 10;
-				conv_info->pitch_nb += *(format + i) - '0';
+				dna->pitch_nb = dna->pitch_nb * 10;
+				dna->pitch_nb += *(format + i) - '0';
 				i++;
 			}
 		}
 		format++;
 	}
-	//printf("test pitch_nb %d\n", conv_info->pitch_nb);
+	//printf("test pitch_nb %d\n", dna->pitch_nb);
 }
 
-void	pitch_star(const char *format, t_print *conv_info, char *end)
+void	pitch_star(const char *format, t_print *dna, char *end)
 {
 	//pitch .*
-	conv_info->pitch_star = 0;
+	dna->pitch_star = 0;
 	while (format < end)
 	{
 		if(*format == '*')
-			conv_info->pitch_star++;
+			dna->pitch_star++;
 		format ++;
 	}
-	//printf("pitch_star = %d\n", conv_info->pitch_star);
+	//printf("pitch_star = %d\n", dna->pitch_star);
 }
 
 /*
-void	pitch_dollar(const char *format, t_print *conv_info, char *end)
+void	pitch_dollar(const char *format, t_print *dna, char *end)
 {
 	//pitch *5$
 
 }
 */
-void	parsing_pitch(const char *format, t_print *conv_info, char *end)
+void	parsing_pitch(const char *format, t_print *dna, char *end)
 {
-	pitch_nb(format, conv_info, end);
-	pitch_star(format, conv_info, end);
-	//pitch_dollar(format, conv_info, end);
+	pitch_nb(format, dna, end);
+	pitch_star(format, dna, end);
+	//pitch_dollar(format, dna, end);
 }
 
 
