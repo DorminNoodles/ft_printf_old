@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/10 17:04:19 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/10 23:16:48 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/11 12:41:54 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,15 +82,15 @@ void	compute_conv_d(t_print *dna, va_list ap)
 	nb = 0;
 	ret = exec_cast_signed(dna, ap);
 	// printf("ret == %jd", ret);
-	printf("%ld\n", ret);
+	// printf("%ld\n", ret);
 	if (ret < 0)
 	{
 		ret = ret * (-1);
 		dna->pre_neg = TRUE;
 	}
-	printf("%ld\n", ret);
-	dna->out = ft_itoa_signed(ret);
-	printf("%s\n", dna->out);
+	//printf("%ld\n", ret);
+	dna->out = ft_itoa_printf(ret, 10);
+	// printf("%s\n", dna->out);
 	dna->base_size = ft_strlen(dna->out);
 	if (!dna->pitch)
 		compute_width(dna);

@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/08 13:33:41 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/10 22:40:02 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/11 12:50:38 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -1364,9 +1364,39 @@ void	test_lx_01(void)
 	int ret1 = 0;
 	int ret2 = 0;
 
-	printf("Test_d => 02\n");
+	printf("Test_d => 01\n");
 	ret1 = printf("orig : %x\n", INT_MAX);
 	ret2 = ft_printf("cust : %x\n", INT_MAX);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void	test_lx_02(void)
+{
+	int a = INT_MIN;
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("Test_d => 02\n");
+	ret1 = printf("orig : %x\n", a);
+	ret2 = ft_printf("cust : %x\n", a);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void	test_lx_03(void)
+{
+	short a = SHRT_MAX;
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("Test_d => 03\n");
+	ret1 = printf("orig : %hx\n", a);
+	ret2 = ft_printf("cust : %hx\n", a);
 	printf("\n");
 	printf("ret_orig : %d\n", ret1);
 	printf("ret_cust : %d\n", ret2);
@@ -1463,6 +1493,13 @@ void 	test_x(void)
 	test_x_21();
 }
 
+void test_lx(void)
+{
+	test_lx_01();
+	test_lx_02();
+	test_lx_03();
+}
+
 void 	test_i(void)
 {
 	test_i_01();
@@ -1519,11 +1556,11 @@ int main(void)
 
 	//conv_d
 	printf("=======> Conv_s <=======\n");
-	test_s();
+	//test_s();
 
 	//Start conv_ls
 	printf("=======> Conv_ls <=======\n");
-	test_ls();
+	//test_ls();
 
 	printf("=======> Conv_d <=======\n");
 	test_d();
@@ -1542,6 +1579,9 @@ int main(void)
 
 	printf("=======> Conv_x <=======\n");
 	test_x();
+
+	printf("=======> Conv_lx <=======\n");
+	test_lx();
 
 	//Start Conv_s
 
