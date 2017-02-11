@@ -5,34 +5,22 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-<<<<<<< HEAD
-/*   Created: 2017/02/11 14:09:55 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/11 17:00:18 by lchety           ###   ########.fr       */
-=======
-/*   Created: 2017/01/17 11:52:46 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/08 18:49:41 by lchety           ###   ########.fr       */
->>>>>>> conv_X
+/*   Created: 2017/02/11 17:11:21 by lchety            #+#    #+#             */
+/*   Updated: 2017/02/11 17:13:45 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-	#include "ft_printf.h"
-#include <stdio.h>
+#include "ft_printf.h"
 
 intmax_t	cast_default(t_print *dna, va_list ap)
 {
 	// printf("cast default\n");
 	if (dna->conv_d)
 		return ((intmax_t)va_arg(ap, int));
-<<<<<<< HEAD
-	if (dna->conv_x)
-		return ((intmax_t)va_arg(ap, unsigned int));
-	if (dna->conv_ld)
-=======
-	if (conv_info->conv_x || conv_info->conv_lx)
+	if (dna->conv_x || dna->conv_lx)
 		return ((intmax_t)va_arg(ap, unsigned int));
 		//printf("HERE\n");
-	if (conv_info->conv_ld)
->>>>>>> conv_X
+	if (dna->conv_ld)
 		return ((intmax_t)va_arg(ap, unsigned int));
 
 	return (va_arg(ap, int));
@@ -55,9 +43,9 @@ intmax_t	exec_cast_signed(t_print *dna, va_list ap)
 		return((intmax_t)(long long)va_arg(ap, uintmax_t));
 	if (dna->cast_z)
 		return((intmax_t)(long long)va_arg(ap, uintmax_t));
-	// if (conv_info->cast_ll)
+	// if (dna->cast_ll)
 	// 	ret = (intmax_t)(long long int)ret;
-	// if (conv_info->cast_j)
+	// if (dna->cast_j)
 	// 	ret = (intmax_t)ret;
 	return (cast_default(dna, ap));
 }
@@ -76,13 +64,9 @@ intmax_t	exec_cast_unsigned(t_print *dna, va_list ap)
 		return((intmax_t)(unsigned short)va_arg(ap, uintmax_t));
 	if (dna->cast_ll)
 		return((intmax_t)(unsigned long long)va_arg(ap, intmax_t));
-<<<<<<< HEAD
-	if (dna->cast_j)
-=======
-	if (conv_info->cast_l)
+	if (dna->cast_l)
 			return((intmax_t)(unsigned long long)va_arg(ap, intmax_t));
-	if (conv_info->cast_j)
->>>>>>> conv_X
+	if (dna->cast_j)
 		return((intmax_t)(uintmax_t)va_arg(ap, intmax_t));
 	// if (dna->cast_l)
 	// 	ret = (intmax_t)(long int)ret;
