@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 14:04:37 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/11 14:08:05 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/11 14:50:44 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -1411,9 +1411,9 @@ void	test_lx_01(void)
 	int ret1 = 0;
 	int ret2 = 0;
 
-	printf("Test_d => 01\n");
-	ret1 = printf("orig : %x\n", INT_MAX);
-	ret2 = ft_printf("cust : %x\n", INT_MAX);
+	printf("Test_X => 01\n");
+	ret1 = printf("orig : %X\n", INT_MAX);
+	ret2 = ft_printf("cust : %X\n", INT_MAX);
 	printf("\n");
 	printf("ret_orig : %d\n", ret1);
 	printf("ret_cust : %d\n", ret2);
@@ -1426,9 +1426,9 @@ void	test_lx_02(void)
 	int ret1 = 0;
 	int ret2 = 0;
 
-	printf("Test_d => 02\n");
-	ret1 = printf("orig : %x\n", a);
-	ret2 = ft_printf("cust : %x\n", a);
+	printf("Test_X => 02\n");
+	ret1 = printf("orig : %X\n", a);
+	ret2 = ft_printf("cust : %X\n", a);
 	printf("\n");
 	printf("ret_orig : %d\n", ret1);
 	printf("ret_cust : %d\n", ret2);
@@ -1441,9 +1441,24 @@ void	test_lx_03(void)
 	int ret1 = 0;
 	int ret2 = 0;
 
-	printf("Test_d => 03\n");
-	ret1 = printf("orig : %hx\n", a);
-	ret2 = ft_printf("cust : %hx\n", a);
+	printf("Test_X => 03\n");
+	ret1 = printf("orig : %hX\n", a);
+	ret2 = ft_printf("cust : %hX\n", a);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void	test_lx_04(void)
+{
+	short a = SHRT_MAX;
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("Test_X => 04\n");
+	ret1 = printf("orig : %hX\n", a);
+	ret2 = ft_printf("cust : %hX\n", a);
 	printf("\n");
 	printf("ret_orig : %d\n", ret1);
 	printf("ret_cust : %d\n", ret2);
@@ -1581,7 +1596,7 @@ void 	test_lo(void)
 	test_lo_02();
 	test_lo_03();
 	test_lo_04();
-	// test_lo_05();
+	// test_o_05();
 	// test_o_04();
 	// test_o_05();
 	// test_o_06();
@@ -1596,7 +1611,6 @@ void 	mutant_test(void)
 	mutant_02();
 	mutant_03();
 	mutant_04();
-
 }
 
 int main(void)
@@ -1609,7 +1623,7 @@ int main(void)
 
 	//Start conv_ls
 	printf("=======> Conv_ls <=======\n");
-	//test_ls();
+	test_ls();
 
 	printf("=======> Conv_d <=======\n");
 	test_d();

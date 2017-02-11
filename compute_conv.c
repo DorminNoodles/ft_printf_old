@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 14:04:15 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/11 14:08:46 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/11 16:50:08 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -196,10 +196,11 @@ void	compute_conv_x(t_print *dna, va_list ap)
 	dna->out = ft_itoa_printf(ret, 16);
 	if (dna->conv_lx)
 	{
-		// printf("conv_lx\n");
 		while (dna->out[i])
-		dna->out[i] = ft_toupper(dna->out[i]);
-		i++;
+		{
+			dna->out[i] = ft_toupper(dna->out[i]);
+			i++;
+		}
 	}
 	dna->base_size = ft_strlen(dna->out);
 	// printf("1 %s\n", dna->out);
@@ -220,7 +221,7 @@ void	conv_switch(t_print *dna, va_list ap)
 		compute_conv_ld(dna, ap);
 	if (dna->conv_s)
 		compute_conv_s(dna, ap);
-	if (dna->conv_x)
+	if (dna->conv_x || dna->conv_lx)
 		compute_conv_x(dna, ap);
 	if (dna->conv_lc)
 		compute_conv_lc(ap);

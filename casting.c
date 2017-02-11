@@ -5,16 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/17 11:52:46 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/11 14:05:54 by lchety           ###   ########.fr       */
+/*   Created: 2017/02/11 14:09:55 by lchety            #+#    #+#             */
+/*   Updated: 2017/02/11 16:44:51 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
->>>>>>> pitch
-/*                                                                            */
-/* ************************************************************************** */
-
-#include "ft_printf.h"
+	#include "ft_printf.h"
 #include <stdio.h>
 
 intmax_t	cast_default(t_print *dna, va_list ap)
@@ -45,7 +41,7 @@ intmax_t	exec_cast_signed(t_print *dna, va_list ap)
 		return((intmax_t)(long long)va_arg(ap, intmax_t));
 	if (dna->cast_l)
 		return((intmax_t)(long long)va_arg(ap, uintmax_t));
-	if (conv_info->cast_z)
+	if (dna->cast_z)
 		return((intmax_t)(long long)va_arg(ap, uintmax_t));
 	// if (conv_info->cast_ll)
 	// 	ret = (intmax_t)(long long int)ret;
