@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/10 17:04:19 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/11 12:33:43 by lchety           ###   ########.fr       */
+/*   Created: 2017/02/11 19:43:59 by lchety            #+#    #+#             */
+/*   Updated: 2017/02/11 19:44:02 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,15 +82,15 @@ void	compute_conv_d(t_print *dna, va_list ap)
 	nb = 0;
 	ret = exec_cast_signed(dna, ap);
 	// printf("ret == %jd", ret);
-	printf("%ld\n", ret);
+	// printf("%ld\n", ret);
 	if (ret < 0)
 	{
 		ret = ret * (-1);
 		dna->pre_neg = TRUE;
 	}
-	printf("%ld\n", ret);
-	dna->out = ft_itoa_signed(ret);
-	printf("%s\n", dna->out);
+	//printf("%ld\n", ret);
+	dna->out = ft_itoa_printf(ret, 10);
+	// printf("%s\n", dna->out);
 	dna->base_size = ft_strlen(dna->out);
 	if (!dna->pitch)
 		compute_width(dna);
@@ -109,6 +109,7 @@ void	compute_conv_ld(t_print *dna, va_list ap)
 
 	ret = 0;
 	nb = 0;
+
 	ret = cast_ld(dna, ap);
 	if (ret < 0)
 	{
@@ -196,10 +197,11 @@ void	compute_conv_x(t_print *dna, va_list ap)
 	dna->out = ft_itoa_printf(ret, 16);
 	if (dna->conv_lx)
 	{
-		// printf("conv_lx\n");
 		while (dna->out[i])
-		dna->out[i] = ft_toupper(dna->out[i]);
-		i++;
+		{
+			dna->out[i] = ft_toupper(dna->out[i]);
+			i++;
+		}
 	}
 	dna->base_size = ft_strlen(dna->out);
 	// printf("1 %s\n", dna->out);
@@ -220,7 +222,7 @@ void	conv_switch(t_print *dna, va_list ap)
 		compute_conv_ld(dna, ap);
 	if (dna->conv_s)
 		compute_conv_s(dna, ap);
-	if (dna->conv_x)
+	if (dna->conv_x || dna->conv_lx)
 		compute_conv_x(dna, ap);
 	if (dna->conv_lc)
 		compute_conv_lc(ap);

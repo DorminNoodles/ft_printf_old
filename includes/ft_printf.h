@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/07 13:58:10 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/11 12:33:41 by lchety           ###   ########.fr       */
+/*   Created: 2017/02/11 19:44:12 by lchety            #+#    #+#             */
+/*   Updated: 2017/02/11 19:44:15 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ typedef struct s_print
 	int pitch_star;
 
 	size_t ret_nb;
-
 }			t_print;
 
 

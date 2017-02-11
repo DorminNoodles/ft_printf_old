@@ -5,21 +5,21 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/17 11:52:46 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/09 09:49:15 by lchety           ###   ########.fr       */
+/*   Created: 2017/02/11 17:11:21 by lchety            #+#    #+#             */
+/*   Updated: 2017/02/11 17:13:45 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
 intmax_t	cast_default(t_print *dna, va_list ap)
 {
 	// printf("cast default\n");
 	if (dna->conv_d)
 		return ((intmax_t)va_arg(ap, int));
-	if (dna->conv_x)
+	if (dna->conv_x || dna->conv_lx)
 		return ((intmax_t)va_arg(ap, unsigned int));
+		//printf("HERE\n");
 	if (dna->conv_ld)
 		return ((intmax_t)va_arg(ap, unsigned int));
 
@@ -41,10 +41,10 @@ intmax_t	exec_cast_signed(t_print *dna, va_list ap)
 		return((intmax_t)(long long)va_arg(ap, intmax_t));
 	if (dna->cast_l)
 		return((intmax_t)(long long)va_arg(ap, uintmax_t));
+	if (dna->cast_z)
+		return((intmax_t)(long long)va_arg(ap, uintmax_t));
 	// if (dna->cast_ll)
 	// 	ret = (intmax_t)(long long int)ret;
-	// if (dna->cast_z)
-	// 	ret = (intmax_t)(size_t)ret;
 	// if (dna->cast_j)
 	// 	ret = (intmax_t)ret;
 	return (cast_default(dna, ap));
@@ -64,6 +64,8 @@ intmax_t	exec_cast_unsigned(t_print *dna, va_list ap)
 		return((intmax_t)(unsigned short)va_arg(ap, uintmax_t));
 	if (dna->cast_ll)
 		return((intmax_t)(unsigned long long)va_arg(ap, intmax_t));
+	if (dna->cast_l)
+			return((intmax_t)(unsigned long long)va_arg(ap, intmax_t));
 	if (dna->cast_j)
 		return((intmax_t)(uintmax_t)va_arg(ap, intmax_t));
 	// if (dna->cast_l)
