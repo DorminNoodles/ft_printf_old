@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 16:53:56 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/11 17:15:39 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/11 17:26:42 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -1025,6 +1025,7 @@ void 	test_o_09(void)
 	printf("\n");
 }
 
+
 //======================================================> conv_O
 void 	test_lo_01(void)
 {
@@ -1292,6 +1293,67 @@ void	test_x_21(void)
 	printf("\n");
 }
 
+//=====================================================> conv_X
+
+void	test_lx_01(void)
+{
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("Test_X => 01\n");
+	ret1 = printf("orig : %X\n", INT_MAX);
+	ret2 = ft_printf("cust : %X\n", INT_MAX);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void	test_lx_02(void)
+{
+	int a = INT_MIN;
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("Test_X => 02\n");
+	ret1 = printf("orig : %X\n", a);
+	ret2 = ft_printf("cust : %X\n", a);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void	test_lx_03(void)
+{
+	short a = SHRT_MAX;
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("Test_X => 03\n");
+	ret1 = printf("orig : %hX\n", a);
+	ret2 = ft_printf("cust : %hX\n", a);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void	test_lx_04(void)
+{
+	unsigned int a = UINT_MAX;
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("Test_X => 04\n");
+	ret1 = printf("orig : %#X\n", a);
+	ret2 = ft_printf("cust : %#X\n", a);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
 //=====================================================> conv_C
 
 void	test_lc_01(void)
@@ -1412,68 +1474,6 @@ void 	mutant_04(void)
 }
 
 
-
-//=====================================================> conv_X
-
-void	test_lx_01(void)
-{
-	int ret1 = 0;
-	int ret2 = 0;
-
-	printf("Test_X => 01\n");
-	ret1 = printf("orig : %X\n", INT_MAX);
-	ret2 = ft_printf("cust : %X\n", INT_MAX);
-	printf("\n");
-	printf("ret_orig : %d\n", ret1);
-	printf("ret_cust : %d\n", ret2);
-	printf("\n");
-}
-
-void	test_lx_02(void)
-{
-	int a = INT_MIN;
-	int ret1 = 0;
-	int ret2 = 0;
-
-	printf("Test_X => 02\n");
-	ret1 = printf("orig : %X\n", a);
-	ret2 = ft_printf("cust : %X\n", a);
-	printf("\n");
-	printf("ret_orig : %d\n", ret1);
-	printf("ret_cust : %d\n", ret2);
-	printf("\n");
-}
-
-void	test_lx_03(void)
-{
-	short a = SHRT_MAX;
-	int ret1 = 0;
-	int ret2 = 0;
-
-	printf("Test_X => 03\n");
-	ret1 = printf("orig : %hX\n", a);
-	ret2 = ft_printf("cust : %hX\n", a);
-	printf("\n");
-	printf("ret_orig : %d\n", ret1);
-	printf("ret_cust : %d\n", ret2);
-	printf("\n");
-}
-
-void	test_lx_04(void)
-{
-	short a = SHRT_MAX;
-	int ret1 = 0;
-	int ret2 = 0;
-
-	printf("Test_X => 04\n");
-	ret1 = printf("orig : %hX\n", a);
-	ret2 = ft_printf("cust : %hX\n", a);
-	printf("\n");
-	printf("ret_orig : %d\n", ret1);
-	printf("ret_cust : %d\n", ret2);
-	printf("\n");
-}
-
 void	test_s(void)
 {
 	test_s_01();
@@ -1571,6 +1571,7 @@ void test_lx(void)
 	test_lx_01();
 	test_lx_02();
 	test_lx_03();
+	test_lx_04();
 }
 
 void 	test_i(void)
