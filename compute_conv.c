@@ -5,8 +5,13 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
+<<<<<<< HEAD
 /*   Created: 2017/02/11 14:04:15 by lchety            #+#    #+#             */
 /*   Updated: 2017/02/11 17:00:15 by lchety           ###   ########.fr       */
+=======
+/*   Created: 2017/02/02 15:19:38 by lchety            #+#    #+#             */
+/*   Updated: 2017/02/08 18:21:15 by lchety           ###   ########.fr       */
+>>>>>>> conv_X
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +114,7 @@ void	compute_conv_ld(t_print *dna, va_list ap)
 
 	ret = 0;
 	nb = 0;
+<<<<<<< HEAD
 	ret = cast_ld(dna, ap);
 	if (ret < 0)
 	{
@@ -127,6 +133,29 @@ void	compute_conv_ld(t_print *dna, va_list ap)
 	ft_putstr(prefix(dna));
 	ft_putstr_buff(dna->out);
 	free(dna->out);
+=======
+	i = 0;
+	ret = exec_cast_unsigned(conv_info, ap);
+	// printf("testwww %jX\n", ret);
+	conv_info->out = ft_itoa_printf(ret, 16);
+	//printf("TEST => %s\n", conv_info->out);
+	if (conv_info->conv_lx)
+	{
+		// printf("conv_lx\n");
+		while (conv_info->out[i])
+		{
+			conv_info->out[i] = ft_toupper(conv_info->out[i]);
+			i++;
+		}
+	}
+	conv_info->base_size = ft_strlen(conv_info->out);
+	compute_width(conv_info);
+	if (conv_info->htag && conv_info->conv_x)
+		compute_htag(conv_info);
+	conv_info->ret_nb += ft_strlen(conv_info->out);
+	ft_putstr_buff(conv_info->out);
+	free(conv_info->out);
+>>>>>>> conv_X
 }
 
 
@@ -213,6 +242,7 @@ void	compute_conv_x(t_print *dna, va_list ap)
 
 void	conv_switch(t_print *dna, va_list ap)
 {
+<<<<<<< HEAD
 	if (dna->conv_d || dna->conv_i)
 		compute_conv_d(dna, ap);
 	if (dna->conv_o)
@@ -224,6 +254,21 @@ void	conv_switch(t_print *dna, va_list ap)
 	if (dna->conv_x || dna->conv_lx)
 		compute_conv_x(dna, ap);
 	if (dna->conv_lc)
+=======
+	if (conv_info->conv_d || conv_info->conv_i)
+		compute_conv_d(conv_info, ap);
+	if (conv_info->conv_o)
+		compute_conv_o(conv_info, ap);
+	if (conv_info->conv_ld)
+		compute_conv_ld(conv_info, ap);
+	if (conv_info->conv_s)
+		compute_conv_s(conv_info, ap);
+	if (conv_info->conv_x)
+		compute_conv_x(conv_info, ap);
+	if (conv_info->conv_lx)
+		compute_conv_x(conv_info, ap);
+	if (conv_info->conv_lc)
+>>>>>>> conv_X
 		compute_conv_lc(ap);
 	if (dna->conv_ls)
 		compute_conv_ls(dna, ap);
