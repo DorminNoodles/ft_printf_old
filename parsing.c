@@ -6,14 +6,14 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/08 14:01:18 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/11 17:04:21 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/12 15:31:57 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "ft_printf.h"
 
-int		parsing_format(const char *format, t_print *dna)
+int		parsing_format(const char *format, t_print *dna, va_list ap)
 {
 	int i;
 
@@ -23,7 +23,7 @@ int		parsing_format(const char *format, t_print *dna)
 		if (*(format + i) == '%')
 		{
 			reset_print(dna);
-			i += parsing_dispatch(format + i, dna);
+			i += parsing_dispatch(format + i, dna, ap);
 			if (*(format + i) == '%' && !dna->conv)
 			{
 				ft_putchar('%');
@@ -88,7 +88,7 @@ void	parsing_width(const char *format, t_print *dna, char *end)
 	// printf("TEST02 == %d\n", dna->width);
 }
 
-int		parsing_dispatch(const char *format, t_print *dna)
+int		parsing_dispatch(const char *format, t_print *dna, va_list ap)
 {
 	char *end;
 
@@ -102,7 +102,7 @@ int		parsing_dispatch(const char *format, t_print *dna)
 	parsing_width(format, dna, end);
 	parsing_htag(format, dna, end);
 	parsing_justify(format, dna, end);
-	parsing_pitch(format, dna, end);
+	parsing_pitch(format, dna, end, ap);
 	parsing_cast(format, dna, end);
 
 	// else
@@ -185,10 +185,12 @@ void	pitch_dollar(const char *format, t_print *dna, char *end)
 
 }
 */
-void	parsing_pitch(const char *format, t_print *dna, char *end)
+void	parsing_pitch(const char *format, t_print *dna, char *end, va_list ap)
 {
 	pitch_nb(format, dna, end);
 	pitch_star(format, dna, end);
+	if (dna->pitch_star)
+		dna->pitch_nb = va_arg(ap, int);
 	//pitch_dollar(format, dna, end);
 }
 

@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 16:53:56 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/11 20:37:26 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/12 19:17:44 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -505,7 +505,7 @@ void	test_d_18(void)
 
 void	test_d_19(void)
 {
-	int a = 42;
+	int a = -42;
 	int ret1 = 0;
 	int ret2 = 0;
 
@@ -550,18 +550,102 @@ void	test_d_21(void)
 
 void	test_d_22(void)
 {
+	int a = -2525;
 	int ret1 = 0;
 	int ret2 = 0;
 
 	printf("Test_d => 22\n");
-	ret1 = printf("orig : %08d\n", -2525);
-	ret2 = ft_printf("cust : %08d\n", -2525);
-	ret1 = printf("orig : %05d\n", -2525);
-	ret2 = ft_printf("cust : %05d\n", -2525);
-	ret1 = printf("orig : %04d\n", -2525);
-	ret2 = ft_printf("cust : %04d\n", -2525);
-	ret1 = printf("orig : %8d\n", -2525);
-	ret2 = ft_printf("cust : %8d\n", -2525);
+	ret1 = printf("orig : %10.5d\n", a);
+	// ret1 = printf("orig : %10d\n", a);
+	ret2 = ft_printf("cust : %10.5d\n", a);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void	test_d_23(void)
+{
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("Test_d => 23\n");
+	ret1 = printf("orig : %.8d\n", 585);
+	ret2 = ft_printf("cust : %.8d\n", 585);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void	test_d_24(void)
+{
+	int a = -42;
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("Test_d => 24\n");
+	ret1 = printf("orig : %020.10d\n", a); //return stupid
+	ret2 = ft_printf("cust : %020.10d\n", a);
+	//width of 50, justify left precision of 12
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void	test_d_25(void)
+{
+	int a = -12345678;
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("Test_d => 25\n");
+	ret1 = printf("orig : %012.1d\n", a); //return stupid
+	ret2 = ft_printf("cust : %012.1d\n", a);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void	test_d_26(void)
+{
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("Test_d => 26\n");
+	ret1 = printf("orig : %-.8d\n", 585);
+	ret2 = ft_printf("cust : %-.8d\n", 585);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void	test_d_27(void)
+{
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("Test_d => 27\n");
+	ret1 = printf("orig : %-8d\n", 585);
+	ret2 = ft_printf("cust : %-8d\n", 585);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void	test_d_28(void)
+{
+	int a = -54321;
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("Test_d => 28\n");
+	ret1 = printf("orig : %2d\n", a);
+	ret2 = ft_printf("cust : %2d\n", a);
 	printf("\n");
 	printf("ret_orig : %d\n", ret1);
 	printf("ret_cust : %d\n", ret2);
@@ -1571,6 +1655,12 @@ void 	test_d(void)
 	test_d_20();
 	test_d_21();
 	test_d_22();
+	test_d_23();
+	test_d_24();
+	test_d_25();
+	test_d_26();
+	test_d_27();
+	test_d_28();
 }
 
 void 	test_ld(void)

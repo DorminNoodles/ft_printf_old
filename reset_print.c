@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/24 14:27:07 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/10 22:57:23 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/12 18:17:55 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ void	reset_print(t_print *dna)
 	dna->cast_ll = FALSE;
 	dna->cast_z = FALSE;
 	dna->cast_j = FALSE;
-	dna->pre_neg = FALSE;
+	dna->pre_min = FALSE;
+	dna->pre_pls = FALSE;
 	dna->pitch = FALSE;
 	dna->pitch_nb = 0;
 	dna->pitch_dollar = 0;

@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/09 09:38:43 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/11 14:15:33 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/12 18:51:17 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	compute_pitch_dollar(t_print *dna)
 
 }
 
-void	compute_pitch_star(t_print *dna, va_list ap, bool cut)
+void	compute_pitch_star(t_print *dna, bool cut)
 {
 
 
@@ -51,23 +51,16 @@ void	compute_pitch_star(t_print *dna, va_list ap, bool cut)
 	/* hum.... je dois recuperer le premier arg pour ma pitch_size mais apres je dois refaire casting.... du deuxieme
 
 	Alors autant prendre le second la premiere fois et le premier ici...
-
 	je sais que je peux clone la list...
-
 	bon je reprend out en ft_atoi to => pitch_nb
-
 	ensuite je cast le deuxieme dans cast
-
 	sinon je clone AP au tout debut et travail sur des copies, des clones et
 	si je trouve un * dans l une je l utilise comme pitch_size
-
-
-
 	*/
 
 }
 
-void	compute_pitch(t_print *dna, va_list ap, bool cut)
+char	*do_pitch(t_print *dna, bool cut)
 {
 	// printf("compute_pitch\n");
 	if (dna->pitch_nb)
@@ -75,5 +68,7 @@ void	compute_pitch(t_print *dna, va_list ap, bool cut)
 	else if (dna->pitch_dollar)
 		compute_pitch_dollar(dna);
 	else if (dna->pitch_star)
-		compute_pitch_star(dna, ap, cut);
+		compute_pitch_star(dna, cut);
+
+	return (dna->out);
 }
