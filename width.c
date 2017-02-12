@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/12 15:12:02 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/12 19:24:32 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/12 22:47:46 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,23 @@ char	*do_width(t_print *dna)
 		size += prefix_count(dna);
 	c = (dna->flag_0 && !dna->pitch) ? '0' : ' ';
 
+	if (!dna->pitch && dna->width && dna->width > size)
+	{
+
+	}
+
 	if (dna->width && (dna->width < (int)size))
 	{
 		//printf("hello\n");
-		printf("%s\n", dna->out);
-		printf("nb = %d", (int)sizeof(char) * (size));
-		dna->out = (char*)ft_memalloc(sizeof(char) * (size + 1));
-
-		printf("nb = %d", (int)prefix_count(dna));
-		ft_memcpy(dna->out + prefix_count(dna), tmp, dna->base_size);
-		printf("%s\n", dna->out);
-		dna->out = prefix(dna);
+		//
+		// printf("%s\n", dna->out);
+		// printf("nb = %d", (int)sizeof(char) * (size));
+		// dna->out = (char*)ft_memalloc(sizeof(char) * (size + 1));
+		//
+		// printf("nb = %d", (int)prefix_count(dna));
+		// ft_memcpy(dna->out + prefix_count(dna), tmp, dna->base_size);
+		// printf("%s\n", dna->out);
+		// dna->out = prefix(dna);
 		//si width est assez grand pour contenir dna->out (base_size) + les prefix alors on cree une string remplit de 0
 		//Mais si il y a eu pitch alors on a deja inclus les prefix....
 
@@ -73,5 +79,7 @@ char	*do_width(t_print *dna)
 		free(tmp);
 	}
 */
+
+
 	return (dna->out);
 }

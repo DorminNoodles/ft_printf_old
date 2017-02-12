@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 16:53:56 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/12 19:17:44 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/12 21:51:06 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -644,8 +644,8 @@ void	test_d_28(void)
 	int ret2 = 0;
 
 	printf("Test_d => 28\n");
-	ret1 = printf("orig : %2d\n", a);
-	ret2 = ft_printf("cust : %2d\n", a);
+	ret1 = printf("orig : %10d\n", a);
+	ret2 = ft_printf("cust : %10d\n", a);
 	printf("\n");
 	printf("ret_orig : %d\n", ret1);
 	printf("ret_cust : %d\n", ret2);
