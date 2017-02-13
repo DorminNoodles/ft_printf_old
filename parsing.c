@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/08 14:01:18 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/12 15:31:57 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/13 12:44:28 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ void	parsing_width(const char *format, t_print *dna, char *end)
 	save = 0;
 	nb = 0;
 	while (format < end)
+		format++;
+	while (format < end )
 	{
 		if (ft_isdigit(*format))
 		{
@@ -81,10 +83,15 @@ void	parsing_width(const char *format, t_print *dna, char *end)
 			save = nb;
 		}
 		else
+		{
+			return
+		}
 			nb = 0;
 		format++;
 	}
+	// printf("parsing => width == %d\n", save);
 	dna->width = save;
+	// printf("parsing => width == %d\n", dna->width);
 	// printf("TEST02 == %d\n", dna->width);
 }
 
@@ -105,6 +112,7 @@ int		parsing_dispatch(const char *format, t_print *dna, va_list ap)
 	parsing_pitch(format, dna, end, ap);
 	parsing_cast(format, dna, end);
 
+	//printf("parsing => width == %d\n", dna->width);
 	// else
 		// printf("parsing conv : %c\n", end);
 
@@ -144,14 +152,12 @@ void	pitch_nb(const char *format, t_print *dna, char *end)
 {
 	int i;
 	//pitch_nb .3
-	dna->pitch_nb = 0;
 	while(format < end)
 	{
 		i = 1;
 		if(*format == '.')
 		{
 			dna->pitch = TRUE;
-			dna->width = 0;
 			dna->pitch_nb = 0;
 			while (*(format + i) >= '0' && *(format + i) <= '9')
 			{

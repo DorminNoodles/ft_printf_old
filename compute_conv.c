@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 17:09:10 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/12 21:24:22 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/13 12:23:23 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,10 @@ void	compute_conv_d(t_print *dna, va_list ap)
 	if (dna->pitch)
 		d_prefix(dna);
 
-	do_width(dna);
+	// printf("test = %d\n", dna->width);
+	if(dna->width)
+		do_width(dna);
+
 	//dna->out = do_width(dna);
 	/*
 	if (dna->pitch)
@@ -108,7 +111,6 @@ void	compute_conv_d(t_print *dna, va_list ap)
 	*/
 	dna->ret_nb += ft_strlen(dna->out);
 	ft_putstr_buff(dna->out);
-	free(dna->out);
 }
 
 void	compute_conv_ld(t_print *dna, va_list ap)

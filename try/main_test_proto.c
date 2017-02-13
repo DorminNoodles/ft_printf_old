@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 16:53:56 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/12 21:51:06 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/13 12:37:56 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -585,7 +585,7 @@ void	test_d_24(void)
 	int ret2 = 0;
 
 	printf("Test_d => 24\n");
-	ret1 = printf("orig : %020.10d\n", a); //return stupid
+	ret1 = printf("orig : %020.10-25d\n", a); //return stupid
 	ret2 = ft_printf("cust : %020.10d\n", a);
 	//width of 50, justify left precision of 12
 	printf("\n");
@@ -2182,6 +2182,10 @@ int main(void)
 	printf("test = %#.10X\n", 3452);
 	printf("test = %#o\n", 5698);
 	printf("test = %#O\n", 5698);
+
+
+	printf("%  l%");
+	ft_printf("%%%");
 
 	//conclusion : le pitch est a 0 si on a pas defini de nombre
 
