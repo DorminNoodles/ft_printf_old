@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 16:53:56 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/13 12:37:56 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/13 15:46:37 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -585,7 +585,7 @@ void	test_d_24(void)
 	int ret2 = 0;
 
 	printf("Test_d => 24\n");
-	ret1 = printf("orig : %020.10-25d\n", a); //return stupid
+	ret1 = printf("orig : %020.10d\n", a); //return stupid
 	ret2 = ft_printf("cust : %020.10d\n", a);
 	//width of 50, justify left precision of 12
 	printf("\n");

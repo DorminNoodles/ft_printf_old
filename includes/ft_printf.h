@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 17:10:51 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/13 12:00:10 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/13 15:26:56 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,7 @@ void		compute_pitch_star(t_print *dna, bool cut);
 char		*prefix(t_print *dna);
 size_t		prefix_count(t_print *dna);
 char		*d_prefix(t_print *dna);
+char		*add_prefix(char **str, t_print *dna);
 
 
 //char *find_end(const char *format);

@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/09 09:38:43 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/13 11:00:02 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/13 15:53:37 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	compute_pitch_nb(t_print *dna, bool cut)
 		else
 			ft_memcpy(dna->out + (dna->pitch_nb - dna->base_size), tmp, dna->base_size);
 		free(tmp);
+		add_prefix(dna);
 	}
 }
 

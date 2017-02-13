@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/08 14:01:18 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/13 12:44:28 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/13 15:09:30 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,21 +72,17 @@ void	parsing_width(const char *format, t_print *dna, char *end)
 
 	save = 0;
 	nb = 0;
-	while (format < end)
-		format++;
-	while (format < end )
+	while (format < end && !ft_isdigit(*format))
 	{
-		if (ft_isdigit(*format))
-		{
-			nb = nb * 10;
-			nb += *format - '0';
-			save = nb;
-		}
-		else
-		{
-			return
-		}
-			nb = 0;
+		if (*format == '.')
+			return;
+		format++;
+	}
+	while (ft_isdigit(*format))
+	{
+		nb = nb * 10;
+		nb += *format - '0';
+		save = nb;
 		format++;
 	}
 	// printf("parsing => width == %d\n", save);
