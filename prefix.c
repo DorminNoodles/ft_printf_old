@@ -6,13 +6,29 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/10 18:50:34 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/13 15:51:04 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/14 12:04:35 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
 char	*prefix(t_print *dna)
+{
+	char	*tmp;
+	int		size;
+	int		start;
+
+	size = dna->base_size + prefix_count(dna);
+	tmp = dna->out;
+	dna->out = (char*)ft_memalloc(sizeof(char) * size);
+	if (!dna->out)
+		return (NULL);
+	ft_memcpy(dna->out + prefix_count(dna), tmp, dna->base_size);
+	ft_memcpy(dna->out, get_prefix(dna), prefix_count(dna));
+	return (dna->out);
+}
+
+char	*get_prefix(t_print *dna)
 {
 	if ((dna->conv_x || dna->conv_lx) && dna->htag)
 	{
@@ -62,23 +78,4 @@ char	*d_prefix(t_print *dna)
 		ft_memdel((void**)&tmp);
 	}
 	return (dna->out);
-}
-
-char	*add_prefix(char **str, t_print *dna)
-{
-	char *tmp;
-
-	// printf("test == %s\n", str);
-	tmp = *str;
-	// printf("Hey\n");
-	*str = (char*)ft_memalloc(sizeof(char) * (ft_strlen(dna->out) + prefix_count(dna) + 1));
-	if (!str)
-		return (NULL);
-	// printf("Hey 2\n");
-	// printf("prefix_count : %d\n", (int)prefix_count(dna));
-	ft_memcpy(*str + prefix_count(dna), tmp, ft_strlen(tmp));
-	// printf("test == %s\n", str+1);
-	ft_memcpy(*str, prefix(dna), prefix_count(dna));
-	free(tmp);
-	return (*str);
 }

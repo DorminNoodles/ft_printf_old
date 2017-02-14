@@ -6,11 +6,31 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/12 15:12:02 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/13 16:08:17 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/14 11:09:13 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+static char	*add_prefix(char **str, t_print *dna)
+{
+	char *tmp;
+
+	// printf("test == %s\n", str);
+	tmp = *str;
+	// printf("Hey\n");
+	*str = (char*)ft_memalloc(sizeof(char) * (ft_strlen(dna->out) + prefix_count(dna) + 1));
+	if (!str)
+		return (NULL);
+	// printf("Hey 2\n");
+	// printf("prefix_count : %d\n", (int)prefix_count(dna));
+	ft_memcpy(*str + prefix_count(dna), tmp, ft_strlen(tmp));
+	// printf("test == %s\n", str+1);
+	ft_memcpy(*str, prefix(dna), prefix_count(dna));
+	free(tmp);
+	return (*str);
+}
+
 
 char	*do_width(t_print *dna)
 {

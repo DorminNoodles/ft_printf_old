@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 16:53:56 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/13 15:46:37 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/14 12:11:15 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -651,6 +651,22 @@ void	test_d_28(void)
 	printf("ret_cust : %d\n", ret2);
 	printf("\n");
 }
+
+void	test_d_29(void)
+{
+	int a = -54321;
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("Test_d => 29\n");
+	ret1 = printf("orig : %.10d\n", a);
+	ret2 = ft_printf("cust : %.10d\n", a);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
 
 //======================================================> conv_D
 
@@ -1661,6 +1677,7 @@ void 	test_d(void)
 	test_d_26();
 	test_d_27();
 	test_d_28();
+	test_d_29();
 }
 
 void 	test_ld(void)
