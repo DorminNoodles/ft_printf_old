@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/10 18:50:34 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/14 15:27:32 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/14 23:14:57 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,10 @@ static char		*prefix_for_width(t_print *dna)
 {
 	char	*tmp;
 
+	printf("pouet\n");
 	if (dna->flag_0)
+		ft_memcpy(dna->out, get_prefix(dna), prefix_count(dna));
+	else
 		ft_memcpy(dna->out, get_prefix(dna), prefix_count(dna));
 
 

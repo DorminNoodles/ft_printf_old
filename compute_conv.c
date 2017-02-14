@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 17:09:10 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/14 15:41:48 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/14 23:10:37 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void	compute_conv_d(t_print *dna, va_list ap)
 	dna->pre_min = (nb < 0) ? TRUE : FALSE;
 	nb = (nb < 0) ? nb * (-1) : nb;
 	//printf("%ld\n", nb);
-	printf("test == %d\n", dna->pre_min);
+	// printf("test == %d\n", dna->pre_min);
 	dna->out = ft_itoa_printf(nb, 10);
 	// printf("%s\n", dna->out);
 	dna->base_size = ft_strlen(dna->out);
@@ -104,16 +104,16 @@ void	compute_conv_d(t_print *dna, va_list ap)
 	}
 	else if (dna->width > ft_strlen(dna->out) + prefix_count(dna))
 	{
-		//printf("pitch+width\n");
+		// printf("pitch+width\n");
 		do_width(dna);
 		prefix(dna);
 	}
-
-	if (prefix_count(dna) )
+/*
+	if (prefix_count(dna))
 	{
 
 	}
-
+*/
 	// printf("test : %s\n", dna->out);
 	// printf("test %d\n",dna->width);
 	// if (dna->pitch)

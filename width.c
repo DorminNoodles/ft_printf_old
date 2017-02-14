@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/12 15:12:02 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/14 15:36:55 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/14 23:12:07 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ char	*do_width_without_pitch(t_print *dna)
 	char	*tmp;
 	char	c;
 	int		start;
-
+	//printf("here\n");
 	tmp = dna->out;
 	c = (dna->flag_0) ? '0' : ' ';
 	start = (dna->justify) ? 0 : dna->width - dna->base_size;
