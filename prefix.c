@@ -6,26 +6,47 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/10 18:50:34 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/14 12:04:35 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/14 15:27:32 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*prefix(t_print *dna)
+static char		*prefix_for_pitch(t_print *dna)
 {
 	char	*tmp;
 	int		size;
 	int		start;
-
-	size = dna->base_size + prefix_count(dna);
+	// printf("enter_prefix\n");
+	size = dna->base_size + prefix_count(dna) + 1;
 	tmp = dna->out;
 	dna->out = (char*)ft_memalloc(sizeof(char) * size);
 	if (!dna->out)
-		return (NULL);
+	return (NULL);
 	ft_memcpy(dna->out + prefix_count(dna), tmp, dna->base_size);
 	ft_memcpy(dna->out, get_prefix(dna), prefix_count(dna));
 	return (dna->out);
+}
+
+static char		*prefix_for_width(t_print *dna)
+{
+	char	*tmp;
+
+	if (dna->flag_0)
+		ft_memcpy(dna->out, get_prefix(dna), prefix_count(dna));
+
+
+
+	return (dna->out);
+}
+
+char	*prefix(t_print *dna)
+{
+	if (dna->pitch_nb)
+		dna->out = prefix_for_pitch(dna);
+	else
+		dna->out = prefix_for_width(dna);
+	return(dna->out);
 }
 
 char	*get_prefix(t_print *dna)

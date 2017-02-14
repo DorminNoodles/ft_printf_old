@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/12 15:12:02 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/14 11:09:13 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/14 15:36:55 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,58 @@ static char	*add_prefix(char **str, t_print *dna)
 	return (*str);
 }
 
+char	*do_width_with_pitch(t_print *dna)
+{
+	char	*tmp;
+	int		size;
 
+	tmp = dna->out;
+	size = ft_strlen(dna->out);
+
+	dna->out = (char*)ft_memalloc(sizeof(char) * (dna->width + 1));
+	//printf("CHAUSSETTTES\n");
+	if (!dna->out)
+		return (NULL);
+	ft_memset(dna->out, ' ', dna->width);
+
+	if (dna->justify)
+		ft_memcpy(dna->out, tmp, size);
+	else
+		ft_memcpy(dna->out + (dna->width - size), tmp, size);
+	// printf("test %s\n", dna->out);
+	free(tmp);
+	return (dna->out);
+}
+
+char	*do_width_without_pitch(t_print *dna)
+{
+	char	*tmp;
+	char	c;
+	int		start;
+
+	tmp = dna->out;
+	c = (dna->flag_0) ? '0' : ' ';
+	start = (dna->justify) ? 0 : dna->width - dna->base_size;
+	dna->out = (char*)ft_memalloc(sizeof(char) * (dna->width + 1));
+	if (!dna->out)
+		return (NULL);
+	ft_memset(dna->out, c, dna->width);
+	ft_memcpy(dna->out + start, tmp, dna->base_size);
+
+	return (dna->out);
+}
+
+char	*do_width(t_print *dna)
+{
+	if (dna->pitch_nb)
+		dna->out = do_width_with_pitch(dna);
+	else
+		dna->out = do_width_without_pitch(dna);
+	return (dna->out);
+}
+
+
+/*
 char	*do_width(t_print *dna)
 {
 	char *tmp;
@@ -54,7 +105,7 @@ char	*do_width(t_print *dna)
 			// printf("width %d\n", dna->width);
 			if (dna->width > ft_strlen(dna->out))
 			{
-				printf("bob %s\n", dna->out);
+				//printf("bob %s\n", dna->out);
 				dna->out = (char*)ft_memalloc(sizeof(char) * (dna->width + 1));
 				ft_memset(dna->out, ' ', dna->width);
 
@@ -104,7 +155,7 @@ char	*do_width(t_print *dna)
 			}
 		}
 	}
-
+*/
 /*
 	if (dna->pitch)
 	{
@@ -134,8 +185,9 @@ char	*do_width(t_print *dna)
 			ft_strcpy(dna->out + (i - dna->base_size), tmp);
 		free(tmp);
 	}
-*/
+
 
 
 	return (dna->out);
 }
+*/

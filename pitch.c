@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/09 09:38:43 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/14 11:48:29 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/14 14:09:50 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	compute_pitch_dollar(t_print *dna)
 	printf("COMPUTE_PITCH_DOLLAR\n");
 
 	//dna->pitch_nb = va_arg(ap, int);
-	printf("%s\n", dna->out);
+	//printf("%s\n", dna->out);
 
 }
 
