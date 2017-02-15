@@ -6,12 +6,13 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/12 15:12:02 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/14 23:12:07 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/15 17:36:41 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+/*
 static char	*add_prefix(char **str, t_print *dna)
 {
 	char *tmp;
@@ -30,6 +31,7 @@ static char	*add_prefix(char **str, t_print *dna)
 	free(tmp);
 	return (*str);
 }
+*/
 
 char	*do_width_with_pitch(t_print *dna)
 {
@@ -44,7 +46,6 @@ char	*do_width_with_pitch(t_print *dna)
 	if (!dna->out)
 		return (NULL);
 	ft_memset(dna->out, ' ', dna->width);
-
 	if (dna->justify)
 		ft_memcpy(dna->out, tmp, size);
 	else
@@ -59,16 +60,17 @@ char	*do_width_without_pitch(t_print *dna)
 	char	*tmp;
 	char	c;
 	int		start;
-	//printf("here\n");
+	int		size;
+	printf("here 74 %s\n", dna->out);
+	size = dna->width - (dna->base_size + prefix_count(dna));
 	tmp = dna->out;
 	c = (dna->flag_0) ? '0' : ' ';
-	start = (dna->justify) ? 0 : dna->width - dna->base_size;
+	start = (dna->justify) ? 0 : size;
 	dna->out = (char*)ft_memalloc(sizeof(char) * (dna->width + 1));
 	if (!dna->out)
 		return (NULL);
 	ft_memset(dna->out, c, dna->width);
-	ft_memcpy(dna->out + start, tmp, dna->base_size);
-
+	ft_memcpy(dna->out + start, tmp, ft_strlen(dna->out));
 	return (dna->out);
 }
 
@@ -78,6 +80,7 @@ char	*do_width(t_print *dna)
 		dna->out = do_width_with_pitch(dna);
 	else
 		dna->out = do_width_without_pitch(dna);
+	// printf("blablabla %s\n", dna->out);
 	return (dna->out);
 }
 

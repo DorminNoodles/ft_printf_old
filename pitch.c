@@ -6,18 +6,11 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/09 09:38:43 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/14 14:09:50 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/15 15:48:02 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-/*
-static char		*add_prefix(t_print *dna)
-{
-
-}
-*/
 
 //pourquoi ne pas tjrs mettre le prefix dans le pitch si il existe
 
@@ -38,17 +31,19 @@ char	*compute_pitch_nb(t_print *dna)
 	int size_malloc;
 	int start;
 
+	// printf("Bof\n");
 	// printf("test %d\n", (int)prefix_count(dna));
 	// printf("test %d\n", dna->pitch_nb);
+
+
 	start = 0;
 	size_malloc = prefix_count(dna) + dna->pitch_nb + 1;
 	tmp = dna->out;
+
 	dna->out = (char*)ft_memalloc(sizeof(char) * size_malloc);
 	if (!dna->out)
 		return (NULL);
 	ft_memset(dna->out, '0', dna->pitch_nb + prefix_count(dna));
-	//printf("test %s\n", dna->out);
-	// printf("test = %s", dna->out);
 	start = (dna->pitch_nb - dna->base_size) + prefix_count(dna);
 	ft_memcpy(dna->out + start, tmp, dna->base_size);
 	ft_memcpy(dna->out, get_prefix(dna), prefix_count(dna));

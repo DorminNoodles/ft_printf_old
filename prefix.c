@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/10 18:50:34 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/14 23:14:57 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/15 18:20:43 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,23 +32,45 @@ static char		*prefix_for_width(t_print *dna)
 {
 	char	*tmp;
 
-	printf("pouet\n");
+	printf("bordel %s\n", dna->out);
+	//ft_memcpy(dna->out, get_prefix(dna), prefix_count(dna));
 	if (dna->flag_0)
 		ft_memcpy(dna->out, get_prefix(dna), prefix_count(dna));
 	else
 		ft_memcpy(dna->out, get_prefix(dna), prefix_count(dna));
 
+	return (dna->out);
+}
 
+char	*add_prefix(t_print *dna)
+{
+	char	*tmp;
+	int		size;
+
+	//printf("BOB\n");
+	tmp = dna->out;
+	size = (int)ft_strlen(dna->out) + prefix_count(dna);
+	dna->out = (char*)ft_memalloc(sizeof(char) * (size + 1));
+	if (!dna->out)
+		return (NULL);
+	ft_memcpy(dna->out + prefix_count(dna), tmp, ft_strlen(tmp));
+	// printf("1 : %s\n", dna->out + 1);
+	ft_memcpy(dna->out, get_prefix(dna), prefix_count(dna));
+	// printf("2 : %s\n", dna->out);
 
 	return (dna->out);
 }
 
 char	*prefix(t_print *dna)
 {
+	int size;
+	// printf("HERE\n");
+	size = 0;
 	if (dna->pitch_nb)
 		dna->out = prefix_for_pitch(dna);
-	else
+	else if (dna->width)
 		dna->out = prefix_for_width(dna);
+
 	return(dna->out);
 }
 

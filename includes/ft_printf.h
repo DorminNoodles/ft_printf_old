@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 17:10:51 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/14 11:11:30 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/15 12:14:19 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,7 @@ char		*prefix(t_print *dna);
 size_t		prefix_count(t_print *dna);
 char		*d_prefix(t_print *dna);
 char		*get_prefix(t_print *dna);
+char		*add_prefix(t_print *dna);
 
 
 
