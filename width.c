@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/12 15:12:02 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/16 11:56:33 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/16 17:10:19 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,13 +58,18 @@ char	*do_width_without_pitch(t_print *dna)
 	char	c;
 	int		start;
 	int		size;
+	printf("test = %s\n", dna->out);
 	// printf("bite\n");
 	//printf("%d\n", dna->base_size);
 	size = dna->width - (dna->base_size + prefix_count(dna));
+	//printf("FUCKING SIZE = %d\n", size);
 	tmp = dna->out;
 	c = (dna->flag_0) ? '0' : ' ';
+	//printf("prefix_count %d\n", (int)prefix_count(dna));
 	start = (dna->justify) ? 0 : size;
-	start = (dna->flag_0) ? start + 1 : start;
+	//start = (dna->htag) ? prefix_count(dna) : size;
+	//start = (dna->flag_0) ? start + 1 : start;
+	//start = dna->out;
 	dna->out = (char*)ft_memalloc(sizeof(char) * (dna->width + 1));
 	if (!dna->out)
 		return (NULL);
@@ -72,6 +77,7 @@ char	*do_width_without_pitch(t_print *dna)
 	// printf("test %s\n", dna->out);
 	// printf("test %d\n", (int)ft_strlen(dna->out));
 	ft_memcpy(dna->out + start, tmp, ft_strlen(tmp));
+
 	// printf("test %s\n", dna->out);
 	return (dna->out);
 }

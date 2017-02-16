@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 17:09:10 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/16 11:57:36 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/16 15:32:38 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -205,25 +205,65 @@ void	compute_conv_x(t_print *dna, va_list ap)
 		}
 	}
 	dna->base_size = ft_strlen(dna->out);
-	// printf("1 %s\n", dna->out);
-	if (dna->pitch && dna->pitch_nb > dna->base_size)
-		do_pitch(dna, FALSE);
-	if (dna->width && dna->width > dna->base_size)
+	if (dna->pitch_nb > dna->base_size)
+		dna->out = do_pitch(dna, FALSE);
+	else if (prefix_count(dna) && dna->pitch_nb)
+		prefix(dna);
+	if (dna->pitch && dna->width > ft_strlen(dna->out))
 		do_width(dna);
+	else if (dna->width >= ft_strlen(dna->out) + prefix_count(dna))
+	{
+		printf("fuck = %s\n", dna->out);
+		if (!dna->flag_0)
+		{
+			add_prefix(dna);
+			// printf("fuck = %s\n", dna->out);
+			do_width(dna);
+			//printf("fuck = %s\n", dna->out);
+		}
+		else
+		{
+			do_width(dna);
+			prefix(dna);
+		}
+	}
+	else if (!dna->pitch && !dna->width && prefix_count(dna))
+		prefix(dna);
+	/*
+	if (dna->pitch && dna->pitch_nb > dna->base_size)
+	{
+		do_pitch(dna, FALSE);
+		if (dna->width && dna->width > dna->base_size)
+			do_width(dna);
+	}
+	else
+	{
+		if (dna->htag && !dna->htag)
+			add_prefix(dna);
+		// printf("#%s#\n", dna->out);
+		if (dna->width && dna->width > (int)ft_strlen(dna->out))
+			do_width(dna);
+
+	}
+	*/
+	//printf("%s\n", dna->out);
+	// if (dna->width && dna->width > dna->base_size)
+	// printf("%s\n", dna->out);
 
 	//printf("bordel %s\n", dna->out);
-
 	// printf("#%s#\n", dna->out);
 
-	if (dna->htag && !dna->pitch)
-		add_prefix(dna);
+	// if (dna->htag && dna->pitch < (int)ft_strlen(dna->out))
+	// 	add_prefix(dna);
 	//printf("%s\n", dna->out);
 
-	printf("### %d\n", (int)ft_strlen(dna->out));
-	dna->ret_nb += ft_strlen(dna->out);
+	//("### %d\n", (int)ft_strlen(dna->out));
+	dna->ret_nb += ft_strlen(dna->out) - prefix_count(dna);
 	ft_putstr_buff(dna->out);
 	free(dna->out);
 }
+//orig :         0x0000003039|
+// 0x7fffffff
 
 void	conv_switch(t_print *dna, va_list ap)
 {
