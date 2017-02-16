@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/10 18:50:34 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/16 09:13:41 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/16 10:16:24 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,9 @@ char	*add_prefix(t_print *dna)
 	if (!dna->out)
 		return (NULL);
 	ft_memcpy(dna->out + prefix_count(dna), tmp, ft_strlen(tmp));
-	// printf("1 : %s\n", dna->out + 1);
 	ft_memcpy(dna->out, get_prefix(dna), prefix_count(dna));
-	// printf("2 : %s\n", dna->out);
 
+	free(tmp);
 	return (dna->out);
 }
 

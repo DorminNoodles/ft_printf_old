@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 17:09:10 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/16 09:38:27 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/16 11:57:36 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,16 @@ void	compute_conv_s (t_print *dna, va_list ap)
 	nb = 0;
 	str = NULL;
 
-	//str = va_arg(ap, char*);
 	tmp = va_arg(ap, char*);
 	dna->out = ft_strnew(ft_strlen(tmp));
 	if (!dna->out)
 	return;
 	dna->base_size = ft_strlen(tmp);
 	ft_strcpy(dna->out, tmp);
-	if (!dna->pitch)
+	if (dna->width)
 		do_width(dna);
-	else
+	else if (dna->pitch)
 		do_pitch(dna, TRUE);
-
 	dna->ret_nb += ft_strlen(dna->out);
 		ft_putstr(dna->out);
 	free(dna->out);
@@ -76,47 +74,31 @@ void	compute_conv_d(t_print *dna, va_list ap)
 	intmax_t nb;
 
 	nb = exec_cast_signed(dna, ap);
-	// printf("ret == %jd", ret);
-	// printf("%ld\n", ret);
 	dna->pre_min = (nb < 0) ? TRUE : FALSE;
 	nb = (nb < 0) ? nb * (-1) : nb;
-	//printf("%ld\n", nb);
-	// printf("test == %d\n", dna->pre_min);
 	dna->out = ft_itoa_printf(nb, 10);
 	dna->base_size = ft_strlen(dna->out);
 	if (dna->pitch_nb > dna->base_size)
 		dna->out = do_pitch(dna, FALSE);
 	else if (prefix_count(dna) && dna->pitch_nb)
 		prefix(dna);
-	// printf("42 %s\n", dna->out);
 	if (dna->pitch && dna->width > ft_strlen(dna->out))
-	{
-		// printf("45 %s\n", dna->out);
 		do_width(dna);
-	}
 	else if (dna->width > ft_strlen(dna->out) + prefix_count(dna))
 	{
-		// printf("43 %s\n", dna->out);
 		if (!dna->flag_0)
 		{
-			// printf("44 %s\n", dna->out);
-			//printf("HAAAA\n");
 			add_prefix(dna);
 			do_width(dna);
-			// printf("3.2 : %s\n", dna->out);
 		}
 		else
 		{
-			//printf("45 %s\n", dna->out);
-			// printf("62 %s\n", dna->out);
 			do_width(dna);
-			// printf("58 %s\n", dna->out);
 			prefix(dna);
 		}
 	}
 	else if (!dna->pitch && !dna->width && prefix_count(dna))
 		prefix(dna);
-
 	dna->ret_nb += ft_strlen(dna->out);
 	ft_putstr_buff(dna->out);
 }
@@ -224,9 +206,21 @@ void	compute_conv_x(t_print *dna, va_list ap)
 	}
 	dna->base_size = ft_strlen(dna->out);
 	// printf("1 %s\n", dna->out);
-	do_width(dna);
+	if (dna->pitch && dna->pitch_nb > dna->base_size)
+		do_pitch(dna, FALSE);
+	if (dna->width && dna->width > dna->base_size)
+		do_width(dna);
+
+	//printf("bordel %s\n", dna->out);
+
+	// printf("#%s#\n", dna->out);
+
+	if (dna->htag && !dna->pitch)
+		add_prefix(dna);
+	//printf("%s\n", dna->out);
+
+	printf("### %d\n", (int)ft_strlen(dna->out));
 	dna->ret_nb += ft_strlen(dna->out);
-	ft_putstr(prefix(dna));
 	ft_putstr_buff(dna->out);
 	free(dna->out);
 }

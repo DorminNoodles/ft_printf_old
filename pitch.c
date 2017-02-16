@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/09 09:38:43 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/15 15:48:02 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/16 11:48:33 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,9 @@ char	*compute_pitch_nb(t_print *dna)
 	// printf("Bof\n");
 	// printf("test %d\n", (int)prefix_count(dna));
 	// printf("test %d\n", dna->pitch_nb);
-
-
 	start = 0;
 	size_malloc = prefix_count(dna) + dna->pitch_nb + 1;
 	tmp = dna->out;
-
 	dna->out = (char*)ft_memalloc(sizeof(char) * size_malloc);
 	if (!dna->out)
 		return (NULL);
@@ -47,7 +44,6 @@ char	*compute_pitch_nb(t_print *dna)
 	start = (dna->pitch_nb - dna->base_size) + prefix_count(dna);
 	ft_memcpy(dna->out + start, tmp, dna->base_size);
 	ft_memcpy(dna->out, get_prefix(dna), prefix_count(dna));
-	// printf("BATMAN\n");
 	free(tmp);
 	return (dna->out);
 }
