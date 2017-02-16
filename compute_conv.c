@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 17:09:10 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/15 17:34:31 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/16 09:38:27 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,7 @@ void	compute_conv_s (t_print *dna, va_list ap)
 		do_width(dna);
 	else
 		do_pitch(dna, TRUE);
-	// printf("Bol = %d\n", dna->width);
 
-	//printf("test %d\n", dna->base_size);
 	dna->ret_nb += ft_strlen(dna->out);
 		ft_putstr(dna->out);
 	free(dna->out);
@@ -90,18 +88,18 @@ void	compute_conv_d(t_print *dna, va_list ap)
 		dna->out = do_pitch(dna, FALSE);
 	else if (prefix_count(dna) && dna->pitch_nb)
 		prefix(dna);
-	printf("42 %s\n", dna->out);
+	// printf("42 %s\n", dna->out);
 	if (dna->pitch && dna->width > ft_strlen(dna->out))
 	{
-		printf("45 %s\n", dna->out);
+		// printf("45 %s\n", dna->out);
 		do_width(dna);
 	}
 	else if (dna->width > ft_strlen(dna->out) + prefix_count(dna))
 	{
-		printf("43 %s\n", dna->out);
+		// printf("43 %s\n", dna->out);
 		if (!dna->flag_0)
 		{
-			printf("44 %s\n", dna->out);
+			// printf("44 %s\n", dna->out);
 			//printf("HAAAA\n");
 			add_prefix(dna);
 			do_width(dna);
@@ -109,37 +107,16 @@ void	compute_conv_d(t_print *dna, va_list ap)
 		}
 		else
 		{
-			printf("45 %s\n", dna->out);
-			prefix(dna);
-			printf("62 %s\n", dna->out);
+			//printf("45 %s\n", dna->out);
+			// printf("62 %s\n", dna->out);
 			do_width(dna);
-			printf("58 %s\n", dna->out);
+			// printf("58 %s\n", dna->out);
+			prefix(dna);
 		}
 	}
-	else if (!dna->pitch && !dna->width)
-	{
-
-		printf("46 %s\n", dna->out);
-		// printf("4 : %s\n", dna->out);
+	else if (!dna->pitch && !dna->width && prefix_count(dna))
 		prefix(dna);
-	}
 
-	// printf("test = %d\n", dna->width);
-	//if(dna->width)
-		//do_width(dna);
-
-	//dna->out = do_width(dna);
-	/*
-	if (dna->pitch)
-	{
-		compute_pitch(dna, ap, FALSE);
-		ft_putstr(prefix(dna));
-	}
-	else
-	{
-		compute_width(dna);
-	}
-	*/
 	dna->ret_nb += ft_strlen(dna->out);
 	ft_putstr_buff(dna->out);
 }

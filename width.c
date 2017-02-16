@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/12 15:12:02 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/15 17:36:41 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/16 09:51:17 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,11 +61,12 @@ char	*do_width_without_pitch(t_print *dna)
 	char	c;
 	int		start;
 	int		size;
-	printf("here 74 %s\n", dna->out);
+	// printf("here 74 %s\n", dna->out);
 	size = dna->width - (dna->base_size + prefix_count(dna));
 	tmp = dna->out;
 	c = (dna->flag_0) ? '0' : ' ';
 	start = (dna->justify) ? 0 : size;
+	start = (dna->flag_0) ? start + 1 : start;
 	dna->out = (char*)ft_memalloc(sizeof(char) * (dna->width + 1));
 	if (!dna->out)
 		return (NULL);

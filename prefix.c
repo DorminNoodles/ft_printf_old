@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/10 18:50:34 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/15 18:20:43 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/16 09:13:41 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static char		*prefix_for_width(t_print *dna)
 {
 	char	*tmp;
 
-	printf("bordel %s\n", dna->out);
+	// printf("bordel %s\n", dna->out);
 	//ft_memcpy(dna->out, get_prefix(dna), prefix_count(dna));
 	if (dna->flag_0)
 		ft_memcpy(dna->out, get_prefix(dna), prefix_count(dna));
@@ -70,6 +70,10 @@ char	*prefix(t_print *dna)
 		dna->out = prefix_for_pitch(dna);
 	else if (dna->width)
 		dna->out = prefix_for_width(dna);
+	else
+		prefix_for_pitch(dna);
+		//printf("truffe\n");
+
 
 	return(dna->out);
 }
