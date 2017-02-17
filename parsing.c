@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/08 14:01:18 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/13 15:09:30 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/17 18:45:56 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -193,6 +193,9 @@ void	parsing_pitch(const char *format, t_print *dna, char *end, va_list ap)
 	pitch_star(format, dna, end);
 	if (dna->pitch_star)
 		dna->pitch_nb = va_arg(ap, int);
+
+	if (dna->pitch)
+		dna->flag_0 = FALSE;
 	//pitch_dollar(format, dna, end);
 }
 

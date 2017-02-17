@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 17:10:51 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/17 15:04:09 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/17 18:24:23 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,8 @@ char		*get_prefix(t_print *dna);
 char		*add_prefix(t_print *dna);
 char		*set_length_digit(t_print *dna);
 char		*prefix_lossless(t_print *dna);
+char		*prefix_lossy(t_print *dna);
+char		*width_ectoplasme(t_print *dna, bool prefix_in);
 
 
 

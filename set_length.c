@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/17 11:34:31 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/17 18:16:09 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/17 19:02:23 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ char	*set_length_digit(t_print *dna)
 	if (CHECK_PITCH)
 	{
 		// printf("PITCH\n");
-		dna->flag_0 = FALSE;
 		dna->out = do_pitch(dna, TRUE);
 		dna->out = prefix_lossless(dna);
 		prefix = TRUE;
@@ -28,26 +27,33 @@ char	*set_length_digit(t_print *dna)
 
 	if (CHECK_WIDTH)
 	{
-		printf("WIDTH\n");
-		printf("=> %s\n", dna->out);
+		// printf("WIDTH\n");
+		// printf("=> %s\n", dna->out);
 		if (dna->flag_0)
 		{
-			//printf("BOB\n");
-			dna->out = do_width(dna);
-			printf("pouet => %s\n", dna->out);
+			dna->out = width_ectoplasme(dna, FALSE);
+			// printf("pouet => %s\n", dna->out);
 			dna->out = prefix_lossy(dna);
 			prefix = TRUE;
 		}
 		else
 		{
+			// printf("6 => %s\n", dna->out);
+			// printf("7 => %s\n", dna->out);
 			if (!dna->justify)
 			{
-				prefix_lossless(dna)  //    -50
+				// printf("BOB\n");
+				if (!prefix)
+				{
+					// printf("YY*&^&*()\n");
+					prefix_lossless(dna);  //    -50
+				}
 				prefix = TRUE;
 			}
 
-			do_width(dna, prefix_include)	// push -50 or 50
-
+			// printf("7.5 => %s\n", dna->out);
+			width_ectoplasme(dna, TRUE);	// push -50 or 50
+			// printf("8 => %s\n", dna->out);
 			if (!prefix)
 				prefix_lossless(dna);
 
@@ -55,16 +61,16 @@ char	*set_length_digit(t_print *dna)
 			// 	dna->out = prefix_lossless(dna);
 			// dna->out = do_width(dna);
 		}
-			printf("2=> %s\n", dna->out);
+			// printf("2=> %s\n", dna->out);
 	}
-	printf("2.5=>  %d   %s\n", prefix, dna->out);
+	// printf("2.5=>  %d   %s\n", prefix, dna->out);
 
 	if (!prefix)
 	{
-		printf("WRONG");
+		// printf("WRONG");
 		dna->out = prefix_lossless(dna);
 	}
-	printf("3=> %s\n", dna->out);
+	// printf("3=> %s\n", dna->out);
 
 	return (dna->out);
 }

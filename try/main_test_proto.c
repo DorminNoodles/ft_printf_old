@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 16:53:56 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/17 16:37:56 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/17 19:02:25 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -1870,13 +1870,13 @@ void 	test_d(void)
 	test_d_21();
 	test_d_22();
 	test_d_23();
-	test_d_24();
-	test_d_25();
-	test_d_26();
-	test_d_27();
-	test_d_28();
-	test_d_29();
-	test_d_30();
+	// test_d_24();
+	// test_d_25();
+	// test_d_26();
+	// test_d_27();
+	// test_d_28();
+	// test_d_29();
+	// test_d_30();
 }
 
 void 	test_ld(void)

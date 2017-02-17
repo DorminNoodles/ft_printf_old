@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 17:09:10 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/17 16:32:49 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/17 19:01:15 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	compute_conv_ls (t_print *dna, va_list ap)
 	}
 	else
 	{
-		dna->out = (char *)malloc(sizeof(wchar_t) * (int)count_unicode(tmp));
+		dna->out = (char *)ft_memalloc(sizeof(wchar_t) * (int)count_unicode(tmp));
 		ft_memcpy(dna->out, tmp, sizeof(wchar_t) * (int)count_unicode(tmp) + 1);
 	}
 	i = 0;

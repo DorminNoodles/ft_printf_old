@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/12 15:12:02 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/17 16:25:58 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/17 19:02:24 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ char	*do_width_without_pitch(t_print *dna)
 	char	c;
 	int		start;
 	int		size;
-	printf("test = %s\n", dna->out);
+	// printf("test = %s\n", dna->out);
 	// printf("bite\n");
 	//printf("%d\n", dna->base_size);
 	size = dna->width - (dna->base_size + prefix_count(dna));
@@ -82,16 +82,18 @@ char	*do_width_without_pitch(t_print *dna)
 	return (dna->out);
 }
 
-char	*width_ectoplasme(t_print *dna)
+char	*width_ectoplasme(t_print *dna, bool prefix_in)
 {
 	char	*tmp;
 	char	c;
 
 	tmp = dna->out;
 	c = (dna->flag_0) ? '0' : ' ';
-	if (!(dna->out = (char*)malloc(sizeof(char) * (dna->width + 1))))
+	// printf("7.6 => %s\n", dna->out);
+	if (!(dna->out = (char*)ft_memalloc(sizeof(char) * (dna->width + 1))))
 		return (NULL);
 	ft_memset(dna->out, c, dna->width);
+	// printf("7.7 => %s\n", dna->out);
 	if (dna->justify)
 		ft_memcpy(dna->out + prefix_count(dna), tmp, ft_strlen(tmp));
 	else
@@ -102,7 +104,7 @@ char	*width_ectoplasme(t_print *dna)
 
 char	*do_width(t_print *dna)
 {
-	width_ectoplasme(dna);
+	// width_ectoplasme(dna, prefix_in);
 
 	/*
 	if (dna->pitch_nb)
