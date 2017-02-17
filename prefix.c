@@ -6,11 +6,37 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/10 18:50:34 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/16 15:15:35 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/17 16:57:32 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+char	*prefix_lossless(t_print *dna)
+{
+	char	*tmp;
+	int		size;
+
+	tmp = dna->out;
+	size = ft_strlen(dna->out) + prefix_count(dna) + 1;
+	dna->out = (char*)ft_memalloc(sizeof(char) * size);
+	ft_memcpy(dna->out, get_prefix(dna), prefix_count(dna));
+	ft_memcpy(dna->out + prefix_count(dna), tmp, ft_strlen(tmp));
+	free(tmp);
+	return (dna->out);
+}
+
+char	*prefix_lossy(t_print *dna)
+{
+	char	*tmp;
+	int		size;
+
+	ft_memcpy(dna->out, get_prefix(dna), );
+
+
+
+	return (dna->out);
+}
 
 static char		*prefix_for_pitch(t_print *dna)
 {

@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 16:53:56 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/16 18:27:00 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/17 16:37:56 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -225,10 +225,16 @@ void	test_ls_06(void)
 
 void	test_ls_07(void)
 {
+	int ret1 = 0;
+	int ret2 = 0;
+
 	setlocale(LC_ALL, "");
 	printf("Test_ls => 07\n");
-	printf("orig : %S\n", L"🤗🤗🤗🤗");
-	ft_printf("cust : %S\n", L"🤗🤗🤗🤗");
+	ret1 = printf("orig : %S\n", L"🤗🤗🤗🤗");
+	ret2 = ft_printf("cust : %S\n", L"🤗🤗🤗🤗");
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
 	printf("\n");
 }
 
@@ -677,6 +683,8 @@ void	test_d_30(void)
 	printf("ret_cust : %d\n", ret2);
 	printf("\n");
 }
+
+
 
 //======================================================> conv_D
 
@@ -2006,7 +2014,7 @@ int main(void)
 	// test_lo();
 
 	printf("=======> Conv_x <=======\n");
-	test_x();
+	// test_x();
 
 	printf("=======> Conv_lx <=======\n");
 	// test_lx();

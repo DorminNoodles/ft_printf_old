@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/12 15:12:02 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/16 17:10:19 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/17 16:25:58 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,13 +82,36 @@ char	*do_width_without_pitch(t_print *dna)
 	return (dna->out);
 }
 
+char	*width_ectoplasme(t_print *dna)
+{
+	char	*tmp;
+	char	c;
+
+	tmp = dna->out;
+	c = (dna->flag_0) ? '0' : ' ';
+	if (!(dna->out = (char*)malloc(sizeof(char) * (dna->width + 1))))
+		return (NULL);
+	ft_memset(dna->out, c, dna->width);
+	if (dna->justify)
+		ft_memcpy(dna->out + prefix_count(dna), tmp, ft_strlen(tmp));
+	else
+		ft_memcpy(dna->out + (dna->width - ft_strlen(tmp)), tmp, ft_strlen(tmp));
+	free(tmp);
+	return (dna->out);
+}
+
 char	*do_width(t_print *dna)
 {
+	width_ectoplasme(dna);
+
+	/*
 	if (dna->pitch_nb)
 		dna->out = do_width_with_pitch(dna);
 	else
 		dna->out = do_width_without_pitch(dna);
+	*/
 	return (dna->out);
+
 }
 
 

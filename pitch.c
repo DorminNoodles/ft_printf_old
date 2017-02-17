@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/09 09:38:43 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/16 14:09:19 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/17 14:47:42 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,18 +24,31 @@
 //j ajoute le prefix dans pitch si pitch il y a eu... en fait si pitch il
 //y a meme si pitch est plus petit que base_size....
 
+char	*compute_pitch_nb(t_print *dna)
+{
+	char	*tmp;
+	int		pos;
 
+	//printf("compute_pitch_nb\n");
+	tmp = dna->out;
+	pos = dna->pitch_nb - ft_strlen(dna->out);
+	if(!(dna->out = (char*)ft_memalloc(sizeof(char) * (dna->pitch_nb + 1))))
+		return (NULL);
+	ft_memset(dna->out, '0', dna->pitch_nb);
+	ft_memcpy(dna->out + pos, tmp, ft_strlen(tmp));
+	free(tmp);
+	return (dna->out);
+}
+/*
 char	*compute_pitch_nb(t_print *dna)
 {
 	char *tmp;
 	int size_malloc;
 	int start;
 
-	// printf("Bof\n");
-	// printf("test %d\n", (int)prefix_count(dna));
-	// printf("test %d\n", dna->pitch_nb);
+	printf("compute_pitch_nb\n");
 	start = 0;
-	size_malloc = prefix_count(dna) + dna->pitch_nb + 1;
+	size_malloc = dna->pitch_nb + 1;
 	tmp = dna->out;
 	dna->out = (char*)ft_memalloc(sizeof(char) * size_malloc);
 	if (!dna->out)
@@ -47,6 +60,7 @@ char	*compute_pitch_nb(t_print *dna)
 	free(tmp);
 	return (dna->out);
 }
+*/
 
 void	compute_pitch_dollar(t_print *dna)
 {
@@ -84,7 +98,7 @@ char	*do_pitch(t_print *dna, bool cut)
 	//ft_putstr("fuck\n");
 	// printf("do_pitch\n");
 	if (dna->pitch_nb)
-		compute_pitch_nb(dna);
+		dna->out = compute_pitch_nb(dna);
 	else if (dna->pitch_dollar)
 		compute_pitch_dollar(dna);
 	else if (dna->pitch_star)
