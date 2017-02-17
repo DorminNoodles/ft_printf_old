@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/17 11:34:31 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/17 18:05:28 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/17 18:16:09 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ char	*set_length_digit(t_print *dna)
 		{
 			//printf("BOB\n");
 			dna->out = do_width(dna);
+			printf("pouet => %s\n", dna->out);
 			dna->out = prefix_lossy(dna);
 			prefix = TRUE;
 		}
