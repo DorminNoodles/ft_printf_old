@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/17 11:34:31 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/17 19:02:23 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/17 22:52:03 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,17 @@ char	*set_length_digit(t_print *dna)
 	if (CHECK_PITCH)
 	{
 		// printf("PITCH\n");
+		// printf("Test 1:%s#\n", dna->out);
 		dna->out = do_pitch(dna, TRUE);
+		// printf("Test 2:%s#\n", dna->out);
 		dna->out = prefix_lossless(dna);
+		// printf("Test 3:%s#\n", dna->out);
 		prefix = TRUE;
 	}
 
 	if (CHECK_WIDTH)
 	{
+		// printf("Test 4:%s#\n", dna->out);
 		// printf("WIDTH\n");
 		// printf("=> %s\n", dna->out);
 		if (dna->flag_0)
@@ -38,25 +42,31 @@ char	*set_length_digit(t_print *dna)
 		}
 		else
 		{
+			// printf("Test 5:%s#\n", dna->out);
 			// printf("6 => %s\n", dna->out);
 			// printf("7 => %s\n", dna->out);
 			if (!dna->justify)
 			{
+				// printf("Test 6:%s#\n", dna->out);
 				// printf("BOB\n");
 				if (!prefix)
 				{
+					// printf("Test 7:%s#\n", dna->out);
 					// printf("YY*&^&*()\n");
 					prefix_lossless(dna);  //    -50
 				}
 				prefix = TRUE;
 			}
-
 			// printf("7.5 => %s\n", dna->out);
+			// printf("Test 8:%s#\n", dna->out);
 			width_ectoplasme(dna, TRUE);	// push -50 or 50
+			// printf("Test 9:%s#\n", dna->out);
 			// printf("8 => %s\n", dna->out);
 			if (!prefix)
+			{
+				// printf("Test10:%s#\n", dna->out);
 				prefix_lossless(dna);
-
+			}
 			// if (!prefix)
 			// 	dna->out = prefix_lossless(dna);
 			// dna->out = do_width(dna);

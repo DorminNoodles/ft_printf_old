@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 17:09:10 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/17 19:01:15 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/17 22:51:29 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,12 +182,16 @@ void 	compute_conv_o(t_print *dna, va_list ap)
 	dna->out = ft_itoa_printf((long)n, 8);
 	// printf("test = %s\n", dna->out);
 	dna->base_size = ft_strlen(dna->out);
+/*
 	if (!dna->out)
 		return;
 	if (!dna->pitch)
 		do_width(dna);
 	else
 		do_pitch(dna, FALSE);
+*/
+	dna->out = set_length_digit(dna);
+	//printf("test = %s\n", dna->out);
 	dna->ret_nb += ft_strlen(dna->out);
 	ft_putstr(dna->out);
 }
@@ -203,15 +207,9 @@ void	compute_conv_x(t_print *dna, va_list ap)
 	i = 0;
 	ret = exec_cast_unsigned(dna, ap);
 	dna->out = ft_itoa_printf(ret, 16);
-	if (dna->conv_lx)
-	{
-		while (dna->out[i])
-		{
-			dna->out[i] = ft_toupper(dna->out[i]);
-			i++;
-		}
-	}
 	dna->base_size = ft_strlen(dna->out);
+
+	/*
 	if (dna->pitch_nb > dna->base_size)
 		dna->out = do_pitch(dna, FALSE);
 	else if (prefix_count(dna) && dna->pitch_nb)
@@ -236,6 +234,9 @@ void	compute_conv_x(t_print *dna, va_list ap)
 	}
 	else if (!dna->pitch && !dna->width && prefix_count(dna))
 		prefix(dna);
+	*/
+
+	dna->out = set_length_digit(dna);
 	/*
 	if (dna->pitch && dna->pitch_nb > dna->base_size)
 	{
@@ -265,6 +266,14 @@ void	compute_conv_x(t_print *dna, va_list ap)
 	//printf("%s\n", dna->out);
 
 	//("### %d\n", (int)ft_strlen(dna->out));
+	if (dna->conv_lx)
+	{
+		while (dna->out[i])
+		{
+			dna->out[i] = ft_toupper(dna->out[i]);
+			i++;
+		}
+	}
 	dna->ret_nb += ft_strlen(dna->out) - prefix_count(dna);
 	ft_putstr_buff(dna->out);
 	free(dna->out);

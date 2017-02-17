@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/10 18:50:34 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/17 18:18:32 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/17 22:49:40 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ char	*prefix_lossy(t_print *dna)
 	int		size;
 
 	ft_memcpy(dna->out, get_prefix(dna), prefix_count(dna));
-
 
 
 	return (dna->out);
@@ -110,6 +109,8 @@ char	*get_prefix(t_print *dna)
 		dna->ret_nb += 2;
 		return("0x");
 	}
+	if (dna->conv_o)
+		return ("0");
 	if (dna->pre_pls && !dna->pre_min)
 	{
 		if (dna->width < dna->base_size)
@@ -119,10 +120,7 @@ char	*get_prefix(t_print *dna)
 		}
 	}
 	if (dna->pre_min)
-	{
-		//dna->ret_nb++;
 		return ("-");
-	}
 	return ("\0");
 }
 
