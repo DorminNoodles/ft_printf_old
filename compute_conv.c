@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 17:09:10 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/17 22:51:29 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/19 21:08:04 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -237,33 +237,6 @@ void	compute_conv_x(t_print *dna, va_list ap)
 	*/
 
 	dna->out = set_length_digit(dna);
-	/*
-	if (dna->pitch && dna->pitch_nb > dna->base_size)
-	{
-		do_pitch(dna, FALSE);
-		if (dna->width && dna->width > dna->base_size)
-			do_width(dna);
-	}
-	else
-	{
-		if (dna->htag && !dna->htag)
-			add_prefix(dna);
-		// printf("#%s#\n", dna->out);
-		if (dna->width && dna->width > (int)ft_strlen(dna->out))
-			do_width(dna);
-
-	}
-	*/
-	//printf("%s\n", dna->out);
-	// if (dna->width && dna->width > dna->base_size)
-	// printf("%s\n", dna->out);
-
-	//printf("bordel %s\n", dna->out);
-	// printf("#%s#\n", dna->out);
-
-	// if (dna->htag && dna->pitch < (int)ft_strlen(dna->out))
-	// 	add_prefix(dna);
-	//printf("%s\n", dna->out);
 
 	//("### %d\n", (int)ft_strlen(dna->out));
 	if (dna->conv_lx)

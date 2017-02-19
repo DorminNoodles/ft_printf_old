@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/10 18:50:34 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/17 22:49:40 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/19 21:24:38 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,10 @@ char	*prefix_lossless(t_print *dna)
 	char	*tmp;
 	int		size;
 
+	// printf("prefix_lossless\n");
 	tmp = dna->out;
 	size = ft_strlen(dna->out) + prefix_count(dna) + 1;
+	// printf("prefix count %d\n", (int)prefix_count(dna));
 	dna->out = (char*)ft_memalloc(sizeof(char) * size);
 	ft_memcpy(dna->out, get_prefix(dna), prefix_count(dna));
 	ft_memcpy(dna->out + prefix_count(dna), tmp, ft_strlen(tmp));
@@ -128,6 +130,8 @@ size_t	prefix_count(t_print *dna)
 {
 	if (dna->htag && (dna->conv_x || dna->conv_lx))
 		return (2);
+	if (dna->htag && dna->conv_o)
+		return (1);
 	if (dna->pre_min)
 		return (1);
 	if (dna->pre_pls)

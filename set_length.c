@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/17 11:34:31 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/17 22:52:03 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/19 21:27:07 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ char	*set_length_digit(t_print *dna)
 {
 	bool prefix;
 
+	// printf("Test 1:%s#\n", dna->out);
 	prefix = FALSE;
 	if (CHECK_PITCH)
 	{
@@ -23,14 +24,16 @@ char	*set_length_digit(t_print *dna)
 		// printf("Test 1:%s#\n", dna->out);
 		dna->out = do_pitch(dna, TRUE);
 		// printf("Test 2:%s#\n", dna->out);
-		dna->out = prefix_lossless(dna);
+		// printf("Test 2:%s#\n", dna->out);
+		if(!dna->conv_o)
+			dna->out = prefix_lossless(dna);
+		// printf("Test 4:%s#\n", dna->out);
 		// printf("Test 3:%s#\n", dna->out);
 		prefix = TRUE;
 	}
 
 	if (CHECK_WIDTH)
 	{
-		// printf("Test 4:%s#\n", dna->out);
 		// printf("WIDTH\n");
 		// printf("=> %s\n", dna->out);
 		if (dna->flag_0)
@@ -77,7 +80,7 @@ char	*set_length_digit(t_print *dna)
 
 	if (!prefix)
 	{
-		// printf("WRONG");
+		// printf("TEST");
 		dna->out = prefix_lossless(dna);
 	}
 	// printf("3=> %s\n", dna->out);
