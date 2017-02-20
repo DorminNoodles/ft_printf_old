@@ -6,13 +6,13 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 17:09:10 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/19 21:08:04 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/20 11:18:03 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	compute_conv_s (t_print *dna, va_list ap)
+char	*compute_conv_s (t_print *dna, va_list ap)
 {
 	char *str;
 	char *tmp;
@@ -26,16 +26,20 @@ void	compute_conv_s (t_print *dna, va_list ap)
 	tmp = va_arg(ap, char*);
 	dna->out = ft_strnew(ft_strlen(tmp));
 	if (!dna->out)
-	return;
-	dna->base_size = ft_strlen(tmp);
+		return (NULL);
 	ft_strcpy(dna->out, tmp);
-	if (dna->width)
-		do_width(dna);
-	else if (dna->pitch)
-		do_pitch(dna, TRUE);
+	dna->base_size = ft_strlen(tmp);
+	dna->out = set_length_digit(dna);
+
+	// if (dna->width)
+	// 	do_width(dna);
+	// else if (dna->pitch)
+	// 	do_pitch(dna, TRUE);
+
 	dna->ret_nb += ft_strlen(dna->out);
 		ft_putstr(dna->out);
 	free(dna->out);
+	return (dna->out);
 }
 
 void	compute_conv_ls (t_print *dna, va_list ap)
@@ -78,34 +82,7 @@ void	compute_conv_d(t_print *dna, va_list ap)
 	nb = (nb < 0) ? nb * (-1) : nb;
 	dna->out = ft_itoa_printf(nb, 10);
 	dna->base_size = ft_strlen(dna->out);
-
-	// printf("test == %s\n", dna->out);
 	dna->out = set_length_digit(dna);
-	// printf("test == %s\n", dna->out);
-
-	/*
-	if (dna->pitch_nb > dna->base_size)
-		dna->out = do_pitch(dna, FALSE);
-	else if (prefix_count(dna) && dna->pitch_nb)
-		prefix(dna);
-	if (dna->pitch && dna->width > ft_strlen(dna->out))
-		do_width(dna);
-	else if (dna->width > ft_strlen(dna->out) + prefix_count(dna))
-	{
-		if (!dna->flag_0)
-		{
-			add_prefix(dna);
-			do_width(dna);
-		}
-		else
-		{
-			do_width(dna);
-			prefix(dna);
-		}
-	}
-	else if (!dna->pitch && !dna->width && prefix_count(dna))
-		prefix(dna);
-	*/
 	dna->ret_nb += ft_strlen(dna->out);
 	ft_putstr_buff(dna->out);
 }
@@ -150,7 +127,7 @@ void	compute_conv_lc (va_list ap)
 	ft_putwchar(raw);
 }
 
-void compute_conv_p(t_print *dna, va_list ap)
+char	*compute_conv_p(t_print *dna, va_list ap)
 {
 	// address limit is 8 bytes for 64 bits so 0xFFFF FFFF FFFF FFFF 16 is max
 	unsigned long a;
@@ -158,16 +135,15 @@ void compute_conv_p(t_print *dna, va_list ap)
 
 	a = 0;
 	tmp = va_arg(ap, void *);
-
+	dna->htag = TRUE;
 	a = (unsigned long)tmp;
-	dna->out = ft_itoa_printf(a, 16);
-	if (!dna->out)
-	return;
-	// tmp =
+	if(!(dna->out = ft_itoa_printf(a, 16)))
+		return (NULL);
+	dna->out = set_length_digit(dna);
 	dna->ret_nb += ft_strlen(dna->out) + 2;
-	ft_putstr("0x");
 	ft_putstr(dna->out);
 	free(dna->out);
+	return (dna->out);
 }
 
 
@@ -271,7 +247,7 @@ void	conv_switch(t_print *dna, va_list ap)
 	if (dna->conv_ls)
 		compute_conv_ls(dna, ap);
 	if (dna->conv_p)
-		compute_conv_p(dna, ap);
+		dna->out = compute_conv_p(dna, ap);
 }
 
 void	compute_htag(t_print *dna)

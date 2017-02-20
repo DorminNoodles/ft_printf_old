@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/17 11:34:31 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/19 21:27:07 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/20 11:20:46 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,6 @@ char	*set_length_digit(t_print *dna)
 		}
 		else
 		{
-			// printf("Test 5:%s#\n", dna->out);
-			// printf("6 => %s\n", dna->out);
-			// printf("7 => %s\n", dna->out);
 			if (!dna->justify)
 			{
 				// printf("Test 6:%s#\n", dna->out);
@@ -84,6 +81,12 @@ char	*set_length_digit(t_print *dna)
 		dna->out = prefix_lossless(dna);
 	}
 	// printf("3=> %s\n", dna->out);
+
+	return (dna->out);
+}
+
+char	*set_length_char(t_print *dna)
+{
 
 	return (dna->out);
 }

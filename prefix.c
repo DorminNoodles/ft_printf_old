@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/10 18:50:34 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/19 21:24:38 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/20 11:06:20 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,9 +106,9 @@ char	*prefix(t_print *dna)
 
 char	*get_prefix(t_print *dna)
 {
-	if ((dna->conv_x || dna->conv_lx) && dna->htag)
+	if ((dna->conv_x || dna->conv_lx || dna->conv_p) && dna->htag)
 	{
-		dna->ret_nb += 2;
+		//dna->ret_nb += 2;
 		return("0x");
 	}
 	if (dna->conv_o)
@@ -128,7 +128,7 @@ char	*get_prefix(t_print *dna)
 
 size_t	prefix_count(t_print *dna)
 {
-	if (dna->htag && (dna->conv_x || dna->conv_lx))
+	if (dna->htag && (dna->conv_x || dna->conv_lx || dna->conv_p))
 		return (2);
 	if (dna->htag && dna->conv_o)
 		return (1);

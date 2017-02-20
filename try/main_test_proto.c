@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 16:53:56 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/19 21:34:25 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/20 11:20:41 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 #include <locale.h>
 #include <stdint.h>
 #include <wchar.h>
+
+#define STR "Martine va en enfer\n"
 
 //======================================================> conv_s
 
@@ -150,15 +152,41 @@ void	test_s_09(void)
 	printf("\n");
 }
 
+void	test_s_10(void)
+{
+	int ret1 = 0;
+	int ret2 = 0;
 
+	printf("Test_s => 10\n");
+	ret1 = printf("orig : %.5s\n", STR);
+	ret2 = ft_printf("cust : %.5s\n", STR);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
 
 void	test_s_11(void)
+{
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("Test_s => 11\n");
+	ret1 = printf("orig : %.3s\n", STR);
+	ret2 = ft_printf("cust : %zs\n", STR);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void	test_s_12(void)
 {
 	size_t a = LONG_MAX;
 	int ret1 = 0;
 	int ret2 = 0;
 
-	printf("Test_s => 11\n");
+	printf("Test_s => 12\n");
 	ret1 = printf("orig : %zd\n", a);
 	ret2 = ft_printf("cust : %zd\n", a);
 	printf("\n");
@@ -166,6 +194,22 @@ void	test_s_11(void)
 	printf("ret_cust : %d\n", ret2);
 	printf("\n");
 }
+
+void	test_s_13(void)
+{
+	size_t a = LONG_MAX;
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("Test_s => 13\n");
+	ret1 = printf("orig : %zd\n", a);
+	ret2 = ft_printf("cust : %zd\n", a);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
 
 //=====================================================> conv_S
 
@@ -2180,6 +2224,8 @@ void 	test_lo(void)
 void	test_p(void)
 {
 	test_p_01();
+	test_p_02();
+	test_p_03();
 }
 
 void 	mutant_test(void)
@@ -2196,7 +2242,7 @@ int main(void)
 
 	//conv_d
 	printf("=======> Conv_s <=======\n");
-	// test_s();
+	test_s();
 
 	//Start conv_ls
 	printf("=======> Conv_ls <=======\n");
@@ -2212,7 +2258,7 @@ int main(void)
 	// test_i();
 
 	printf("=======> Conv_o <=======\n");
-	test_o();
+	// test_o();
 
 	printf("=======> Conv_O <=======\n");
 	// test_lo();
@@ -2238,11 +2284,11 @@ int main(void)
 
 	//Start conv_p
 	printf("=======> Conv_p <=======\n");
-	test_p();
+	// test_p();
 
 	//Start Mutants
 	printf("=======> Mutant_Test <=======\n");
-	mutant_test();
+	// mutant_test();
 
 
 	//test de merde
