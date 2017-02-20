@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/09 09:38:43 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/17 14:47:42 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/20 14:33:08 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,24 @@ char	*compute_pitch_nb(t_print *dna)
 	free(tmp);
 	return (dna->out);
 }
+
+char	*compute_pitch_nb_cut(t_print *dna)
+{
+	char	*tmp;
+	int		pos;
+
+	//printf("compute_pitch_nb_cut\n");
+	printf("2 out => %s\n", dna->out);
+	tmp = dna->out;
+	pos = dna->pitch_nb - ft_strlen(dna->out);
+	if(!(dna->out = (char*)ft_memalloc(sizeof(char) * (dna->pitch_nb + 1))))
+		return (NULL);
+	ft_memcpy(dna->out + pos, tmp, ft_strlen(tmp));
+	// printf("out => %s\n", dna->out);
+	free(tmp);
+	return (dna->out);
+}
+
 /*
 char	*compute_pitch_nb(t_print *dna)
 {
@@ -98,7 +116,12 @@ char	*do_pitch(t_print *dna, bool cut)
 	//ft_putstr("fuck\n");
 	// printf("do_pitch\n");
 	if (dna->pitch_nb)
-		dna->out = compute_pitch_nb(dna);
+	{
+		if(cut)
+			dna->out = compute_pitch_nb_cut(dna);
+		else
+			dna->out = compute_pitch_nb(dna);
+	}
 	else if (dna->pitch_dollar)
 		compute_pitch_dollar(dna);
 	else if (dna->pitch_star)

@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/17 11:34:31 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/20 11:22:48 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/20 14:31:35 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*set_length_digit(t_print *dna)
 	{
 		// printf("PITCH\n");
 		// printf("Test 1:%s#\n", dna->out);
-		dna->out = do_pitch(dna, TRUE);
+		dna->out = do_pitch(dna, FALSE);
 		// printf("Test 2:%s#\n", dna->out);
 		// printf("Test 2:%s#\n", dna->out);
 		if(!dna->conv_o)
@@ -87,9 +87,21 @@ char	*set_length_digit(t_print *dna)
 
 char	*set_length_char(t_print *dna)
 {
-	if (dna->pitch)
-		printf("PITCH !\n");
-	if (dna->pitch_nb)
-		printf("pitch nb = %d\n", dna->pitch_nb);
+	printf("out =>%s\n", dna->out);
+	if (dna->pitch && dna->pitch_nb == 0)
+	{
+		dna->out[0] = '\0';
+		return (dna->out);
+	}
+	// printf("out => %s\n", dna->out);
+	dna->out = do_pitch(dna, TRUE);
+	printf("out =>%s\n", dna->out);
+	if (dna->width > ft_strlen(dna->out))
+		dna->out = width_ectoplasme(dna, TRUE);
+	//dna->out = width_ectoplasme(dna, TRUE);
+	// printf("out => %s\n", dna->out);
+
+		// printf("PITCH !\n");
+		// printf("pitch nb = %d\n", dna->pitch_nb);
 	return (dna->out);
 }

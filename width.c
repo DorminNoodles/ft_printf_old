@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/12 15:12:02 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/17 21:00:44 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/20 11:52:25 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ char	*width_ectoplasme(t_print *dna, bool prefix_in)
 	if (!(dna->out = (char*)ft_memalloc(sizeof(char) * (dna->width + 1))))
 		return (NULL);
 	ft_memset(dna->out, c, dna->width);
+	// printf("test r = %d\n", dna->width);
 	// printf("justify %d\n", dna->justify);
 	// printf("prefix %d\n", (int)prefix_count(dna));
 	// printf("prefix_in %d\n", prefix_in);

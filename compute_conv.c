@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 17:09:10 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/20 11:18:03 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/20 14:03:52 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char	*compute_conv_s (t_print *dna, va_list ap)
 		return (NULL);
 	ft_strcpy(dna->out, tmp);
 	dna->base_size = ft_strlen(tmp);
-	dna->out = set_length_digit(dna);
+	dna->out = set_length_char(dna);
 
 	// if (dna->width)
 	// 	do_width(dna);
