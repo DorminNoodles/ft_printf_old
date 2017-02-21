@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 17:09:10 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/20 14:03:52 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/21 12:53:30 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ char	*compute_conv_s (t_print *dna, va_list ap)
 	ret = 0;
 	nb = 0;
 	str = NULL;
-
 	tmp = va_arg(ap, char*);
 	dna->out = ft_strnew(ft_strlen(tmp));
 	if (!dna->out)
@@ -49,7 +48,6 @@ void	compute_conv_ls (t_print *dna, va_list ap)
 	int i;
 
 	i = 0;
-
 	tmp = va_arg(ap, wchar_t*);
 	if (dna->width > (int)count_unicode(tmp))
 	{
@@ -60,8 +58,8 @@ void	compute_conv_ls (t_print *dna, va_list ap)
 	}
 	else
 	{
-		dna->out = (char *)ft_memalloc(sizeof(wchar_t) * (int)count_unicode(tmp));
-		ft_memcpy(dna->out, tmp, sizeof(wchar_t) * (int)count_unicode(tmp) + 1);
+		dna->out = (char *)ft_memalloc(sizeof(wchar_t) * ((int)count_unicode(tmp) + 1));
+		ft_memcpy(dna->out, tmp, sizeof(wchar_t) * ((int)count_unicode(tmp) + 1));
 	}
 	i = 0;
 	while (*(((wchar_t *)dna->out) + i) != '\0')
@@ -116,7 +114,7 @@ void	compute_conv_ld(t_print *dna, va_list ap)
 }
 
 
-void	compute_conv_lc (va_list ap)
+void	compute_conv_lc (t_print *dna, va_list ap)
 {
 	//printf("CONV_LC\n");
 
@@ -124,6 +122,7 @@ void	compute_conv_lc (va_list ap)
 
 	raw = va_arg(ap, wchar_t);
 	//utf8_enc(raw);
+	dna->ret_nb++;
 	ft_putwchar(raw);
 }
 
@@ -243,7 +242,7 @@ void	conv_switch(t_print *dna, va_list ap)
 	if (dna->conv_x || dna->conv_lx)
 		compute_conv_x(dna, ap);
 	if (dna->conv_lc)
-		compute_conv_lc(ap);
+		compute_conv_lc(dna, ap);
 	if (dna->conv_ls)
 		compute_conv_ls(dna, ap);
 	if (dna->conv_p)
