@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_segfault.c                                    :+:      :+:    :+:   */
+/*   main_test.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/07 11:14:20 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/21 11:17:26 by lchety           ###   ########.fr       */
+/*   Created: 2017/02/21 11:12:49 by lchety            #+#    #+#             */
+/*   Updated: 2017/02/21 11:16:56 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "stdio.h"
+#include <stdio.h>
+#include <limits.h>
 
-int main(void)
+int		main(void)
 {
-	printf("Little process.\n");
-	printf("Test  %.*s\n", "KELLOGS", 5);
-	printf("Nooom\n");
-
 	size_t a = LONG_MAX;
 	printf("%s\n", a);
-	return (1);
+
+	return (0);
 }

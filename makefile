@@ -80,7 +80,7 @@ LIBFT_OBJ =	ft_atoi.o		\
 OBJ = $(SRC:.c=.o)
 LIBFT_OBJ_PATH = $(addprefix libft/, $(LIBFT_OBJ))
 CC = clang
-FLAGS = -Wall -Wextra -Werror
+#FLAGS = -fsanitize=address
 
 #COMPILED =
 
@@ -90,7 +90,7 @@ $(NAME) :
 	make -C libft/
 	$(CC) -c $(SRC) -I includes -I libft/includes
 	ar rc $(NAME) $(OBJ) $(LIBFT_OBJ_PATH) libft/libft.a
-	$(CC) $(DEBUG_SRC) $(SRC) -I libft/includes -I includes/ libft/libft.a -o build/a.out
+	$(CC) $(FLAGS) $(DEBUG_SRC) $(SRC) -I libft/includes -I includes/ libft/libft.a -o build/a.out
 
 clean :
 	rm -f $(OBJ)

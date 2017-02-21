@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 17:10:51 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/20 12:06:36 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/21 12:07:05 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ int			parsing_distributor(const char* format);
 char		*parsing_converter(const char *format, t_print *dna);
 int			parsing_dispatch(const char *format, t_print *dna, va_list ap);
 void		compute_conv(t_print *dna, va_list ap);
-void		compute_conv_lc (va_list ap);
+void		compute_conv_lc(t_print *dna, va_list ap);
 char		*ft_itoa_base(unsigned long long n, int base);
 char		*do_width(t_print *dna);
 char		*do_pitch(t_print *dna, bool cut);
@@ -122,5 +122,4 @@ char		*width_ectoplasme(t_print *dna, bool prefix_in);
 
 
 
-//char *find_end(const char *format);
 #endif
