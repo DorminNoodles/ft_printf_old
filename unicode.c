@@ -6,11 +6,36 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/29 14:10:13 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/07 15:50:18 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/21 22:23:45 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include "ft_printf.h"
+#include <stdio.h>
+
+size_t		wcharlen(wchar_t c)
+{
+	// printf("test = %C\n", c);
+	if (c < 0x7f)
+		return (1);
+	else if (c < 0x800)
+		return (2);
+	else if (c < 0x10000)
+		return (3);
+	else
+		return (4);
+}
+
+size_t		wstrlen(wchar_t *str)
+{
+	int ret;
+
+	ret = 0;
+	while (*str)
+		ret += wcharlen(*str++);
+	return (ret);
+}
 
 size_t	count_unicode(wchar_t *str)
 {

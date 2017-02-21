@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 17:09:10 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/21 12:53:30 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/21 23:29:23 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ void	compute_conv_ls (t_print *dna, va_list ap)
 		ft_putwchar(*(((wchar_t *)dna->out) + i));
 		i++;
 	}
+	dna->ret_nb += wstrlen ((wchar_t*)dna->out);
 	free(dna->out);
 	dna->out = NULL;
 }
@@ -122,7 +123,7 @@ void	compute_conv_lc (t_print *dna, va_list ap)
 
 	raw = va_arg(ap, wchar_t);
 	//utf8_enc(raw);
-	dna->ret_nb++;
+	dna->ret_nb += wcharlen(raw);
 	ft_putwchar(raw);
 }
 

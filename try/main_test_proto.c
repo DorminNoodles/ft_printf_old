@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 16:53:56 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/21 13:01:20 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/21 22:50:55 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -219,9 +219,9 @@ void	test_ls_01(void)
 	int ret2 = 0;
 
 	setlocale(LC_ALL, "");
-	ret1 = printf("Test_ls => 01\n");
-	ret2 = printf("orig : %S\n", L"chewing gum🤗 🤗 🤗 🤗\0");
-	ft_printf("cust : %S\n", L"chewing gum🤗 🤗 🤗 🤗\0");
+	printf("Test_ls => 01\n");
+	ret1 = printf("orig : %S\n", L"chewing gum🤗 🤗 🤗 🤗\0");
+	ret2 = ft_printf("cust : %S\n", L"chewing gum🤗 🤗 🤗 🤗\0");
 	printf("\n");
 	printf("ret_orig : %d\n", ret1);
 	printf("ret_cust : %d\n", ret2);
@@ -234,9 +234,9 @@ void	test_ls_02(void)
 	int ret2 = 0;
 
 	setlocale(LC_ALL, "");
-	ret1 = printf("Test_ls => 02\n");
-	ret2 = printf("orig : %45S\n", L"chewing gum🤗 🤗 🤗 🤗\0");
-	ft_printf("cust : %45S\n", L"chewing gum🤗 🤗 🤗 🤗\0");
+	printf("Test_ls => 02\n");
+	ret1 = printf("orig : %45S\n", L"chewing gum🤗 🤗 🤗 🤗\0");
+	ret2 = ft_printf("cust : %45S\n", L"chewing gum🤗 🤗 🤗 🤗\0");
 	printf("\n");
 	printf("ret_orig : %d\n", ret1);
 	printf("ret_cust : %d\n", ret2);
@@ -249,9 +249,9 @@ void	test_ls_03(void)
 	int ret2 = 0;
 
 	setlocale(LC_ALL, "");
-	ret1 = printf("Test_ls => 03\n");
-	ret2 = printf("orig : %5S\n", L"🤗");
-	ft_printf("cust : %5S\n", L"🤗");
+	printf("Test_ls => 03\n");
+	ret1 = printf("orig : %5S\n", L"🤗");
+	ret2 = ft_printf("cust : %5S\n", L"🤗");
 	printf("\n");
 	printf("ret_orig : %d\n", ret1);
 	printf("ret_cust : %d\n", ret2);
@@ -327,6 +327,21 @@ void	test_ls_08(void)
 	printf("Test_ls => 08\n");
 	ret1 = printf("orig : %S\n", L"🤗🤗");
 	ret2 = ft_printf("cust : %S\n", L"🤗🤗");
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void	test_ls_09(void)
+{
+	int ret1 = 0;
+	int ret2 = 0;
+
+	setlocale(LC_ALL, "");
+	printf("Test_ls => 09\n");
+	ret1 = printf("orig : %2S\n", L"🤗🤗🤗🤗");
+	ret2 = ft_printf("cust : %2S\n", L"🤗🤗🤗🤗");
 	printf("\n");
 	printf("ret_orig : %d\n", ret1);
 	printf("ret_cust : %d\n", ret2);
@@ -2193,6 +2208,7 @@ void	test_ls(void)
 	test_ls_06();
 	test_ls_07();
 	test_ls_08();
+	test_ls_09();
 }
 
 void 	test_d(void)
@@ -2372,7 +2388,7 @@ int main(void)
 
 	//Start Conv_s
 	printf("=======> Conv_s <=======\n");
-	test_s();
+	// test_s();
 
 	//Start conv_ls
 	printf("=======> Conv_ls <=======\n");
@@ -2406,7 +2422,7 @@ int main(void)
 
 	//Start conv_lc
 	printf("=======> Conv_lc <=======\n");
-	//test_lc();
+	// test_lc();
 
 
 	//Start Mutants
