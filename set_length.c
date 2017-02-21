@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/17 11:34:31 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/20 14:31:35 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/20 21:19:27 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ char	*set_length_digit(t_print *dna)
 
 char	*set_length_char(t_print *dna)
 {
-	printf("out =>%s\n", dna->out);
+	// printf("out =>%s\n", dna->out);
 	if (dna->pitch && dna->pitch_nb == 0)
 	{
 		dna->out[0] = '\0';
@@ -95,7 +95,7 @@ char	*set_length_char(t_print *dna)
 	}
 	// printf("out => %s\n", dna->out);
 	dna->out = do_pitch(dna, TRUE);
-	printf("out =>%s\n", dna->out);
+	// printf("out =>%s\n", dna->out);
 	if (dna->width > ft_strlen(dna->out))
 		dna->out = width_ectoplasme(dna, TRUE);
 	//dna->out = width_ectoplasme(dna, TRUE);
