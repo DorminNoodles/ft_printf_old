@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 16:53:56 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/21 22:50:55 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/22 17:29:42 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	test_s_03(void)
 
 	printf("Test_s => 03\n");
 	ret1 = printf("orig : %s " "a1 " "a2 " "a3 " "\n", "poney");
-	ret2 = ft_printf("cust : %s " "b1 " "b2 " "b3 " "\n", "poney");
+	ret2 = ft_printf("cust : %s " "a1 " "a2 " "a3 " "\n", "poney");
 	printf("\n");
 	printf("ret_orig : %d\n", ret1);
 	printf("ret_cust : %d\n", ret2);
@@ -187,8 +187,8 @@ void	test_s_12(void)
 	int ret2 = 0;
 
 	printf("Test_s => 12\n");
-	ret1 = printf("orig : %-20.5s.2 %s %d %x\n", STR, "pain au chocolat", 254, 9874);
-	ret2 = ft_printf("orig : %-20.5s.2 %s %d %x\n", STR, "pain au chocolat", 254, 9874);
+	ret1 = printf("orig : %-6.7s %s %-2.9s %s\n", STR, " ", "mange des tartes", "zombies");
+	ret2 = ft_printf("orig : %-6.7s %s %-2.9s %s\n", STR, " ", "mange des tartes", "zombies");
 	printf("\n");
 	printf("ret_orig : %d\n", ret1);
 	printf("ret_cust : %d\n", ret2);
@@ -202,13 +202,44 @@ void	test_s_13(void)
 	int ret2 = 0;
 
 	printf("Test_s => 13\n");
-	ret1 = printf("orig : %zd\n", a);
-	ret2 = ft_printf("cust : %zd\n", a);
+	ret1 = printf("orig : %-6.7s %s %-2.9s %s\n" " r2d2 %10s", STR, " ", "mange des tartes", "zombies", "chips");
+	ret2 = ft_printf("orig : %-6.7s %s %-2.9s %s\n" " r2d2 %10s", STR, " ", "mange des tartes", "zombies", "chips");
 	printf("\n");
 	printf("ret_orig : %d\n", ret1);
 	printf("ret_cust : %d\n", ret2);
 	printf("\n");
 }
+
+void	test_s_14(void)
+{
+	size_t a = LONG_MAX;
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("Test_s => 14\n");
+	ret1 = printf("orig : %-6.7s %s %-2.9s %s\n" " r2d2 %10s", STR, " ", "mange des tartes", "zombies", "chips");
+	ret2 = ft_printf("orig : %-6.7s %s %-2.9s %s\n" " r2d2 %10s", STR, " ", "mange des tartes", "zombies", "chips");
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+//
+// void	test_s_13(void)
+// {
+// 	int ret1 = 0;
+// 	int ret2 = 0;
+//
+// 	printf("Test_s => 13\n");
+// 	ret1 = printf("orig : %025s\n", "steak hache");
+// 	ret2 = ft_printf("cust : %025s\n", "steak hache");
+// 	printf("\n");
+// 	printf("ret_orig : %d\n", ret1);
+// 	printf("ret_cust : %d\n", ret2);
+// 	printf("\n");
+// }
+
 
 
 //=====================================================> conv_S
@@ -794,6 +825,95 @@ void	test_d_30(void)
 	printf("\n");
 }
 
+void	test_d_31(void)
+{
+	int a = 54321;
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("Test_d => 31\n");
+	ret1 = printf("orig : % 4d\n", a);
+	ret2 = ft_printf("cust : % 4d\n", a);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void	test_d_32(void)
+{
+	int a = 54321;
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("Test_d => 32\n");
+	ret1 = printf("orig : % 8d\n", a);
+	ret2 = ft_printf("cust : % 8d\n", a);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void	test_d_33(void)
+{
+	int a = 54321;
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("Test_d => 33\n");
+	ret1 = printf("orig : % .8d\n", a);
+	ret2 = ft_printf("cust : % .8d\n", a);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void	test_d_34(void)
+{
+	int a = -54321;
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("Test_d => 34\n");
+	ret1 = printf("orig : % .2d\n", a);
+	ret2 = ft_printf("cust : % .2d\n", a);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void	test_d_35(void)
+{
+	int a = -54321;
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("Test_d => 35\n");
+	ret1 = printf("orig : %+.2d\n", a);
+	ret2 = ft_printf("cust : %+.2d\n", a);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void	test_d_36(void)
+{
+	int a = 321;
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("Test_d => 36\n");
+	ret1 = printf("orig : %+d\n", a);
+	ret2 = ft_printf("cust : %+d\n", a);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
 
 
 //======================================================> conv_D
@@ -2135,6 +2255,61 @@ void	test_p_03(void)
 	printf("\n");
 }
 
+
+//=====================================================> conv_%
+
+void	test_modulo_01(void)
+{
+	int ret1 = 0;
+	int ret2 = 0;
+	printf("Modulo_test => 01\n");
+	ret1 = printf("*%    %*\n");
+	ret2 = ft_printf("*%   %*\n");
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void	test_modulo_02(void)
+{
+	int ret1 = 0;
+	int ret2 = 0;
+	printf("Modulo_test => 02\n");
+	ret1 = printf("*%    5%*\n");
+	ret2 = ft_printf("*%   5%*\n");
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void	test_modulo_03(void)
+{
+	int ret1 = 0;
+	int ret2 = 0;
+	printf("Modulo_test => 03\n");
+	ret1 = printf("*%-5%*\n");
+	ret2 = ft_printf("*%-5%*\n");
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void	test_modulo_04(void)
+{
+	int ret1 = 0;
+	int ret2 = 0;
+	printf("Modulo_test => 04\n");
+	ret1 = printf("*%.0%*\n");
+	ret2 = ft_printf("*%.0%*\n");
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
 //=====================================================> mutant_test
 
 void 	mutant_01(void)
@@ -2182,6 +2357,47 @@ void 	mutant_04(void)
 	printf("\n");
 }
 
+void 	mutant_05(void)
+{
+	printf("Mutant_test => 05\n");
+	printf("");
+	ft_printf("");
+
+	printf("\n");
+}
+
+void 	mutant_06(void)
+{
+	int ret1 = 0;
+	int ret2 = 0;
+	printf("Mutant_test => 06\n");
+	ret1 = printf("%    :\n", 8.0);
+	ret2 = ft_printf("%   :\n", 8.0);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void	mutant_07(void)
+{
+	size_t a = LONG_MAX;
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("Mutant_test => 07\n");
+	ret1 = printf("orig : %-20.5s.2 %s %012d %x\n", STR, "pain au chocolat", 254, 9874);
+	ret2 = ft_printf("cust : %-20.5s.2 %s %012d %x\n", STR, "pain au chocolat", 254, 9874);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+
+
+
+
 void	test_s(void)
 {
 	test_s_01();
@@ -2196,6 +2412,7 @@ void	test_s(void)
 	test_s_10();
 	test_s_11();
 	test_s_12();
+	// test_s_13();
 }
 
 void	test_ls(void)
@@ -2243,6 +2460,13 @@ void 	test_d(void)
 	test_d_28();
 	test_d_29();
 	test_d_30();
+	test_d_31();
+	test_d_32();
+	test_d_33();
+	test_d_34();
+	test_d_35();
+	test_d_36();
+
 }
 
 void 	test_ld(void)
@@ -2380,7 +2604,21 @@ void 	mutant_test(void)
 	mutant_02();
 	mutant_03();
 	mutant_04();
+	mutant_05();
+	mutant_06();
+	mutant_07();
 }
+
+void	test_modulo(void)
+{
+	test_modulo_01();
+	test_modulo_02();
+	test_modulo_03();
+	test_modulo_04();
+
+
+}
+
 
 int main(void)
 {
@@ -2388,11 +2626,11 @@ int main(void)
 
 	//Start Conv_s
 	printf("=======> Conv_s <=======\n");
-	// test_s();
+	test_s();
 
 	//Start conv_ls
 	printf("=======> Conv_ls <=======\n");
-	test_ls();
+	// test_ls();
 
 	//conv_d
 	printf("=======> Conv_d <=======\n");
@@ -2424,6 +2662,8 @@ int main(void)
 	printf("=======> Conv_lc <=======\n");
 	// test_lc();
 
+	printf("=======> Conv_%% <=======\n");
+	test_modulo();
 
 	//Start Mutants
 	printf("=======> Mutant_Test <=======\n");

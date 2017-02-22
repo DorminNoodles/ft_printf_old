@@ -14,7 +14,8 @@ SRC =	ft_printf.c										\
 		pitch.c											\
 		prefix.c										\
 		width.c											\
-		set_length.c
+		set_length.c									\
+		flags.c
 
 LIBFT_OBJ =	ft_atoi.o		\
 			ft_bzero.o		\

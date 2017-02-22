@@ -1,37 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   flags.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/06 15:48:05 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/22 14:22:07 by lchety           ###   ########.fr       */
+/*   Created: 2017/02/22 10:39:10 by lchety            #+#    #+#             */
+/*   Updated: 2017/02/22 14:22:11 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "ft_printf.h"
 
-int ft_printf(const char *format, ...)
+char	*flag_blk(t_print *dna)
 {
-	int i;
-	t_print dna;
-	va_list ap;
-	int ret;
+	char	*tmp;
+	int		size;
 
-	ret = 0;
-	i = 0;
-	dna.ret_nb = 0;
-	va_start(ap, format);
-	while ((ret = parsing_format(format, &dna, ap)))
+	tmp = dna->out;
+	size = ft_strlen(dna->out);
+	if (dna->flag_blk)
 	{
-		format += ret;
-		if (dna.conv)
-			compute_conv(&dna, ap);
-		reset_print(&dna);
-		//#pragma message(": warning<put what you like here>: blah blah blah")
+		if (*dna->out != ' ' && *dna->out != '-')
+		{
+			if (!(dna->out = (char*)ft_memalloc(sizeof(char) * size + 2)))
+				return (NULL);
+			ft_memcpy(dna->out + 1, tmp, size);
+			ft_memcpy(dna->out, " ", 1);
+			free(tmp);
+		}
 	}
-	//compute_conv(parsing_struct);
-	return ((int)dna.ret_nb);
+	return (dna->out);
 }

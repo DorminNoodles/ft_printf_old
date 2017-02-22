@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/09 09:38:43 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/20 21:19:13 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/22 14:19:15 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,11 @@ char	*compute_pitch_nb_cut(t_print *dna)
 	char	*tmp;
 	int		pos;
 
-	//printf("compute_pitch_nb_cut\n");
 	tmp = dna->out;
 	pos = dna->pitch_nb - ft_strlen(dna->out);
 	if(!(dna->out = (char*)ft_memalloc(sizeof(char) * (dna->pitch_nb + 1))))
 		return (NULL);
 	ft_memcpy(dna->out, tmp, dna->pitch_nb);
-	// printf("2 out => %s\n", dna->out);
-	// printf("out => %s\n", dna->out);
 	free(tmp);
 	return (dna->out);
 }
@@ -64,7 +61,6 @@ char	*compute_pitch_nb(t_print *dna)
 	int size_malloc;
 	int start;
 
-	printf("compute_pitch_nb\n");
 	start = 0;
 	size_malloc = dna->pitch_nb + 1;
 	tmp = dna->out;
@@ -88,7 +84,6 @@ void	compute_pitch_dollar(t_print *dna)
 	printf("COMPUTE_PITCH_DOLLAR\n");
 
 	//dna->pitch_nb = va_arg(ap, int);
-	//printf("%s\n", dna->out);
 
 }
 

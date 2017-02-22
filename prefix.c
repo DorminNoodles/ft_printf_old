@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/10 18:50:34 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/20 11:06:20 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/22 14:02:43 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,11 +115,11 @@ char	*get_prefix(t_print *dna)
 		return ("0");
 	if (dna->pre_pls && !dna->pre_min)
 	{
-		if (dna->width < dna->base_size)
-		{
-			dna->ret_nb++;
+		// if (dna->width < dna->base_size)
+		// {
+		// 	dna->ret_nb++;
 			return ("+");
-		}
+		// }
 	}
 	if (dna->pre_min)
 		return ("-");

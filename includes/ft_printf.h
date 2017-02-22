@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 17:10:51 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/21 22:10:32 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/22 13:28:30 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define FT_PRINTF_H
 # define TRUE 1
 # define FALSE 0
-# define STRING_CONV "sSpdDioOuUxXcC"
+# define STRING_CONV "sSpdDioOuUxXcC%"
 
 #include <stdarg.h>
 #include <stdio.h>
@@ -54,6 +54,7 @@ typedef struct s_print
 	bool conv_x;
 	bool conv_lx;
 	bool conv_p;
+	bool conv_mod;
 
 	bool cast_h;
 	bool cast_hh;
@@ -62,6 +63,7 @@ typedef struct s_print
 	bool cast_z;
 	bool cast_j;
 	bool flag_0;
+	bool flag_blk;
 	bool htag;
 	bool justify;
 	bool pre_min;
@@ -119,8 +121,10 @@ char		*set_length_char(t_print *dna);
 char		*prefix_lossless(t_print *dna);
 char		*prefix_lossy(t_print *dna);
 char		*width_ectoplasme(t_print *dna, bool prefix_in);
+void		parsing_blk(const char	*format, t_print *dna, char *end);
 size_t		wcharlen(wchar_t c);
 size_t		wstrlen(wchar_t *str);
+char		*flag_blk(t_print *dna);
 
 
 

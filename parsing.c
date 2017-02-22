@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/08 14:01:18 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/17 18:45:56 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/22 14:04:34 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ int		parsing_format(const char *format, t_print *dna, va_list ap)
 		{
 			reset_print(dna);
 			i += parsing_dispatch(format + i, dna, ap);
-			if (*(format + i) == '%' && !dna->conv)
-			{
-				ft_putchar('%');
-				dna->ret_nb++;
-				i++;
-			}
+			//if (*(format + i) == '%' && !dna->conv)
+			//{
+				//ft_putchar('%');
+				//dna->ret_nb++;
+				//i++;
+			//}
 			if (dna->conv)
 				return (i);
 		}
@@ -65,6 +65,16 @@ void	parsing_0(const char *format, t_print *dna, char *end)
 	}
 }
 
+void	parsing_pls(const char *format, t_print *dna, char *end)
+{
+	while (format < end)
+	{
+		if (*format == '+')
+			dna->pre_pls = TRUE;
+		format++;
+	}
+}
+
 void	parsing_width(const char *format, t_print *dna, char *end)
 {
 	int nb;
@@ -85,7 +95,6 @@ void	parsing_width(const char *format, t_print *dna, char *end)
 		save = nb;
 		format++;
 	}
-	// printf("parsing => width == %d\n", save);
 	dna->width = save;
 	// printf("parsing => width == %d\n", dna->width);
 	// printf("TEST02 == %d\n", dna->width);
@@ -97,11 +106,10 @@ int		parsing_dispatch(const char *format, t_print *dna, va_list ap)
 
 	end = NULL;
 	if(!(end = parsing_converter(format + 1, dna)))
-	{
 		return (1);
-	}
-	//printf("test\n");
 	parsing_0(format, dna, end);
+	parsing_pls(format, dna, end);
+	parsing_blk(format, dna, end);
 	parsing_width(format, dna, end);
 	parsing_htag(format, dna, end);
 	parsing_justify(format, dna, end);
@@ -196,9 +204,17 @@ void	parsing_pitch(const char *format, t_print *dna, char *end, va_list ap)
 
 	if (dna->pitch)
 		dna->flag_0 = FALSE;
-	//pitch_dollar(format, dna, end);
 }
 
+void	parsing_blk(const char	*format, t_print *dna, char *end)
+{
+	while (format < end)
+	{
+		if (*format == ' ')
+			dna->flag_blk = TRUE;
+		format++;
+	}
+}
 
 /*
 void parsing_format(const char *format)

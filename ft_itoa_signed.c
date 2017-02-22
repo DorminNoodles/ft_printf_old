@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/08 19:58:41 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/11 13:41:36 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/22 14:18:41 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,8 @@ char			*ft_itoa_signed(long long n)
 	char			*str;
 	unsigned long long	nb;
 	int				negatif;
-	// printf("itoa == %lld\n", n);
 	str = NULL;
 	nb = n;
-	// printf("itoa == %lld\n", nb);
 	negatif = 0;
 	if (n < 0)
 	{

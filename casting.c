@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 17:11:21 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/12 16:27:43 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/22 14:18:00 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,10 @@
 
 intmax_t	cast_default(t_print *dna, va_list ap)
 {
-	// printf("cast default\n");
 	if (dna->conv_d)
 		return ((intmax_t)va_arg(ap, int));
 	if (dna->conv_x || dna->conv_lx)
 		return ((intmax_t)va_arg(ap, unsigned int));
-		//printf("HERE\n");
 	if (dna->conv_ld)
 		return ((intmax_t)va_arg(ap, unsigned int));
 
@@ -59,7 +57,6 @@ intmax_t	exec_cast_unsigned(t_print *dna, va_list ap)
 	str = NULL;
 	if (dna->cast_hh)
 		return((intmax_t)(unsigned char)va_arg(ap, intmax_t));
-		// printf("KERO -1\n");
 	if (dna->cast_h)
 		return((intmax_t)(unsigned short)va_arg(ap, uintmax_t));
 	if (dna->cast_ll)
@@ -86,7 +83,6 @@ intmax_t	cast_ld(t_print *dna, va_list ap)
 
 	ret = 0;
 	str = NULL;
-	// printf("cast = %d\n", dna->cast_h);
 	if (dna->cast_hh)
 		return((intmax_t)(unsigned int)va_arg(ap, intmax_t));
 	if (dna->cast_h)
@@ -105,7 +101,6 @@ intmax_t	cast_ld(t_print *dna, va_list ap)
 	// 	ret = (intmax_t)(size_t)ret;
 	// if (dna->cast_j)
 	// 	ret = (intmax_t)ret;
-	// printf("KERO\n");
 	return ((intmax_t)va_arg(ap, unsigned int));
 }
 
