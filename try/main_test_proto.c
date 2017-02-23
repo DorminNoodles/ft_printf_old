@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 16:53:56 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/22 21:09:11 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/23 12:21:00 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -1963,8 +1963,6 @@ void	test_x_29(void)
 	printf("\n");
 }
 
-
-
 void	test_x_30(void)
 {
 	int var = 0;
@@ -1987,14 +1985,43 @@ void	test_x_31(void)
 	int ret2 = 0;
 
 	printf("Test_x => 31\n");
-	ret1 = printf("orig : %#-08x\n", var);
-	ret2 = ft_printf("cust : %#-08x\n", var);
+	ret1 = printf("orig : %#-8x\n", var);
+	ret2 = ft_printf("cust : %#-8x\n", var);
 	printf("\n");
 	printf("ret_orig : %d\n", ret1);
 	printf("ret_cust : %d\n", ret2);
 	printf("\n");
 }
 
+	//ft_printf("@moulitest: %#.x %#.0x", 0, 0);
+void	test_x_32(void)
+{
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("Test_x => 32\n");
+	ret1 = printf("orig : %#.x %#.0x\n", 0, 0);
+	ret2 = ft_printf("cust : %#.x %#.0x\n", 0, 0);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+/*
+void	test_x_33(void)
+{
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("Test_x => 33\n");
+	ret1 = printf("orig : %#.x\n", 1);
+	ret2 = ft_printf("cust : %#.x\n", 0);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+*/
 
 //=====================================================> conv_X
 
@@ -2141,6 +2168,50 @@ void	test_lx_10(void)
 	printf("Test_X => 10\n");
 	ret1 = printf("orig : %-#28.16llX|\n", a);
 	ret2 = ft_printf("cust : %-#28.16llX|\n", a);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+//=====================================================> conv_C
+
+void	test_c_01(void)
+{
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("Test_lc => 01\n");
+	ret1 = printf("orig : %c\n", 'G');
+	ret2 = ft_printf("cust : %c\n", 'G');
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void	test_c_02(void)
+{
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("Test_lc => 02\n");
+	ret1 = printf("orig : %lc\n   ", 'G');
+	ret2 = ft_printf("cust : %lc\n   ", 'G');
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void	test_c_03(void)
+{
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("Test_lc => 03\n");
+	ret1 = printf("orig : %5c\n   ", 'G');
+	ret2 = ft_printf("cust : %5c\n   ", 'G');
 	printf("\n");
 	printf("ret_orig : %d\n", ret1);
 	printf("ret_cust : %d\n", ret2);
@@ -2422,8 +2493,8 @@ void 	mutant_06(void)
 	int ret1 = 0;
 	int ret2 = 0;
 	printf("Mutant_test => 06\n");
-	ret1 = printf("%    :\n", 8.0);
-	ret2 = ft_printf("%   :\n", 8.0);
+	ret1 = printf("%    m\n");
+	ret2 = ft_printf("%   m\n");
 	printf("\n");
 	printf("ret_orig : %d\n", ret1);
 	printf("ret_cust : %d\n", ret2);
@@ -2572,6 +2643,8 @@ void 	test_x(void)
 	test_x_29();
 	test_x_30();
 	test_x_31();
+	test_x_32();
+	//test_x_33();
 }
 
 void test_lx(void)
@@ -2638,6 +2711,19 @@ void	test_p(void)
 	test_p_03();
 }
 
+void	test_c(void)
+{
+	test_c_01();
+	test_c_02();
+	test_c_03();
+	// test_c_04();
+	// test_c_05();
+	// test_c_06();
+	// test_c_07();
+	// test_c_08();
+	// test_c_09();
+}
+
 void	test_lc(void)
 {
 	test_lc_01();
@@ -2679,7 +2765,7 @@ int main(void)
 
 	//Start Conv_s
 	printf("=======> Conv_s <=======\n");
-	test_s();
+	// test_s();
 
 	//Start conv_ls
 	printf("=======> Conv_ls <=======\n");
@@ -2702,7 +2788,7 @@ int main(void)
 	// test_lo();
 
 	printf("=======> Conv_x <=======\n");
-	test_x();
+	// test_x();
 
 	printf("=======> Conv_lx <=======\n");
 	// test_lx();
@@ -2714,6 +2800,9 @@ int main(void)
 	//Start conv_lc
 	printf("=======> Conv_lc <=======\n");
 	// test_lc();
+
+	printf("=======> Conv_c <=======\n");
+	test_c();
 
 	printf("=======> Conv_%% <=======\n");
 	// test_modulo();

@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/24 14:27:07 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/22 12:37:53 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/23 10:06:22 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,16 @@
 void	reset_print(t_print *dna)
 {
 	dna->conv = FALSE;
+	dna->conv_s = FALSE;
+	dna->conv_ls = FALSE;
+	dna->conv_p = FALSE;
 	dna->conv_d = FALSE;
 	dna->conv_ld = FALSE;
 	dna->conv_i = FALSE;
 	dna->conv_o = FALSE;
+	dna->conv_lo = FALSE;
 	dna->conv_c = FALSE;
 	dna->conv_lc = FALSE;
-	dna->conv_ls = FALSE;
-	dna->conv_s = FALSE;
-	dna->conv_p = FALSE;
 	dna->conv_x = FALSE;
 	dna->conv_lx = FALSE;
 	dna->conv_mod = FALSE;

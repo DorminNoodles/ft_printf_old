@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/17 11:34:31 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/22 21:06:35 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/23 09:29:54 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,11 @@ char	*set_length_digit(t_print *dna)
 				}
 				prefix = TRUE;
 			}
-			width_ectoplasme(dna, TRUE);	// push -50 or 50
-			// printf("bip1 = %s\n", dna->out);
+			width_ectoplasme(dna, FALSE);	// push -50 or 50
+			//printf("bip1 = %s\n", dna->out);
 			if (!prefix)
 			{
-				prefix_lossless(dna);
+				prefix_lossy(dna);
 				prefix = TRUE;
 			}
 			// printf("bip2 = %s\n", dna->out);
