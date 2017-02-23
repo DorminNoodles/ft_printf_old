@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 17:09:10 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/22 14:36:24 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/22 21:09:10 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,6 @@ void	compute_conv_ld(t_print *dna, va_list ap)
 	free(dna->out);
 }
 
-
 void	compute_conv_lc (t_print *dna, va_list ap)
 {
 
@@ -144,7 +143,6 @@ char	*compute_conv_p(t_print *dna, va_list ap)
 	return (dna->out);
 }
 
-
 void 	compute_conv_o(t_print *dna, va_list ap)
 {
 	uintmax_t n;
@@ -152,14 +150,7 @@ void 	compute_conv_o(t_print *dna, va_list ap)
 	n = va_arg(ap, uintmax_t);
 	dna->out = ft_itoa_printf((long)n, 8);
 	dna->base_size = ft_strlen(dna->out);
-/*
-	if (!dna->out)
-		return;
-	if (!dna->pitch)
-		do_width(dna);
-	else
-		do_pitch(dna, FALSE);
-*/
+
 	dna->out = set_length_digit(dna);
 	dna->ret_nb += ft_strlen(dna->out);
 	ft_putstr(dna->out);
@@ -175,37 +166,12 @@ void	compute_conv_x(t_print *dna, va_list ap)
 	nb = 0;
 	i = 0;
 	ret = exec_cast_unsigned(dna, ap);
+	if (ret == 0)
+		dna->htag = FALSE;
 	dna->out = ft_itoa_printf(ret, 16);
 	dna->base_size = ft_strlen(dna->out);
 	dna->out = flag_blk(dna);
-
-	/*
-	if (dna->pitch_nb > dna->base_size)
-		dna->out = do_pitch(dna, FALSE);
-	else if (prefix_count(dna) && dna->pitch_nb)
-		prefix(dna);
-	if (dna->pitch && dna->width > ft_strlen(dna->out))
-		do_width(dna);
-	else if (dna->width >= ft_strlen(dna->out) + prefix_count(dna))
-	{
-		if (!dna->flag_0)
-		{
-			add_prefix(dna);
-			do_width(dna);
-		}
-		else
-		{
-			do_width(dna);
-			prefix(dna);
-		}
-	}
-	else if (!dna->pitch && !dna->width && prefix_count(dna))
-		prefix(dna);
-	*/
-
 	dna->out = set_length_digit(dna);
-
-	//("### %d\n", (int)ft_strlen(dna->out));
 	if (dna->conv_lx)
 	{
 		while (dna->out[i])
@@ -214,14 +180,15 @@ void	compute_conv_x(t_print *dna, va_list ap)
 			i++;
 		}
 	}
-	dna->ret_nb += ft_strlen(dna->out) - prefix_count(dna);
+	//printf("chiasse *%s\n", dna->out);
+	dna->ret_nb += ft_strlen(dna->out);
 	ft_putstr_buff(dna->out);
 	free(dna->out);
 }
 
 char	*compute_conv_mod(t_print *dna, va_list ap)
 {
-	//printf("conv_mod\n");
+	// printf("conv_mod\n");
 	if (!(dna->out = (char*)ft_memalloc(sizeof(char) * 2)))
 		return (NULL);
 	*dna->out = '%';
