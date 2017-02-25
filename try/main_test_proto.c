@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 16:53:56 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/23 12:21:00 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/24 22:48:10 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,7 +182,6 @@ void	test_s_11(void)
 
 void	test_s_12(void)
 {
-	size_t a = LONG_MAX;
 	int ret1 = 0;
 	int ret2 = 0;
 
@@ -197,7 +196,6 @@ void	test_s_12(void)
 
 void	test_s_13(void)
 {
-	size_t a = LONG_MAX;
 	int ret1 = 0;
 	int ret2 = 0;
 
@@ -212,7 +210,22 @@ void	test_s_13(void)
 
 void	test_s_14(void)
 {
-	size_t a = LONG_MAX;
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("Test_s => 14\n");
+	 //ft_printf("@moulitest: %s", NULL);
+	ret1 = printf("orig : %s\n", NULL);
+	ret2 = ft_printf("orig : %s\n", NULL);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+/*
+void	test_s_14(void)
+{
 	int ret1 = 0;
 	int ret2 = 0;
 
@@ -225,6 +238,22 @@ void	test_s_14(void)
 	printf("\n");
 }
 
+*/
+/*
+void	test_s_16(void)
+{
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("Test_s => 16\n");
+	ret1 = printf("orig : %s\n", NULL);
+	ret2 = ft_printf("orig : %s\n", NULL);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+*/
 //
 // void	test_s_13(void)
 // {
@@ -373,6 +402,21 @@ void	test_ls_09(void)
 	printf("Test_ls => 09\n");
 	ret1 = printf("orig : %2S\n", L"🤗🤗🤗🤗");
 	ret2 = ft_printf("cust : %2S\n", L"🤗🤗🤗🤗");
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void	test_ls_10(void)
+{
+	int ret1 = 0;
+	int ret2 = 0;
+
+	setlocale(LC_ALL, "");
+	printf("Test_ls => 10\n");
+	ret1 = printf("orig : %2S\n", NULL);
+	ret2 = ft_printf("cust : %2S\n", NULL);
 	printf("\n");
 	printf("ret_orig : %d\n", ret1);
 	printf("ret_cust : %d\n", ret2);
@@ -915,6 +959,83 @@ void	test_d_36(void)
 	printf("\n");
 }
 
+void	test_d_37(void)
+{
+	int a = 42;
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("Test_d => 37\n");
+	ret1 = printf("orig : % +d\n", a);
+	ret2 = ft_printf("cust : % +d\n", a);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+//  ft_printf("%0+5d", 42);
+void	test_d_38(void)
+{
+	int a = 42;
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("Test_d => 38\n");
+	ret1 = printf("orig : %0+5d\n", a);
+	ret2 = ft_printf("cust : %0+5d\n", a);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void	test_d_39(void)
+{
+	long a = LONG_MAX;
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("Test_d => 39\n");
+	ret1 = printf("orig : %jd\n", a);
+	ret2 = ft_printf("cust : %jd\n", a);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void	test_d_40(void)
+{
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("Test_d => 40\n");
+	ret1 = printf("orig : %.d %.0d\n", 0, 0);
+	ret2 = ft_printf("cust : %.d %.0d\n", 0, 0);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+/*
+# 0030 (size_t)
+  ft_printf("%zhd", "4294967296");
+  1. (    1) -->0<--
+  2. (   10) -->4294967296<--
+*/
+  void	test_d_41(void)
+  {
+  	int ret1 = 0;
+  	int ret2 = 0;
+
+  	printf("Test_d => 41\n");
+  	ret1 = printf("orig : %zhd\n", 4294967296);
+  	ret2 = ft_printf("cust : %zhd\n", 4294967296);
+  	printf("\n");
+  	printf("ret_orig : %d\n", ret1);
+  	printf("ret_cust : %d\n", ret2);
+  	printf("\n");
+  }
 
 //======================================================> conv_D
 
@@ -1041,8 +1162,8 @@ void	test_ld_09(void)
 	int ret2 = 0;
 
 	printf("Test_D => 09\n");
-	printf("orig : %hhD\n", a);
-	ft_printf("cust : %hhD\n", a);
+	ret1 = printf("orig : %hhD\n", a);
+	ret2 = ft_printf("cust : %hhD\n", a);
 	printf("\n");
 	printf("ret_orig : %d\n", ret1);
 	printf("ret_cust : %d\n", ret2);
@@ -1056,8 +1177,8 @@ void	test_ld_10(void)
 	int ret2 = 0;
 
 	printf("Test_D => 10\n");
-	printf("orig : %hhD\n", a);
-	ft_printf("cust : %hhD\n", a);
+	ret1 = printf("orig : %hhD\n", a);
+	ret2 = ft_printf("cust : %hhD\n", a);
 	printf("\n");
 	printf("ret_orig : %d\n", ret1);
 	printf("ret_cust : %d\n", ret2);
@@ -1071,8 +1192,8 @@ void	test_ld_11(void)
 	int ret2 = 0;
 
 	printf("Test_D => 11\n");
-	printf("orig : %llD\n", a);
-	ft_printf("cust : %llD\n", a);
+	ret1 = printf("orig : %llD\n", a);
+	ret2 = ft_printf("cust : %llD\n", a);
 	printf("\n");
 	printf("ret_orig : %d\n", ret1);
 	printf("ret_cust : %d\n", ret2);
@@ -1086,8 +1207,8 @@ void	test_ld_12(void)
 	int ret2 = 0;
 
 	printf("Test_D => 12\n");
-	printf("orig : %lD\n", a);
-	ft_printf("cust : %lD\n", a);
+	ret1 = printf("orig : %lD\n", a);
+	ret2 = ft_printf("cust : %lD\n", a);
 	printf("\n");
 	printf("ret_orig : %d\n", ret1);
 	printf("ret_cust : %d\n", ret2);
@@ -1101,8 +1222,8 @@ void	test_ld_13(void)
 	int ret2 = 0;
 
 	printf("Test_D => 13\n");
-	printf("orig : %jD\n", a);
-	ft_printf("cust : %jD\n", a);
+	ret1 = printf("orig : %jD\n", a);
+	ret2 = ft_printf("cust : %jD\n", a);
 	printf("\n");
 	printf("ret_orig : %d\n", ret1);
 	printf("ret_cust : %d\n", ret2);
@@ -1116,8 +1237,8 @@ void	test_ld_14(void)
 	int ret2 = 0;
 
 	printf("Test_D => 14\n");
-	printf("orig : %jD\n", a);
-	ft_printf("cust : %jD\n", a);
+	ret1 = printf("orig : %jD\n", a);
+	ret2 = ft_printf("cust : %jD\n", a);
 	printf("\n");
 	printf("ret_orig : %d\n", ret1);
 	printf("ret_cust : %d\n", ret2);
@@ -1131,8 +1252,23 @@ void	test_ld_15(void)
 	int ret2 = 0;
 
 	printf("Test_D => 15\n");
-	printf("orig : %.*jD\n", 5, a);
-	ft_printf("cust : %.*jD\n", 5, a);
+	ret1 = printf("orig : %.*jD\n", 5, a);
+	ret2 = ft_printf("cust : %.*jD\n", 5, a);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void	test_ld_16(void)
+{
+	uintmax_t a = ULONG_MAX;
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("Test_D => 16\n");
+	ret1 = printf("orig : %D\n", -1L);
+	ret2 = ft_printf("cust : %D\n", -1L);
 	printf("\n");
 	printf("ret_orig : %d\n", ret1);
 	printf("ret_cust : %d\n", ret2);
@@ -1467,6 +1603,62 @@ void 	test_o_11(void)
 	printf("\n");
 }
 
+void 	test_o_12(void)
+{
+	int a = 0;
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("Test_o => 12\n");
+	ret1 = printf("orig : %#o\n", a);
+	ret2 = ft_printf("cust : %#o\n", a);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void 	test_o_13(void)
+{
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("Test_o => 13\n");
+	ret1 = printf("orig : %.0o %.o\n", 0, 0);
+	ret2 = ft_printf("cust : %.0o %.o\n", 0, 0);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void 	test_o_14(void)
+{
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("Test_o => 14\n");
+	ret1 = printf("orig : %#.0o %#.0o\n", 0, 0);
+	ret2 = ft_printf("cust : %#.0o %#.0o\n", 0, 0);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void 	test_o_15(void)
+{
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("Test_o => 15\n");
+	ret1 = printf("orig : %o\n", 0);
+	ret2 = ft_printf("cust : %o\n", 0);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
 
 //======================================================> conv_O
 void 	test_lo_01(void)
@@ -1528,6 +1720,350 @@ void 	test_lo_04(void)
 	printf("ret_cust : %d\n", ret2);
 	printf("\n");
 }
+
+//======================================================> conv_x
+
+void	test_u_01(void)
+{
+	unsigned int a = UINT_MAX;
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("Test_u => 01\n");
+	ret1 = printf("orig : %u\n", a);
+	ret2 = ft_printf("cust : %u\n", a);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+
+
+}
+
+void	test_u_02(void)
+{
+	unsigned long a = LONG_MAX;
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("Test_u => 02\n");
+	ret1 = printf("orig : %lu\n", a);
+	ret2 = ft_printf("cust : %lu\n", a);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+
+
+}
+
+void	test_u_03(void)
+{
+	unsigned char a = UCHAR_MAX;
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("Test_u => 03\n");
+	ret1 = printf("orig : %hhu\n", a);
+	ret2 = ft_printf("cust : %hhu\n", a);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+
+
+}
+
+void	test_u_04(void)
+{
+	size_t a = UINT_MAX;
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("Test_u => 04\n");
+	ret1 = printf("orig : %zu\n", a);
+	ret2 = ft_printf("cust : %zu\n", a);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+
+
+}
+
+void	test_u_05(void)
+{
+	unsigned int a = UINT_MAX;
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("Test_u => 05\n");
+	ret1 = printf("orig : %#u\n", a);
+	ret2 = ft_printf("cust : %#u\n", a);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void	test_u_06(void)
+{
+	unsigned int a = UINT_MAX;
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("Test_u => 06\n");
+	ret1 = printf("orig : % u\n", a);
+	ret2 = ft_printf("cust : % u\n", a);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void	test_u_07(void)
+{
+	unsigned int a = UINT_MAX;
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("Test_u => 07\n");
+	ret1 = printf("orig : %016u\n", a);
+	ret2 = ft_printf("cust : %016u\n", a);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void	test_u_08(void)
+{
+	unsigned int a = UINT_MAX;
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("Test_u => 08\n");
+	ret1 = printf("orig : %+u\n", a);
+	ret2 = ft_printf("cust : %+u\n", a);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void	test_u_09(void)
+{
+	unsigned int a = UINT_MAX;
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("Test_u => 09\n");
+	ret1 = printf("orig : %.5u\n", a);
+	ret2 = ft_printf("cust : %.5u\n", a);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void	test_u_10(void)
+{
+	unsigned int a = UINT_MAX;
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("Test_u => 10\n");
+	ret1 = printf("orig : %.12u\n", a);
+	ret2 = ft_printf("cust : %.12u\n", a);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void	test_u_11(void)
+{
+	unsigned int a = UINT_MAX;
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("Test_u => 11\n");
+	ret1 = printf("orig : %16.12u\n", a);
+	ret2 = ft_printf("cust : %16.12u\n", a);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void	test_u_12(void)
+{
+	unsigned int a = 0;
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("Test_u => 12\n");
+	ret1 = printf("orig : %0.12u\n", a);
+	ret2 = ft_printf("cust : %0.12u\n", a);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void	test_u_13(void)
+{
+	unsigned int a = 0;
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("Test_u => 13\n");
+	ret1 = printf("orig : %.0u\n", a);
+	ret2 = ft_printf("cust : %.0u\n", a);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void	test_u_14(void)
+{
+	unsigned int a = 0;
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("Test_u => 14\n");
+	ret1 = printf("orig : %0u\n", a);
+	ret2 = ft_printf("cust : %0u\n", a);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void	test_u_15(void)
+{
+	unsigned int a = 0;
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("Test_u => 15\n");
+	ret1 = printf("orig : %0.0u\n", a);
+	ret2 = ft_printf("cust : %0.0u\n", a);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void	test_u_16(void)
+{
+	unsigned int a = 0;
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("Test_u => 16\n");
+	ret1 = printf("orig : *%010.0u*\n", a);
+	ret2 = ft_printf("cust : *%010.0u*\n", a);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void	test_u_17(void)
+{
+	unsigned int a = 0;
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("Test_u => 17\n");
+	ret1 = printf("orig : *%#.0u*\n", a);
+	ret2 = ft_printf("cust : *%#.0u*\n", a);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+
+
+//======================================================> conv_lu
+
+void	test_lu_01(void)
+{
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("Test_lu => 01\n");
+	ret1 = printf("orig : %U\n", 42);
+	ret2 = ft_printf("cust : %U\n", 42);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void	test_lu_02(void)
+{
+	unsigned short a = USHRT_MAX;
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("Test_U => 02\n");
+	ret1 = printf("orig : %hU\n", a);
+	ret2 = ft_printf("cust : %hU\n", a);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void	test_lu_03(void)
+{
+	unsigned short a = USHRT_MAX;
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("Test_U => 03\n");
+	ret1 = printf("orig : %U\n", 4294967295);
+	ret2 = ft_printf("cust : %U\n", 4294967295);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void	test_lu_04(void)
+{
+	unsigned short a = USHRT_MAX;
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("Test_U => 04\n");
+	ret1 = printf("orig : %hhU\n", ULONG_MAX);
+	ret2 = ft_printf("cust : %hU\n", ULONG_MAX);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void	test_lu_05(void)
+{
+	unsigned short a = USHRT_MAX;
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("Test_U => 05\n");
+	ret1 = printf("orig : %U\n", 4294967296);
+	ret2 = ft_printf("cust : %U\n", 4294967296);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
 
 
 //======================================================> conv_x
@@ -2181,7 +2717,7 @@ void	test_c_01(void)
 	int ret1 = 0;
 	int ret2 = 0;
 
-	printf("Test_lc => 01\n");
+	printf("Test_c => 01\n");
 	ret1 = printf("orig : %c\n", 'G');
 	ret2 = ft_printf("cust : %c\n", 'G');
 	printf("\n");
@@ -2195,7 +2731,7 @@ void	test_c_02(void)
 	int ret1 = 0;
 	int ret2 = 0;
 
-	printf("Test_lc => 02\n");
+	printf("Test_c => 02\n");
 	ret1 = printf("orig : %lc\n   ", 'G');
 	ret2 = ft_printf("cust : %lc\n   ", 'G');
 	printf("\n");
@@ -2209,7 +2745,7 @@ void	test_c_03(void)
 	int ret1 = 0;
 	int ret2 = 0;
 
-	printf("Test_lc => 03\n");
+	printf("Test_c => 03\n");
 	ret1 = printf("orig : %5c\n   ", 'G');
 	ret2 = ft_printf("cust : %5c\n   ", 'G');
 	printf("\n");
@@ -2217,6 +2753,91 @@ void	test_c_03(void)
 	printf("ret_cust : %d\n", ret2);
 	printf("\n");
 }
+
+void	test_c_04(void)
+{
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("Test_c => 04\n");
+	ret1 = printf("orig : %c\n", NULL);
+	ret2 = ft_printf("cust : %c\n", NULL);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void	test_c_05(void)
+{
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("Test_c => 05\n");
+	ret1 = printf("orig : %2c\n", 0);
+	ret2 = ft_printf("cust : %2c\n", 0);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void	test_c_06(void)
+{
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("Test_c => 06\n");
+	ret1 = printf("orig : %1c\n", 0);
+	ret2 = ft_printf("cust : %1c\n", 0);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void	test_c_07(void)
+{
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("Test_c => 07\n");
+	ret1 = printf("orig : %.2c\n", NULL);
+	ret2 = ft_printf("cust : %.2c\n", NULL);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void	test_c_08(void)
+{
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("Test_c => 08\n");
+	ret1 = printf("orig : %.1c\n", NULL);
+	ret2 = ft_printf("cust : %.1c\n", NULL);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void	test_c_09(void)
+{
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("Test_c => 09\n");
+	ret1 = printf("orig : %.3c\n", NULL);
+	ret2 = ft_printf("cust : %.3c\n", NULL);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
 
 //=====================================================> conv_C
 
@@ -2370,13 +2991,33 @@ void	test_p_02(void)
 void	test_p_03(void)
 {
 	int b = 234235;
+	int ret1 = 0;
+	int ret2 = 0;
 
 	printf("Test_p => 03\n");
-	printf("orig : %25p\n", &b);
-	ft_printf("cust : %25p\n", &b);
+	ret1 = printf("orig : %25p\n", &b);
+	ret2 = ft_printf("cust : %25p\n", &b);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
 	printf("\n");
 }
+//printf("%p", &i)
 
+void	test_p_04(void)
+{
+	int *i;
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("Test_p => 04\n");
+	ret1 = printf("orig : %p\n", &i);
+	ret2 = ft_printf("cust : %p\n", &i);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
 
 //=====================================================> conv_%
 
@@ -2431,6 +3072,121 @@ void	test_modulo_04(void)
 	printf("ret_cust : %d\n", ret2);
 	printf("\n");
 }
+
+void	test_modulo_05(void)
+{
+	int ret1 = 0;
+	int ret2 = 0;
+	printf("Modulo_test => 05\n");
+	ret1 = printf("% ");
+	ret2 = ft_printf("% ");
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+//=====================================================> conv_b
+
+void 	test_b_01(void)
+{
+	int ret2 = 0;
+
+	printf("conv_b => 01\n", 42);
+	ret2 = ft_printf("cust : %b\n", 42);
+	printf("\n");
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void 	test_b_02(void)
+{
+	int ret2 = 0;
+
+	printf("conv_b => 02\n");
+	ret2 = ft_printf("cust : %b\n", INT_MAX);
+	printf("\n");
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void 	test_b_03(void)
+{
+	int ret2 = 0;
+
+	printf("conv_b => 03\n");
+	ret2 = ft_printf("cust : %.2b\n", ULONG_MAX);
+	printf("\n");
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void 	test_b_04(void)
+{
+	int ret2 = 0;
+
+	printf("conv_b => 04\n");
+	ret2 = ft_printf("cust : %.10b\n", 42);
+	printf("\n");
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void 	test_b_05(void)
+{
+	int ret2 = 0;
+
+	printf("conv_b => 05\n");
+	ret2 = ft_printf("cust : *%-16.8b*\n", 42);
+	printf("\n");
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void 	test_b_06(void)
+{
+	int ret2 = 0;
+
+	printf("conv_b => 06\n");
+	ret2 = ft_printf("cust : *%16.8b*\n", 42);
+	printf("\n");
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void 	test_b_07(void)
+{
+	int ret2 = 0;
+
+	printf("conv_b => 07\n");
+	ret2 = ft_printf("cust : *%#16.8b*\n", 42);
+	printf("\n");
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void 	test_b_08(void)
+{
+	int ret2 = 0;
+
+	printf("conv_b => 08\n");
+	ret2 = ft_printf("cust : *%016b*\n", 42);
+	printf("\n");
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void 	test_b_09(void)
+{
+	int ret2 = 0;
+
+	printf("conv_b => 09\n");
+	ret2 = ft_printf("cust : *%#9b*\n", 42);
+	printf("\n");
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
 
 //=====================================================> mutant_test
 
@@ -2515,9 +3271,38 @@ void	mutant_07(void)
 	printf("ret_cust : %d\n", ret2);
 	printf("\n");
 }
+	//assert_printf("s: %s, p: %p, d:%d", "a string", &test_simple_mix, 42);
+void	mutant_08(void)
+{
+	size_t a = LONG_MAX;
+	int ret1 = 0;
+	int ret2 = 0;
 
+	printf("Mutant_test => 08\n");
+	ret1 = printf("orig : %s %p %d\n", "a string", &mutant_08, 42);
+	ret2 = ft_printf("cust : %s %p %d\n", "a string", &mutant_08, 42);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
 
+void	mutant_09(void)
+{
+	char c = 'z';
+	size_t a = LONG_MAX;
+	int ret1 = 0;
+	int ret2 = 0;
 
+	printf("Mutant_test => 09\n");
+	//ret1 = printf("orig : %s%d%p%%%S%D%i%o%O%u%U%x%X%c%C\n","bonjour", 42, &c, L"暖炉", LONG_MAX, 42, 42, 42, 100000, ULONG_MAX, 42, 42, 'c', L'플');
+	ret2 = ft_printf("orig : %s%d%p%%%S%D%i%o%O%u%U%x%X%c%C\n","bonjour", 42, &c, L"暖炉", LONG_MAX, 42, 42, 42, 100000, ULONG_MAX, 42, 42, 'c', L'플');
+
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
 
 
 void	test_s(void)
@@ -2534,7 +3319,8 @@ void	test_s(void)
 	test_s_10();
 	test_s_11();
 	test_s_12();
-	// test_s_13();
+	test_s_13();
+	test_s_14();
 }
 
 void	test_ls(void)
@@ -2548,6 +3334,7 @@ void	test_ls(void)
 	test_ls_07();
 	test_ls_08();
 	test_ls_09();
+	test_ls_10();
 }
 
 void 	test_d(void)
@@ -2588,6 +3375,11 @@ void 	test_d(void)
 	test_d_34();
 	test_d_35();
 	test_d_36();
+	test_d_37();
+	test_d_38();
+	test_d_39();
+	test_d_40();
+	test_d_41();
 
 }
 
@@ -2608,7 +3400,7 @@ void 	test_ld(void)
 	test_ld_13();
 	test_ld_14();
 	test_ld_15();
-	//test_ld_16();
+	test_ld_16();
 }
 
 void 	test_x(void)
@@ -2687,9 +3479,13 @@ void 	test_o(void)
 	test_o_09();
 	test_o_10();
 	test_o_11();
+	test_o_12();
+	test_o_13();
+	test_o_14();
+	test_o_15();
 }
 
-void 	test_lo(void)
+void	test_lo(void)
 {
 	test_lo_01();
 	test_lo_02();
@@ -2704,11 +3500,46 @@ void 	test_lo(void)
 	// test_o_09();
 }
 
+void	test_u(void)
+{
+	test_u_01();
+	test_u_02();
+	test_u_03();
+	test_u_04();
+	test_u_05();
+	test_u_06();
+	test_u_07();
+	test_u_08();
+	test_u_09();
+	test_u_10();
+	test_u_11();
+	test_u_12();
+	test_u_13();
+	test_u_14();
+	test_u_15();
+	test_u_16();
+	test_u_17();
+
+
+}
+
+void	test_lu(void)
+{
+	test_lu_01();
+	test_lu_02();
+	test_lu_03();
+	test_lu_04();
+	test_lu_05();
+
+}
+
+
 void	test_p(void)
 {
 	test_p_01();
 	test_p_02();
 	test_p_03();
+	test_p_04();
 }
 
 void	test_c(void)
@@ -2716,8 +3547,12 @@ void	test_c(void)
 	test_c_01();
 	test_c_02();
 	test_c_03();
-	// test_c_04();
-	// test_c_05();
+	test_c_04();
+	test_c_05();
+	test_c_06();
+	test_c_07();
+	test_c_08();
+	test_c_09();
 	// test_c_06();
 	// test_c_07();
 	// test_c_08();
@@ -2737,6 +3572,31 @@ void	test_lc(void)
 	test_lc_09();
 }
 
+void	test_modulo(void)
+{
+	test_modulo_01();
+	test_modulo_02();
+	test_modulo_03();
+	test_modulo_04();
+	test_modulo_05();
+
+
+}
+
+void	test_b(void)
+{
+	test_b_01();
+	test_b_02();
+	test_b_03();
+	test_b_04();
+	test_b_05();
+	test_b_06();
+	test_b_07();
+	test_b_08();
+	test_b_09();
+
+}
+
 void 	mutant_test(void)
 {
 	mutant_01();
@@ -2746,16 +3606,8 @@ void 	mutant_test(void)
 	mutant_05();
 	mutant_06();
 	mutant_07();
-}
-
-void	test_modulo(void)
-{
-	test_modulo_01();
-	test_modulo_02();
-	test_modulo_03();
-	test_modulo_04();
-
-
+	mutant_08();
+	mutant_09();
 }
 
 
@@ -2765,18 +3617,18 @@ int main(void)
 
 	//Start Conv_s
 	printf("=======> Conv_s <=======\n");
-	// test_s();
+	test_s();
 
 	//Start conv_ls
 	printf("=======> Conv_ls <=======\n");
-	// test_ls();
+	test_ls();
 
 	//conv_d
 	printf("=======> Conv_d <=======\n");
 	// test_d();
 
 	printf("=======> Conv_D <=======\n");
-	// test_ld();
+	test_ld();
 
 	printf("=======> Conv_i <=======\n");
 	// test_i();
@@ -2786,6 +3638,12 @@ int main(void)
 
 	printf("=======> Conv_O <=======\n");
 	// test_lo();
+
+	printf("=======> Conv_u <=======\n");
+	// test_u();
+
+	printf("=======> Conv_lu <=======\n");
+	//test_lu();
 
 	printf("=======> Conv_x <=======\n");
 	// test_x();
@@ -2802,14 +3660,17 @@ int main(void)
 	// test_lc();
 
 	printf("=======> Conv_c <=======\n");
-	test_c();
+	//test_c();
 
 	printf("=======> Conv_%% <=======\n");
-	// test_modulo();
+	//test_modulo();
+
+	printf("=======> Conv_b <=======\n");
+	// test_b();
 
 	//Start Mutants
 	printf("=======> Mutant_Test <=======\n");
-	// mutant_test();
+	mutant_test();
 
 
 	//test de merde

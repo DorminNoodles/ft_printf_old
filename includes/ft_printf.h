@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 17:10:51 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/23 10:05:52 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/24 18:30:02 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 # define FT_PRINTF_H
 # define TRUE 1
 # define FALSE 0
-# define STRING_CONV "sSpdDioOuUxXcC%"
+# define STRING_CONV "sSpdDioOuUxXcC%b"
+# define STRING_FLAG ".hzjl0123456789 +-#*"
 
 #include <stdarg.h>
 #include <stdio.h>
@@ -51,11 +52,14 @@ typedef struct s_print
 	bool conv_i;
 	bool conv_o;
 	bool conv_lo;
+	bool conv_u;
+	bool conv_lu;
 	bool conv_c;
 	bool conv_lc;
 	bool conv_x;
 	bool conv_lx;
 	bool conv_mod;
+	bool conv_b;
 
 	bool cast_h;
 	bool cast_hh;
@@ -108,7 +112,7 @@ char		*ft_itoa_printf(uintmax_t n, int base);
 //wchar_t		utf8_enc(wchar_t c);
 size_t		count_unicode(wchar_t *str);
 char		*ft_itoa_signed(long long n);
-intmax_t	cast_ld(t_print *dna, va_list ap);
+intmax_t	exec_cast_ld(t_print *dna, va_list ap);
 void		ft_putstr_buff(char const *s);
 char 		*compute_pitch_nb(t_print *dna);
 void		compute_pitch_star(t_print *dna);
@@ -126,7 +130,6 @@ void		parsing_blk(const char	*format, t_print *dna, char *end);
 size_t		wcharlen(wchar_t c);
 size_t		wstrlen(wchar_t *str);
 char		*flag_blk(t_print *dna);
-
 
 
 #endif

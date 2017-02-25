@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/17 11:34:31 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/23 09:29:54 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/24 16:21:51 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 char	*set_length_digit(t_print *dna)
 {
 	bool prefix;
-
+	// printf("test 02 : %s\n", dna->out);
 	prefix = FALSE;
 	if (CHECK_PITCH)
 	{
@@ -24,17 +24,22 @@ char	*set_length_digit(t_print *dna)
 			dna->out = prefix_lossless(dna);
 		prefix = TRUE;
 	}
-
+	// printf("test 02 : %s\n", dna->out);
 	if (CHECK_WIDTH)
 	{
+		// printf("test 03 : %s\n", dna->out);
 		if (dna->flag_0)
 		{
 			dna->out = width_ectoplasme(dna, FALSE);
 			dna->out = prefix_lossy(dna);
+			//printf("test = %s\n", dna->out);
 			prefix = TRUE;
 		}
 		else
 		{
+
+
+
 			if (!dna->justify)
 			{
 				if (!prefix)
@@ -43,8 +48,15 @@ char	*set_length_digit(t_print *dna)
 				}
 				prefix = TRUE;
 			}
-			width_ectoplasme(dna, FALSE);	// push -50 or 50
-			//printf("bip1 = %s\n", dna->out);
+			// printf("test 06 : %s\n", dna->out);
+			// printf("debug %d\n", prefix);
+			if (prefix)
+				width_ectoplasme(dna, TRUE);	// push -50 or 50
+			else
+				width_ectoplasme(dna, FALSE);
+
+			// printf("test 07 : %s\n", dna->out);
+			// printf("bip1 = %s\n", dna->out);
 			if (!prefix)
 			{
 				prefix_lossy(dna);
@@ -53,11 +65,16 @@ char	*set_length_digit(t_print *dna)
 			// printf("bip2 = %s\n", dna->out);
 		}
 	}
+	// printf("test 02 : %s\n", dna->out);
 	// printf("bip = %s\n", dna->out);
+	//printf("prefix %d\n", prefix);
 	if (!prefix)
+	{
+		// printf("run prefix\n");
 		dna->out = prefix_lossless(dna);
+	}
 	// printf("bip = %s\n", dna->out);
-
+	// printf("test 02 : %s\n", dna->out);
 	return (dna->out);
 }
 

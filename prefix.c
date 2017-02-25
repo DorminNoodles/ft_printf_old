@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/10 18:50:34 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/22 14:02:43 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/24 18:24:06 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,14 @@ char	*prefix_lossless(t_print *dna)
 	// printf("prefix_lossless\n");
 	tmp = dna->out;
 	size = ft_strlen(dna->out) + prefix_count(dna) + 1;
+	//printf("size = %d\n", size);
 	// printf("prefix count %d\n", (int)prefix_count(dna));
 	dna->out = (char*)ft_memalloc(sizeof(char) * size);
+	// printf("prefix_length%d\n", prefix_count(dna));
 	ft_memcpy(dna->out, get_prefix(dna), prefix_count(dna));
 	ft_memcpy(dna->out + prefix_count(dna), tmp, ft_strlen(tmp));
 	free(tmp);
+	// printf("prefix_lossless = %s\n", dna->out);
 	return (dna->out);
 }
 
@@ -33,9 +36,8 @@ char	*prefix_lossy(t_print *dna)
 	char	*tmp;
 	int		size;
 
+	//printf("enter_prefix\n");
 	ft_memcpy(dna->out, get_prefix(dna), prefix_count(dna));
-
-
 	return (dna->out);
 }
 
@@ -44,7 +46,6 @@ static char		*prefix_for_pitch(t_print *dna)
 	char	*tmp;
 	int		size;
 	int		start;
-	// printf("enter_prefix\n");
 	size = dna->base_size + prefix_count(dna) + 1;
 	tmp = dna->out;
 	dna->out = (char*)ft_memalloc(sizeof(char) * size);
@@ -107,10 +108,9 @@ char	*prefix(t_print *dna)
 char	*get_prefix(t_print *dna)
 {
 	if ((dna->conv_x || dna->conv_lx || dna->conv_p) && dna->htag)
-	{
-		//dna->ret_nb += 2;
-		return("0x");
-	}
+		return ("0x");
+	if (dna->conv_b)
+		return ("0b");
 	if (dna->conv_o)
 		return ("0");
 	if (dna->pre_pls && !dna->pre_min)
@@ -130,6 +130,8 @@ size_t	prefix_count(t_print *dna)
 {
 	if (dna->htag && (dna->conv_x || dna->conv_lx || dna->conv_p))
 		return (2);
+	if (dna->htag && dna->conv_b)
+		return (ft_strlen(get_prefix(dna)));
 	if (dna->htag && dna->conv_o)
 		return (1);
 	if (dna->pre_min)

@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/08 14:01:18 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/22 14:04:34 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/24 18:14:34 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int		parsing_format(const char *format, t_print *dna, va_list ap)
 {
 	int i;
 
+	// printf("Schtroumpfs !\n");
 	i = 0;
 	while (*(format + i))
 	{
@@ -24,6 +25,8 @@ int		parsing_format(const char *format, t_print *dna, va_list ap)
 		{
 			reset_print(dna);
 			i += parsing_dispatch(format + i, dna, ap);
+
+			// printf("parsing dispatch return : %d\n", i);
 			//if (*(format + i) == '%' && !dna->conv)
 			//{
 				//ft_putchar('%');
@@ -39,6 +42,7 @@ int		parsing_format(const char *format, t_print *dna, va_list ap)
 			dna->ret_nb++;
 			i++;
 		}
+		// printf("parsing dispatch return : %c\n", *format);
 	}
 	return (0);
 }
@@ -65,16 +69,45 @@ void	parsing_0(const char *format, t_print *dna, char *end)
 	}
 }
 
-void	parsing_pls(const char *format, t_print *dna, char *end)
+bool	parsing_pls(const char *format, t_print *dna, char *end)
 {
 	while (format < end)
 	{
 		if (*format == '+')
-			dna->pre_pls = TRUE;
+			return (TRUE);
 		format++;
 	}
+	return (FALSE);
 }
 
+void	parsing_width(const char *format, t_print *dna, char *end)
+{
+	int nb;
+	int save;
+
+	nb = 0;
+	save = 0;
+	while (format < end && *format != '.')
+	{
+		nb = 0;
+		if (ft_isdigit(*format))
+		{
+			while (ft_isdigit(*format))
+			{
+				nb *= 10;
+				nb += *format - '0';
+				if (nb > save)
+					save = nb;
+				format++;
+			}
+		}
+		else
+			format++;
+	}
+	dna->width = save;
+}
+
+/*
 void	parsing_width(const char *format, t_print *dna, char *end)
 {
 	int nb;
@@ -99,6 +132,7 @@ void	parsing_width(const char *format, t_print *dna, char *end)
 	// printf("parsing => width == %d\n", dna->width);
 	// printf("TEST02 == %d\n", dna->width);
 }
+*/
 
 int		parsing_dispatch(const char *format, t_print *dna, va_list ap)
 {
@@ -108,8 +142,9 @@ int		parsing_dispatch(const char *format, t_print *dna, va_list ap)
 	if(!(end = parsing_converter(format + 1, dna)))
 		return (1);
 	parsing_0(format, dna, end);
-	parsing_pls(format, dna, end);
 	parsing_blk(format, dna, end);
+	if((dna->pre_pls = parsing_pls(format, dna, end)))
+		dna->flag_blk = FALSE;
 	parsing_width(format, dna, end);
 	parsing_htag(format, dna, end);
 	parsing_justify(format, dna, end);
