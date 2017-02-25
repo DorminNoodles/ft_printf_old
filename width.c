@@ -6,27 +6,11 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/12 15:12:02 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/24 12:10:24 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/25 16:44:16 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-/*
-static char	*add_prefix(char **str, t_print *dna)
-{
-	char *tmp;
-
-	tmp = *str;
-	*str = (char*)ft_memalloc(sizeof(char) * (ft_strlen(dna->out) + prefix_count(dna) + 1));
-	if (!str)
-		return (NULL);
-	ft_memcpy(*str + prefix_count(dna), tmp, ft_strlen(tmp));
-	ft_memcpy(*str, prefix(dna), prefix_count(dna));
-	free(tmp);
-	return (*str);
-}
-*/
 
 char	*do_width_with_pitch(t_print *dna)
 {

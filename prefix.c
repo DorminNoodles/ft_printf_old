@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/10 18:50:34 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/24 18:24:06 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/25 17:53:15 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,18 @@ char	*prefix_lossless(t_print *dna)
 {
 	char	*tmp;
 	int		size;
-
-	// printf("prefix_lossless\n");
+	printf("here 2\n");
+	printf("prefix_lossless\n");
 	tmp = dna->out;
 	size = ft_strlen(dna->out) + prefix_count(dna) + 1;
-	//printf("size = %d\n", size);
-	// printf("prefix count %d\n", (int)prefix_count(dna));
-	dna->out = (char*)ft_memalloc(sizeof(char) * size);
-	// printf("prefix_length%d\n", prefix_count(dna));
+	if(!(dna->out = (char*)ft_memalloc(sizeof(char) * size)))
+		return (NULL);
+	printf("TEST %p\n", dna->out);
 	ft_memcpy(dna->out, get_prefix(dna), prefix_count(dna));
 	ft_memcpy(dna->out + prefix_count(dna), tmp, ft_strlen(tmp));
-	free(tmp);
-	// printf("prefix_lossless = %s\n", dna->out);
+	//free(tmp);
+	//tmp = NULL;
+	printf("TEST %p\n", dna->out);
 	return (dna->out);
 }
 
@@ -139,22 +139,4 @@ size_t	prefix_count(t_print *dna)
 	if (dna->pre_pls)
 		return (1);
 	return (0);
-}
-
-char	*d_prefix(t_print *dna)
-{
-	char	*tmp;
-	uintmax_t size;
-
-	size = (int)ft_strlen(dna->out);
-	tmp = dna->out;
-	if (dna->pre_min)
-	{
-		dna->out = (char*)ft_memalloc(sizeof(char) * (size + 2));
-		ft_memcpy(dna->out + 1, tmp, size);
-		ft_memcpy(dna->out, "-", 1);
-		//printf("test THX : %s\n", dna->out);
-		ft_memdel((void**)&tmp);
-	}
-	return (dna->out);
 }

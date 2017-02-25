@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 17:10:51 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/24 18:30:02 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/25 18:37:25 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ typedef struct s_print
 {
 	char *format;
 	char *end;
-	char *conv_type;
 	char *out;
 
 	bool conv;
@@ -96,6 +95,9 @@ char		*parsing_converter(const char *format, t_print *dna);
 int			parsing_dispatch(const char *format, t_print *dna, va_list ap);
 void		compute_conv(t_print *dna, va_list ap);
 void		compute_conv_lc(t_print *dna, va_list ap);
+void		compute_conv_o(t_print *dna, va_list ap);
+void		compute_conv_u(t_print *dna, va_list ap);
+char		*compute_conv_ls (t_print *dna, va_list ap);
 char		*ft_itoa_base(unsigned long long n, int base);
 char		*do_width(t_print *dna);
 char		*do_pitch(t_print *dna, bool cut);
@@ -118,7 +120,6 @@ char 		*compute_pitch_nb(t_print *dna);
 void		compute_pitch_star(t_print *dna);
 char		*prefix(t_print *dna);
 size_t		prefix_count(t_print *dna);
-char		*d_prefix(t_print *dna);
 char		*get_prefix(t_print *dna);
 char		*add_prefix(t_print *dna);
 char		*set_length_digit(t_print *dna);
