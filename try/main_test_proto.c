@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 16:53:56 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/24 22:48:10 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/25 13:15:19 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -3295,8 +3295,8 @@ void	mutant_09(void)
 	int ret2 = 0;
 
 	printf("Mutant_test => 09\n");
-	//ret1 = printf("orig : %s%d%p%%%S%D%i%o%O%u%U%x%X%c%C\n","bonjour", 42, &c, L"暖炉", LONG_MAX, 42, 42, 42, 100000, ULONG_MAX, 42, 42, 'c', L'플');
-	ret2 = ft_printf("orig : %s%d%p%%%S%D%i%o%O%u%U%x%X%c%C\n","bonjour", 42, &c, L"暖炉", LONG_MAX, 42, 42, 42, 100000, ULONG_MAX, 42, 42, 'c', L'플');
+	ret1 = printf("orig : %s%d%p%%%S%D%i%o%O%u%U%x%X%c%C\n","bonjour", 42, &c, L"暖炉", LONG_MAX, 42, 42, 42, 100000, ULONG_MAX, 42, 42, 'c', L'플');
+	ret2 = ft_printf("cust : %s%d%p%%%S%D%i%o%O%u%U%x%X%c%C\n","bonjour", 42, &c, L"暖炉", LONG_MAX, 42, 42, 42, 100000, ULONG_MAX, 42, 42, 'c', L'플');
 
 	printf("\n");
 	printf("ret_orig : %d\n", ret1);
