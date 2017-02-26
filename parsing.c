@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/08 14:01:18 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/24 18:14:34 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/26 22:32:57 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int		parsing_format(const char *format, t_print *dna, va_list ap)
 {
 	int i;
 
+	//printf("?");
 	// printf("Schtroumpfs !\n");
 	i = 0;
 	while (*(format + i))
