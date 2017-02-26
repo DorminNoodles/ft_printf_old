@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/06 15:48:05 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/24 21:38:52 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/25 18:52:14 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,10 @@ int ft_printf(const char *format, ...)
 			compute_conv(&dna, ap);
 		}
 		reset_print(&dna);
+
+		printf("TEST %s\n", dna.out);
+		//free(dna.out);
+
 		//#pragma message(": warning<put what you like here>: blah blah blah")
 	}
 	//compute_conv(parsing_struct);

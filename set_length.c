@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/17 11:34:31 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/24 16:21:51 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/25 17:52:45 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ char	*set_length_digit(t_print *dna)
 	prefix = FALSE;
 	if (CHECK_PITCH)
 	{
+		printf("in_pitch\n");
 		dna->out = do_pitch(dna, FALSE);
 		if(!dna->conv_o)
 			dna->out = prefix_lossless(dna);
@@ -27,6 +28,7 @@ char	*set_length_digit(t_print *dna)
 	// printf("test 02 : %s\n", dna->out);
 	if (CHECK_WIDTH)
 	{
+		printf("in width\n");
 		// printf("test 03 : %s\n", dna->out);
 		if (dna->flag_0)
 		{
@@ -37,9 +39,6 @@ char	*set_length_digit(t_print *dna)
 		}
 		else
 		{
-
-
-
 			if (!dna->justify)
 			{
 				if (!prefix)
@@ -70,7 +69,7 @@ char	*set_length_digit(t_print *dna)
 	//printf("prefix %d\n", prefix);
 	if (!prefix)
 	{
-		// printf("run prefix\n");
+		printf("here 1 \n");
 		dna->out = prefix_lossless(dna);
 	}
 	// printf("bip = %s\n", dna->out);

@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/24 14:27:07 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/24 21:37:18 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/25 18:55:59 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 void	reset_print(t_print *dna)
 {
+
+	dna->end = NULL;
+
 	dna->conv = FALSE;
 	dna->conv_s = FALSE;
 	dna->conv_ls = FALSE;
