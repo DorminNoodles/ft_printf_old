@@ -6,29 +6,25 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/10 18:50:34 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/26 22:02:55 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/27 09:56:39 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*prefix_lossless(t_print *dna)
+void	prefix_lossless(t_print *dna)
 {
 	char	*tmp;
 	int		size;
 	// printf("here 2\n");
 	// printf("prefix_lossless\n");
 	tmp = dna->out;
-	size = ft_strlen(dna->out) + prefix_count(dna) + 1;
-	if(!(dna->out = (char*)ft_memalloc(sizeof(char) * size)))
-		return (NULL);
-	// printf("TEST %p\n", dna->out);
+	size = ft_strlen(dna->out) + prefix_count(dna);
+	if(!(dna->out = ft_strnew(size)))
+		exit(EXIT_FAILURE);
 	ft_memcpy(dna->out, get_prefix(dna), prefix_count(dna));
 	ft_memcpy(dna->out + prefix_count(dna), tmp, ft_strlen(tmp));
-	//free(tmp);
-	//tmp = NULL;
-	// printf("TEST %p\n", dna->out);
-	return (dna->out);
+	free(tmp);
 }
 
 char	*prefix_lossy(t_print *dna)

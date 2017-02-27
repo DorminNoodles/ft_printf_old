@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/17 11:34:31 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/26 22:02:00 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/27 10:46:43 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ char	*set_length_digit(t_print *dna)
 	if (CHECK_PITCH)
 	{
 		// printf("in_pitch\n");
-		dna->out = do_pitch(dna, FALSE);
+		do_pitch(dna, FALSE);
 		if(!dna->conv_o)
-			dna->out = prefix_lossless(dna);
+			prefix_lossless(dna);
 		prefix = TRUE;
 	}
 	// printf("test 02 : %s\n", dna->out);
@@ -32,8 +32,8 @@ char	*set_length_digit(t_print *dna)
 		// printf("test 03 : %s\n", dna->out);
 		if (dna->flag_0)
 		{
-			dna->out = width_ectoplasme(dna, FALSE);
-			dna->out = prefix_lossy(dna);
+			width_ectoplasme(dna, FALSE);
+			prefix_lossy(dna);
 			//printf("test = %s\n", dna->out);
 			prefix = TRUE;
 		}
@@ -52,6 +52,7 @@ char	*set_length_digit(t_print *dna)
 			if (prefix)
 				width_ectoplasme(dna, TRUE);	// push -50 or 50
 			else
+
 				width_ectoplasme(dna, FALSE);
 
 			// printf("test 07 : %s\n", dna->out);
@@ -70,7 +71,7 @@ char	*set_length_digit(t_print *dna)
 	if (!prefix)
 	{
 		// printf("here 1 \n");
-		dna->out = prefix_lossless(dna);
+		prefix_lossless(dna);
 	}
 	// printf("bip = %s\n", dna->out);
 	// printf("test 02 : %s\n", dna->out);
@@ -82,11 +83,7 @@ char	*set_length_char(t_print *dna)
 	// printf("out =>%s\n", dna->out);
 	// printf("test = %s\n", dna->out);
 	if (dna->pitch && dna->pitch_nb == 0 && !dna->conv_mod)
-	{
 		dna->out[0] = '\0';
-		return (dna->out);
-	}
-	// printf("out => %s\n", dna->out);
 	dna->out = do_pitch(dna, TRUE);
 	// printf("out =>%s\n", dna->out);
 	if (dna->width > ft_strlen(dna->out))

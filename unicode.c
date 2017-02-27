@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/29 14:10:13 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/21 22:23:45 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/27 18:18:42 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 
 size_t		wcharlen(wchar_t c)
 {
+	// printf("here\n");
+
 	// printf("test = %C\n", c);
 	if (c < 0x7f)
 		return (1);

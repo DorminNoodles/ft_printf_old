@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 16:53:56 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/27 00:49:13 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/27 14:09:30 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -232,6 +232,21 @@ void	test_s_15(void)
 	 //ft_printf("@moulitest: %s", NULL);
 	ret1 = printf("orig : %-12s*\n", NULL);
 	ret2 = ft_printf("orig : %-12s*\n", NULL);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void	test_s_16(void)
+{
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("Test_s => 16\n");
+	 //ft_printf("@moulitest: %s", NULL);
+	ret1 = printf("orig : %20.0s*\n", "toy story");
+	ret2 = ft_printf("orig : %20.0s*\n", "toy story");
 	printf("\n");
 	printf("ret_orig : %d\n", ret1);
 	printf("ret_cust : %d\n", ret2);
@@ -3301,7 +3316,7 @@ void	mutant_08(void)
 	printf("ret_cust : %d\n", ret2);
 	printf("\n");
 }
-/*
+
 void	mutant_09(void)
 {
 	char c = 'z';
@@ -3309,15 +3324,17 @@ void	mutant_09(void)
 	int ret1 = 0;
 	int ret2 = 0;
 
+	setlocale(LC_ALL, "");
 	printf("Mutant_test => 09\n");
 	ret1 = printf("orig : %s %d %p %% %S %D%i%o%O%u%U%x%X%c%C\n","bonjour", 42, &c, L"暖炉", LONG_MAX, 42, 42, 42, 100000, ULONG_MAX, 42, 42, 'c', L'플');
-	// ret2 = ft_printf("cust : %s %d %p %% %S %D%i%o%O%u%U%x%X%c%C\n","bonjour", 42, &c, L"暖炉", LONG_MAX, 42, 42, 42, 100000, ULONG_MAX, 42, 42, 'c', L'플');
+	ret2 = ft_printf("cust : %s %d %p %% %S %D%i%o%O%u%U%x%X%c%C\n","bonjour", 42, &c, L"暖炉", LONG_MAX, 42, 42, 42, 100000, ULONG_MAX, 42, 42, 'c', L'플');
 	printf("\n");
 	printf("ret_orig : %d\n", ret1);
 	printf("ret_cust : %d\n", ret2);
 	printf("\n");
 }
-*/
+
+/*
 void	mutant_09(void)
 {
 	size_t a = LONG_MAX;
@@ -3333,6 +3350,7 @@ void	mutant_09(void)
 	printf("ret_cust : %d\n", ret2);
 	printf("\n");
 }
+*/
 
 
 
@@ -3353,6 +3371,7 @@ void	test_s(void)
 	test_s_13();
 	test_s_14();
 	test_s_15();
+	test_s_16();
 }
 
 void	test_ls(void)
@@ -3649,11 +3668,11 @@ int main(void)
 
 	//Start Conv_s
 	printf("=======> Conv_s <=======\n");
-	test_s();
+	// test_s();
 
 	//Start conv_ls
 	printf("=======> Conv_ls <=======\n");
-	//test_ls();
+	test_ls();
 
 	//conv_d
 	printf("=======> Conv_d <=======\n");

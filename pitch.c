@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/09 09:38:43 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/25 16:43:30 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/27 12:08:46 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 //j ajoute le prefix dans pitch si pitch il y a eu... en fait si pitch il
 //y a meme si pitch est plus petit que base_size....
 
-char	*compute_pitch_nb(t_print *dna)
+void	compute_pitch_nb(t_print *dna)
 {
 	char	*tmp;
 	int		pos;
@@ -32,15 +32,15 @@ char	*compute_pitch_nb(t_print *dna)
 	//printf("compute_pitch_nb\n");
 	tmp = dna->out;
 	pos = dna->pitch_nb - ft_strlen(dna->out);
-	if(!(dna->out = (char*)ft_memalloc(sizeof(char) * (dna->pitch_nb + 1))))
-		return (NULL);
+
+	// if(!(dna->out = (char*)ft_memalloc(sizeof(char) * (dna->pitch_nb + 1))))
+	// 	exit(EXIT_FAILURE);
 	ft_memset(dna->out, '0', dna->pitch_nb);
 	ft_memcpy(dna->out + pos, tmp, ft_strlen(tmp));
 	free(tmp);
-	return (dna->out);
 }
 
-char	*compute_pitch_nb_cut(t_print *dna)
+void	compute_pitch_nb_cut(t_print *dna)
 {
 	char	*tmp;
 	//int		pos;
@@ -48,10 +48,9 @@ char	*compute_pitch_nb_cut(t_print *dna)
 	tmp = dna->out;
 	//pos = dna->pitch_nb - ft_strlen(dna->out);
 	if(!(dna->out = (char*)ft_memalloc(sizeof(char) * (dna->pitch_nb + 1))))
-		return (NULL);
+		exit(EXIT_FAILURE);
 	ft_strncpy(dna->out, tmp, dna->pitch_nb);
 	free(tmp);
-	return (dna->out);
 }
 
 /*
@@ -113,9 +112,9 @@ char	*do_pitch(t_print *dna, bool cut)
 	if (dna->pitch_nb)
 	{
 		if(cut)
-			dna->out = compute_pitch_nb_cut(dna);
+			compute_pitch_nb_cut(dna);
 		else
-			dna->out = compute_pitch_nb(dna);
+			compute_pitch_nb(dna);
 	}
 	else if (dna->pitch_dollar)
 		compute_pitch_dollar(dna);
