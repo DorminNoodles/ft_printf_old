@@ -6,36 +6,42 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 17:09:10 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/27 18:50:05 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/28 00:25:23 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+
+void	conv_null(t_print *dna)
+{
+	if(!(dna->out = ft_strnew(ft_strlen("(null)"))))
+		exit (EXIT_FAILURE);
+	ft_memcpy(dna->out, "(null)", ft_strlen("(null)"));
+	set_length_char(dna);
+	ft_putstr_buff(dna->out);
+	dna->ret_nb += ft_strlen("(null)");
+	free(dna->out);
+}
 
 void	compute_conv_s (t_print *dna, va_list ap)
 {
 	char	*str;
 
 	str = va_arg(ap, char*);
-
 	if (!str)
-	{
-		if(!(dna->out = ft_strnew(ft_strlen("(null)"))))
-			exit (EXIT_FAILURE);
-		ft_memcpy(dna->out, "(null)", ft_strlen("(null)"));
-	}
+		conv_null(dna);
 	else
 	{
 		if(!(dna->out = ft_strnew(ft_strlen(str))))
 			exit (EXIT_FAILURE);
 		ft_memcpy(dna->out, str, ft_strlen(str));
+		set_length_char(dna);
+		dna->ret_nb += ft_strlen(dna->out);
+		ft_putstr_buff(dna->out);
+		free(dna->out);
 	}
 
-	set_length_char(dna);
-	dna->ret_nb += ft_strlen(dna->out);
-	ft_putstr_buff(dna->out);
-
-	free(dna->out);
 
 
 	// char *tmp;
@@ -74,21 +80,17 @@ void	compute_conv_ls (t_print *dna, va_list ap)
 	i = 0;
 	size = 0;
 	str = va_arg(ap, wchar_t*);
-
 	if (!str)
-	{
-		if(!(dna->out = ft_strnew(ft_strlen("(null)"))))
-			exit (EXIT_FAILURE);
-		ft_memcpy(dna->out, "(null)", ft_strlen("(null)"));
-	}
+		conv_null(dna);
 	else
 	{
 		//printf("%S\n", dna->out);
 		// size = ft_strlen(str);
 		size = (int)ft_wstrlen(str);
-		printf("size = %d\n", size);
+		// printf("size = %d\n", size);
 
-		dna->out = (char*)ft_memalloc(sizeof(wchar_t) * (size + 1));
+		if(!(dna->out = (char*)ft_memalloc(sizeof(wchar_t) * (size + 1))))
+			exit (EXIT_FAILURE);
 
 		i = 0;
 		while (i < size)
@@ -96,10 +98,12 @@ void	compute_conv_ls (t_print *dna, va_list ap)
 			*(((wchar_t*)dna->out) + i) = str[i];
 			i++;
 		}
+		set_length_char(dna);
+		dna->ret_nb += count_unicode((wchar_t*)dna->out);
 		i = 0;
 		while (*(((wchar_t *)dna->out) + i) != '\0')
 		{
-			printf("here");
+			// printf("here");
 			ft_putwchar(*(((wchar_t *)dna->out) + i));
 			i++;
 		}
@@ -107,9 +111,9 @@ void	compute_conv_ls (t_print *dna, va_list ap)
 		//size = ft_wstrlen(str);
 		//dna->out = (char*)ft_memalloc(sizeof(wchar_t) * (size + 1));
 		//dna->out = ft_memcpy(dna->out, str, (int)ft_wstrlen(str));
+		free(dna->out);
 	}
 
-	free(dna->out);
 
 	//
 	// ft_putwstr((wchar_t*)dna);
@@ -425,28 +429,28 @@ void	conv_switch(t_print *dna, va_list ap)
 		compute_conv_s(dna, ap);
 	if (dna->conv_ls)
 		compute_conv_ls(dna, ap);
-	// if (dna->conv_p)
-	// 	dna->out = compute_conv_p(dna, ap);
-	// if (dna->conv_d || dna->conv_i)
-	// 	compute_conv_d(dna, ap);
-	// if (dna->conv_ld)
-	// 	compute_conv_ld(dna, ap);
-	// if (dna->conv_o)
-	// 	compute_conv_o(dna, ap);
-	// if (dna->conv_u)
-	// 	compute_conv_u(dna, ap);
-	// if (dna->conv_lu)
-	// 	compute_conv_lu(dna, ap);
-	// if (dna->conv_x || dna->conv_lx)
-	// 	compute_conv_x(dna, ap);
-	// if (dna->conv_c)
-	// 	compute_conv_c(dna, ap);
-	// if (dna->conv_lc)
-	// 	compute_conv_lc(dna, ap);
-	// if (dna->conv_mod)
-	// 	dna->out = compute_conv_mod(dna, ap);
-	// if (dna->conv_b)
-	// 	dna->out = compute_conv_b(dna, ap);
+	if (dna->conv_p)
+		dna->out = compute_conv_p(dna, ap);
+	if (dna->conv_d || dna->conv_i)
+		compute_conv_d(dna, ap);
+	if (dna->conv_ld)
+		compute_conv_ld(dna, ap);
+	if (dna->conv_o)
+		compute_conv_o(dna, ap);
+	if (dna->conv_u)
+		compute_conv_u(dna, ap);
+	if (dna->conv_lu)
+		compute_conv_lu(dna, ap);
+	if (dna->conv_x || dna->conv_lx)
+		compute_conv_x(dna, ap);
+	if (dna->conv_c)
+		compute_conv_c(dna, ap);
+	if (dna->conv_lc)
+		compute_conv_lc(dna, ap);
+	if (dna->conv_mod)
+		dna->out = compute_conv_mod(dna, ap);
+	if (dna->conv_b)
+		dna->out = compute_conv_b(dna, ap);
 
 	//printf("TEST Y %s\n", dna->out);
 }
