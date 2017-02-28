@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/17 11:34:31 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/27 10:46:43 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/28 16:31:02 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,4 +94,15 @@ char	*set_length_char(t_print *dna)
 		// printf("PITCH !\n");
 		// printf("pitch nb = %d\n", dna->pitch_nb);
 	return (dna->out);
+}
+
+
+void	set_length_wchar(t_print *dna)
+{
+	wchar_t *tmp;
+
+	if(dna->pitch)
+		pitch_ls(dna);
+	if(dna->width > count_unicode(dna))
+		width_ls(dna);
 }

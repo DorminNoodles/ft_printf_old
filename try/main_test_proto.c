@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 16:53:56 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/27 14:09:30 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/28 17:11:40 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -445,13 +445,104 @@ void	test_ls_10(void)
 
 	setlocale(LC_ALL, "");
 	printf("Test_ls => 10\n");
-	ret1 = printf("orig : %2S\n", NULL);
-	ret2 = ft_printf("cust : %2S\n", NULL);
+	ret1 = printf("orig : %15S\n", NULL);
+	ret2 = ft_printf("cust : %15S\n", NULL);
 	printf("\n");
 	printf("ret_orig : %d\n", ret1);
 	printf("ret_cust : %d\n", ret2);
 	printf("\n");
 }
+
+void	test_ls_11(void)
+{
+	int ret1 = 0;
+	int ret2 = 0;
+
+	setlocale(LC_ALL, "");
+	printf("Test_ls => 11\n");
+	ret1 = printf("orig : %.3S\n", NULL);
+	ret2 = ft_printf("cust : %.3S\n", NULL);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void	test_ls_12(void)
+{
+	int ret1 = 0;
+	int ret2 = 0;
+
+	setlocale(LC_ALL, "");
+	printf("Test_ls => 12\n");
+	ret1 = printf("orig : %.10S\n", L"Valgrind ©©©©");
+	ret2 = ft_printf("cust : %.10S\n", L"Valgrind ©©©©");
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void	test_ls_13(void)
+{
+	int ret1 = 0;
+	int ret2 = 0;
+
+	setlocale(LC_ALL, "");
+	printf("Test_ls => 13\n");
+	ret1 = printf("orig : %.5S\n", L"Valgrind ©©©©");
+	ret2 = ft_printf("cust : %.5S\n", L"Valgrind ©©©©");
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void	test_ls_14(void)
+{
+	int ret1 = 0;
+	int ret2 = 0;
+
+	setlocale(LC_ALL, "");
+	printf("Test_ls => 14\n");
+	ret1 = printf("orig : %.11S\n", L"Valgrind ©©©©");
+	ret2 = ft_printf("cust : %.11S\n", L"Valgrind ©©©©");
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void	test_ls_15(void)
+{
+	int ret1 = 0;
+	int ret2 = 0;
+
+	setlocale(LC_ALL, "");
+	printf("Test_ls => 15\n");
+	ret1 = printf("orig : %.12S\n", L"Valgrind ©©©©");
+	ret2 = ft_printf("cust : %.12S\n", L"Valgrind ©©©©");
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void	test_ls_16(void)
+{
+	int ret1 = 0;
+	int ret2 = 0;
+
+	setlocale(LC_ALL, "");
+	printf("Test_ls => 16\n");
+	ret1 = printf("orig : %.12S\n", L"Valgrind ©🀙");
+	ret2 = ft_printf("cust : %.12S\n", L"Valgrind ©🀙");
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
 
 
 //======================================================> conv_d
@@ -3386,6 +3477,12 @@ void	test_ls(void)
 	test_ls_08();
 	test_ls_09();
 	test_ls_10();
+	test_ls_11();
+	test_ls_12();
+	test_ls_13();
+	test_ls_14();
+	test_ls_15();
+	test_ls_16();
 }
 
 void 	test_d(void)

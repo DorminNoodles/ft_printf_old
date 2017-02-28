@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 17:10:51 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/27 12:25:26 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/28 14:52:30 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,6 +131,10 @@ void		parsing_blk(const char	*format, t_print *dna, char *end);
 size_t		wcharlen(wchar_t c);
 size_t		wstrlen(wchar_t *str);
 char		*flag_blk(t_print *dna);
+void		set_length_wchar(t_print *dna);
+void		pitch_ls(t_print *dna);
+void		width_ls(t_print *dna);
+
 
 
 #endif

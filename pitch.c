@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/09 09:38:43 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/27 12:08:46 by lchety           ###   ########.fr       */
+/*   Updated: 2017/02/28 14:34:11 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,4 +122,39 @@ char	*do_pitch(t_print *dna, bool cut)
 		compute_pitch_star(dna);
 
 	return (dna->out);
+}
+
+void	pitch_ls(t_print *dna)
+{
+	int		size;
+	int		i;
+	int		nb_max;
+	char	*tmp;
+
+	i = 0;
+	size = 0;
+	nb_max = 0;
+	while (size + wcharlen(*(((wchar_t*)dna->out) + nb_max)) <= dna->pitch_nb)
+	{
+		size += wcharlen(*(((wchar_t*)dna->out) + nb_max));
+		nb_max++;
+	}
+
+	tmp = dna->out;
+	if(!(dna->out = (char*)ft_memalloc(sizeof(wchar_t) * (nb_max + 1))))
+		exit(EXIT_FAILURE);
+
+	i = 0;
+
+	ft_memcpy(dna->out, tmp, sizeof(wchar_t) * nb_max);
+	/*
+	while (i < )
+	{
+
+	}
+	*/
+
+
+	//printf("size == %d\n", size);
+	free(tmp);
 }
