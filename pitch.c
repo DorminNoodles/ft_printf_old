@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/09 09:38:43 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/28 14:34:11 by lchety           ###   ########.fr       */
+/*   Updated: 2017/03/01 10:00:44 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ void	compute_pitch_nb(t_print *dna)
 	tmp = dna->out;
 	pos = dna->pitch_nb - ft_strlen(dna->out);
 
-	// if(!(dna->out = (char*)ft_memalloc(sizeof(char) * (dna->pitch_nb + 1))))
-	// 	exit(EXIT_FAILURE);
+	if(!(dna->out = (char*)ft_memalloc(sizeof(char) * (dna->pitch_nb + 1))))
+		exit(EXIT_FAILURE);
 	ft_memset(dna->out, '0', dna->pitch_nb);
 	ft_memcpy(dna->out + pos, tmp, ft_strlen(tmp));
 	free(tmp);
@@ -139,22 +139,11 @@ void	pitch_ls(t_print *dna)
 		size += wcharlen(*(((wchar_t*)dna->out) + nb_max));
 		nb_max++;
 	}
-
 	tmp = dna->out;
 	if(!(dna->out = (char*)ft_memalloc(sizeof(wchar_t) * (nb_max + 1))))
 		exit(EXIT_FAILURE);
-
 	i = 0;
-
 	ft_memcpy(dna->out, tmp, sizeof(wchar_t) * nb_max);
-	/*
-	while (i < )
-	{
-
-	}
-	*/
-
-
-	//printf("size == %d\n", size);
+	printf("size == %d\n", size);
 	free(tmp);
 }

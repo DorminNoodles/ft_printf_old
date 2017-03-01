@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 17:10:51 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/28 14:52:30 by lchety           ###   ########.fr       */
+/*   Updated: 2017/03/01 10:01:55 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ void		compute_conv_lc(t_print *dna, va_list ap);
 void		compute_conv_o(t_print *dna, va_list ap);
 void		compute_conv_u(t_print *dna, va_list ap);
 void		compute_conv_ls (t_print *dna, va_list ap);
+void		compute_conv_p(t_print *dna, va_list ap);
 char		*ft_itoa_base(unsigned long long n, int base);
 char		*do_width(t_print *dna);
 char		*do_pitch(t_print *dna, bool cut);
@@ -129,7 +130,6 @@ char		*prefix_lossy(t_print *dna);
 char		*width_ectoplasme(t_print *dna, bool prefix_in);
 void		parsing_blk(const char	*format, t_print *dna, char *end);
 size_t		wcharlen(wchar_t c);
-size_t		wstrlen(wchar_t *str);
 char		*flag_blk(t_print *dna);
 void		set_length_wchar(t_print *dna);
 void		pitch_ls(t_print *dna);

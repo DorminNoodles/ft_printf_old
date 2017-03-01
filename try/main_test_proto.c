@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 16:53:56 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/28 17:11:40 by lchety           ###   ########.fr       */
+/*   Updated: 2017/03/01 09:58:53 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -3765,7 +3765,7 @@ int main(void)
 
 	//Start Conv_s
 	printf("=======> Conv_s <=======\n");
-	// test_s();
+	test_s();
 
 	//Start conv_ls
 	printf("=======> Conv_ls <=======\n");
@@ -3773,16 +3773,16 @@ int main(void)
 
 	//conv_d
 	printf("=======> Conv_d <=======\n");
-	//test_d();
+	// test_d();
 
 	printf("=======> Conv_D <=======\n");
-	//test_ld();
+	// test_ld();
 
 	printf("=======> Conv_i <=======\n");
 	// test_i();
 
 	printf("=======> Conv_o <=======\n");
-	// test_o();
+	//test_o();
 
 	printf("=======> Conv_O <=======\n");
 	// test_lo();

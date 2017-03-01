@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/29 14:10:13 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/27 18:18:42 by lchety           ###   ########.fr       */
+/*   Updated: 2017/03/01 08:52:36 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,6 @@ size_t		wcharlen(wchar_t c)
 		return (3);
 	else
 		return (4);
-}
-
-size_t		wstrlen(wchar_t *str)
-{
-	int ret;
-
-	ret = 0;
-	while (*str)
-		ret += wcharlen(*str++);
-	return (ret);
 }
 
 size_t	count_unicode(wchar_t *str)

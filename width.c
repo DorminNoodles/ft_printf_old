@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/12 15:12:02 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/28 17:59:45 by lchety           ###   ########.fr       */
+/*   Updated: 2017/03/01 10:09:48 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -201,31 +201,25 @@ void	width_ls(t_print *dna)
 	char	*tmp;
 	int		size;
 	int		i;
+	char	*start;
 
 	i = 0;
-	size = dna->width - count_unicode(dna->out);
-	// printf("size = %d\n", size);
-	// printf("test = %d\n", (int)wstrlen(dna->out));
-	size += ft_wstrlen(dna->out);
-	// printf("size = %d\n", size);
+	size = dna->width - count_unicode((wchar_t*)dna->out);
+	size += ft_wstrlen((wchar_t*)dna->out);
 	tmp = dna->out;
 
 	if(!(dna->out = (char*)ft_memalloc(sizeof(wchar_t) * (size + 1))))
 		exit (EXIT_FAILURE);
-	// if (!(dna->out = (char*)ft_memalloc(sizeof(char) * (dna->width + 1))))
-	// 	exit (EXIT_FAILURE);
-	//printf("yeap\n");
-
 	while (i < size)
 	{
 		*(((wchar_t*)dna->out) + i) = L' ';
 		i++;
 	}
-	//ft_memset(dna->out, ' ', size);
-	//printf("pouet %S*\n", dna->out);
+	start = dna->out;
+	start += ft_wstrlen((wchar_t*)dna->out) - ft_wstrlen((wchar_t*)tmp);
 	if (dna->justify)
-		ft_memcpy(dna->out, tmp, sizeof(int) * wstrlen((wchar_t*)tmp));
+		ft_memcpy(dna->out, tmp, sizeof(int) * ft_wstrlen((wchar_t*)tmp));
 	else
-		ft_memcpy(dna->out, tmp, sizeof(wchar_t) * ft_wstrlen((wchar_t*)tmp));
+		ft_memcpy(start, tmp, sizeof(wchar_t) * ft_wstrlen((wchar_t*)tmp));
 	free(tmp);
 }
