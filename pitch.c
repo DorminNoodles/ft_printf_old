@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/09 09:38:43 by lchety            #+#    #+#             */
-/*   Updated: 2017/03/01 10:00:44 by lchety           ###   ########.fr       */
+/*   Updated: 2017/03/01 14:30:28 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,6 +144,6 @@ void	pitch_ls(t_print *dna)
 		exit(EXIT_FAILURE);
 	i = 0;
 	ft_memcpy(dna->out, tmp, sizeof(wchar_t) * nb_max);
-	printf("size == %d\n", size);
+	// printf("size == %d\n", size);
 	free(tmp);
 }

@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/06 15:48:05 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/27 00:04:21 by lchety           ###   ########.fr       */
+/*   Updated: 2017/03/01 22:55:30 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,9 @@ int ft_printf(const char *format, ...)
 	va_start(ap, format);
 	while ((ret = parsing_format(format, &dna, ap)))
 	{
-		// printf("Hello : %d\n", ret);
 		format += ret;
 		if (dna.conv)
-		{
-			// printf("dna conv\n");
 			compute_conv(&dna, ap);
-
-		}
 
 		// printf("TEST %s\n", dna.out);
 		//free(dna.out);

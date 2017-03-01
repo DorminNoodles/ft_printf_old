@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 17:09:10 by lchety            #+#    #+#             */
-/*   Updated: 2017/03/01 09:59:17 by lchety           ###   ########.fr       */
+/*   Updated: 2017/03/01 23:43:41 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -354,12 +354,12 @@ void	conv_switch(t_print *dna, va_list ap)
 		compute_conv_ld(dna, ap);
 	if (dna->conv_o)
 		compute_conv_o(dna, ap);
-	// if (dna->conv_u)
-	// 	compute_conv_u(dna, ap);
-	// if (dna->conv_lu)
-	// 	compute_conv_lu(dna, ap);
-	// if (dna->conv_x || dna->conv_lx)
-	// 	compute_conv_x(dna, ap);
+	if (dna->conv_u)
+		compute_conv_u(dna, ap);
+	if (dna->conv_lu)
+		compute_conv_lu(dna, ap);
+	if (dna->conv_x || dna->conv_lx)
+		compute_conv_x(dna, ap);
 	// if (dna->conv_c)
 	// 	compute_conv_c(dna, ap);
 	// if (dna->conv_lc)
