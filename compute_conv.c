@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 17:09:10 by lchety            #+#    #+#             */
-/*   Updated: 2017/03/02 18:55:11 by lchety           ###   ########.fr       */
+/*   Updated: 2017/03/02 21:00:27 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,7 +172,8 @@ void 	compute_conv_o(t_print *dna, va_list ap)
 
 	//printf("Conv_o\n");
 	n = 0;
-	n = va_arg(ap, uintmax_t);
+	n = exec_cast_unsigned(dna, ap);
+	//n = va_arg(ap, uintmax_t);
 	//printf("141n = %jo\n", n);
 
 	if (!(dna->out = ft_itoa_printf((int)n, 8)))
@@ -182,12 +183,9 @@ void 	compute_conv_o(t_print *dna, va_list ap)
 
 	if (dna->pitch && !dna->pitch_nb && !dna->htag)
 		dna->out[0] = '\0';
-	// ft_putstr("*here !*");
 
 	if (n == 0)
 		dna->htag = FALSE;
-	//if (dna)
-		//dna->htag = FALSE;
 	dna->base_size = ft_strlen(dna->out);
 	dna->out = set_length_digit(dna);
 	dna->ret_nb += ft_strlen(dna->out);

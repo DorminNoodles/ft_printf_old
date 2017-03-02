@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/24 14:27:07 by lchety            #+#    #+#             */
-/*   Updated: 2017/03/02 17:52:30 by lchety           ###   ########.fr       */
+/*   Updated: 2017/03/02 21:12:22 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	reset_print(t_print *dna)
 	dna->conv_lc = FALSE;
 	dna->conv_mod = FALSE;
 	dna->conv_b = FALSE;
+	dna->conv_null = FALSE;
 	dna->flag_0 = FALSE;
 	dna->flag_blk = FALSE;
 	dna->htag = FALSE;

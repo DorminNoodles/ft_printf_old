@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 17:11:21 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/24 18:30:52 by lchety           ###   ########.fr       */
+/*   Updated: 2017/03/02 20:57:37 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ intmax_t	cast_default(t_print *dna, va_list ap)
 		return ((intmax_t)va_arg(ap, unsigned int));
 	if (dna->conv_b)
 		return ((intmax_t)va_arg(ap, intmax_t));
+	if (dna->conv_o)
+		return ((uintmax_t)va_arg(ap, uintmax_t));
 
 	return (va_arg(ap, int));
 }

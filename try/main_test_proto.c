@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 16:53:56 by lchety            #+#    #+#             */
-/*   Updated: 2017/03/02 19:01:48 by lchety           ###   ########.fr       */
+/*   Updated: 2017/03/02 21:11:50 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -3138,6 +3138,20 @@ void	test_c_10(void)
 	printf("\n");
 }
 
+void	test_c_11(void)
+{
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("Test_c => 11\n");
+	ret1 = printf("orig : {%3c}\n", 0);
+	ret2 = ft_printf("cust : {%3c}\n", 0);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
 //=====================================================> conv_C
 
 void	test_lc_01(void)
@@ -3813,7 +3827,6 @@ void	mutant_10(void)
 	ret2 = ft_printf("cust : %s %d %p %% %S D|%D i|%i o|%o %O %u%U%x%X%c%C\n","bonjour", 42, &c, L"暖炉", LONG_MAX, 42, 42, 42, 100000, ULONG_MAX, 42, 42, 'c', L'플');
 	ret2 = ft_printf("cust : %s %d %p %% %S D|%D i|%i o|%o %O %u%U%x%X%c%C\n","bonjour", 42, &c, L"暖炉", LONG_MAX, 42, 42, 42, 100000, ULONG_MAX, 42, 42, 'c', L'플');
 	ret2 = ft_printf("cust : %s %d %p %% %S D|%D i|%i o|%o %O %u%U%x%X%c%C\n","bonjour", 42, &c, L"暖炉", LONG_MAX, 42, 42, 42, 100000, ULONG_MAX, 42, 42, 'c', L'플');
-	ret2 = ft_printf("cust : %s %d %p %% %S D|%D i|%i o|%o %O %u%U%x%X%c%C\n","bonjour", 42, &c, L"暖炉", LONG_MAX, 42, 42, 42, 100000, ULONG_MAX, 42, 42, 'c', L'플');
 
 	ft_printf("o == probleme\n");
 	ft_printf("o == probleme\n");
@@ -3830,6 +3843,20 @@ void	mutant_10(void)
 	printf("\n");
 }
 
+void	mutant_11(void)
+{
+	size_t a = LONG_MAX;
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("Mutant_test => 11\n");
+	ret1 = printf("orig : {%10R}\n");
+	ret2 = ft_printf("cust : {%10R}\n");
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
 /*
 void	mutant_09(void)
 {
@@ -4109,6 +4136,7 @@ void	test_c(void)
 	test_c_08();
 	test_c_09();
 	test_c_10();
+	test_c_11();
 }
 
 void	test_lc(void)
@@ -4179,6 +4207,7 @@ void 	mutant_test(void)
 	mutant_08();
 	mutant_09();
 	mutant_10();
+	mutant_11();
 }
 
 
@@ -4246,7 +4275,7 @@ int main(void)
 
 	//Start Mutants
 	printf("=======> Mutant_Test <=======\n");
-	// mutant_test();
+	mutant_test();
 
 
 	//test de merde
