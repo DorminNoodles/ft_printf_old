@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/10 13:37:44 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/25 13:54:57 by lchety           ###   ########.fr       */
+/*   Updated: 2017/03/02 17:56:48 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,10 @@ static void conv_switch(char c, t_print *dna)
 		dna->conv_ld = TRUE;
 	if (c == 'i')
 		dna->conv_i = TRUE;
-	if (c == 'o' || c == 'O')
+	if (c == 'o')
 		dna->conv_o = TRUE;
+	if (c == 'O')
+		dna->conv_lo = TRUE;
 	if (c == 'u')
 		dna->conv_u = TRUE;
 	if (c == 'U')

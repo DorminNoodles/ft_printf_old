@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 17:10:51 by lchety            #+#    #+#             */
-/*   Updated: 2017/03/01 10:01:55 by lchety           ###   ########.fr       */
+/*   Updated: 2017/03/02 17:26:42 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ typedef struct s_print
 	bool pre_pls;
 	int base_size;
 	int width;
+	bool width_star;
 
 	bool pitch;
 	int pitch_nb;
@@ -129,6 +130,8 @@ void		prefix_lossless(t_print *dna);
 char		*prefix_lossy(t_print *dna);
 char		*width_ectoplasme(t_print *dna, bool prefix_in);
 void		parsing_blk(const char	*format, t_print *dna, char *end);
+void		parsing_star(const char *format, t_print *dna, char *end,
+			va_list ap);
 size_t		wcharlen(wchar_t c);
 char		*flag_blk(t_print *dna);
 void		set_length_wchar(t_print *dna);

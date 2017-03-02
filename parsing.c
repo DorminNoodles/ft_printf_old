@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/08 14:01:18 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/26 22:32:57 by lchety           ###   ########.fr       */
+/*   Updated: 2017/03/02 14:37:04 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,32 +108,11 @@ void	parsing_width(const char *format, t_print *dna, char *end)
 	dna->width = save;
 }
 
-/*
-void	parsing_width(const char *format, t_print *dna, char *end)
+void	parsing_width_star(const char *f, t_print *dna, char *end, va_list ap)
 {
-	int nb;
-	int save;
+	dna->width = va_arg(ap, int);
 
-	save = 0;
-	nb = 0;
-	while (format < end && !ft_isdigit(*format))
-	{
-		if (*format == '.')
-			return;
-		format++;
-	}
-	while (ft_isdigit(*format))
-	{
-		nb = nb * 10;
-		nb += *format - '0';
-		save = nb;
-		format++;
-	}
-	dna->width = save;
-	// printf("parsing => width == %d\n", dna->width);
-	// printf("TEST02 == %d\n", dna->width);
 }
-*/
 
 int		parsing_dispatch(const char *format, t_print *dna, va_list ap)
 {
@@ -151,6 +130,7 @@ int		parsing_dispatch(const char *format, t_print *dna, va_list ap)
 	parsing_justify(format, dna, end);
 	parsing_pitch(format, dna, end, ap);
 	parsing_cast(format, dna, end);
+	parsing_star(format, dna, end, ap);
 
 	//printf("parsing => width == %d\n", dna->width);
 	// else
@@ -211,14 +191,26 @@ void	pitch_nb(const char *format, t_print *dna, char *end)
 	//printf("test pitch_nb %d\n", dna->pitch_nb);
 }
 
-void	pitch_star(const char *format, t_print *dna, char *end)
+void	parsing_star(const char *format, t_print *dna, char *end, va_list ap)
 {
-	//pitch .*
-	dna->pitch_star = 0;
+	format++;
 	while (format < end)
 	{
-		if(*format == '*')
-			dna->pitch_star++;
+		// printf("test = %c\n", *format);
+		if (*format == '*')
+		{
+			if (*(format - 1) == '.')
+			{
+				dna->pitch_star = TRUE;
+				dna->pitch_nb = va_arg(ap, int);
+				dna->pitch = TRUE;
+			}
+			else
+			{
+				dna->width_star = TRUE;
+				dna->width = va_arg(ap, int);
+			}
+		}
 		format ++;
 	}
 	//printf("pitch_star = %d\n", dna->pitch_star);
@@ -234,9 +226,8 @@ void	pitch_dollar(const char *format, t_print *dna, char *end)
 void	parsing_pitch(const char *format, t_print *dna, char *end, va_list ap)
 {
 	pitch_nb(format, dna, end);
-	pitch_star(format, dna, end);
-	if (dna->pitch_star)
-		dna->pitch_nb = va_arg(ap, int);
+	// if (dna->pitch_star)
+	// 	dna->pitch_nb = va_arg(ap, int);
 
 	if (dna->pitch)
 		dna->flag_0 = FALSE;

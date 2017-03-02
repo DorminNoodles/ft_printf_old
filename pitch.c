@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/09 09:38:43 by lchety            #+#    #+#             */
-/*   Updated: 2017/03/01 14:30:28 by lchety           ###   ########.fr       */
+/*   Updated: 2017/03/02 12:17:10 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	compute_pitch_nb(t_print *dna)
 	char	*tmp;
 	int		pos;
 
-	//printf("compute_pitch_nb\n");
+	// printf("compute_pitch_nb\n");
 	tmp = dna->out;
 	pos = dna->pitch_nb - ft_strlen(dna->out);
 
@@ -89,7 +89,7 @@ void	compute_pitch_dollar(t_print *dna)
 void	compute_pitch_star(t_print *dna)
 {
 
-
+	printf("PITCH_STAR\n");
 
 	//printf("%s\n", dna->out);
 
@@ -109,17 +109,20 @@ char	*do_pitch(t_print *dna, bool cut)
 {
 	//ft_putstr("fuck\n");
 	// printf("do_pitch\n");
+	// printf("pitch_star == %d\n", dna->pitch_star);
 	if (dna->pitch_nb)
 	{
+		// printf("pitch_star == %d\n", dna->pitch_star);
+		// printf("pitch_nb == %d\n", dna->pitch_nb);
 		if(cut)
 			compute_pitch_nb_cut(dna);
 		else
 			compute_pitch_nb(dna);
 	}
-	else if (dna->pitch_dollar)
-		compute_pitch_dollar(dna);
-	else if (dna->pitch_star)
-		compute_pitch_star(dna);
+	// else if (dna->pitch_dollar)
+	// 	compute_pitch_dollar(dna);
+	// else if (dna->pitch_star)
+	// 	compute_pitch_star(dna);
 
 	return (dna->out);
 }

@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/17 11:34:31 by lchety            #+#    #+#             */
-/*   Updated: 2017/03/01 14:32:34 by lchety           ###   ########.fr       */
+/*   Updated: 2017/03/02 12:16:43 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ char	*set_length_digit(t_print *dna)
 	prefix = FALSE;
 	if (CHECK_PITCH)
 	{
+		// printf("fable\n");
 		do_pitch(dna, FALSE);
 		if(!dna->conv_o)
 			prefix_lossless(dna);
