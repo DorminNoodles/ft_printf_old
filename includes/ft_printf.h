@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 17:10:51 by lchety            #+#    #+#             */
-/*   Updated: 2017/03/02 21:11:51 by lchety           ###   ########.fr       */
+/*   Updated: 2017/03/03 16:37:52 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@
 #include <stdarg.h>
 #include <stdio.h>
 #include <unistd.h>
-#include "libft.h"
+#include <limits.h>
+#include <stdlib.h>
 
 /*
 #ifndef DEBUG
@@ -114,7 +115,6 @@ void		parsing_hh(const char *format, t_print *dna, char *end);
 intmax_t	exec_cast_signed(t_print *dna, va_list ap);
 intmax_t	exec_cast_unsigned(t_print *dna, va_list ap);
 char		*ft_itoa_printf(uintmax_t n, int base);
-//wchar_t		utf8_enc(wchar_t c);
 size_t		count_unicode(wchar_t *str);
 char		*ft_itoa_signed(long long n);
 intmax_t	exec_cast_ld(t_print *dna, va_list ap);
@@ -138,6 +138,21 @@ char		*flag_blk(t_print *dna);
 void		set_length_wchar(t_print *dna);
 void		pitch_ls(t_print *dna);
 void		width_ls(t_print *dna);
+size_t		ft_strlen(const char *s);
+void		*ft_memalloc(size_t size);
+void		*ft_memcpy(void *dest, const void *src, size_t n);
+void		*ft_memset(void *s, int c, size_t n);
+void		ft_putwchar(wchar_t c);
+char		*ft_strncpy(char *dest, const char *src, size_t n);
+size_t		ft_wstrlen (const wchar_t *s);
+char		*ft_strnew(size_t size);
+void		ft_putchar(char c);
+int			ft_isdigit(int c);
+int			ft_toupper(int c);
+void		ft_putstr(char const *s);
+char		*ft_strchr(const char *s, int c);
+
+
 
 
 

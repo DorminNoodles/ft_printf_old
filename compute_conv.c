@@ -6,14 +6,14 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 17:09:10 by lchety            #+#    #+#             */
-/*   Updated: 2017/03/02 21:00:27 by lchety           ###   ########.fr       */
+/*   Updated: 2017/03/03 09:53:18 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
 
-void	conv_null(t_print *dna)
+void	print_null(t_print *dna)
 {
 	if(!(dna->out = ft_strnew(ft_strlen("(null)"))))
 		exit (EXIT_FAILURE);
@@ -35,7 +35,7 @@ void	compute_conv_s(t_print *dna, va_list ap)
 	}
 	str = va_arg(ap, char*);
 	if (!str)
-		conv_null(dna);
+		print_null(dna);
 	else
 	{
 		if(!(dna->out = ft_strnew(ft_strlen(str))))
@@ -87,7 +87,7 @@ void	compute_conv_ls (t_print *dna, va_list ap)
 	if (!str)
 	{
 		// printf("HERE !\n");
-		conv_null(dna);
+		print_null(dna);
 	}
 	else
 	{
@@ -367,6 +367,13 @@ char	*compute_conv_mod(t_print *dna, va_list ap)
 	return (dna->out);
 }
 
+void	compute_conv_null(t_print *dna, va_list ap)
+{
+	printf("Conv_NULL ! \n");
+	dna->out = set_length_digit(dna);
+	ft_putstr(dna->out);
+}
+
 char	*compute_conv_b(t_print *dna, va_list ap)
 {
 	intmax_t n;
@@ -387,6 +394,7 @@ char	*compute_conv_b(t_print *dna, va_list ap)
 
 void	conv_switch(t_print *dna, va_list ap)
 {
+	// printf(" test \n");
 	if (dna->conv_s)
 		compute_conv_s(dna, ap);
 	if (dna->conv_ls)
@@ -415,6 +423,8 @@ void	conv_switch(t_print *dna, va_list ap)
 		dna->out = compute_conv_mod(dna, ap);
 	if (dna->conv_b)
 		dna->out = compute_conv_b(dna, ap);
+	if (dna->conv_null)
+		compute_conv_null(dna, ap);
 
 	//printf("TEST Y %s\n", dna->out);
 }

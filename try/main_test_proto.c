@@ -6,13 +6,12 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 16:53:56 by lchety            #+#    #+#             */
-/*   Updated: 2017/03/02 21:11:50 by lchety           ###   ########.fr       */
+/*   Updated: 2017/03/03 16:39:48 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "ft_printf.h"
-#include "libft.h"
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
@@ -3531,7 +3530,7 @@ void	test_pitch_star_01(void)
 	int ret1 = 0;
 
 	printf("test_pitch_star => 01\n");
-	ret1 = printf("cust : *%.6d*\n", 42, 8);
+	ret1 = printf("orig : *%.6d*\n", 42, 8);
 	ret2 = ft_printf("cust : *%.6d*\n", 42, 8);
 	printf("\n");
 	printf("ret_orig : %d\n", ret1);
@@ -3545,7 +3544,7 @@ void	test_pitch_star_02(void)
 	int ret1 = 0;
 
 	printf("test_pitch_star => 02\n");
-	ret1 = printf("cust : *%.*d*\n", 42, 8);
+	ret1 = printf("orig : *%.*d*\n", 42, 8);
 	ret2 = ft_printf("cust : *%.*d*\n", 42, 8);
 	printf("\n");
 	printf("ret_orig : %d\n", ret1);
@@ -3559,7 +3558,7 @@ void	test_pitch_star_03(void)
 	int ret1 = 0;
 
 	printf("test_pitch_star => 03\n");
-	ret1 = printf("cust : *%.*d*\n", 5, 42, 8, 9);
+	ret1 = printf("orig : *%.*d*\n", 5, 42, 8, 9);
 	ret2 = ft_printf("cust : *%.*d*\n", 5, 42, 8, 9);
 	printf("\n");
 	printf("ret_orig : %d\n", ret1);
@@ -4262,20 +4261,20 @@ int main(void)
 	// test_lc();
 
 	printf("=======> Conv_%% <=======\n");
-	// test_modulo();
+	test_modulo();
 
 	printf("=======> Conv_b <=======\n");
 	// test_b();
 
 	printf("=======> Pitch_Star <=======\n");
-	// test_pitch_star();
+	test_pitch_star();
 
 	printf("=======> Width_Star <=======\n");
 	// test_width_star();
 
 	//Start Mutants
 	printf("=======> Mutant_Test <=======\n");
-	mutant_test();
+	// mutant_test();
 
 
 	//test de merde

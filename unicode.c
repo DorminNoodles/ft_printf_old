@@ -6,13 +6,11 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/29 14:10:13 by lchety            #+#    #+#             */
-/*   Updated: 2017/03/01 08:52:36 by lchety           ###   ########.fr       */
+/*   Updated: 2017/03/03 15:18:48 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "ft_printf.h"
-#include <stdio.h>
 
 size_t		wcharlen(wchar_t c)
 {
