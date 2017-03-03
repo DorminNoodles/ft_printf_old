@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   main_segfault.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/10/05 16:58:35 by lchety            #+#    #+#             */
-/*   Updated: 2017/03/03 16:44:07 by lchety           ###   ########.fr       */
+/*   Created: 2017/01/07 11:14:20 by lchety            #+#    #+#             */
+/*   Updated: 2017/03/03 19:01:41 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "stdio.h"
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+int main(void)
 {
-	size_t i;
+	printf("Little process.\n");
+	printf("Test  %.*s\n", "KELLOGS", 5);
+	printf("Nooom\n");
 
-	i = 0;
-	while (i < n)
-	{
-		*(unsigned char *)(dest + i) = *(unsigned char *)(src + i);
-		i++;
-	}
-	return (dest);
+	size_t a = LONG_MAX;
+	printf("%s\n", a);
+	return (1);
 }
