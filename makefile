@@ -87,17 +87,20 @@ LIBFT_SRCS = $(addprefix libft/,$(LIBFT_SRCS_NAME))
 LIBFT_OBJS = $(LIBFT_SRCS:.c=.o)
 CC = clang
 
-all:$(NAME)
+all : $(NAME)
 	#<sans ce putain de tab ca marche pas....
 
 $(NAME) : $(OBJS)
 	make -C libft/ re
-	ar rc $(NAME) $(OBJS)
+	ar rc $(NAME) $(OBJS) $(LIBFT_OBJS)
 
 %.o : $(SRCS)
 	$(CC) -c $(SRCS) -I includes
 
 clean :
 	rm $(OBJS)
+
+test : $(NAME)
+	$(CC) try/main_test_proto.c -I includes $(NAME)
 
 .PHONY : all, clean
