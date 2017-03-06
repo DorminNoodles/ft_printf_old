@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 16:53:56 by lchety            #+#    #+#             */
-/*   Updated: 2017/03/03 16:39:48 by lchety           ###   ########.fr       */
+/*   Updated: 2017/03/05 22:06:34 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -3592,6 +3592,8 @@ void	test_pitch_star_05(void)
 	printf("ret_orig : %d\n", ret1);
 	printf("ret_cust : %d\n", ret2);
 	printf("\n");
+
+	printf("Va te pendre 5\n");
 }
 
 //=====================================================> test_width_star
