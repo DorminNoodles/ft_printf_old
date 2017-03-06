@@ -1,6 +1,6 @@
 NAME = libftprintf.a
 TEST_SRCS = try/main_test_proto.c
-LIB 
+LIB
 NAME_SRCS =	ft_printf.c										\
 			parsing.c										\
 			parsing_cast.c									\
