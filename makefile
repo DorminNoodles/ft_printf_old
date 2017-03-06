@@ -15,7 +15,8 @@ NAME_SRCS =	ft_printf.c										\
 			prefix.c										\
 			width.c											\
 			set_length.c									\
-			flags.c
+			flags.c											\
+			ft_putstr_zero.c
 
 LIBFT_SRCS_NAME =	ft_atoi.c   		\
 					ft_bzero.c		\

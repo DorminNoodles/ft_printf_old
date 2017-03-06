@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/12 15:12:02 by lchety            #+#    #+#             */
-/*   Updated: 2017/03/01 16:01:55 by lchety           ###   ########.fr       */
+/*   Updated: 2017/03/06 18:13:32 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,13 @@ char	*width_ectoplasme(t_print *dna, bool prefix_in)
 	char	c;
 	int		pos;
 
+	//printf("HERE\n");
 	// printf("test a : %s\n", dna->out);
 	tmp = dna->out;
 	c = (dna->flag_0) ? '0' : ' ';
 	pos = (prefix_in) ? 0 : prefix_count(dna);
 	// printf("prefix cpunt %d\n", pos);
+	//printf("test = %d\n",dna->width);
 	if (!(dna->out = (char*)ft_memalloc(sizeof(char) * (dna->width + 1))))
 		return (NULL);
 	ft_memset(dna->out, c, dna->width);
@@ -71,7 +73,6 @@ char	*width_ectoplasme(t_print *dna, bool prefix_in)
 		ft_memcpy(dna->out + pos, tmp, ft_strlen(tmp));
 	else
 		ft_memcpy(dna->out + (dna->width - ft_strlen(tmp)), tmp,	ft_strlen(tmp));
-	// printf("test b : %s\n", dna->out);
 	free(tmp);
 	return (dna->out);
 }
@@ -211,7 +212,10 @@ void	width_ls(t_print *dna)
 		exit (EXIT_FAILURE);
 	while (i < size)
 	{
-		*(((wchar_t*)dna->out) + i) = L' ';
+		if (dna->flag_0)
+			*(((wchar_t*)dna->out) + i) = L'0';
+		else
+			*(((wchar_t*)dna->out) + i) = L' ';
 		i++;
 	}
 	start = (wchar_t*)dna->out;

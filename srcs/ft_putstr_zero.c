@@ -1,22 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_test.c                                        :+:      :+:    :+:   */
+/*   ft_putstr_zero.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/21 11:12:49 by lchety            #+#    #+#             */
-/*   Updated: 2017/03/06 09:59:44 by lchety           ###   ########.fr       */
+/*   Created: 2017/03/06 14:18:25 by lchety            #+#    #+#             */
+/*   Updated: 2017/03/06 14:30:40 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <limits.h>
+#include "ft_printf.h"
 
-int		main(void)
+void	ft_pustr_zero(char *str)
 {
-	size_t a = LONG_MAX;
-	printf("%s\n", a);
+	int count;
 
-	return (0);
+	count = 1;
+	while (count)
+	{
+		if (str == '\0')
+		count--;
+		if (count)
+		{
+			ft_putchar(*str);
+			str++;
+		}
+	}
 }

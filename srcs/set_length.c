@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/17 11:34:31 by lchety            #+#    #+#             */
-/*   Updated: 2017/03/02 12:16:43 by lchety           ###   ########.fr       */
+/*   Updated: 2017/03/06 16:58:22 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 char	*set_length_digit(t_print *dna)
 {
 	bool prefix;
+
 	prefix = FALSE;
 	if (CHECK_PITCH)
 	{
@@ -64,6 +65,8 @@ char	*set_length_char(t_print *dna)
 	if (dna->pitch && dna->pitch_nb == 0 && !dna->conv_mod)
 		dna->out[0] = '\0';
 	dna->out = do_pitch(dna, TRUE);
+	//ft_putstr("test fuck\n");
+	ft_strlen(dna->out);
 	if (dna->width > ft_strlen(dna->out))
 		dna->out = width_ectoplasme(dna, TRUE);
 	return (dna->out);

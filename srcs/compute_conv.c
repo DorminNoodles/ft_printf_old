@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 17:09:10 by lchety            #+#    #+#             */
-/*   Updated: 2017/03/03 09:53:18 by lchety           ###   ########.fr       */
+/*   Updated: 2017/03/06 18:16:41 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,14 +85,9 @@ void	compute_conv_ls (t_print *dna, va_list ap)
 	str = va_arg(ap, wchar_t*);
 	// printf("HERE !\n");
 	if (!str)
-	{
-		// printf("HERE !\n");
 		print_null(dna);
-	}
 	else
 	{
-		// printf("HERE !\n");
-		// printf("TEST = %d\n", str[1]);
 		size = (int)ft_wstrlen(str);
 		if(!(dna->out = (char*)ft_memalloc(sizeof(int) * (size + 1))))
 			exit (EXIT_FAILURE);
@@ -318,15 +313,12 @@ void	compute_conv_c (t_print *dna, va_list ap)
 
 	if (dna->cast_l)
 	{
-		// printf("test 1800\n");
 		compute_conv_lc(dna, ap);
 		return;
 	}
-
 	c = va_arg(ap, int);
 	if (!(dna->out = (char*)ft_memalloc(sizeof(char) * 2)))
 		exit (EXIT_FAILURE);
-
 
 	dna->out[0] = c;
 	if (!c && dna->width > 1)
@@ -339,7 +331,12 @@ void	compute_conv_c (t_print *dna, va_list ap)
 		dna->ret_nb += (int)ft_strlen(dna->out);
 	else
 		dna->ret_nb++;
+
+	// if (c == '\0')
+		// ft_pustr_zero(dna->out);
 	ft_putstr(dna->out);
+	if (c == 0)
+		ft_putchar('\0');
 	free(dna->out);
 }
 
@@ -348,10 +345,18 @@ void	compute_conv_lc (t_print *dna, va_list ap)
 
 	wchar_t raw;
 
-	raw = va_arg(ap, wchar_t);
-	//utf8_enc(raw);
-	dna->ret_nb += wcharlen(raw);
-	ft_putwchar(raw);
+	if (MB_CUR_MAX > 1)
+	{
+		raw = va_arg(ap, wchar_t);
+		//utf8_enc(raw);
+		dna->ret_nb += wcharlen(raw);
+		ft_putwchar(raw);
+	}
+	else
+	{
+		dna->ret_nb++;
+		ft_putchar((char)va_arg(ap, int));
+	}
 }
 
 char	*compute_conv_mod(t_print *dna, va_list ap)
@@ -369,9 +374,15 @@ char	*compute_conv_mod(t_print *dna, va_list ap)
 
 void	compute_conv_null(t_print *dna, va_list ap)
 {
-	printf("Conv_NULL ! \n");
-	dna->out = set_length_digit(dna);
+	//printf("Conv_NULL ! \n");
+	//printf("Test %s \n", dna->out);
+	//if (!(dna->out = (char*)ft_memalloc(sizeof(char) * (dna->width + 1))))
+		//exit(EXIT_FAILURE);
+	//ft_memset(dna->out, ' ', dna->width);
+	dna->out = set_length_char(dna);
+	dna->ret_nb += ft_strlen(dna->out);
 	ft_putstr(dna->out);
+	free(dna->out);
 }
 
 char	*compute_conv_b(t_print *dna, va_list ap)
@@ -395,37 +406,37 @@ char	*compute_conv_b(t_print *dna, va_list ap)
 void	conv_switch(t_print *dna, va_list ap)
 {
 	// printf(" test \n");
+	//printf("conv_null2 = %d\n", dna->conv_null);
 	if (dna->conv_s)
 		compute_conv_s(dna, ap);
-	if (dna->conv_ls)
+	else if (dna->conv_ls)
 		compute_conv_ls(dna, ap);
-	if (dna->conv_p)
+	else if (dna->conv_p)
 		compute_conv_p(dna, ap);
-	if (dna->conv_d || dna->conv_i)
+	else if (dna->conv_d || dna->conv_i)
 		compute_conv_d(dna, ap);
-	if (dna->conv_ld)
+	else if (dna->conv_ld)
 		compute_conv_ld(dna, ap);
-	if (dna->conv_o)
+	else if (dna->conv_o)
 		compute_conv_o(dna, ap);
-	if (dna->conv_lo)
+	else if (dna->conv_lo)
 		compute_conv_lo(dna, ap);
-	if (dna->conv_u)
+	else if (dna->conv_u)
 		compute_conv_u(dna, ap);
-	if (dna->conv_lu)
+	else if (dna->conv_lu)
 		compute_conv_lu(dna, ap);
-	if (dna->conv_x || dna->conv_lx)
+	else if (dna->conv_x || dna->conv_lx)
 		compute_conv_x(dna, ap);
-	if (dna->conv_c)
+	else if (dna->conv_c)
 		compute_conv_c(dna, ap);
-	if (dna->conv_lc)
+	else if (dna->conv_lc)
 		compute_conv_lc(dna, ap);
-	if (dna->conv_mod)
+	else if (dna->conv_mod)
 		dna->out = compute_conv_mod(dna, ap);
-	if (dna->conv_b)
+	else if (dna->conv_b)
 		dna->out = compute_conv_b(dna, ap);
-	if (dna->conv_null)
+	else if (dna->conv_null)
 		compute_conv_null(dna, ap);
-
 	//printf("TEST Y %s\n", dna->out);
 }
 

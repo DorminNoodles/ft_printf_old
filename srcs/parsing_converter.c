@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/10 13:37:44 by lchety            #+#    #+#             */
-/*   Updated: 2017/03/03 09:22:46 by lchety           ###   ########.fr       */
+/*   Updated: 2017/03/06 17:39:05 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,12 @@ char	*parsing_converter(const char *format, t_print *dna)
 		else if (!(ret = ft_strchr(STRING_FLAG, *format)))
 		{
 			dna->conv_null = TRUE;
-			return ((char*)format);
+			dna->conv = TRUE;
+			if(!(dna->out = (char*)ft_memalloc(sizeof(char) * 2)))
+				exit (EXIT_FAILURE);
+			dna->out[0] = *format;
+			// printf("conv_null = %d\n", dna->conv_null);
+			return ((char*)format+1);
 		}
 		format++;
 	}
