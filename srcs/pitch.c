@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/09 09:38:43 by lchety            #+#    #+#             */
-/*   Updated: 2017/03/02 12:17:10 by lchety           ###   ########.fr       */
+/*   Updated: 2017/03/06 09:39:16 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,6 @@ char	*do_pitch(t_print *dna, bool cut)
 	// 	compute_pitch_dollar(dna);
 	// else if (dna->pitch_star)
 	// 	compute_pitch_star(dna);
-
 	return (dna->out);
 }
 

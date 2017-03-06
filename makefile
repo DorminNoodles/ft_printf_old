@@ -1,6 +1,5 @@
 NAME = libftprintf.a
 TEST_SRCS = try/main_test_proto.c
-LIB
 NAME_SRCS =	ft_printf.c										\
 			parsing.c										\
 			parsing_cast.c									\
@@ -86,19 +85,27 @@ LIBFT_OBJS = $(LIBFT_SRCS:.c=.o)
 CC = clang
 
 all : $(NAME)
-	#<sans ce putain de tab ca marche pas....
+
 
 $(NAME) : $(OBJS)
 	make -C libft/ re
 	ar rc $(NAME) $(OBJS) $(LIBFT_OBJS)
+	ranlib $(NAME)
 
-%.o : $(SRCS)
-	$(CC) -c $@ -I includes
+%.o : srcs/%.c
+	$(CC) -c $< -o $@ -I includes
 
 clean :
-	rm $(OBJS)
+	rm -f $(OBJS)
+	make -C libft/ clean
+
+fclean : clean
+	rm -f $(NAME)
+	make -C libft/ fclean
+
+re : fclean all
 
 test : $(NAME)
-	$(CC) try/main_test_proto.c -I includes $(NAME)
+	$(CC) try/main_test_proto.c -I includes $(NAME) -o build/debug.out
 
-.PHONY : all, clean
+.PHONY : all, clean, fclean, test, re
