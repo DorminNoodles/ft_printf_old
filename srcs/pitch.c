@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/09 09:38:43 by lchety            #+#    #+#             */
-/*   Updated: 2017/03/06 09:39:16 by lchety           ###   ########.fr       */
+/*   Updated: 2017/03/07 17:17:39 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	compute_pitch_nb(t_print *dna)
 	int		pos;
 
 	// printf("compute_pitch_nb\n");
+	printf("Test2\n");
 	tmp = dna->out;
 	pos = dna->pitch_nb - ft_strlen(dna->out);
 
@@ -45,6 +46,7 @@ void	compute_pitch_nb_cut(t_print *dna)
 	char	*tmp;
 	//int		pos;
 
+	printf("Test\n");
 	tmp = dna->out;
 	//pos = dna->pitch_nb - ft_strlen(dna->out);
 	if(!(dna->out = (char*)ft_memalloc(sizeof(char) * (dna->pitch_nb + 1))))
@@ -107,9 +109,8 @@ void	compute_pitch_star(t_print *dna)
 
 char	*do_pitch(t_print *dna, bool cut)
 {
-	//ft_putstr("fuck\n");
-	// printf("do_pitch\n");
-	// printf("pitch_star == %d\n", dna->pitch_star);
+	// printf("Test do_pitch\n");
+
 	if (dna->pitch_nb)
 	{
 		// printf("pitch_star == %d\n", dna->pitch_star);

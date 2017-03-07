@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/10 18:50:34 by lchety            #+#    #+#             */
-/*   Updated: 2017/03/06 10:22:20 by lchety           ###   ########.fr       */
+/*   Updated: 2017/03/07 13:54:52 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,10 @@ void	prefix_lossless(t_print *dna)
 {
 	char	*tmp;
 	int		size;
-	// printf("here 2\n");
 	// printf("prefix_lossless\n");
+	// printf("prefelkngjdkrgn\n");
 	tmp = dna->out;
+	//printf("efre %d\n", (int)prefix_count(dna));
 	size = ft_strlen(dna->out) + prefix_count(dna);
 	if(!(dna->out = ft_strnew(size)))
 		exit(EXIT_FAILURE);
@@ -107,15 +108,11 @@ char	*get_prefix(t_print *dna)
 		return ("0x");
 	if (dna->conv_b)
 		return ("0b");
-	if (dna->conv_o)
+	if (dna->conv_o || dna->conv_lo)
 		return ("0");
 	if (dna->pre_pls && !dna->pre_min)
 	{
-		// if (dna->width < dna->base_size)
-		// {
-		// 	dna->ret_nb++;
-			return ("+");
-		// }
+		return ("+");
 	}
 	if (dna->pre_min)
 		return ("-");
@@ -129,6 +126,8 @@ size_t	prefix_count(t_print *dna)
 	if (dna->htag && dna->conv_b)
 		return (ft_strlen(get_prefix(dna)));
 	if (dna->htag && dna->conv_o)
+		return (1);
+	if (dna->htag && dna->conv_lo)
 		return (1);
 	if (dna->pre_min)
 		return (1);

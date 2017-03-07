@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 17:10:51 by lchety            #+#    #+#             */
-/*   Updated: 2017/03/03 17:01:16 by lchety           ###   ########.fr       */
+/*   Updated: 2017/03/07 11:54:44 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ typedef struct s_print
 	bool cast_l;
 	bool cast_z;
 	bool cast_j;
+
 	bool flag_0;
 	bool flag_blk;
 	bool htag;
@@ -151,6 +152,7 @@ int			ft_isdigit(int c);
 int			ft_toupper(int c);
 void		ft_putstr(char const *s);
 char		*ft_strchr(const char *s, int c);
+char		*flag_blk_lossy(t_print *dna);
 
 
 

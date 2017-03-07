@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/22 10:39:10 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/25 16:43:10 by lchety           ###   ########.fr       */
+/*   Updated: 2017/03/07 17:23:57 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,12 @@ char	*flag_blk(t_print *dna)
 			free(tmp);
 		}
 	}
+	return (dna->out);
+}
+
+char	*flag_blk_lossy(t_print *dna)
+{
+	if (dna->flag_blk && dna->out)
+		dna->out[0] = ' ';
 	return (dna->out);
 }
