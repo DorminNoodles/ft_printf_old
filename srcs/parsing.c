@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/08 14:01:18 by lchety            #+#    #+#             */
-/*   Updated: 2017/03/07 17:23:42 by lchety           ###   ########.fr       */
+/*   Updated: 2017/03/08 12:20:00 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,6 +138,7 @@ int		parsing_dispatch(const char *format, t_print *dna, va_list ap)
 	parsing_htag(format, dna, end);
 	parsing_justify(format, dna, end);
 	// printf("conv_p == %d\n", dna->conv_p);
+	// printf("test flag04 %d\n", dna->flag_0);
 	parsing_pitch(format, dna, end, ap);
 	// printf("test flag04 %d\n", dna->flag_0);
 	parsing_cast(format, dna, end);
@@ -241,7 +242,10 @@ void	parsing_pitch(const char *format, t_print *dna, char *end, va_list ap)
 	// if (dna->pitch_star)
 	// 	dna->pitch_nb = va_arg(ap, int);
 
-	if (dna->pitch && !dna->conv_c && !dna->conv_s && !dna->conv_mod && !dna->conv_null)
+	// if (dna->pitch && !dna->conv_c && !dna->conv_s && !dna->conv_mod && !dna->conv_null)
+	// 	dna->flag_0 = FALSE;
+
+	if (dna->pitch && dna->conv_d)
 		dna->flag_0 = FALSE;
 }
 

@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/12 15:12:02 by lchety            #+#    #+#             */
-/*   Updated: 2017/03/07 17:23:34 by lchety           ###   ########.fr       */
+/*   Updated: 2017/03/08 12:20:38 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -209,6 +209,7 @@ void	width_ls(t_print *dna)
 	int		i;
 	wchar_t	*start;
 
+	// printf("dna->flag 0 %d\n", dna->flag_0);
 	i = 0;
 	size = dna->width - count_unicode((wchar_t*)dna->out);
 	size += ft_wstrlen((wchar_t*)dna->out);

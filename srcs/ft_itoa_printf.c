@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/22 12:01:22 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/27 10:19:34 by lchety           ###   ########.fr       */
+/*   Updated: 2017/03/08 14:52:04 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ char	*ft_itoa_printf(uintmax_t n, int base)
 	int i;
 
 	i = 0;
+	// printf("tst_n = %jo\n", n);
 	str = (char*)ft_memalloc(sizeof(char) * 300);
 	if (!str)
 		return (NULL);

@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 17:09:10 by lchety            #+#    #+#             */
-/*   Updated: 2017/03/07 17:19:18 by lchety           ###   ########.fr       */
+/*   Updated: 2017/03/08 17:55:50 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ void	compute_conv_s(t_print *dna, va_list ap)
 	// //ret = 0;
 	// nb = 0;
 	// tmp = va_arg(ap, char*);
-	// //printf("pouet pouet %s\n", tmp);
 	// // if (!tmp)
 	// // {
 	// // 	tmp = ft_strnew(ft_strlen("(null)"));
@@ -83,7 +82,6 @@ void	compute_conv_ls (t_print *dna, va_list ap)
 	i = 0;
 	size = 0;
 	str = va_arg(ap, wchar_t*);
-	// printf("HERE !\n");
 	if (!str)
 		print_null(dna);
 	else
@@ -92,7 +90,9 @@ void	compute_conv_ls (t_print *dna, va_list ap)
 		if(!(dna->out = (char*)ft_memalloc(sizeof(int) * (size + 1))))
 			exit (EXIT_FAILURE);
 		ft_memcpy(dna->out, (char*)str, sizeof(int) * ft_wstrlen(str));
+		// printf("dna->out = %S\n", dna->out);
 		set_length_wchar(dna);
+		// printf("dna->out = %S\n", dna->out);
 		dna->ret_nb += count_unicode((wchar_t*)dna->out);
 		i = 0;
 		while (*(((wchar_t *)dna->out) + i) != '\0')
@@ -178,14 +178,12 @@ void 	compute_conv_o(t_print *dna, va_list ap)
 	n = 0;
 	n = exec_cast_unsigned(dna, ap);
 	//n = va_arg(ap, uintmax_t);
-	//printf("141n = %jo\n", n);
+	// printf("141n = %lo\n", n);
 
-	if (!(dna->out = ft_itoa_printf((int)n, 8)))
+	if (!(dna->out = ft_itoa_printf(n, 8)))
 		exit (1);
-
+	// printf("dna out = %s\n", dna->out);
 	dna->pre_pls = FALSE;
-		//printf("dna = %d\n", dna->pre_pls);
-	//printf("143, n = %s\n", dna->out);
 
 	if (dna->pitch && !dna->pitch_nb && !dna->htag)
 		dna->out[0] = '\0';
@@ -193,13 +191,8 @@ void 	compute_conv_o(t_print *dna, va_list ap)
 	if (n == 0)
 		dna->htag = FALSE;
 	dna->base_size = ft_strlen(dna->out);
-	// printf("conv_o => %s\n", dna->out);
-	// dna->out = set_length_digit(dna);
-	//printf("dna->htag %d\n", dna->htag);
 	dna->out = set_length_digit(dna);
-	// printf("conv_o => %s\n", dna->out);
 	dna->ret_nb += ft_strlen(dna->out);
-	// ft_putstr(" *here = ");
 	// ft_putstr(dna->out);
 	// ft_putstr("* \n");
 	ft_putstr(dna->out);
@@ -211,13 +204,14 @@ void 	compute_conv_lo(t_print *dna, va_list ap)
 	uintmax_t n;
 	// char *bite;
 	n = 0;
-	n = va_arg(ap, uintmax_t);
+	n = exec_cast_signed(dna, ap);
 	dna->pre_pls = FALSE;
 
+	printf("n 14 = %d\n", n);
+	// printf("n 15 = %o\n", n);
 	if (!(dna->out = ft_itoa_printf(n, 8)))
 		exit (1);
 	//printf("143, n = %s\n", dna->out);
-
 	if (dna->pitch && !dna->pitch_nb && !dna->htag)
 		dna->out[0] = '\0';
 	// ft_putstr("*here !*");
@@ -255,11 +249,9 @@ void	compute_conv_u(t_print *dna, va_list ap)
 void	compute_conv_lu(t_print *dna, va_list ap)
 {
 	uintmax_t nb;
-	//printf("conv_u\n");
 	dna->pre_pls = FALSE;
 	nb = va_arg(ap, uintmax_t);
 	// nb = exec_cast_unsigned(dna, ap);
-	// printf("test %U\n", nb);
 
 	if(!(dna->out = ft_itoa_printf(nb, 10)))
 		exit(1);
@@ -277,7 +269,6 @@ void 	compute_conv_lo(t_print *dna, va_list ap)
 	uintmax_t n;
 
 	n = va_arg(ap, uintmax_t);
-	dna->out = ft_itoa_printf((long)n, 8);
 	dna->base_size = ft_strlen(dna->out);
 
 	dna->out = set_length_digit(dna);
@@ -312,7 +303,6 @@ void	compute_conv_x(t_print *dna, va_list ap)
 			i++;
 		}
 	}
-	//printf("chiasse *%s\n", dna->out);
 	dna->ret_nb += ft_strlen(dna->out);
 	ft_putstr_buff(dna->out);
 	free(dna->out);
@@ -383,15 +373,10 @@ char	*compute_conv_mod(t_print *dna, va_list ap)
 
 void	compute_conv_null(t_print *dna, va_list ap)
 {
-	printf("flag_0 = %d\n", dna->flag_0);
-	//printf("Conv_NULL ! \n");
-	//printf("Test %s \n", dna->out);
 	//if (!(dna->out = (char*)ft_memalloc(sizeof(char) * (dna->width + 1))))
 		//exit(EXIT_FAILURE);
 	//ft_memset(dna->out, ' ', dna->width);
-	// printf("dna->out => %s \n", dna->out);
 	dna->out = set_length_char(dna);
-	// printf("dna->out => %s \n", dna->out);
 	dna->ret_nb += ft_strlen(dna->out);
 	ft_putstr(dna->out);
 	free(dna->out);
@@ -401,7 +386,6 @@ char	*compute_conv_b(t_print *dna, va_list ap)
 {
 	intmax_t n;
 	n = exec_cast_unsigned(dna, ap);
-	//printf("test %d\n", n);
 
 	dna->out = ft_itoa_printf(n, 2);
 	dna->out = set_length_digit(dna);
@@ -417,8 +401,6 @@ char	*compute_conv_b(t_print *dna, va_list ap)
 
 void	conv_switch(t_print *dna, va_list ap)
 {
-	// printf(" test \n");
-	//printf("conv_null2 = %d\n", dna->conv_null);
 	if (dna->conv_s)
 		compute_conv_s(dna, ap);
 	else if (dna->conv_ls)
@@ -449,12 +431,10 @@ void	conv_switch(t_print *dna, va_list ap)
 		dna->out = compute_conv_b(dna, ap);
 	else if (dna->conv_null)
 		compute_conv_null(dna, ap);
-	//printf("TEST Y %s\n", dna->out);
 }
 
 void	compute_htag(t_print *dna)
 {
-	// printf("htag = %d\n", (int)count_unicode((wchar_t *)dna->out));
 	ft_memcpy(dna->out, "0x", 2);
 }
 
@@ -483,7 +463,6 @@ void	flag_switch(t_print *dna, const char *format, va_list ap)
 
 void	compute_conv(t_print *dna, va_list ap)
 {
-	// printf("pitch nb = %d\n", dna->pitch_nb);
 	conv_switch(dna, ap);
 	//ft_putstr("Conv_START\n");
 	//flag_switch(dna, format, ap);
