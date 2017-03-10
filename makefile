@@ -16,7 +16,9 @@ NAME_SRCS =	ft_printf.c										\
 			width.c											\
 			set_length.c									\
 			flags.c											\
-			ft_putstr_zero.c
+			ft_putstr_zero.c								\
+			itoa_float.c
+
 
 LIBFT_SRCS_NAME =	ft_atoi.c   		\
 					ft_bzero.c		\
@@ -72,12 +74,13 @@ LIBFT_SRCS_NAME =	ft_atoi.c   		\
 					ft_strnstr.c	\
 					ft_strrchr.c	\
 					ft_strsplit.c	\
-					ft_strstr.c	\
+					ft_strstr.c		\
 					ft_strsub.c	\
 					ft_strtrim.c	\
 					ft_tolower.c	\
 					ft_toupper.c	\
 					ft_wstrlen.c
+
 
 SRCS = $(addprefix srcs/,$(NAME_SRCS))
 OBJS = $(NAME_SRCS:.c=.o)
