@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 17:09:10 by lchety            #+#    #+#             */
-/*   Updated: 2017/03/08 17:55:50 by lchety           ###   ########.fr       */
+/*   Updated: 2017/03/08 22:21:08 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -204,13 +204,14 @@ void 	compute_conv_lo(t_print *dna, va_list ap)
 	uintmax_t n;
 	// char *bite;
 	n = 0;
-	n = exec_cast_signed(dna, ap);
+	n = cast_unsigned_wide(dna, ap);
 	dna->pre_pls = FALSE;
 
-	printf("n 14 = %d\n", n);
-	// printf("n 15 = %o\n", n);
+	// printf("n 14 = %d\n", n);
+	// printf("n 15 = %d\n", n);
 	if (!(dna->out = ft_itoa_printf(n, 8)))
 		exit (1);
+	// printf("n 15 = %s\n", dna->out);
 	//printf("143, n = %s\n", dna->out);
 	if (dna->pitch && !dna->pitch_nb && !dna->htag)
 		dna->out[0] = '\0';

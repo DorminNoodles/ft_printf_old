@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 17:10:51 by lchety            #+#    #+#             */
-/*   Updated: 2017/03/07 11:54:44 by lchety           ###   ########.fr       */
+/*   Updated: 2017/03/08 23:02:54 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,7 +153,7 @@ int			ft_toupper(int c);
 void		ft_putstr(char const *s);
 char		*ft_strchr(const char *s, int c);
 char		*flag_blk_lossy(t_print *dna);
-
+intmax_t	cast_unsigned_wide(t_print *dna, va_list ap);
 
 
 

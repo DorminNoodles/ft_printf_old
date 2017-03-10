@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/08 14:01:18 by lchety            #+#    #+#             */
-/*   Updated: 2017/03/08 12:20:00 by lchety           ###   ########.fr       */
+/*   Updated: 2017/03/08 22:30:40 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,16 @@ void	parsing_width_star(const char *f, t_print *dna, char *end, va_list ap)
 
 }
 
+void	silent_flags(t_print *dna)
+{
+	if (dna->conv_x || dna->conv_lx)
+	{
+		dna->flag_blk = FALSE;
+		dna->pre_pls = FALSE;
+	}
+
+}
+
 int		parsing_dispatch(const char *format, t_print *dna, va_list ap)
 {
 	char *end;
@@ -143,6 +153,8 @@ int		parsing_dispatch(const char *format, t_print *dna, va_list ap)
 	// printf("test flag04 %d\n", dna->flag_0);
 	parsing_cast(format, dna, end);
 	parsing_star(format, dna, end, ap);
+
+	silent_flags(dna);
 
 
 	//printf("parsing => width == %d\n", dna->width);
