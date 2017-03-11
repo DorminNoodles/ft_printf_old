@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 17:09:10 by lchety            #+#    #+#             */
-/*   Updated: 2017/03/08 22:21:08 by lchety           ###   ########.fr       */
+/*   Updated: 2017/03/11 23:28:00 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -395,10 +395,33 @@ char	*compute_conv_b(t_print *dna, va_list ap)
 	free(dna->out);
 	return (dna->out);
 }
+
+void	compute_conv_e(t_print *dna, va_list ap)
+{
+	//printf("conv_e\n");
+	//ftoa(4242.1234);
+
+}
+
+void	compute_conv_f(t_print *dna, va_list ap)
+{
+	char	*str;
+	double	n;
+
+	// printf("CONV_F\n");
+
+	n = va_arg(ap, double);
+	//printf("n = %f\n", n);
+
+	str = ftoa(n);
+
+
+}
 //1111 1111 1111 1111 1111 1111 1111 111
 
 //orig :         0x0000003039|
 // 0x7fffffff
+
 
 void	conv_switch(t_print *dna, va_list ap)
 {
@@ -432,6 +455,10 @@ void	conv_switch(t_print *dna, va_list ap)
 		dna->out = compute_conv_b(dna, ap);
 	else if (dna->conv_null)
 		compute_conv_null(dna, ap);
+	else if (dna->conv_e)
+		compute_conv_e(dna, ap);
+	else if (dna->conv_f)
+		compute_conv_f(dna, ap);
 }
 
 void	compute_htag(t_print *dna)

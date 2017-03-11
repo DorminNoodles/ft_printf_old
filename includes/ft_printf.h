@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 17:10:51 by lchety            #+#    #+#             */
-/*   Updated: 2017/03/10 21:00:21 by lchety           ###   ########.fr       */
+/*   Updated: 2017/03/11 17:43:59 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define FT_PRINTF_H
 # define TRUE 1
 # define FALSE 0
-# define STRING_CONV "sSpdDioOuUxXcC%b"
+# define STRING_CONV "sSpdDioOuUxXcC%beEfF"
 # define STRING_FLAG ".hzjl0123456789 +-#*"
 
 #include <stdarg.h>
@@ -22,6 +22,7 @@
 #include <unistd.h>
 #include <limits.h>
 #include <stdlib.h>
+#include "libft.h"
 
 /*
 #ifndef DEBUG
@@ -60,6 +61,8 @@ typedef struct s_print
 	bool conv_lx;
 	bool conv_mod;
 	bool conv_b;
+	bool conv_e;
+	bool conv_f;
 	bool conv_null;
 
 	bool cast_h;
@@ -140,21 +143,15 @@ void		set_length_wchar(t_print *dna);
 void		pitch_ls(t_print *dna);
 void		width_ls(t_print *dna);
 size_t		ft_strlen(const char *s);
-void		*ft_memalloc(size_t size);
-void		*ft_memcpy(void *dest, const void *src, size_t n);
-void		*ft_memset(void *s, int c, size_t n);
 void		ft_putwchar(wchar_t c);
 char		*ft_strncpy(char *dest, const char *src, size_t n);
 size_t		ft_wstrlen (const wchar_t *s);
 char		*ft_strnew(size_t size);
-void		ft_putchar(char c);
-int			ft_isdigit(int c);
-int			ft_toupper(int c);
-void		ft_putstr(char const *s);
 char		*ft_strchr(const char *s, int c);
 char		*flag_blk_lossy(t_print *dna);
 intmax_t	cast_unsigned_wide(t_print *dna, va_list ap);
 void		itoa_float(double x);
+char		*ftoa(double n);
 
 
 #endif

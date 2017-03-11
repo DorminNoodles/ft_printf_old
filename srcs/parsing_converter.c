@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/10 13:37:44 by lchety            #+#    #+#             */
-/*   Updated: 2017/03/06 17:39:05 by lchety           ###   ########.fr       */
+/*   Updated: 2017/03/11 17:08:13 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,10 @@ static void conv_switch(char c, t_print *dna)
 		dna->conv_mod = TRUE;
 	if (c == 'b')
 		dna->conv_b = TRUE;
+	if (c == 'e')
+		dna->conv_e = TRUE;
+	if (c == 'f')
+		dna->conv_f = TRUE;
 }
 
 char	*parsing_converter(const char *format, t_print *dna)
@@ -74,6 +78,5 @@ char	*parsing_converter(const char *format, t_print *dna)
 		}
 		format++;
 	}
-	//printf(":-)\n");
 	return ((char*)format);
 }

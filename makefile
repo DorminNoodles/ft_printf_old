@@ -17,7 +17,8 @@ NAME_SRCS =	ft_printf.c										\
 			set_length.c									\
 			flags.c											\
 			ft_putstr_zero.c								\
-			itoa_float.c
+			itoa_float.c									\
+			float.c
 
 
 LIBFT_SRCS_NAME =	ft_atoi.c   		\
@@ -87,17 +88,18 @@ OBJS = $(NAME_SRCS:.c=.o)
 LIBFT_SRCS = $(addprefix libft/,$(LIBFT_SRCS_NAME))
 LIBFT_OBJS = $(LIBFT_SRCS:.c=.o)
 CC = clang
+HEADER_LIB = libft/includes/libft.h
 
 all : $(NAME)
 
 
-$(NAME) : $(OBJS)
+$(NAME) : $(OBJS) $(HEADER_LIB)
 	make -C libft/ re
 	ar rc $(NAME) $(OBJS) $(LIBFT_OBJS)
 	ranlib $(NAME)
 
-%.o : srcs/%.c
-	$(CC) -c $< -o $@ -I includes
+%.o : srcs/%.c includes/ft_printf.h
+	$(CC) -c $< -o $@ -I includes -I libft/includes
 
 clean :
 	rm -f $(OBJS)
@@ -110,6 +112,6 @@ fclean : clean
 re : fclean all
 
 test : $(NAME)
-	$(CC) try/main_test_proto.c -I includes $(NAME) -o build/debug.out
+	$(CC) try/main_test_proto.c -I includes -I libft/includes $(NAME) -o build/debug.out
 
 .PHONY : all, clean, fclean, test, re

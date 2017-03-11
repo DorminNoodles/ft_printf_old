@@ -6,11 +6,13 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/10 20:45:26 by lchety            #+#    #+#             */
-/*   Updated: 2017/03/10 22:03:46 by lchety           ###   ########.fr       */
+/*   Updated: 2017/03/11 17:19:32 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ft_printf.h>
+#include "ft_printf.h"
+
+
 
 void	itoa_float(double x)
 {
@@ -22,7 +24,7 @@ void	itoa_float(double x)
 
 	while (x != 0.0)
 	{
-		printf("%d", (int)x);
+		printf("%d\n", (int)x);
 		x = x - (int)x;
 		x *= 10;
 	}
