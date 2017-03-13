@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 16:53:56 by lchety            #+#    #+#             */
-/*   Updated: 2017/03/13 01:27:44 by lchety           ###   ########.fr       */
+/*   Updated: 2017/03/13 20:57:52 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -261,6 +261,20 @@ void	test_s_17(void)
 	printf("Test_c => 17\n");
 	ret1 = printf("orig : {%05.s}\n", 0);
 	ret2 = ft_printf("cust : {%05.s}\n", 0);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void	test_s_18(void)
+{
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("Test_c => 18\n");
+	ret1 = printf("orig : {%.0s}\n", 0);
+	ret2 = ft_printf("cust : {%.0s}\n", 0);
 	printf("\n");
 	printf("ret_orig : %d\n", ret1);
 	printf("ret_cust : %d\n", ret2);
@@ -3395,6 +3409,7 @@ void	test_c_14(void)
 	printf("\n");
 }
 
+
 //=====================================================> conv_C
 
 void	test_lc_01(void)
@@ -3594,6 +3609,7 @@ void	test_lc_12(void)
 	printf("ret_cust : %d\n", ret2);
 	printf("\n");
 }
+
 
 //=====================================================> conv_p
 
@@ -3999,9 +4015,38 @@ void	test_pitch_star_05(void)
 	printf("ret_orig : %d\n", ret1);
 	printf("ret_cust : %d\n", ret2);
 	printf("\n");
-
-	printf("Va te pendre 5\n");
 }
+
+void	test_pitch_star_06(void)
+{
+	int ret2 = 0;
+	int ret1 = 0;
+
+	printf("test_pitch_star => 06\n");
+	ret1 = printf("orig : {%.*d}\n", -5, 42);
+	ret2 = ft_printf("cust : {%.*d}\n", -5, 42);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+
+}
+
+void	test_pitch_star_07(void)
+{
+	int ret2 = 0;
+	int ret1 = 0;
+
+	printf("test_pitch_star => 07\n");
+	ret1 = printf("orig : {%.*s}\n", -5, "42");
+	ret2 = ft_printf("cust : {%.*s}\n", -5, "42");
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+
+}
+
 
 //=====================================================> test_width_star
 
@@ -4010,7 +4055,7 @@ void	test_width_star_01(void)
 	int ret2 = 0;
 	int ret1 = 0;
 
-	printf("test_pitch_star => 01\n");
+	printf("test_width_star => 01\n");
 	ret1 = printf("orig : *%*d*\n", 5, 42, 8, 9, 12, 25);
 	ret2 = ft_printf("cust : *%*d*\n", 5, 42, 8, 9, 12, 25);
 	printf("\n");
@@ -4024,7 +4069,7 @@ void	test_width_star_02(void)
 	int ret2 = 0;
 	int ret1 = 0;
 
-	printf("test_pitch_star => 02\n");
+	printf("test_width_star => 02\n");
 	ret1 = printf("orig : *%*d %*d %*d*\n", 5, 42, 8, 9, 12, 25);
 	ret2 = ft_printf("cust : *%*d %*d %*d*\n", 5, 42, 8, 9, 12, 25);
 	printf("\n");
@@ -4038,7 +4083,7 @@ void	test_width_star_03(void)
 	int ret2 = 0;
 	int ret1 = 0;
 
-	printf("test_pitch_star => 03\n");
+	printf("test_width_star => 03\n");
 	ret1 = printf("orig : *%*x %*x %*x*\n", 5, 42, 8, 9, 12, 25);
 	ret2 = ft_printf("cust : *%*x %*x %*x*\n", 5, 42, 8, 9, 12, 25);
 	printf("\n");
@@ -4052,7 +4097,7 @@ void	test_width_star_04(void)
 	int ret2 = 0;
 	int ret1 = 0;
 
-	printf("test_pitch_star => 04\n");
+	printf("test_width_star => 04\n");
 	ret1 = printf("orig : *%*.*x %*.*x %*.*x*\n", 5, 12, 8, 9, 12, 25, 44);
 	ret2 = ft_printf("cust : *%*.*x %*.*x %*.*x*\n", 5, 12, 8, 9, 12, 25, 44);
 	printf("\n");
@@ -4066,7 +4111,7 @@ void	test_width_star_05(void)
 	int ret2 = 0;
 	int ret1 = 0;
 
-	printf("test_pitch_star => 05\n");
+	printf("test_width_star => 05\n");
 	ret1 = printf("orig : *%*.*x*\n", 0, 0, 0, 0, 0, 0, 0);
 	ret2 = ft_printf("cust : *%*.*x*\n", 0, 0, 0, 0, 0, 0, 0);
 	printf("\n");
@@ -4074,6 +4119,49 @@ void	test_width_star_05(void)
 	printf("ret_cust : %d\n", ret2);
 	printf("\n");
 }
+
+void	test_width_star_06(void)
+{
+	int ret2 = 0;
+	int ret1 = 0;
+
+	printf("test_width_star => 06\n");
+	ret1 = printf("orig : {%*d}\n", -5, 42);
+	ret2 = ft_printf("cust : {%*d}\n", -5, 42);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void	test_width_star_07(void)
+{
+	int ret2 = 0;
+	int ret1 = 0;
+
+	printf("test_width_star => 07\n");
+	ret1 = printf("orig : {%*d}\n", 0, 42);
+	ret2 = ft_printf("cust : {%*d}\n", 0, 42);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void	test_width_star_08(void)
+{
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("test_width_star => 08\n");
+	ret1 = printf("orig : {%*c}\n", -15, 0);
+	ret2 = ft_printf("cust : {%*c}\n", -15, 0);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
 
 // void	test_width_star_02(void)
 // {
@@ -4524,6 +4612,7 @@ void	test_s(void)
 	test_s_15();
 	test_s_16();
 	test_s_17();
+	test_s_18();
 }
 
 void	test_ls(void)
@@ -4843,6 +4932,8 @@ void	test_pitch_star(void)
 	test_pitch_star_03();
 	test_pitch_star_04();
 	test_pitch_star_05();
+	test_pitch_star_06();
+	test_pitch_star_07();
 }
 
 void	test_width_star(void)
@@ -4852,6 +4943,9 @@ void	test_width_star(void)
 	test_width_star_03();
 	test_width_star_04();
 	test_width_star_05();
+	test_width_star_06();
+	test_width_star_07();
+	test_width_star_08();
 }
 
 void 	mutant_test(void)
@@ -4906,7 +5000,7 @@ int main(void)
 {
 	//Start Conv_s
 	printf("=======> Conv_s <=======\n");
-	// test_s();
+	test_s();
 
 	//Start
 	printf("=======> Conv_S <=======\n");
@@ -4917,7 +5011,7 @@ int main(void)
 	// test_p();
 
 	printf("=======> Conv_d <=======\n");
-	// test_d();
+	//test_d();
 
 	printf("=======> Conv_D <=======\n");
 	// test_ld();
@@ -4959,10 +5053,10 @@ int main(void)
 	//test_null();
 
 	printf("=======> Pitch_Star <=======\n");
-	// test_pitch_star();
+	test_pitch_star();
 
 	printf("=======> Width_Star <=======\n");
-	test_width_star();
+	// test_width_star();
 
 	//Start Mutants
 	printf("=======> Mutant_Test <=======\n");
@@ -5517,12 +5611,11 @@ int main(void)
 	// printf("%.40f\n", 0.09e-10);
 	// ft_printf("%f", 0.09e-10);
 
-	printf("test dollar %3$d\n", 40, 60, 5);
-	printf("test dollar %3$d %d\n", 40, 60, 5, 102);
-	printf("test dollar %1$d %1$d %1$d\n", 40, 60, 5, 102, 2);
-	printf("\n");
-	printf("test dollar %1**1$d\n", 40, 60, 5, 102, 2);
-
+	// printf("test dollar %3$d\n", 40, 60, 5);
+	// printf("test dollar %3$d %d\n", 40, 60, 5, 102);
+	// printf("test dollar %1$d %1$d %1$d\n", 40, 60, 5, 102, 2);
+	// printf("\n");
+	// printf("test dollar %1**1$d\n", 40, 60, 5, 102, 2);
 
 
 

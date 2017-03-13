@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/11 10:48:24 by lchety            #+#    #+#             */
-/*   Updated: 2017/03/13 00:05:00 by lchety           ###   ########.fr       */
+/*   Updated: 2017/03/13 11:57:19 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,43 +27,19 @@ char	*find_mantisse(double n)
 
 	i = 0;
 	ft_bzero(buff, 1000);
-
-	//printf("%f", g);
-
-	// while (n > 9)
-	// 	n /= 10;
-	//
-	// 	printf("      ");
-	// printf("#n = %f\n", n);
-	// printf("test = %d\n", (int)n);
-	//printf("printf lo%f\n", n);
-
 	while (i < 800)
 	{
-		// printf("%d", (int)n);
 		buff[i] = '0' + (int)n;
 		n = n - (int)n;
 		n = n * 10;
 		i++;
 
 	}
-	// printf("\nfuck");
-	// printf("\n%s", buff);
-	//
-	// while (n != 0.0)
-	// {
-	// 	buff[i] = '0' + (int)n;
-	// 	//printf("%c", buff[i]);
-	// 	n = n - (int)n;
-	// 	n = n * 10;
-	// 	i++;
-	// }
 
 	if(!(str = (char*)ft_memalloc(sizeof(char) * ft_strlen(buff) + 1)))
 		exit (EXIT_FAILURE);
 
 	ft_strcpy(str, buff);
-	// printf("str : %s\n", str);
 	return (str);
 }
 
@@ -94,9 +70,6 @@ char	*ftoa(double n)
 
 	str = find_mantisse(n);
 
-	//find_sign(n);
-	//find_mantisse(n);
-	//printf("exponent : %d\n", find_exponent(n));
 	if (find_sign(n) == -1)
 	{
 		printf("sign -\n");
@@ -107,9 +80,7 @@ char	*ftoa(double n)
 	tmp = str;
 	if(!(str = (char*)ft_memalloc(sizeof(char) * m_size)))
 		exit (EXIT_FAILURE);
-		// printf("m_size %d\n", m_size);
 
-		// printf("exponent : %d\n", find_exponent(n));
 	while (i < find_exponent(n))
 	{
 		str[i] = tmp[i];
@@ -121,14 +92,10 @@ char	*ftoa(double n)
 		str[i] = tmp[i];
 		i++;
 	}
-	// printf("test %d\n", i);
 	str[i] = '.';
-	// printf("test01 : %s\n", str);
 	i++;
 	while (tmp[i-1])
 	{
-		// ft_printf("test01 : %s\n", str);
-		// printf("a : %d    b : %d  \n", i, i-1);
 		str[i] = tmp[i-1];
 		i++;
 	}

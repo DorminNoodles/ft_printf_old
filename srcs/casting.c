@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 17:11:21 by lchety            #+#    #+#             */
-/*   Updated: 2017/03/11 17:19:30 by lchety           ###   ########.fr       */
+/*   Updated: 2017/03/13 15:31:19 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ intmax_t	cast_unsigned_wide(t_print *dna, va_list ap)
 	// if (dna->cast_j)
 	return (cast_default(dna, ap));
 }
-
+/*
 intmax_t	exec_cast_ld(t_print *dna, va_list ap)
 {
 	char *str;
@@ -137,17 +137,11 @@ intmax_t	exec_cast_ld(t_print *dna, va_list ap)
 		return((intmax_t)(long long)va_arg(ap, uintmax_t));
 	if (dna->cast_j)
 		return((intmax_t)(uintmax_t)va_arg(ap, intmax_t));
-	// if (dna->cast_l)
-	// 	ret = (intmax_t)(long int)ret;
-	// if (dna->cast_ll)
-	// 	ret = (intmax_t)(long long int)ret;
 	// if (dna->cast_z)
 	// 	ret = (intmax_t)(size_t)ret;
-	// if (dna->cast_j)
-	// 	ret = (intmax_t)ret;
 	return ((intmax_t)va_arg(ap, long int));
 }
-
+*/
 intmax_t	cast_c(t_print *dna, va_list ap)
 {
 

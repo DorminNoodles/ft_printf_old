@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 17:10:51 by lchety            #+#    #+#             */
-/*   Updated: 2017/03/11 17:43:59 by lchety           ###   ########.fr       */
+/*   Updated: 2017/03/13 14:16:38 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ typedef struct s_print
 
 
 int			ft_printf(const char *format, ...);
+int			ft_dprintf(int fd, const char *format, ...);
 int			parsing_format(const char *format, t_print *dna, va_list ap);
 char		*flags_parsing(const char *format);
 void		*parsing_func_collection();
@@ -116,6 +117,7 @@ void		parsing_justify(const char *format, t_print *dna, char *end);
 void		parsing_pitch(const char *format, t_print *dna, char *end, va_list ap);
 void		parsing_cast(const char *format, t_print *dna, char *end);
 void		parsing_hh(const char *format, t_print *dna, char *end);
+void		parsing_flags(const char *fmt, t_print *dna, char *end);
 intmax_t	exec_cast_signed(t_print *dna, va_list ap);
 intmax_t	exec_cast_unsigned(t_print *dna, va_list ap);
 char		*ft_itoa_printf(uintmax_t n, int base);
@@ -151,7 +153,7 @@ char		*ft_strchr(const char *s, int c);
 char		*flag_blk_lossy(t_print *dna);
 intmax_t	cast_unsigned_wide(t_print *dna, va_list ap);
 void		itoa_float(double x);
-char		*ftoa(double n);
+void		silent_flags(t_print *dna);
 
 
 #endif

@@ -18,7 +18,8 @@ NAME_SRCS =	ft_printf.c										\
 			flags.c											\
 			ft_putstr_zero.c								\
 			itoa_float.c									\
-			float.c
+			parsing_flags.c									\
+			parsing_pitch.c
 
 
 LIBFT_SRCS_NAME =	ft_atoi.c   		\
