@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/11 10:48:24 by lchety            #+#    #+#             */
-/*   Updated: 2017/03/12 00:29:28 by lchety           ###   ########.fr       */
+/*   Updated: 2017/03/13 00:05:00 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,38 +22,42 @@ int		find_sign(double n)
 char	*find_mantisse(double n)
 {
 	int i;
-	char buff[255];
+	char buff[1000];
 	char *str;
 
 	i = 0;
-	ft_bzero(buff, 255);
+	ft_bzero(buff, 1000);
 
-	double g = 2.5433;
-	g = g * 100.0;
-	g = g * 100.0;
-	g = g * 100.0;
-	g = g * 100.0;
-	g = g * 100.0;
-	g = g * 100.0;
-	g = g * 100.0;
-	g = g * 100.0;
-	g = g * 100.0;
-	printf("%f", g);
+	//printf("%f", g);
 
-	while (n > 9)
-		n /= 10;
-
-		printf("      ");
+	// while (n > 9)
+	// 	n /= 10;
+	//
+	// 	printf("      ");
 	// printf("#n = %f\n", n);
 	// printf("test = %d\n", (int)n);
-	while (n != 0.0)
+	//printf("printf lo%f\n", n);
+
+	while (i < 800)
 	{
+		// printf("%d", (int)n);
 		buff[i] = '0' + (int)n;
-		//printf("%c", buff[i]);
 		n = n - (int)n;
 		n = n * 10;
 		i++;
+
 	}
+	// printf("\nfuck");
+	// printf("\n%s", buff);
+	//
+	// while (n != 0.0)
+	// {
+	// 	buff[i] = '0' + (int)n;
+	// 	//printf("%c", buff[i]);
+	// 	n = n - (int)n;
+	// 	n = n * 10;
+	// 	i++;
+	// }
 
 	if(!(str = (char*)ft_memalloc(sizeof(char) * ft_strlen(buff) + 1)))
 		exit (EXIT_FAILURE);
@@ -62,39 +66,6 @@ char	*find_mantisse(double n)
 	// printf("str : %s\n", str);
 	return (str);
 }
-
-// char	*find_mantisse(double n)
-// {
-// 	int i;
-// 	char buff[255];
-// 	char	*str;
-//
-// 	i = 0;
-// 	ft_bzero(buff, 255);
-// 	while (n > 9)
-// 		n /= 10;
-// 	printf("prepare for mantisse : %f\n", n);
-// 	while (n != 0.0 && i < 300)
-// 	{
-// 		//printf("*%d*\n", (int)n);
-// 		printf("va te faire %d\n", i);
-// 		buff[i] = '0' + (int)n;
-// 		n -= (int)n;
-// 		n *= 10;
-// 		printf("%c\n", buff[i]);
-// 		// printf("%d", (int)n - ((int)n/10));
-// 		//n = n / 10;
-// 		i++;
-// 	}
-// 	printf("test : %s\n", buff);
-// 	printf("i = %d\n", i);
-// 	printf("bordel\n");
-// 	//printf("*%s*\n", buff);
-// 	printf("strlen = %d\n", (int)ft_strlen(buff));
-// 	//str = (char*)ft_memalloc(sizeof(char) * ft_strlen(buff));
-// 	//ft_strcpy
-// 	return (str);
-// }
 
 int		find_exponent(double n)
 {
@@ -128,7 +99,7 @@ char	*ftoa(double n)
 	//printf("exponent : %d\n", find_exponent(n));
 	if (find_sign(n) == -1)
 	{
-		// printf("sign -\n");
+		printf("sign -\n");
 		m_size += 1;
 	}
 
@@ -137,7 +108,15 @@ char	*ftoa(double n)
 	if(!(str = (char*)ft_memalloc(sizeof(char) * m_size)))
 		exit (EXIT_FAILURE);
 		// printf("m_size %d\n", m_size);
+
+		// printf("exponent : %d\n", find_exponent(n));
 	while (i < find_exponent(n))
+	{
+		str[i] = tmp[i];
+		i++;
+	}
+
+	if (!find_exponent(n))
 	{
 		str[i] = tmp[i];
 		i++;
@@ -154,9 +133,9 @@ char	*ftoa(double n)
 		i++;
 	}
 
-	printf("test : %s\n", str);
+	printf("%s\n", str);
 
 
-		printf("END\n");
+	printf("END\n");
 	return (str);
 }

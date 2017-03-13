@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 16:53:56 by lchety            #+#    #+#             */
-/*   Updated: 2017/03/12 00:38:42 by lchety           ###   ########.fr       */
+/*   Updated: 2017/03/13 01:27:44 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -3886,7 +3886,7 @@ void 	test_b_09(void)
 	printf("\n");
 }
 
-//=====================================================> test_pitch_star
+//=====================================================> test_null
 void 	test_null_01(void)
 {
 	int ret1 = 0;
@@ -4929,7 +4929,7 @@ int main(void)
 	// test_o();
 
 	printf("=======> Conv_O <=======\n");
-	test_lo();
+	// test_lo();
 
 	printf("=======> Conv_u <=======\n");
 	// test_u();
@@ -4962,7 +4962,7 @@ int main(void)
 	// test_pitch_star();
 
 	printf("=======> Width_Star <=======\n");
-	// test_width_star();
+	test_width_star();
 
 	//Start Mutants
 	printf("=======> Mutant_Test <=======\n");
@@ -5346,66 +5346,66 @@ int main(void)
 
 	//conclusion : le pitch est a 0 si on a pas defini de nombre
 
-	printf("test : %e\n", 49995.46453);
+	// printf("test : %e\n", 49995.46453);
 
-	double a = 23.9876;
-	float b = 42.564;
+	// double a = 23.9876;
+	// float b = 42.564;
 
-	printf("test : %e\n", a);
-	printf("test : %d\n", (int)b);
-	printf("test : %hhd\n", b);
-	printf("test : %hhd\n", (char)b);
+	// printf("test : %e\n", a);
+	// printf("test : %d\n", (int)b);
+	// printf("test : %hhd\n", b);
+	// printf("test : %hhd\n", (char)b);
 
-	int zz = 0;
-	double db = DBL_MAX;
+	// int zz = 0;
+	// double db = DBL_MAX;
 
-	printf("DBL_MAX : %.320e\n", db);
-	printf("DBL_MIN : %.750e\n", DBL_MIN);
-	printf("FLT_MAX : %.50e\n", FLT_MAX);
-	printf("FLT_MIN : %.120e\n", FLT_MIN);
+	// printf("DBL_MAX : %.320e\n", db);
+	// printf("DBL_MIN : %.750e\n", DBL_MIN);
+	// printf("FLT_MAX : %.50e\n", FLT_MAX);
+	// printf("FLT_MIN : %.120e\n", FLT_MIN);
 
-	printf("test %e\n", db);
-	printf("test %d\n", db);
+	// printf("test %e\n", db);
+	// printf("test %d\n", db);
 	// printf("test %d\n", db * 10);
 
-	printf("test %e\n", db/10);
+	// printf("test %e\n", db/10);
 
-	double x = 4.98654321;
-	int y = 0;
+	// double x = 4.98654321;
+	// int y = 0;
 
-	y = (int)x;
-
-	double o = DBL_MAX;
-
-	o = o / 10000000000000000;
-	o = o*1000.0;
-
-	printf("Test : %e\n", x*1);
-	printf("Test : %e\n", x*10);
+	// y = (int)x;
+	//
+	// double o = DBL_MAX;
+	//
+	// o = o / 10000000000000000;
+	// o = o*1000.0;
+	//
+	// printf("Test : %e\n", x*1);
+	// printf("Test : %e\n", x*10);
 	//ecriture scientifique e+01 nous donne le nombre de decplacement de la virgule vers la droite
-	printf("Test : %e\n", x/1);
-	printf("Test : %e\n", x/10);
-	x = x/10;
-	x = x/10;
+	// printf("Test : %e\n", x/1);
+	// printf("Test : %e\n", x/10);
+	// x = x/10;
+	// x = x/10;
 	//et donc la e-01 vers la gauche
 
-	printf("Test : %e\n", x);
+	// printf("Test : %e\n", x);
 	//e == ecriture scientifique
-	printf("Test : %f\n", x);
-	x = x*10;
-	x = x*10;
-	x = x*1000000;
-	printf("Test : %f\n", x);
+	// printf("Test : %f\n", x);
+	// x = x*10;
+	// x = x*10;
+	// x = x*1000000;
+	// printf("Test : %f\n", x);
 	//f = ecriture "normal"
 
-	x = 4.1;
-
-	if ((x - (int)x) == 0)
-		printf("OK \n");
-	x = x*10;
-
-	if ((x - (int)x) == 0)
-		printf("OK \n");
+	// x = 4.1;
+	//
+	// if ((x - (int)x) == 0)
+	// 	printf("OK \n");
+	// x = x*10;
+	//
+	// if ((x - (int)x) == 0)
+	// 	printf("OK \n");
 
 	//printf("%.120f\n", 4.2424242);
 	//itoa_float(4.2424242);
@@ -5418,43 +5418,43 @@ int main(void)
 	// 	zz++;
 	// }
 
-	double hy = DBL_MIN;
+	// double hy = DBL_MIN;
 	//
 	// orig test f :        2.542000000000170 530 256 58242404460906982421875000
 	// bite test f : test : 2.542000000000259 348 098 552436567842960357666015625
 
-	if (0.000000000000000000000000000000000000000000 == 0.000000000000000000000000000000000)
-		ft_printf("HELLO\n");
+	// if (0.000000000000000000000000000000000000000000 == 0.000000000000000000000000000000000)
+		// ft_printf("HELLO\n");
 
 	// printf("\n%f\n", 4042.0001);
 	// printf("\n%e\n", 4042.0001);
 	//ft_printf("test %e\n");
-	printf("\n");
-	printf("\n");
+	// printf("\n");
+	// printf("\n");
 	//itoa_float(4242.4242);
 	// ftoa(123456789.428745);
 	// ftoa(0.428745);
 	// ftoa(2.428745);
 
 	// ftoa(0.254);
-	printf("%e\n", 0.254);
+	// printf("%e\n", 0.254);
 
 	//ftoa(10.254);
-	printf("%e\n", 10.254);
+	// printf("%e\n", 10.254);
 
-	printf("\n");
-	printf("\n");
+	// printf("\n");
+	// printf("\n");
 	//printf("orig test f :    %.100f\n", 25.42);
-	printf("orig test f :        %.2f\n", 5.5660);
-	printf("orig test f :        %.2f\n", 5.564);
-	printf("orig test f :        %.3f\n", 5.5396);
-	// printf("orig test f :        %.100lf\n", 25.424242424242424242424242424242);
-	ft_printf("bite test f : %f\n", 5.4242);
-
-	printf("test              %.90f\n", 2.5433);
+	// printf("orig test f :        %.2f\n", 5.5660);
+	// printf("orig test f :        %.2f\n", 5.564);
+	// printf("orig test f :        %.3f\n", 5.5396);
+	// // printf("orig test f :        %.100lf\n", 25.424242424242424242424242424242);
+	// ft_printf("bite test f : %f\n", 5.4242);
+	//
+	// printf("test              %.90f\n", 2.5433);
 //						   2.543333333333333 445835933162015862762928009033203125000000000000000000000000000000000000000
 
-	ft_printf("test %f\n", 2.5433);
+	// ft_printf("test %f\n", 2.5433);
 
 //2.543333333333333445835933162015862762928009033203125
 //2.543333333545453545099235270754434168338775634765625
@@ -5469,15 +5469,62 @@ int main(void)
 
 	//printf("test de merde : %.5e\n", 2.123546);
 
-	printf("test %.100f\n", 1.0001);
-	printf("test %.1000g\n", 1.000000001);
-	printf("test %.1000g\n", 1.1111111111111111111111111111111111111111111);
-	printf("test %.100f\n", 1.111111111111111111111111111111);
-	printf("test %.100f\n", 2.5555555555555);
+	// printf("test %.100f\n", 1.0001);
+	// printf("test %.1000g\n", 1.000000001);
+	// printf("test %.1000g\n", 1.1111111111111111111111111111111111111111111);
+	// printf("test %.100f\n", 1.111111111111111111111111111111);
+	// printf("test %.100f\n", 2.5555555555555);
 
 
 //test 1.1000000000000000888178419700125232338905334472656250000000000000000000000000000000000000000000000000
 //test 1.1000000000000000888178419700125232338905334472656250000000000000000000000000000000000000000000000000
 //test 1.1000000000000000888178419700125232338905334472656250000000000000000000000000000000000000000000000000
+
+	// printf("printf    %.60f\n", 1.005);
+	// printf("printf    %.60f\n", 1.005);
+	// ft_printf("ft_printf %f\n", 1.005);
+	// ft_printf("ft_printf %f\n", 2.005);
+	// float e = 1.005;
+	// printf("printf %.60f\n", e);
+
+	// double jui = DBL_MAX;
+	// printf("DBL_MAX : %.320e\n", jui);
+	// printf("\n");
+	// printf("DBL_MIN : %.750e\n", DBL_MIN);
+
+	// printf("\n\n");
+
+	// printf("%.320f\n", -2.11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111);
+
+	// printf("\n\n");
+
+	// double hm = -1.1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111;
+	// printf("%.320f\n", hm);
+
+	// printf("\n\n");
+
+
+	// ft_printf("ft_printf bite %f\n", DBL_MIN);
+	// printf("ft_printf bite %f\n", DBL_MIN);
+
+	// ft_printf("ft_printf bite %f\n", 2.04);
+
+	//2.2250738585072014e-308
+
+	// printf("test %.800f\n", 2.2250738585072014e-308);
+	// ft_printf("test %f\n", 2.2250738585072014e-308);
+
+	// printf("%.40f\n", 0.09e-10);
+	// ft_printf("%f", 0.09e-10);
+
+	printf("test dollar %3$d\n", 40, 60, 5);
+	printf("test dollar %3$d %d\n", 40, 60, 5, 102);
+	printf("test dollar %1$d %1$d %1$d\n", 40, 60, 5, 102, 2);
+	printf("\n");
+	printf("test dollar %1**1$d\n", 40, 60, 5, 102, 2);
+
+
+
+
 	return (0);
 }
