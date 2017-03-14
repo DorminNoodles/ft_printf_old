@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 16:53:56 by lchety            #+#    #+#             */
-/*   Updated: 2017/03/13 20:57:52 by lchety           ###   ########.fr       */
+/*   Updated: 2017/03/14 22:00:43 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -4591,6 +4591,114 @@ void 	test_g_03(void)
 }
 
 
+//=====================================================> test_color
+
+void 	test_color_01(void)
+{
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("test_color => 01\n");
+	ret2 = ft_printf("cust :{black} %s{eoc} no color\n", "black");
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void 	test_color_02(void)
+{
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("test_color => 02\n");
+	ret2 = ft_printf("cust :{red} %s{eoc} no color\n", "red");
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void 	test_color_03(void)
+{
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("test_color => 03\n");
+	ret2 = ft_printf("cust :{green} %s{eoc} no color\n", "green");
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void 	test_color_04(void)
+{
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("test_color => 04\n");
+	ret2 = ft_printf("cust :{yellow} %s{eoc} no color\n", "yellow");
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void 	test_color_05(void)
+{
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("test_color => 05\n");
+	ret2 = ft_printf("cust :{blue} %s{eoc} no color\n", "blue");
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void 	test_color_06(void)
+{
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("test_color => 06\n");
+	ret2 = ft_printf("cust :{magenta} %s{eoc} no color\n", "magenta");
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void 	test_color_07(void)
+{
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("test_color => 07\n");
+	ret2 = ft_printf("cust :{cyan} %s{eoc} no color\n", "cyan");
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void 	test_color_08(void)
+{
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("test_color => 08\n");
+	ret2 = ft_printf("cust :{white} %s{eoc} no color\n", "white");
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+
+
 
 
 void	test_s(void)
@@ -4996,6 +5104,19 @@ void	test_g(void)
 
 }
 
+void	test_color(void)
+{
+	test_color_01();
+	test_color_02();
+	test_color_03();
+	test_color_04();
+	test_color_05();
+	test_color_06();
+	test_color_07();
+	test_color_08();
+
+}
+
 int main(void)
 {
 	//Start Conv_s
@@ -5004,56 +5125,56 @@ int main(void)
 
 	//Start
 	printf("=======> Conv_S <=======\n");
-	// test_ls();
+	test_ls();
 
 	//Start conv_p
 	printf("=======> Conv_p <=======\n");
-	// test_p();
+	test_p();
 
 	printf("=======> Conv_d <=======\n");
-	//test_d();
+	test_d();
 
 	printf("=======> Conv_D <=======\n");
-	// test_ld();
+	test_ld();
 
 	printf("=======> Conv_i <=======\n");
-	// test_i();
+	test_i();
 
 	printf("=======> Conv_o <=======\n");
-	// test_o();
+	test_o();
 
 	printf("=======> Conv_O <=======\n");
-	// test_lo();
+	test_lo();
 
 	printf("=======> Conv_u <=======\n");
-	// test_u();
+	test_u();
 
 	printf("=======> Conv_lu <=======\n");
-	// test_lu();
+	test_lu();
 
 	printf("=======> Conv_x <=======\n");
-	// test_x();
+	test_x();
 
 	printf("=======> Conv_lx <=======\n");
-	// test_lx();
+	test_lx();
 
 	printf("=======> Conv_c <=======\n");
-	// test_c();
+	test_c();
 	//Start conv_lc
 	printf("=======> Conv_lc <=======\n");
-	// test_lc();
+	test_lc();
 
 	printf("=======> Conv_%% <=======\n");
-	// test_modulo();
+	test_modulo();
 
 	printf("=======> Conv_b <=======\n");
-	// test_b();
+	test_b();
 
 	printf("=======> Conv_null <=======\n");
 	//test_null();
 
 	printf("=======> Pitch_Star <=======\n");
-	test_pitch_star();
+	// test_pitch_star();
 
 	printf("=======> Width_Star <=======\n");
 	// test_width_star();
@@ -5073,6 +5194,9 @@ int main(void)
 
 	printf("=======> Conv_g <=======\n");
 	// test_g();
+
+	printf("=======> Test_color <=======\n");
+	test_color();
 
 
 	//test de merde

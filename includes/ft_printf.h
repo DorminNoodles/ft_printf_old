@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 17:10:51 by lchety            #+#    #+#             */
-/*   Updated: 2017/03/14 11:29:42 by lchety           ###   ########.fr       */
+/*   Updated: 2017/03/14 21:59:49 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,16 @@
 
 #define CHECK_PITCH dna->pitch && dna->pitch_nb > ft_strlen(dna->out)
 #define CHECK_WIDTH dna->width && dna->width > ft_strlen(dna->out)
+
+#define BLACK "\x1b[30m"
+#define RED "\x1b[31m"
+#define GREEN "\x1b[32m"
+#define YELLOW "\x1b[33m"
+#define BLUE "\x1b[34m"
+#define MAGENTA "\x1b[35m"
+#define CYAN "\x1b[36m"
+#define WHITE "\x1b[37m"
+#define NOCOLOR "\x1b[0m"
 
 
 typedef	char	bool;

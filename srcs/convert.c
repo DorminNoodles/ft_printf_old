@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 17:09:10 by lchety            #+#    #+#             */
-/*   Updated: 2017/03/14 11:32:56 by lchety           ###   ########.fr       */
+/*   Updated: 2017/03/14 20:45:21 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void	compute_conv_s(t_print *dna, va_list ap)
 		ft_memcpy(dna->out, str, ft_strlen(str));
 		set_length_char(dna);
 		dna->ret_nb += ft_strlen(dna->out);
+		// ft_putstr("\033[31m");
 		ft_putstr_buff(dna->out);
 		free(dna->out);
 	}

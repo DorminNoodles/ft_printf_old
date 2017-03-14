@@ -6,12 +6,52 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/08 14:01:18 by lchety            #+#    #+#             */
-/*   Updated: 2017/03/13 20:58:30 by lchety           ###   ########.fr       */
+/*   Updated: 2017/03/14 22:04:15 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "ft_printf.h"
+
+void	switch_color(const char *str)
+{
+	if (ft_strstr(str, "black"))
+		ft_putstr(BLACK);
+	if (ft_strstr(str, "red"))
+		ft_putstr(RED);
+	if (ft_strstr(str, "green"))
+		ft_putstr(GREEN);
+	if (ft_strstr(str, "yellow"))
+		ft_putstr(YELLOW);
+	if (ft_strstr(str, "blue"))
+		ft_putstr(BLUE);
+	if (ft_strstr(str, "magenta"))
+		ft_putstr(MAGENTA);
+	if (ft_strstr(str, "cyan"))
+		ft_putstr(CYAN);
+	if (ft_strstr(str, "white"))
+		ft_putstr(WHITE);
+	if (ft_strstr(str, "eoc"))
+		ft_putstr(NOCOLOR);
+}
+
+int p_color(const char * fmt)
+{
+	int i;
+	char *end;
+	char *tmp;
+
+	end = NULL;
+	i = 0;
+	if (*fmt == '{')
+		end = ft_strchr(fmt, '}');
+	else
+		return (0);
+	tmp = ft_strsub(fmt, 0, end - fmt);
+	switch_color(tmp);
+	free(tmp);
+	return ((end - fmt) + 1);
+}
 
 int		parsing_format(const char *format, t_print *dna, va_list ap)
 {
@@ -20,6 +60,12 @@ int		parsing_format(const char *format, t_print *dna, va_list ap)
 	i = 0;
 	while (*(format + i))
 	{
+		i += p_color(format + i);
+		//
+		// if (*(format + i) == '{')
+		// {
+		//
+		// }
 		if (*(format + i) == '%')
 		{
 			reset_print(dna);
