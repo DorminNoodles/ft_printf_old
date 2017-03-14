@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/10 18:50:34 by lchety            #+#    #+#             */
-/*   Updated: 2017/03/07 13:54:52 by lchety           ###   ########.fr       */
+/*   Updated: 2017/03/14 11:22:16 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,7 @@ void	prefix_lossless(t_print *dna)
 {
 	char	*tmp;
 	int		size;
-	// printf("prefix_lossless\n");
-	// printf("prefelkngjdkrgn\n");
 	tmp = dna->out;
-	//printf("efre %d\n", (int)prefix_count(dna));
 	size = ft_strlen(dna->out) + prefix_count(dna);
 	if(!(dna->out = ft_strnew(size)))
 		exit(EXIT_FAILURE);
@@ -33,7 +30,6 @@ char	*prefix_lossy(t_print *dna)
 	char	*tmp;
 	int		size;
 
-	//printf("enter_prefix\n");
 	ft_memcpy(dna->out, get_prefix(dna), prefix_count(dna));
 	return (dna->out);
 }
@@ -57,8 +53,6 @@ static char		*prefix_for_width(t_print *dna)
 {
 	char	*tmp;
 
-	// printf("bordel %s\n", dna->out);
-	//ft_memcpy(dna->out, get_prefix(dna), prefix_count(dna));
 	if (dna->flag_0)
 		ft_memcpy(dna->out, get_prefix(dna), prefix_count(dna));
 	else
@@ -72,7 +66,6 @@ char	*add_prefix(t_print *dna)
 	char	*tmp;
 	int		size;
 
-	//printf("BOB\n");
 	tmp = dna->out;
 	size = (int)ft_strlen(dna->out) + prefix_count(dna);
 	dna->out = (char*)ft_memalloc(sizeof(char) * (size + 1));
@@ -88,7 +81,6 @@ char	*add_prefix(t_print *dna)
 char	*prefix(t_print *dna)
 {
 	int size;
-	// printf("HERE\n");
 	size = 0;
 	if (dna->pitch_nb)
 		dna->out = prefix_for_pitch(dna);
@@ -96,9 +88,6 @@ char	*prefix(t_print *dna)
 		dna->out = prefix_for_width(dna);
 	else
 		prefix_for_pitch(dna);
-		//printf("truffe\n");
-
-
 	return(dna->out);
 }
 

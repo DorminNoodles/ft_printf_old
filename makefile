@@ -3,7 +3,7 @@ TEST_SRCS = try/main_test_proto.c
 NAME_SRCS =	ft_printf.c										\
 			parsing.c										\
 			parsing_cast.c									\
-			compute_conv.c									\
+			convert.c										\
 			casting.c										\
 			ft_itoa_printf.c								\
 			parsing_converter.c								\
@@ -16,7 +16,6 @@ NAME_SRCS =	ft_printf.c										\
 			width.c											\
 			set_length.c									\
 			flags.c											\
-			ft_putstr_zero.c								\
 			itoa_float.c									\
 			parsing_flags.c									\
 			parsing_pitch.c

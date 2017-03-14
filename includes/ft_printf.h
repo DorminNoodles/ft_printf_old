@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 17:10:51 by lchety            #+#    #+#             */
-/*   Updated: 2017/03/13 14:16:38 by lchety           ###   ########.fr       */
+/*   Updated: 2017/03/14 11:29:42 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,6 @@ void		compute_conv_p(t_print *dna, va_list ap);
 char		*ft_itoa_base(unsigned long long n, int base);
 char		*do_width(t_print *dna);
 char		*do_pitch(t_print *dna, bool cut);
-void		compute_htag(t_print *dna);
 void		reset_print(t_print *dna);
 void		parsing_htag(const char	*format, t_print *dna, char *end);
 void		parsing_justify(const char *format, t_print *dna, char *end);
