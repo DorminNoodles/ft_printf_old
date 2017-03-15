@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 17:10:51 by lchety            #+#    #+#             */
-/*   Updated: 2017/03/14 21:59:49 by lchety           ###   ########.fr       */
+/*   Updated: 2017/03/15 12:37:31 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@
 #define CYAN "\x1b[36m"
 #define WHITE "\x1b[37m"
 #define NOCOLOR "\x1b[0m"
-
 
 typedef	char	bool;
 
@@ -111,11 +110,15 @@ void		*flags_apply_hashtag();
 int			parsing_distributor(const char* format);
 char		*parsing_converter(const char *format, t_print *dna);
 int			parsing_dispatch(const char *format, t_print *dna, va_list ap);
-void		compute_conv(t_print *dna, va_list ap);
-void		compute_conv_lc(t_print *dna, va_list ap);
+void		convert(t_print *dna, va_list ap);
+void		conv_s(t_print *dna, va_list ap);
+void		conv_ls(t_print *dna, va_list ap);
+void		conv_c (t_print *dna, va_list ap);
+void		conv_lc (t_print *dna, va_list ap);
+void		conv_d(t_print *dna, va_list ap);
+void		conv_ld(t_print *dna, va_list ap);
 void		compute_conv_o(t_print *dna, va_list ap);
 void		compute_conv_u(t_print *dna, va_list ap);
-void		compute_conv_ls (t_print *dna, va_list ap);
 void		compute_conv_p(t_print *dna, va_list ap);
 char		*ft_itoa_base(unsigned long long n, int base);
 char		*do_width(t_print *dna);
@@ -163,6 +166,7 @@ char		*flag_blk_lossy(t_print *dna);
 intmax_t	cast_unsigned_wide(t_print *dna, va_list ap);
 void		itoa_float(double x);
 void		silent_flags(t_print *dna);
+void		print_null(t_print *dna);
 
 
 #endif

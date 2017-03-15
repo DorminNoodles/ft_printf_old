@@ -6,33 +6,37 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/08 14:01:18 by lchety            #+#    #+#             */
-/*   Updated: 2017/03/14 22:04:15 by lchety           ###   ########.fr       */
+/*   Updated: 2017/03/15 11:53:04 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "ft_printf.h"
 
-void	switch_color(const char *str)
+char	*switch_color(const char *str)
 {
-	if (ft_strstr(str, "black"))
+	char *find;
+
+	find =  NULL;
+	if ((find = ft_strstr(str, "black")))
 		ft_putstr(BLACK);
-	if (ft_strstr(str, "red"))
+	if ((find = ft_strstr(str, "red")))
 		ft_putstr(RED);
-	if (ft_strstr(str, "green"))
+	if ((find = ft_strstr(str, "green")))
 		ft_putstr(GREEN);
-	if (ft_strstr(str, "yellow"))
+	if ((find = ft_strstr(str, "yellow")))
 		ft_putstr(YELLOW);
-	if (ft_strstr(str, "blue"))
+	if ((find = ft_strstr(str, "blue")))
 		ft_putstr(BLUE);
-	if (ft_strstr(str, "magenta"))
+	if ((find = ft_strstr(str, "magenta")))
 		ft_putstr(MAGENTA);
-	if (ft_strstr(str, "cyan"))
+	if ((find = ft_strstr(str, "cyan")))
 		ft_putstr(CYAN);
-	if (ft_strstr(str, "white"))
+	if ((find = ft_strstr(str, "white")))
 		ft_putstr(WHITE);
-	if (ft_strstr(str, "eoc"))
+	if ((find = ft_strstr(str, "eoc")))
 		ft_putstr(NOCOLOR);
+	return (find);
 }
 
 int p_color(const char * fmt)
@@ -48,7 +52,8 @@ int p_color(const char * fmt)
 	else
 		return (0);
 	tmp = ft_strsub(fmt, 0, end - fmt);
-	switch_color(tmp);
+	if(!switch_color(tmp))
+		return (0);
 	free(tmp);
 	return ((end - fmt) + 1);
 }

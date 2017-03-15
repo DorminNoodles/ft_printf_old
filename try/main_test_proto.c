@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 16:53:56 by lchety            #+#    #+#             */
-/*   Updated: 2017/03/14 22:00:43 by lchety           ###   ########.fr       */
+/*   Updated: 2017/03/15 11:28:48 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -258,7 +258,7 @@ void	test_s_17(void)
 	int ret1 = 0;
 	int ret2 = 0;
 
-	printf("Test_c => 17\n");
+	printf("Test_s => 17\n");
 	ret1 = printf("orig : {%05.s}\n", 0);
 	ret2 = ft_printf("cust : {%05.s}\n", 0);
 	printf("\n");
@@ -272,7 +272,7 @@ void	test_s_18(void)
 	int ret1 = 0;
 	int ret2 = 0;
 
-	printf("Test_c => 18\n");
+	printf("Test_s => 18\n");
 	ret1 = printf("orig : {%.0s}\n", 0);
 	ret2 = ft_printf("cust : {%.0s}\n", 0);
 	printf("\n");
@@ -5125,50 +5125,50 @@ int main(void)
 
 	//Start
 	printf("=======> Conv_S <=======\n");
-	test_ls();
+	// test_ls();
 
 	//Start conv_p
 	printf("=======> Conv_p <=======\n");
-	test_p();
+	// test_p();
 
 	printf("=======> Conv_d <=======\n");
-	test_d();
+	// test_d();
 
 	printf("=======> Conv_D <=======\n");
-	test_ld();
+	// test_ld();
 
 	printf("=======> Conv_i <=======\n");
-	test_i();
+	// test_i();
 
 	printf("=======> Conv_o <=======\n");
-	test_o();
+	// test_o();
 
 	printf("=======> Conv_O <=======\n");
-	test_lo();
+	// test_lo();
 
 	printf("=======> Conv_u <=======\n");
-	test_u();
+	// test_u();
 
 	printf("=======> Conv_lu <=======\n");
-	test_lu();
+	// test_lu();
 
 	printf("=======> Conv_x <=======\n");
-	test_x();
+	// test_x();
 
 	printf("=======> Conv_lx <=======\n");
-	test_lx();
+	// test_lx();
 
 	printf("=======> Conv_c <=======\n");
-	test_c();
+	// test_c();
 	//Start conv_lc
 	printf("=======> Conv_lc <=======\n");
-	test_lc();
+	// test_lc();
 
 	printf("=======> Conv_%% <=======\n");
-	test_modulo();
+	// test_modulo();
 
 	printf("=======> Conv_b <=======\n");
-	test_b();
+	// test_b();
 
 	printf("=======> Conv_null <=======\n");
 	//test_null();
@@ -5196,7 +5196,7 @@ int main(void)
 	// test_g();
 
 	printf("=======> Test_color <=======\n");
-	test_color();
+	// test_color();
 
 
 	//test de merde

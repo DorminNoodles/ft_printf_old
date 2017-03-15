@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/06 15:48:05 by lchety            #+#    #+#             */
-/*   Updated: 2017/03/13 15:41:02 by lchety           ###   ########.fr       */
+/*   Updated: 2017/03/15 12:04:00 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int		ft_printf(const char *format, ...)
 	{
 		format += ret;
 		if (dna.conv)
-			compute_conv(&dna, ap);
+			convert(&dna, ap);
 	}
 	return ((int)dna.ret_nb);
 }
@@ -48,7 +48,7 @@ int		ft_dprintf(int fd, const char *format, ...)
 	{
 		format += ret;
 		if (dna.conv)
-			compute_conv(&dna, ap);
+			convert(&dna, ap);
 	}
 	return ((int)dna.ret_nb);
 }
