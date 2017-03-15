@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 17:10:51 by lchety            #+#    #+#             */
-/*   Updated: 2017/03/15 12:37:31 by lchety           ###   ########.fr       */
+/*   Updated: 2017/03/15 17:13:13 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ typedef struct s_print
 	bool pre_pls;
 	int base_size;
 	int width;
+	char *width_pos;
 	bool width_star;
 
 	bool pitch;
@@ -99,6 +100,17 @@ typedef struct s_print
 	size_t ret_nb;
 }			t_print;
 
+
+/*
+if (dna->conv_lx)
+{
+	while (dna->out[i])
+	{
+		dna->out[i] = ft_toupper(dna->out[i++]);
+		i++;
+	}
+}
+*/
 
 
 int			ft_printf(const char *format, ...);
@@ -117,8 +129,12 @@ void		conv_c (t_print *dna, va_list ap);
 void		conv_lc (t_print *dna, va_list ap);
 void		conv_d(t_print *dna, va_list ap);
 void		conv_ld(t_print *dna, va_list ap);
-void		compute_conv_o(t_print *dna, va_list ap);
-void		compute_conv_u(t_print *dna, va_list ap);
+void		conv_o(t_print *dna, va_list ap);
+void		conv_lo(t_print *dna, va_list ap);
+void		conv_x(t_print *dna, va_list ap);
+void		conv_u(t_print *dna, va_list ap);
+void		conv_lu(t_print *dna, va_list ap);
+void		conv_b(t_print *dna, va_list ap);
 void		compute_conv_p(t_print *dna, va_list ap);
 char		*ft_itoa_base(unsigned long long n, int base);
 char		*do_width(t_print *dna);
@@ -126,7 +142,7 @@ char		*do_pitch(t_print *dna, bool cut);
 void		reset_print(t_print *dna);
 void		parsing_htag(const char	*format, t_print *dna, char *end);
 void		parsing_justify(const char *format, t_print *dna, char *end);
-void		parsing_pitch(const char *format, t_print *dna, char *end, va_list ap);
+void		parsing_pitch(const char *fmt, t_print *dna, char *end, va_list ap);
 void		parsing_cast(const char *format, t_print *dna, char *end);
 void		parsing_hh(const char *format, t_print *dna, char *end);
 void		parsing_flags(const char *fmt, t_print *dna, char *end);
@@ -167,6 +183,6 @@ intmax_t	cast_unsigned_wide(t_print *dna, va_list ap);
 void		itoa_float(double x);
 void		silent_flags(t_print *dna);
 void		print_null(t_print *dna);
-
+void		conv_f(t_print *dna, va_list ap);
 
 #endif

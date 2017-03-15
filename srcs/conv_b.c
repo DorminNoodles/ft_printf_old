@@ -1,35 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing_pitch.c                                    :+:      :+:    :+:   */
+/*   conv_b.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/13 14:15:17 by lchety            #+#    #+#             */
-/*   Updated: 2017/03/15 16:20:22 by lchety           ###   ########.fr       */
+/*   Created: 2017/03/15 16:12:39 by lchety            #+#    #+#             */
+/*   Updated: 2017/03/15 16:33:46 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	parsing_pitch(const char *fmt, t_print *dna, char *end, va_list ap)
+void	conv_b(t_print *dna, va_list ap)
 {
-	int i;
+	intmax_t n;
+	n = exec_cast_unsigned(dna, ap);
 
-	while(fmt < end)
-	{
-		i = 1;
-		if(*fmt == '.')
-		{
-			dna->pitch = TRUE;
-			dna->pitch_nb = 0;
-			while (*(fmt + i) >= '0' && *(fmt + i) <= '9')
-			{
-				dna->pitch_nb = dna->pitch_nb * 10;
-				dna->pitch_nb += *(fmt + i) - '0';
-				i++;
-			}
-		}
-		fmt++;
-	}
+	if(!(dna->out = ft_itoa_printf(n, 2)))
+		exit(EXIT_FAILURE);
+	dna->out = set_length_digit(dna);
+	dna->ret_nb += ft_strlen(dna->out);
+	ft_putstr(dna->out);
+	free(dna->out);
 }

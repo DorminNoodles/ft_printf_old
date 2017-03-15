@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/08 14:01:18 by lchety            #+#    #+#             */
-/*   Updated: 2017/03/15 11:53:04 by lchety           ###   ########.fr       */
+/*   Updated: 2017/03/15 17:09:32 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,29 +115,31 @@ void	parsing_0(const char *format, t_print *dna, char *end)
 }
 */
 
-void	parsing_width(const char *format, t_print *dna, char *end)
+void	parsing_width(const char *fmt, t_print *dna, char *end)
 {
 	int nb;
 	int save;
 
 	nb = 0;
 	save = 0;
-	while (format < end && *format != '.')
+	while (fmt < end && *fmt != '.')
 	{
 		nb = 0;
-		if (ft_isdigit(*format))
+		if (ft_isdigit(*fmt))
 		{
-			while (ft_isdigit(*format))
+			if (dna->width_pos == NULL)
+				dna->width_pos = (char*)fmt;
+			while (ft_isdigit(*fmt))
 			{
 				nb *= 10;
-				nb += *format - '0';
+				nb += *fmt - '0';
 				if (nb > save)
 					save = nb;
-				format++;
+				fmt++;
 			}
 		}
 		else
-			format++;
+			fmt++;
 	}
 	dna->width = save;
 }
@@ -152,13 +154,15 @@ int		parsing_dispatch(const char *format, t_print *dna, va_list ap)
 	//parsing_0(format, dna, end);
 	parsing_flags(format, dna, end);
 	parsing_width(format, dna, end);
+	// printf("width => %d\n", dna->width);
 	parsing_pitch(format, dna, end, ap);
 	parsing_cast(format, dna, end);
 	parsing_star(format, dna, end, ap);
+	// printf("width => %d\n", dna->width);
 	if (dna->pitch_nb < 0)
 	{
-		dna->pitch = FALSE;
-		dna->pitch_nb = 0;
+		dna->pitch_nb = dna->pitch = FALSE;
+		//dna->pitch_nb = 0;
 	}
 	if (dna->width < 0)
 	{
@@ -191,25 +195,31 @@ void	pitch_nb(const char *format, t_print *dna, char *end)
 	}
 }
 
-void	parsing_star(const char *format, t_print *dna, char *end, va_list ap)
+void	parsing_star(const char *fmt, t_print *dna, char *end, va_list ap)
 {
-	format++;
-	while (format < end)
+	int ret;
+
+	fmt++;
+	while (fmt < end)
 	{
-		if (*format == '*')
+		if (*fmt == '*')
 		{
-			if (*(format - 1) == '.')
+			ret = va_arg(ap, int);
+			if (*(fmt - 1) == '.')
 			{
 				dna->pitch_star = TRUE;
-				dna->pitch_nb = va_arg(ap, int);
+				dna->pitch_nb = ret;
 				dna->pitch = TRUE;
 			}
 			else
 			{
-				dna->width_star = TRUE;
-				dna->width = va_arg(ap, int);
+				if ((dna->width_pos && fmt > dna->width_pos) || !dna->width_pos)
+				{
+					dna->width_star = TRUE;
+					dna->width = ret;
+				}
 			}
 		}
-		format ++;
+		fmt ++;
 	}
 }

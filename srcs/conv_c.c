@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/15 12:26:57 by lchety            #+#    #+#             */
-/*   Updated: 2017/03/15 12:44:06 by lchety           ###   ########.fr       */
+/*   Updated: 2017/03/15 16:14:11 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,9 @@ void	conv_c(t_print *dna, va_list ap)
 	char	c;
 	char	*tmp;
 
-	if (dna->cast_l)
-	{
-		conv_lc(dna, ap);
-		return ;
-	}
 	c = va_arg(ap, int);
 	if (!(dna->out = (char*)ft_memalloc(sizeof(char) * 2)))
-		exit (EXIT_FAILURE);
+		exit(EXIT_FAILURE);
 	dna->out[0] = c;
 	if (!c && dna->width > 1)
 	{
@@ -36,24 +31,16 @@ void	conv_c(t_print *dna, va_list ap)
 		dna->ret_nb += (int)ft_strlen(dna->out);
 	else
 		dna->ret_nb++;
-	if (dna->justify)
-	{
-		if (c == 0)
-			ft_putchar('\0');
-		ft_putstr(dna->out);
-	}
-	else
-	{
-		ft_putstr(dna->out);
-		if (c == 0)
-			ft_putchar('\0');
-	}
+	if (dna->justify && c == 0)
+		ft_putchar('\0');
+	ft_putstr(dna->out);
+	if (!dna->justify && c == 0)
+		ft_putchar('\0');
 	free(dna->out);
 }
 
-void	conv_lc (t_print *dna, va_list ap)
+void	conv_lc(t_print *dna, va_list ap)
 {
-
 	wchar_t raw;
 
 	if (MB_CUR_MAX > 1)

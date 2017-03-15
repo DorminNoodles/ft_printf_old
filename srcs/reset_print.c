@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/24 14:27:07 by lchety            #+#    #+#             */
-/*   Updated: 2017/03/11 18:16:36 by lchety           ###   ########.fr       */
+/*   Updated: 2017/03/15 16:59:20 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	reset_print(t_print *dna)
 {
 
 	dna->end = NULL;
-
 	dna->conv = FALSE;
 	dna->conv_s = FALSE;
 	dna->conv_ls = FALSE;
@@ -56,4 +55,5 @@ void	reset_print(t_print *dna)
 	dna->pitch_dollar = 0;
 	dna->pitch_star = 0;
 	dna->width_star = FALSE;
+	dna->width_pos = NULL;
 }

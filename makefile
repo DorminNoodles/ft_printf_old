@@ -21,7 +21,12 @@ NAME_SRCS =	ft_printf.c										\
 			parsing_pitch.c									\
 			conv_s.c										\
 			conv_d.c										\
-			conv_c.c
+			conv_c.c										\
+			conv_o.c										\
+			conv_x.c										\
+			conv_u.c										\
+			conv_b.c										\
+			conv_f.c
 
 
 LIBFT_SRCS_NAME =	ft_atoi.c   		\
