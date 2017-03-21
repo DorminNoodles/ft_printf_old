@@ -6,56 +6,65 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/17 11:34:31 by lchety            #+#    #+#             */
-/*   Updated: 2017/03/14 11:21:32 by lchety           ###   ########.fr       */
+/*   Updated: 2017/03/21 16:07:18 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*set_length_digit(t_print *dna)
+static void		check_pitch(t_print *dna, bool *prefix)
 {
-	bool prefix;
-	prefix = FALSE;
-	if (CHECK_PITCH)
+	if (dna->pitch)
+		dna->flag_0 = FALSE;
+	if (dna->pitch && dna->pitch_nb > ft_strlen(dna->out))
 	{
 		do_pitch(dna, FALSE);
-		if(!dna->conv_o)
+		if (!dna->conv_o)
 			prefix_lossless(dna);
-		prefix = TRUE;
+		*prefix = TRUE;
 	}
-	if (CHECK_WIDTH)
+}
+
+static void		check_width(t_print *dna, bool *prefix)
+{
+	if (dna->width && dna->width > ft_strlen(dna->out))
 	{
 		if (dna->flag_0)
 		{
 			width_ectoplasme(dna, FALSE);
-			prefix_lossy(dna);
-			prefix = TRUE;
+			*prefix = prefix_lossy(dna);
 		}
 		else
 		{
 			if (!dna->justify)
 			{
-				if (!prefix)
-					prefix_lossless(dna);  //    -50
-				prefix = TRUE;
+				if (!*prefix)
+					prefix_lossless(dna);
+				*prefix = TRUE;
 			}
-			if (prefix)
-				width_ectoplasme(dna, TRUE);// push -50 or 50
+			if (*prefix)
+				width_ectoplasme(dna, TRUE);
 			else
 				width_ectoplasme(dna, FALSE);
-			if (!prefix)
-			{
-				prefix_lossy(dna);
-				prefix = TRUE;
-			}
+			if (!*prefix)
+				*prefix = prefix_lossy(dna);
 		}
 	}
+}
+
+char			*set_length_digit(t_print *dna)
+{
+	bool prefix;
+
+	prefix = FALSE;
+	check_pitch(dna, &prefix);
+	check_width(dna, &prefix);
 	if (!prefix)
 		prefix_lossless(dna);
 	return (dna->out);
 }
 
-char	*set_length_char(t_print *dna)
+char			*set_length_char(t_print *dna)
 {
 	if (dna->pitch && dna->pitch_nb == 0 && !dna->conv_mod && !dna->conv_null)
 		dna->out[0] = '\0';
@@ -66,13 +75,12 @@ char	*set_length_char(t_print *dna)
 	return (dna->out);
 }
 
-
-void	set_length_wchar(t_print *dna)
+void			set_length_wchar(t_print *dna)
 {
 	wchar_t *tmp;
 
-	if(dna->pitch)
+	if (dna->pitch)
 		pitch_ls(dna);
-	if(dna->width > count_unicode((wchar_t*)dna->out))
+	if (dna->width > count_unicode((wchar_t*)dna->out))
 		width_ls(dna);
 }

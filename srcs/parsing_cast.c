@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/16 18:35:56 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/11 16:46:49 by lchety           ###   ########.fr       */
+/*   Updated: 2017/03/17 16:19:21 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,19 +25,10 @@ void	parsing_h_hh(const char *format, t_print *dna, char *end)
 	}
 	if (nbh)
 	{
-		// printf("### cast_h = %d\n", dna->cast_h);
-		// printf("### cast_hh = %d\n", dna->cast_hh);
-		// printf("print = %d\n", nbh);
 		if (nbh % 2 == 1)
-		{
 			dna->cast_h = TRUE;
-			// printf("H_____________\n");
-		}
 		else
 			dna->cast_hh = TRUE;
-
-			// printf("### cast_h = %d\n", dna->cast_h);
-			// printf("### cast_hh = %d\n", dna->cast_hh);
 	}
 }
 
@@ -54,19 +45,10 @@ void	parsing_l_ll(const char *format, t_print *dna, char *end)
 	}
 	if (nbl)
 	{
-		// printf("### cast_h = %d\n", dna->cast_h);
-		// printf("### cast_hh = %d\n", dna->cast_hh);
-		// printf("print = %d\n", nbh);
 		if (nbl % 2 == 1)
-		{
 			dna->cast_l = TRUE;
-			// printf("H_____________\n");
-		}
 		else
 			dna->cast_ll = TRUE;
-
-			// printf("### cast_h = %d\n", dna->cast_h);
-			// printf("### cast_hh = %d\n", dna->cast_hh);
 	}
 }
 
@@ -96,7 +78,4 @@ void	parsing_cast(const char *format, t_print *dna, char *end)
 	parsing_l_ll(format, dna, end);
 	parsing_z(format, dna, end);
 	parsing_j(format, dna, end);
-	// printf("test cast_h %d\n", dna->cast_h);
-	// printf("test cast_hh %d\n", dna->cast_hh);
-
 }

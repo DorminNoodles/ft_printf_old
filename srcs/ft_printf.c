@@ -6,11 +6,10 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/06 15:48:05 by lchety            #+#    #+#             */
-/*   Updated: 2017/03/15 12:04:00 by lchety           ###   ########.fr       */
+/*   Updated: 2017/03/17 17:25:47 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "ft_printf.h"
 
 int		ft_printf(const char *format, ...)

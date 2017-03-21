@@ -6,13 +6,13 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/12 15:12:02 by lchety            #+#    #+#             */
-/*   Updated: 2017/03/14 11:26:08 by lchety           ###   ########.fr       */
+/*   Updated: 2017/03/17 16:06:43 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*do_width_with_pitch(t_print *dna)
+char			*do_width_with_pitch(t_print *dna)
 {
 	char	*tmp;
 	int		size;
@@ -31,35 +31,34 @@ char	*do_width_with_pitch(t_print *dna)
 	return (dna->out);
 }
 
-char	*do_width_without_pitch(t_print *dna)
+char			*do_width_without_pitch(t_print *dna)
 {
 	char	*tmp;
 	char	c;
 	int		start;
 	int		size;
+
 	size = dna->width - (dna->base_size + prefix_count(dna));
 	tmp = dna->out;
 	c = (dna->flag_0) ? '0' : ' ';
 	start = (dna->justify) ? 0 : size;
-	//start = (dna->htag) ? prefix_count(dna) : size;
-	//start = (dna->flag_0) ? start + 1 : start;
-	//start = dna->out;
 	dna->out = (char*)ft_memalloc(sizeof(char) * (dna->width + 1));
 	if (!dna->out)
 		return (NULL);
 	ft_memset(dna->out, c, dna->width);
 	ft_memcpy(dna->out + start, tmp, ft_strlen(tmp));
-
 	return (dna->out);
 }
 
-char	*width_ectoplasme(t_print *dna, bool prefix_in)
+char			*width_ectoplasme(t_print *dna, bool prefix_in)
 {
 	char	*tmp;
 	char	c;
 	int		pos;
+	int		s;
 
 	tmp = dna->out;
+	s = ft_strlen(tmp);
 	c = (dna->flag_0) ? '0' : ' ';
 	pos = (prefix_in) ? 0 : prefix_count(dna);
 	if (!(dna->out = (char*)ft_memalloc(sizeof(char) * (dna->width + 1))))
@@ -68,13 +67,24 @@ char	*width_ectoplasme(t_print *dna, bool prefix_in)
 	if (dna->justify)
 		ft_memcpy(dna->out + pos, tmp, ft_strlen(tmp));
 	else
-		ft_memcpy(dna->out + (dna->width - ft_strlen(tmp)), tmp,	ft_strlen(tmp));
+		ft_memcpy(dna->out + (dna->width - s), tmp, s);
 	free(tmp);
-
 	return (dna->out);
 }
 
-void	width_ls(t_print *dna)
+static void		wcharset(t_print *dna, wchar_t c, size_t sze)
+{
+	int i;
+
+	i = 0;
+	while (i < sze)
+	{
+		*(((wchar_t*)dna->out) + i) = c;
+		i++;
+	}
+}
+
+void			width_ls(t_print *dna)
 {
 	char	*tmp;
 	int		size;
@@ -85,16 +95,9 @@ void	width_ls(t_print *dna)
 	size = dna->width - count_unicode((wchar_t*)dna->out);
 	size += ft_wstrlen((wchar_t*)dna->out);
 	tmp = dna->out;
-	if(!(dna->out = (char*)ft_memalloc(sizeof(wchar_t) * (size + 1))))
-		exit (EXIT_FAILURE);
-	while (i < size)
-	{
-		if (dna->flag_0)
-			*(((wchar_t*)dna->out) + i) = L'0';
-		else
-			*(((wchar_t*)dna->out) + i) = L' ';
-		i++;
-	}
+	if (!(dna->out = (char*)ft_memalloc(sizeof(wchar_t) * (size + 1))))
+		exit(EXIT_FAILURE);
+	(dna->flag_0) ? wcharset(dna, L'0', size) : wcharset(dna, L' ', size);
 	start = (wchar_t*)dna->out;
 	start += ft_wstrlen((wchar_t*)dna->out) - ft_wstrlen((wchar_t*)tmp);
 	size = sizeof(wchar_t) * ft_wstrlen((wchar_t*)tmp);

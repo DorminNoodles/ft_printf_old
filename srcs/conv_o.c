@@ -18,7 +18,7 @@ void	conv_o(t_print *dna, va_list ap)
 
 	n = 0;
 	n = exec_cast_unsigned(dna, ap);
-	if (!(dna->out = ft_itoa_printf(n, 8)))
+	if (!(dna->out = ft_itoa_base(n, 8)))
 		exit(EXIT_FAILURE);
 	dna->pre_pls = FALSE;
 	if (dna->pitch && !dna->pitch_nb && !dna->htag)
@@ -39,7 +39,7 @@ void	conv_lo(t_print *dna, va_list ap)
 	n = 0;
 	n = cast_unsigned_wide(dna, ap);
 	dna->pre_pls = FALSE;
-	if (!(dna->out = ft_itoa_printf(n, 8)))
+	if (!(dna->out = ft_itoa_base(n, 8)))
 		exit(EXIT_FAILURE);
 	if (dna->pitch && !dna->pitch_nb && !dna->htag)
 		dna->out[0] = '\0';

@@ -6,16 +6,14 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/24 14:27:07 by lchety            #+#    #+#             */
-/*   Updated: 2017/03/15 16:59:20 by lchety           ###   ########.fr       */
+/*   Updated: 2017/03/17 17:39:52 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	reset_print(t_print *dna)
+static void	reset_conv(t_print *dna)
 {
-
-	dna->end = NULL;
 	dna->conv = FALSE;
 	dna->conv_s = FALSE;
 	dna->conv_ls = FALSE;
@@ -36,6 +34,12 @@ void	reset_print(t_print *dna)
 	dna->conv_e = FALSE;
 	dna->conv_f = FALSE;
 	dna->conv_null = FALSE;
+}
+
+void		reset_print(t_print *dna)
+{
+	reset_conv(dna);
+	dna->end = NULL;
 	dna->flag_0 = FALSE;
 	dna->flag_blk = FALSE;
 	dna->htag = FALSE;

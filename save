@@ -4,7 +4,7 @@ NAME_SRCS =		ft_printf.c					\
 				compute_conv.c				\
 				flags.c						\
 				flags_parsing_dispatch.c	\
-				ft_itoa_printf.c			\
+				ft_itoa_base.c			\
 				ft_itoa_signed.c			\
 				ft_putstr_buff.c			\
 				main_test.c			\

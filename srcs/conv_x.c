@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/15 14:57:29 by lchety            #+#    #+#             */
-/*   Updated: 2017/03/15 15:22:45 by lchety           ###   ########.fr       */
+/*   Updated: 2017/03/21 18:42:20 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void			conv_x(t_print *dna, va_list ap)
 	ret = exec_cast_unsigned(dna, ap);
 	if (ret == 0)
 		dna->htag = FALSE;
-	dna->out = ft_itoa_printf(ret, 16);
+	dna->out = ft_itoa_base(ret, 16);
 	if (ret == 0 && dna->pitch && !dna->pitch_nb)
 		dna->out[0] = '\0';
 	dna->base_size = ft_strlen(dna->out);

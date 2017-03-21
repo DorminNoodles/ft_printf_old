@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/15 12:26:57 by lchety            #+#    #+#             */
-/*   Updated: 2017/03/15 16:14:11 by lchety           ###   ########.fr       */
+/*   Updated: 2017/03/21 18:43:12 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	conv_c(t_print *dna, va_list ap)
 	char	c;
 	char	*tmp;
 
+	if (dna->pitch && !dna->pitch_nb)
+		dna->pitch = FALSE;
 	c = va_arg(ap, int);
 	if (!(dna->out = (char*)ft_memalloc(sizeof(char) * 2)))
 		exit(EXIT_FAILURE);
@@ -46,7 +48,7 @@ void	conv_lc(t_print *dna, va_list ap)
 	if (MB_CUR_MAX > 1)
 	{
 		raw = va_arg(ap, wchar_t);
-		dna->ret_nb += wcharlen(raw);
+		dna->ret_nb += ft_wcharlen(raw);
 		ft_putwchar(raw);
 	}
 	else

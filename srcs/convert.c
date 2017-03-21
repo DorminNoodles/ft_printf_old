@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 17:09:10 by lchety            #+#    #+#             */
-/*   Updated: 2017/03/15 17:10:46 by lchety           ###   ########.fr       */
+/*   Updated: 2017/03/21 16:53:58 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,25 +20,6 @@ void	print_null(t_print *dna)
 	set_length_char(dna);
 	ft_putstr_buff(dna->out);
 	dna->ret_nb += ft_strlen(dna->out);
-	free(dna->out);
-}
-
-void	compute_conv_p(t_print *dna, va_list ap)
-{
-	unsigned long	a;
-	void			*tmp;
-
-	a = 0;
-	tmp = va_arg(ap, void *);
-	dna->htag = TRUE;
-	a = (unsigned long)tmp;
-	if (!(dna->out = ft_itoa_printf(a, 16)))
-		exit(EXIT_FAILURE);
-	if (!tmp && dna->pitch && !dna->pitch_nb)
-		dna->out[0] = '\0';
-	dna->out = set_length_digit(dna);
-	dna->ret_nb += ft_strlen(dna->out);
-	ft_putstr(dna->out);
 	free(dna->out);
 }
 
@@ -62,27 +43,9 @@ void	compute_conv_null(t_print *dna, va_list ap)
 	free(dna->out);
 }
 
-void	convert(t_print *dna, va_list ap)
+void	convert_extended(t_print *dna, va_list ap)
 {
-	if (dna->conv_s)
-		conv_s(dna, ap);
-	else if (dna->conv_ls)
-		conv_ls(dna, ap);
-	else if (dna->conv_p)
-		compute_conv_p(dna, ap);
-	else if (dna->conv_d || dna->conv_i)
-		conv_d(dna, ap);
-	else if (dna->conv_ld)
-		conv_ld(dna, ap);
-	else if (dna->conv_o)
-		conv_o(dna, ap);
-	else if (dna->conv_lo)
-		conv_lo(dna, ap);
-	else if (dna->conv_u)
-		conv_u(dna, ap);
-	else if (dna->conv_lu)
-		conv_lu(dna, ap);
-	else if (dna->conv_x || dna->conv_lx)
+	if (dna->conv_x || dna->conv_lx)
 		conv_x(dna, ap);
 	else if (dna->conv_c && !dna->cast_l)
 		conv_c(dna, ap);
@@ -96,4 +59,28 @@ void	convert(t_print *dna, va_list ap)
 		conv_f(dna, ap);
 	else if (dna->conv_null)
 		compute_conv_null(dna, ap);
+}
+
+void	convert(t_print *dna, va_list ap)
+{
+	if (dna->conv_s)
+		conv_s(dna, ap);
+	else if (dna->conv_ls)
+		conv_ls(dna, ap);
+	else if (dna->conv_p)
+		conv_p(dna, ap);
+	else if (dna->conv_d || dna->conv_i)
+		conv_d(dna, ap);
+	else if (dna->conv_ld)
+		conv_ld(dna, ap);
+	else if (dna->conv_o)
+		conv_o(dna, ap);
+	else if (dna->conv_lo)
+		conv_lo(dna, ap);
+	else if (dna->conv_u)
+		conv_u(dna, ap);
+	else if (dna->conv_lu)
+		conv_lu(dna, ap);
+	else
+		convert_extended(dna, ap);
 }

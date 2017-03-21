@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/10 18:50:34 by lchety            #+#    #+#             */
-/*   Updated: 2017/03/14 11:22:16 by lchety           ###   ########.fr       */
+/*   Updated: 2017/03/17 16:37:28 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,79 +16,23 @@ void	prefix_lossless(t_print *dna)
 {
 	char	*tmp;
 	int		size;
+
 	tmp = dna->out;
 	size = ft_strlen(dna->out) + prefix_count(dna);
-	if(!(dna->out = ft_strnew(size)))
+	if (!(dna->out = ft_strnew(size)))
 		exit(EXIT_FAILURE);
 	ft_memcpy(dna->out, get_prefix(dna), prefix_count(dna));
 	ft_memcpy(dna->out + prefix_count(dna), tmp, ft_strlen(tmp));
 	free(tmp);
 }
 
-char	*prefix_lossy(t_print *dna)
+int		prefix_lossy(t_print *dna)
 {
 	char	*tmp;
 	int		size;
 
 	ft_memcpy(dna->out, get_prefix(dna), prefix_count(dna));
-	return (dna->out);
-}
-
-static char		*prefix_for_pitch(t_print *dna)
-{
-	char	*tmp;
-	int		size;
-	int		start;
-	size = dna->base_size + prefix_count(dna) + 1;
-	tmp = dna->out;
-	dna->out = (char*)ft_memalloc(sizeof(char) * size);
-	if (!dna->out)
-	return (NULL);
-	ft_memcpy(dna->out + prefix_count(dna), tmp, dna->base_size);
-	ft_memcpy(dna->out, get_prefix(dna), prefix_count(dna));
-	return (dna->out);
-}
-
-static char		*prefix_for_width(t_print *dna)
-{
-	char	*tmp;
-
-	if (dna->flag_0)
-		ft_memcpy(dna->out, get_prefix(dna), prefix_count(dna));
-	else
-		ft_memcpy(dna->out, get_prefix(dna), prefix_count(dna));
-
-	return (dna->out);
-}
-
-char	*add_prefix(t_print *dna)
-{
-	char	*tmp;
-	int		size;
-
-	tmp = dna->out;
-	size = (int)ft_strlen(dna->out) + prefix_count(dna);
-	dna->out = (char*)ft_memalloc(sizeof(char) * (size + 1));
-	if (!dna->out)
-		return (NULL);
-	ft_memcpy(dna->out + prefix_count(dna), tmp, ft_strlen(tmp));
-	ft_memcpy(dna->out, get_prefix(dna), prefix_count(dna));
-
-	free(tmp);
-	return (dna->out);
-}
-
-char	*prefix(t_print *dna)
-{
-	int size;
-	size = 0;
-	if (dna->pitch_nb)
-		dna->out = prefix_for_pitch(dna);
-	else if (dna->width)
-		dna->out = prefix_for_width(dna);
-	else
-		prefix_for_pitch(dna);
-	return(dna->out);
+	return (1);
 }
 
 char	*get_prefix(t_print *dna)
@@ -100,9 +44,7 @@ char	*get_prefix(t_print *dna)
 	if (dna->conv_o || dna->conv_lo)
 		return ("0");
 	if (dna->pre_pls && !dna->pre_min)
-	{
 		return ("+");
-	}
 	if (dna->pre_min)
 		return ("-");
 	return ("\0");

@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/08 19:58:41 by lchety            #+#    #+#             */
-/*   Updated: 2017/03/02 20:53:41 by lchety           ###   ########.fr       */
+/*   Updated: 2017/03/17 14:06:23 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,10 @@ static char		*recursive_itoa(char *str, unsigned long long nb)
 
 char			*ft_itoa_signed(long long n)
 {
-	char			*str;
+	char				*str;
 	unsigned long long	nb;
-	int				negatif;
+	int					negatif;
+
 	str = NULL;
 	nb = n;
 	negatif = 0;

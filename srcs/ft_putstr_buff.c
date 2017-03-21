@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/08 00:01:34 by lchety            #+#    #+#             */
-/*   Updated: 2017/03/14 20:55:55 by lchety           ###   ########.fr       */
+/*   Updated: 2017/03/17 14:05:33 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,4 @@
 void	ft_putstr_buff(char const *s)
 {
 	write(1, s, ft_strlen(s));
-	//ft_putchar_enhance(s, ft_strlen(s));
 }

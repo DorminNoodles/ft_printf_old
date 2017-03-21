@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/13 13:59:46 by lchety            #+#    #+#             */
-/*   Updated: 2017/03/13 15:31:22 by lchety           ###   ########.fr       */
+/*   Updated: 2017/03/21 15:58:57 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void	parsing_flags(const char *fmt, t_print *dna, char *end)
 	fmt++;
 	while (fmt < end)
 	{
-		// printf("=> %c\n", *fmt);
 		if (*fmt == ' ')
 			dna->flag_blk = TRUE;
 		if (*fmt == '-')
@@ -30,7 +29,6 @@ void	parsing_flags(const char *fmt, t_print *dna, char *end)
 			dna->flag_0 = TRUE;
 		fmt++;
 	}
-
 }
 
 void	silent_flags(t_print *dna)

@@ -1,11 +1,11 @@
 NAME = libftprintf.a
-TEST_SRCS = try/main_test_proto.c
+TEST_SRC = try/main_test_proto.c
 NAME_SRCS =	ft_printf.c										\
 			parsing.c										\
 			parsing_cast.c									\
 			convert.c										\
 			casting.c										\
-			ft_itoa_printf.c								\
+			ft_itoa_base.c									\
 			parsing_converter.c								\
 			reset_print.c									\
 			unicode.c										\
@@ -26,7 +26,9 @@ NAME_SRCS =	ft_printf.c										\
 			conv_x.c										\
 			conv_u.c										\
 			conv_b.c										\
-			conv_f.c
+			conv_f.c										\
+			conv_p.c										\
+			color.c
 
 
 LIBFT_SRCS_NAME =	ft_atoi.c   		\
@@ -120,6 +122,6 @@ fclean : clean
 re : fclean all
 
 test : $(NAME)
-	$(CC) try/main_test_proto.c -I includes -I libft/includes $(NAME) -o build/debug.out
+	$(CC) $(TEST_SRC) -I includes -I libft/includes $(NAME) -o build/debug.out
 
 .PHONY : all, clean, fclean, test, re
