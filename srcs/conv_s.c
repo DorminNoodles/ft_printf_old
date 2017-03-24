@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/15 12:11:23 by lchety            #+#    #+#             */
-/*   Updated: 2017/03/15 12:36:15 by lchety           ###   ########.fr       */
+/*   Updated: 2017/03/24 15:14:15 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void	conv_s(t_print *dna, va_list ap)
 {
 	char	*str;
-
 	if (dna->conv_s && dna->cast_l)
 	{
 		conv_ls(dna, ap);

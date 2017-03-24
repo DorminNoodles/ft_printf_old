@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/08 14:01:18 by lchety            #+#    #+#             */
-/*   Updated: 2017/03/21 16:13:55 by lchety           ###   ########.fr       */
+/*   Updated: 2017/03/24 15:10:09 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,16 @@ int		parsing_format(const char *format, t_print *dna, va_list ap)
 	i = 0;
 	while (*(format + i))
 	{
-		i += pars_color(format + i);
-		if (*(format + i) == '%')
+		if (*(format + i) == '{')
+			i += pars_color(format + i);
+		else if (*(format + i) == '%')
 		{
 			reset_print(dna);
 			i += parsing_dispatch(format + i, dna, ap);
 			if (dna->conv)
 				return (i);
 		}
-		else
+		else if(*(format + i))
 		{
 			ft_putchar(*(format + i));
 			dna->ret_nb++;

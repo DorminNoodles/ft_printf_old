@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 16:53:56 by lchety            #+#    #+#             */
-/*   Updated: 2017/03/21 18:30:30 by lchety           ###   ########.fr       */
+/*   Updated: 2017/03/24 12:09:10 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -5272,7 +5272,7 @@ int main(void)
 	// test_g();
 
 	printf("=======> Test_color <=======\n");
-	// test_color();
+	test_color();
 
 
 	//test de merde
