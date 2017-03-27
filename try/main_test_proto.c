@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 16:53:56 by lchety            #+#    #+#             */
-/*   Updated: 2017/03/24 12:09:10 by lchety           ###   ########.fr       */
+/*   Updated: 2017/03/27 16:36:48 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -3623,6 +3623,52 @@ void	test_lc_12(void)
 	printf("\n");
 }
 
+void	test_lc_13(void)
+{
+	//wchar_t a = 248;
+	int ret1 = 0;
+	int ret2 = 0;
+
+	setlocale(LC_ALL, "C");
+	printf("Test_C => 13\n");
+	ret1 = printf("orig : %C\n", 173);
+	ret2 = ft_printf("cust : %C\n", 173);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void	test_lc_14(void)
+{
+	int ret1 = 0;
+	int ret2 = 0;
+
+	setlocale(LC_ALL, "C");
+	printf("Test_C => 14\n");
+	ret1 = printf("orig : %C\n", 355);
+	ret2 = ft_printf("cust : %C\n", 355);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void	test_lc_15(void)
+{
+	int ret1 = 0;
+	int ret2 = 0;
+
+	setlocale(LC_ALL, "C");
+	printf("Test_C => 15\n");
+	ret1 = printf("orig : %C\n", -50);
+	ret2 = ft_printf("cust : %C\n", -50);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
 
 //=====================================================> conv_p
 
@@ -5070,6 +5116,9 @@ void	test_lc(void)
 	test_lc_10();
 	test_lc_11();
 	test_lc_12();
+	test_lc_13();
+	test_lc_14();
+	test_lc_15();
 }
 
 void	test_modulo(void)
@@ -5197,15 +5246,15 @@ int main(void)
 {
 	//Start Conv_s
 	printf("=======> Conv_s <=======\n");
-	test_s();
+	// test_s();
 
 	//Start
 	printf("=======> Conv_S <=======\n");
-	test_ls();
+	// test_ls();
 
 	//Start conv_p
 	printf("=======> Conv_p <=======\n");
-	test_p();
+	// test_p();
 
 	printf("=======> Conv_d <=======\n");
 	//test_d();
@@ -5217,7 +5266,7 @@ int main(void)
 	//test_i();
 
 	printf("=======> Conv_o <=======\n");
-	test_o();
+	// test_o();
 
 	printf("=======> Conv_O <=======\n");
 	test_lo();
@@ -5235,10 +5284,10 @@ int main(void)
 	// test_lx();
 
 	printf("=======> Conv_c <=======\n");
-	test_c();
+	// test_c();
 	//Start conv_lc
 	printf("=======> Conv_lc <=======\n");
-	// test_lc();
+	test_lc();
 
 	printf("=======> Conv_%% <=======\n");
 	// test_modulo();
@@ -5272,7 +5321,7 @@ int main(void)
 	// test_g();
 
 	printf("=======> Test_color <=======\n");
-	test_color();
+	// test_color();
 
 
 	//test de merde

@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 17:10:51 by lchety            #+#    #+#             */
-/*   Updated: 2017/03/24 11:50:46 by lchety           ###   ########.fr       */
+/*   Updated: 2017/03/27 16:17:03 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,6 @@
 #include <limits.h>
 #include <stdlib.h>
 #include "libft.h"
-
-/*
-#ifndef DEBUG
-#warning Only Debug builds are supported
-#endif
-*/
-
 
 #define CHECK_PITCH dna->pitch && dna->pitch_nb > ft_strlen(dna->out)
 #define CHECK_WIDTH dna->width && dna->width > ft_strlen(dna->out)
