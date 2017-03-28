@@ -1,28 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   prefix.c                                           :+:      :+:    :+:   */
+/*   conv_f.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/10 18:50:34 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/10 22:58:49 by lchety           ###   ########.fr       */
+/*   Created: 2017/03/15 17:10:55 by lchety            #+#    #+#             */
+/*   Updated: 2017/03/21 18:42:43 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*prefix(t_print *dna)
+static int		find_exponent(double nb)
 {
-	if ((dna->conv_x || dna->conv_lx) && dna->htag)
+	int i;
+
+	i = 1;
+	while ((int)nb > 9)
 	{
-		dna->ret_nb += 2;
-		return("0x");
+		nb = nb / 10;
+		i++;
 	}
-	if (dna->pre_neg)
-	{
-		dna->ret_nb++;
-		return ("-");
-	}
-	return ("");
+	return (i);
+}
+
+void			conv_f(t_print *dna, va_list ap)
+{
+	double		nb;
+	int			i;
+	char		buff[256];
+	int			expo;
+	int			j;
+
+	expo = 0;
+	j = 0;
+	i = 0;
+	ft_bzero(buff, 255);
+	nb = va_arg(ap, double);
 }

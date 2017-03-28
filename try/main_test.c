@@ -1,42 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing_func_collection.c                          :+:      :+:    :+:   */
+/*   main_test.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/08 18:35:25 by lchety            #+#    #+#             */
-/*   Updated: 2017/01/24 14:42:19 by lchety           ###   ########.fr       */
+/*   Created: 2017/02/21 11:12:49 by lchety            #+#    #+#             */
+/*   Updated: 2017/03/06 09:59:44 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
+#include <limits.h>
 
-void spirou_01()
+int		main(void)
 {
-	printf("01\n");
-}
+	size_t a = LONG_MAX;
+	printf("%s\n", a);
 
-void spirou_02()
-{
-	printf("02\n");
-}
-
-void spirou_03()
-{
-	printf("03\n");
-}
-
-void	*parsing_func_collection(void *ptr)
-{
-	printf("tes");
-
-	return (NULL);
-}
-
-void	*flags_apply_hashtag()
-{
-	printf("hashtag");
-
-	return (NULL);
+	return (0);
 }

@@ -1,37 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   unicode.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/06 15:48:05 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/11 14:28:25 by lchety           ###   ########.fr       */
+/*   Created: 2017/01/29 14:10:13 by lchety            #+#    #+#             */
+/*   Updated: 2017/03/21 16:47:58 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "ft_printf.h"
 
-int ft_printf(const char *format, ...)
+size_t		ft_wcharlen(wchar_t c)
 {
-	int i;
-	t_print dna;
-	va_list ap;
-	int ret;
+	if (c < 0x7f)
+		return (1);
+	else if (c < 0x800)
+		return (2);
+	else if (c < 0x10000)
+		return (3);
+	else
+		return (4);
+}
 
-	ret = 0;
+size_t		count_unicode(wchar_t *str)
+{
+	size_t	size;
+	int		i;
+
 	i = 0;
-	dna.ret_nb = 0;
-	va_start(ap, format);
-	while ((ret = parsing_format(format, &dna)))
+	size = 0;
+	while (str[i] != '\0')
 	{
-		format += ret;
-		if (dna.conv)
-			compute_conv(&dna, ap);
-		reset_print(&dna);
-		//#pragma message(": warning<put what you like here>: blah blah blah")
+		if (str[i] < 0x7f)
+			size++;
+		else if (str[i] < 0x800)
+			size += 2;
+		else if (str[i] < 0x10000)
+			size += 3;
+		else
+			size += 4;
+		i++;
 	}
-	//compute_conv(parsing_struct);
-	return ((int)dna.ret_nb);
+	return (size);
 }

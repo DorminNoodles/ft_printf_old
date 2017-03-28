@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa_printf.c                                   :+:      :+:    :+:   */
+/*   ft_itoa_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/22 12:01:22 by lchety            #+#    #+#             */
-/*   Updated: 2017/02/10 11:42:41 by lchety           ###   ########.fr       */
+/*   Updated: 2017/03/21 18:41:38 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,20 @@ void	ft_strrev(char *str)
 	}
 }
 
-char	*ft_itoa_printf(uintmax_t n, int base)
+char	*ft_itoa_base(uintmax_t n, int base)
 {
-	char *str;
-	int i;
+	char	*str;
+	int		i;
 
 	i = 0;
 	str = (char*)ft_memalloc(sizeof(char) * 300);
+	if (!str)
+		return (NULL);
 	if (n == 0)
-		return (str[0] = '0', str);
+	{
+		str[0] = '0';
+		return (str);
+	}
 	while (n > 0)
 	{
 		if (n % base > 9)

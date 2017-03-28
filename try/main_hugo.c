@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_hugo.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmassonn <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hmassonn <hmassonn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/01 16:06:25 by hmassonn          #+#    #+#             */
-/*   Updated: 2017/02/01 16:06:28 by hmassonn         ###   ########.fr       */
+/*   Updated: 2017/03/21 15:28:19 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -357,7 +357,8 @@ int		main()
 	printf("%d\n\n", printf("7pointeur 1 %-012p pointeur 2 %012p\n\n", &c, &c));
 
 	/* Ce test boucle infini avec le vrai printf */
-	ft_printf("%d\n", ft_printf("8pointeur 1 %*p pointeur 2 %*p\n\n", &c, 6, &c, 6));
+
+	//ft_printf("%d\n", ft_printf("8pointeur 1 %*p pointeur 2 %*p\n\n", &c, 6, &c, 6));
 
 	ft_printf("%d\n", ft_printf("9pointeur 1 %+p pointeur 2 %+p\n", &c, 6, &c, 6));
 	printf("%d\n\n", printf("9pointeur 1 %+p pointeur 2 %+p\n\n", &c, 6, &c, 6));
@@ -595,15 +596,16 @@ int		main()
 	printf("%d\n\n", printf("15string 1 %.s string 2 %.s\n\n", "toto", "bonjour"));
 
 	ft_printf("%d\n", ft_printf("16string 1 %.6s string 2 %.6s\n", "toto", "bonjour"));
-	printf("%d\n\n", printf("16string 1 %.6s string 2 %.6s\n\n", "toto", "bonjour"));
 
+
+	printf("%d\n\n", printf("16string 1 %.6s string 2 %.6s\n\n", "toto", "bonjour"));
 
 	/* Et paf ! Segfault...
 	 *    Pour savoir quels tests ne fonctionnent pas, mettez un exit par ci par la ;-) */
 
-	ft_printf("%99999999.1d", 5);
-	ft_printf("%1.99999999d", 5);
-	ft_printf("%99999999.99999999d", 5);
+	// ft_printf("%99999999.1d", 5);
+	// ft_printf("%1.99999999d", 5);
+	// ft_printf("%99999999.99999999d", 5);
 
 	return (0);
 }
