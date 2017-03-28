@@ -50,7 +50,7 @@ char			*do_width_without_pitch(t_print *dna)
 	return (dna->out);
 }
 
-char			*width_ectoplasme(t_print *dna, bool prefix_in)
+char			*width_ectoplasme(t_print *dna, t_bool prefix_in)
 {
 	char	*tmp;
 	char	c;

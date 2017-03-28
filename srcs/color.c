@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/17 17:21:35 by lchety            #+#    #+#             */
-/*   Updated: 2017/03/24 15:45:09 by lchety           ###   ########.fr       */
+/*   Updated: 2017/03/28 14:40:42 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 char	*switch_color(const char *str)
 {
 	char *find;
+
 	find = NULL;
 	if ((find = ft_strstr(str, "black")))
 		ft_putstr(BLACK);

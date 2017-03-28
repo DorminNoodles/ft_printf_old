@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-static void		check_pitch(t_print *dna, bool *prefix)
+static void		check_pitch(t_print *dna, t_bool *prefix)
 {
 	if (dna->pitch)
 		dna->flag_0 = FALSE;
@@ -25,7 +25,7 @@ static void		check_pitch(t_print *dna, bool *prefix)
 	}
 }
 
-static void		check_width(t_print *dna, bool *prefix)
+static void		check_width(t_print *dna, t_bool *prefix)
 {
 	if (dna->width && dna->width > ft_strlen(dna->out))
 	{
@@ -54,7 +54,7 @@ static void		check_width(t_print *dna, bool *prefix)
 
 char			*set_length_digit(t_print *dna)
 {
-	bool prefix;
+	t_bool prefix;
 
 	prefix = FALSE;
 	check_pitch(dna, &prefix);

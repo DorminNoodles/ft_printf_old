@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/08 14:01:18 by lchety            #+#    #+#             */
-/*   Updated: 2017/03/24 15:10:09 by lchety           ###   ########.fr       */
+/*   Updated: 2017/03/28 15:05:56 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int		parsing_format(const char *format, t_print *dna, va_list ap)
 			if (dna->conv)
 				return (i);
 		}
-		else if(*(format + i))
+		else if (*(format + i))
 		{
 			ft_putchar(*(format + i));
 			dna->ret_nb++;

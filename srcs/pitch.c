@@ -37,7 +37,7 @@ void	compute_pitch_nb_cut(t_print *dna)
 	free(tmp);
 }
 
-char	*do_pitch(t_print *dna, bool cut)
+char	*do_pitch(t_print *dna, t_bool cut)
 {
 	if (dna->pitch_nb)
 	{
