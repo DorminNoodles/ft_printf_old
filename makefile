@@ -1,6 +1,5 @@
 NAME = libftprintf.a
 TEST_SRC = try/main_test_proto.c
-#TEST_SRC = maindemerde.c
 NAME_SRCS =	ft_printf.c										\
 			parsing.c										\
 			parsing_cast.c									\
