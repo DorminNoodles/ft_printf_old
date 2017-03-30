@@ -121,6 +121,7 @@ fclean : clean
 re : fclean all
 
 test : $(NAME)
+	#$(CC) $(TEST_SRC) -I includes -I libft/includes $(NAME) -o build/debug.out
 	$(CC) $(TEST_SRC) -I includes -I libft/includes $(NAME) -o build/debug.out
 
 .PHONY : all, clean, fclean, test, re

@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 16:53:56 by lchety            #+#    #+#             */
-/*   Updated: 2017/03/27 16:36:48 by lchety           ###   ########.fr       */
+/*   Updated: 2017/03/30 12:45:56 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -4455,6 +4455,21 @@ void	mutant_11(void)
 	printf("ret_cust : %d\n", ret2);
 	printf("\n");
 }
+
+void	mutant_12(void)
+{
+	size_t a = LONG_MAX;
+	int ret1 = 0;
+	int ret2 = 0;
+
+	printf("Mutant_test => 12\n");
+	ret1 = printf("orig : {esgrdth}{%10R}\n");
+	ret2 = ft_printf("cust : {esgrdth}{%10R}\n");
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
 /*
 void	mutant_09(void)
 {
@@ -4718,7 +4733,7 @@ void 	test_color_01(void)
 	printf("test_color => 01\n");
 	ret2 = ft_printf("cust :{black} %s{eoc} no color\n", "black");
 	printf("\n");
-	printf("ret_orig : %d\n", ret1);
+	//printf("ret_orig : %d\n", ret1);
 	printf("ret_cust : %d\n", ret2);
 	printf("\n");
 }
@@ -4731,7 +4746,7 @@ void 	test_color_02(void)
 	printf("test_color => 02\n");
 	ret2 = ft_printf("cust :{red} %s{eoc} no color\n", "red");
 	printf("\n");
-	printf("ret_orig : %d\n", ret1);
+	//printf("ret_orig : %d\n", ret1);
 	printf("ret_cust : %d\n", ret2);
 	printf("\n");
 }
@@ -5193,6 +5208,7 @@ void 	mutant_test(void)
 	mutant_09();
 	mutant_10();
 	mutant_11();
+	mutant_12();
 }
 
 void	test_e(void)
@@ -5306,7 +5322,7 @@ int main(void)
 
 	//Start Mutants
 	printf("=======> Mutant_Test <=======\n");
-	// mutant_test();
+	mutant_test();
 
 	printf("=======> Conv_e <=======\n");
 	//test_e();
@@ -5321,7 +5337,7 @@ int main(void)
 	// test_g();
 
 	printf("=======> Test_color <=======\n");
-	// test_color();
+	//test_color();
 
 
 	//test de merde
