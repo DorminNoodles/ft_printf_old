@@ -1,5 +1,6 @@
 NAME = libftprintf.a
 TEST_SRC = try/main_test_proto.c
+#TEST_SRC = main_c.c
 NAME_SRCS =	ft_printf.c										\
 			parsing.c										\
 			parsing_cast.c									\
@@ -101,7 +102,6 @@ HEADER_LIB = libft/includes/libft.h
 
 all : $(NAME)
 
-
 $(NAME) : $(OBJS) $(HEADER_LIB)
 	make -C libft/ re
 	ar rc $(NAME) $(OBJS) $(LIBFT_OBJS)
@@ -121,7 +121,6 @@ fclean : clean
 re : fclean all
 
 test : $(NAME)
-	#$(CC) $(TEST_SRC) -I includes -I libft/includes $(NAME) -o build/debug.out
 	$(CC) $(TEST_SRC) -I includes -I libft/includes $(NAME) -o build/debug.out
 
-.PHONY : all, clean, fclean, test, re
+.PHONY : all, clean, fclean, test, re,

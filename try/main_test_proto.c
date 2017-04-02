@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 16:53:56 by lchety            #+#    #+#             */
-/*   Updated: 2017/03/30 12:45:56 by lchety           ###   ########.fr       */
+/*   Updated: 2017/04/02 18:48:18 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -3646,23 +3646,68 @@ void	test_lc_14(void)
 
 	setlocale(LC_ALL, "C");
 	printf("Test_C => 14\n");
-	ret1 = printf("orig : %C\n", 355);
-	ret2 = ft_printf("cust : %C\n", 355);
+	ret1 = printf("orig : %C\n", 35);
+	ret2 = ft_printf("cust : %C\n", 35);
 	printf("\n");
 	printf("ret_orig : %d\n", ret1);
 	printf("ret_cust : %d\n", ret2);
 	printf("\n");
 }
 
-void	test_lc_15(void)
+void	test_lc_15(void) //broke printf
 {
 	int ret1 = 0;
 	int ret2 = 0;
 
 	setlocale(LC_ALL, "C");
 	printf("Test_C => 15\n");
-	ret1 = printf("orig : %C\n", -50);
-	ret2 = ft_printf("cust : %C\n", -50);
+	ret1 = printf("orig : %C\n", -5);
+	ret2 = ft_printf("cust : %C\n", -5);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void	test_lc_16(void)
+{
+	int ret1 = 0;
+	int ret2 = 0;
+
+	setlocale(LC_ALL, "C");
+	printf("Test_C => 16\n");
+	ret1 = printf("orig : %C\n", 255);
+	ret2 = ft_printf("cust : %C\n", 255);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void	test_lc_17(void)
+{
+	int ret1 = 0;
+	int ret2 = 0;
+
+	setlocale(LC_ALL, "C");
+	printf("Test_C => 17\n");
+	ret1 = printf("orig : %C\n", 256);
+	ret2 = ft_printf("cust : %C\n", 256);
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void	test_lc_18(void)
+{
+	int ret1 = 0;
+	int ret2 = 0;
+
+	setlocale(LC_ALL, "C");
+	printf("Test_C => 18\n");
+	ret1 = printf("orig : %C\n", 35);
+	ret2 = ft_printf("cust : %C\n", 35);
 	printf("\n");
 	printf("ret_orig : %d\n", ret1);
 	printf("ret_cust : %d\n", ret2);
@@ -5133,7 +5178,10 @@ void	test_lc(void)
 	test_lc_12();
 	test_lc_13();
 	test_lc_14();
-	test_lc_15();
+	// test_lc_15();
+	test_lc_16();
+	// test_lc_17();
+	// test_lc_18();
 }
 
 void	test_modulo(void)
@@ -5260,6 +5308,7 @@ void	test_color(void)
 
 int main(void)
 {
+	//setbuf(stdout, NULL);
 	//Start Conv_s
 	printf("=======> Conv_s <=======\n");
 	// test_s();
@@ -5273,7 +5322,7 @@ int main(void)
 	// test_p();
 
 	printf("=======> Conv_d <=======\n");
-	//test_d();
+	test_d();
 
 	printf("=======> Conv_D <=======\n");
 	//test_ld();
@@ -5285,7 +5334,7 @@ int main(void)
 	// test_o();
 
 	printf("=======> Conv_O <=======\n");
-	test_lo();
+	//test_lo();
 
 	printf("=======> Conv_u <=======\n");
 	//test_u();
@@ -5322,7 +5371,7 @@ int main(void)
 
 	//Start Mutants
 	printf("=======> Mutant_Test <=======\n");
-	mutant_test();
+	//mutant_test();
 
 	printf("=======> Conv_e <=======\n");
 	//test_e();

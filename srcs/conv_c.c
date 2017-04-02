@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/15 12:26:57 by lchety            #+#    #+#             */
-/*   Updated: 2017/03/27 14:32:38 by lchety           ###   ########.fr       */
+/*   Updated: 2017/04/02 18:46:55 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,6 @@ void	conv_lc(t_print *dna, va_list ap)
 	else
 	{
 		dna->ret_nb++;
-		ft_putchar((char)va_arg(ap, int));
+		ft_putchar((char)va_arg(ap, wchar_t));
 	}
 }

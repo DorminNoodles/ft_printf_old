@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 17:10:51 by lchety            #+#    #+#             */
-/*   Updated: 2017/03/30 12:02:46 by lchety           ###   ########.fr       */
+/*   Updated: 2017/04/02 17:53:40 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ typedef struct	s_print
 	int		pitch_nb;
 	int		pitch_dollar;
 	int		pitch_star;
-	size_t	ret_nb;
+	int		ret_nb;
 }				t_print;
 
 int				ft_printf(const char *format, ...);

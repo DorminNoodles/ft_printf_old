@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   main_c.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/06 15:48:05 by lchety            #+#    #+#             */
-/*   Updated: 2017/04/02 18:40:15 by lchety           ###   ########.fr       */
+/*   Created: 2017/04/02 16:36:52 by lchety            #+#    #+#             */
+/*   Updated: 2017/04/02 18:26:38 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <locale.h>
+#include <stdio.h>
 #include "ft_printf.h"
 
-int		ft_printf(const char *format, ...)
+int		main(void)
 {
-	int			i;
-	t_print		dna;
-	va_list		ap;
-	int			ret;
+	int a;
 
-	ret = 0;
-	i = 0;
-	dna.ret_nb = 0;
-	va_start(ap, format);
-	while ((ret = parsing_format(format, &dna, ap)))
-	{
-		format += ret;
-		if (dna.conv)
-			convert(&dna, ap);
-	}
-	return ((int)dna.ret_nb);
+	setlocale(LC_ALL, "C");
+	setlocale(LC_ALL, "");
+	setlocale(LC_ALL, "");
+	setlocale(LC_ALL, "C");
+	setlocale(LC_ALL, "");
+	setlocale(LC_ALL, "");
+	setlocale(LC_ALL, "C");
+	a = printf("%C\n", 35);
+	printf("%d\n", a);
+
+	return (0);
 }

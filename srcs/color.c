@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/17 17:21:35 by lchety            #+#    #+#             */
-/*   Updated: 2017/03/30 12:23:35 by lchety           ###   ########.fr       */
+/*   Updated: 2017/03/30 16:14:14 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,6 @@ int		pars_color(const char *fmt)
 
 	end = NULL;
 	i = 0;
-	//printf("COLOR DE MERDE\n");
-	///*
 	if (*fmt == '{')
 		end = ft_strchr(fmt, '}');
 	else
@@ -57,6 +55,5 @@ int		pars_color(const char *fmt)
 		return (0);
 	free(tmp);
 	return ((end - fmt) + 1);
-	//*/
 	return (0);
 }
