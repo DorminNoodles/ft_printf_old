@@ -1,32 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_c.c                                           :+:      :+:    :+:   */
+/*   ft_strclr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/02 16:36:52 by lchety            #+#    #+#             */
-/*   Updated: 2017/04/06 11:08:37 by lchety           ###   ########.fr       */
+/*   Created: 2016/10/05 00:55:40 by lchety            #+#    #+#             */
+/*   Updated: 2016/11/13 16:33:58 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <locale.h>
-#include <stdio.h>
-#include "ft_printf.h"
+#include "libft.h"
 
-int		main(void)
+void	ft_strclr(char *s)
 {
-	int a;
-
-	setlocale(LC_ALL, "C");
-	setlocale(LC_ALL, "");
-	setlocale(LC_ALL, "");
-	setlocale(LC_ALL, "C");
-	setlocale(LC_ALL, "");
-	setlocale(LC_ALL, "");
-	setlocale(LC_ALL, "C");
-	a = printf("%C\n", 35);
-	printf("%d\n", a);
-
-	return (0);
+	while (*s != '\0')
+	{
+		*s = '\0';
+		s++;
+	}
 }

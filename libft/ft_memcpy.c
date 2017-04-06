@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_c.c                                           :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/02 16:36:52 by lchety            #+#    #+#             */
-/*   Updated: 2017/04/06 11:08:37 by lchety           ###   ########.fr       */
+/*   Created: 2016/10/05 16:58:35 by lchety            #+#    #+#             */
+/*   Updated: 2017/02/14 14:44:48 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <locale.h>
-#include <stdio.h>
-#include "ft_printf.h"
+#include "libft.h"
 
-int		main(void)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	int a;
+	size_t i;
 
-	setlocale(LC_ALL, "C");
-	setlocale(LC_ALL, "");
-	setlocale(LC_ALL, "");
-	setlocale(LC_ALL, "C");
-	setlocale(LC_ALL, "");
-	setlocale(LC_ALL, "");
-	setlocale(LC_ALL, "C");
-	a = printf("%C\n", 35);
-	printf("%d\n", a);
-
-	return (0);
+	i = 0;
+	while (i < n)
+	{
+		*(unsigned char *)(dest + i) = *(unsigned char *)(src + i);
+		i++;
+	}
+	return (dest);
 }

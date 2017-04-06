@@ -1,32 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_c.c                                           :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/02 16:36:52 by lchety            #+#    #+#             */
-/*   Updated: 2017/04/06 11:08:37 by lchety           ###   ########.fr       */
+/*   Created: 2016/12/11 13:40:11 by lchety            #+#    #+#             */
+/*   Updated: 2017/01/04 19:58:06 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <locale.h>
-#include <stdio.h>
-#include "ft_printf.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
+# define BUFF_SIZE 1
 
-int		main(void)
+typedef struct s_fd_lst		t_fd_lst;
+struct	s_fd_lst
 {
-	int a;
-
-	setlocale(LC_ALL, "C");
-	setlocale(LC_ALL, "");
-	setlocale(LC_ALL, "");
-	setlocale(LC_ALL, "C");
-	setlocale(LC_ALL, "");
-	setlocale(LC_ALL, "");
-	setlocale(LC_ALL, "C");
-	a = printf("%C\n", 35);
-	printf("%d\n", a);
-
-	return (0);
-}
+	int			fd;
+	char		*content;
+	t_fd_lst	*next;
+};
+int		get_next_line(int fd, char **line);
+#endif

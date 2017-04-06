@@ -1,32 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_c.c                                           :+:      :+:    :+:   */
+/*   ft_wstrlen.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/02 16:36:52 by lchety            #+#    #+#             */
-/*   Updated: 2017/04/06 11:08:37 by lchety           ###   ########.fr       */
+/*   Created: 2017/02/01 00:31:46 by lchety            #+#    #+#             */
+/*   Updated: 2017/03/30 16:16:58 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <locale.h>
-#include <stdio.h>
-#include "ft_printf.h"
+#include "libft.h"
 
-int		main(void)
+size_t	ft_wstrlen(const wchar_t *s)
 {
-	int a;
+	size_t length;
 
-	setlocale(LC_ALL, "C");
-	setlocale(LC_ALL, "");
-	setlocale(LC_ALL, "");
-	setlocale(LC_ALL, "C");
-	setlocale(LC_ALL, "");
-	setlocale(LC_ALL, "");
-	setlocale(LC_ALL, "C");
-	a = printf("%C\n", 35);
-	printf("%d\n", a);
-
-	return (0);
+	length = 0;
+	while (*(s + length) != '\0')
+		length++;
+	return (length);
 }

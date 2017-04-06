@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 16:53:56 by lchety            #+#    #+#             */
-/*   Updated: 2017/04/02 18:48:18 by lchety           ###   ########.fr       */
+/*   Updated: 2017/04/06 11:09:24 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -610,6 +610,21 @@ void	test_ls_19(void)
 	printf("Test_S => 19\n");
 	ret1 = printf("orig : {%05.S}\n", L"42 c est cool");
 	ret2 = ft_printf("cust : {%05.S}\n", L"42 c est cool");
+	printf("\n");
+	printf("ret_orig : %d\n", ret1);
+	printf("ret_cust : %d\n", ret2);
+	printf("\n");
+}
+
+void	test_ls_20(void)
+{
+	int ret1 = 0;
+	int ret2 = 0;
+
+	setlocale(LC_ALL, "");
+	printf("Test_S => 20\n");
+	ret1 = printf("orig : {%.22S}\n", L"🤗🤗🤗🤗🤗©©");
+	ret2 = ft_printf("cust : {%.22S}\n", L"🤗🤗🤗🤗🤗©©");
 	printf("\n");
 	printf("ret_orig : %d\n", ret1);
 	printf("ret_cust : %d\n", ret2);
@@ -4921,6 +4936,7 @@ void	test_ls(void)
 	test_ls_17();
 	test_ls_18();
 	test_ls_19();
+	test_ls_20();
 }
 
 void 	test_d(void)
@@ -5315,7 +5331,7 @@ int main(void)
 
 	//Start
 	printf("=======> Conv_S <=======\n");
-	// test_ls();
+	test_ls();
 
 	//Start conv_p
 	printf("=======> Conv_p <=======\n");
@@ -5352,7 +5368,7 @@ int main(void)
 	// test_c();
 	//Start conv_lc
 	printf("=======> Conv_lc <=======\n");
-	test_lc();
+	// test_lc();
 
 	printf("=======> Conv_%% <=======\n");
 	// test_modulo();
